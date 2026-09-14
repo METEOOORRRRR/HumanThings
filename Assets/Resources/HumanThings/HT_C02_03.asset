@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_C02_03
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_C02_03
+  locationId: IND_AUTO_SHOP
+  trueNameKo: "\uD0C0\uC774\uC5B4"
+  trueNameEn: Tire
+  categoryTag: "\uC774\uB3D9 \uAE30\uC220"
+  materialHint: "\uACE0\uBB34/\uC12C\uC720"
+  functionHint: "\uD68C\uC804\uC744 \uD1B5\uD55C \uC811\uC9C0 \uC774\uB3D9"
+  facilityHint: "\uBC14\uD034 \uAE30\uBC18 \uAC1C\uC778 \uC774\uB3D9\uAE30\uACC4\uB97C
+    \uC218\uB9AC\uD558\uB358 \uC2DC\uC124"
+  level1Clues:
+  - "\uC6D0\uD615"
+  level2Clues:
+  - "\uD0C4\uC131"
+  - "\uD2B8\uB808\uB4DC"
+  dataTags:
+  - "\uC774\uB3D9 \uAE30\uC220"
+  - "\uACE0\uBB34/\uC12C\uC720"
+  - "\uD68C\uC804\uC744 \uD1B5\uD55C \uC811\uC9C0 \uC774\uB3D9"
+  archiveDescription: "\uCC28\uB7C9\uC774 \uC9C0\uBA74 \uC704\uB97C \uC774\uB3D9\uD558\uB3C4\uB85D
+    \uD558\uB294 \uACE0\uBB34 \uBC14\uD034 \uC678\uD53C."
+  marsComment: "\uD55C \uC778\uAC04\uC744 \uC774\uB3D9\uC2DC\uD0A4\uAE30 \uC704\uD574
+    \uC218\uBC31 kg\uC758 \uAD6C\uC870\uBB3C\uC744 \uD568\uAED8 \uC6C0\uC9C1\uC600\uB2E4."
+  worldPrefab: {fileID: 4423490146130141342, guid: 0e38a09c49e3af545ab769ab37259091, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 1
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

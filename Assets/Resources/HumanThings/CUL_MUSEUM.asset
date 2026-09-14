@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4324fd2e44b21f94c8b7b3147a6eb994, type: 3}
+  m_Name: CUL_MUSEUM
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.LocationDefinition
+  id: CUL_MUSEUM
+  displayNameKnown: "\uBC15\uBB3C\uAD00"
+  displayNameUnknown: "\uACFC\uAC70\uC758 \uBB3C\uAC74\uACFC \uAE30\uC5B5\uC744 \uBCF4\uC874\uD558\uACE0
+    \uC804\uC2DC\uD558\uB358 \uBB38\uD654 \uC2DC\uC124"
+  moduleName: "\uBCF4\uC874\xB7\uBCF5\uC6D0 \uC124\uBE44 \uBAA8\uB4C8"
+  zone: 4
+  artifacts:
+  - {fileID: 11400000, guid: 59aada1241f757f459005068de38f206, type: 2}
+  - {fileID: 11400000, guid: 3924d98acc79d70479355d9897b9e92a, type: 2}
+  - {fileID: 11400000, guid: fe6b0011d1e885d418140ebf63a6ac60, type: 2}
+  recipe: {fileID: 11400000, guid: 196b03492741a2146a1abe012409a695, type: 2}
+  puzzle: {fileID: 11400000, guid: dbd32033a41e82343aa6b8a6db726c5d, type: 2}
+  prefab: {fileID: 6815339727880109474, guid: a44a083ed2a34724287aac06db64e32a, type: 3}
+  footprint: {x: 10, y: 10}
+  compatibilityTag: SmallBuilding
+  craftAnchorIds:
+  - FacilityConsole
+  - ArtifactSpawn
+  monsterAffinity: []

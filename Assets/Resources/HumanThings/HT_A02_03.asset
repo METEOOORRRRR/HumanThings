@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_A02_03
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_A02_03
+  locationId: COM_RESTAURANT
+  trueNameKo: "\uCEF5\uB77C\uBA74"
+  trueNameEn: Cup Noodles
+  categoryTag: "\uC989\uC11D \uC2DD\uC0DD\uD65C"
+  materialHint: "\uC885\uC774/\uD50C\uB77C\uC2A4\uD2F1/\uAC74\uC870\uC2DD\uD488"
+  functionHint: "\uC5F4\uC218 \uBC18\uC751\uD615 \uD734\uB300 \uC2DD\uB7C9"
+  facilityHint: "\uC2DD\uB7C9 \uAC00\uC5F4 \uBC0F \uACF5\uB3D9 \uC12D\uCDE8\uB97C
+    \uC704\uD55C \uC0C1\uC5C5 \uC2DC\uC124"
+  level1Clues:
+  - "\uB69C\uAED1"
+  level2Clues:
+  - "\uB728\uAC70\uC6B4 \uBB3C"
+  - "\uC9E7\uC740 \uB300\uAE30\uC2DC\uAC04"
+  dataTags:
+  - "\uC989\uC11D \uC2DD\uC0DD\uD65C"
+  - "\uC885\uC774/\uD50C\uB77C\uC2A4\uD2F1/\uAC74\uC870\uC2DD\uD488"
+  - "\uC5F4\uC218 \uBC18\uC751\uD615 \uD734\uB300 \uC2DD\uB7C9"
+  archiveDescription: "\uB728\uAC70\uC6B4 \uBB3C\uB9CC\uC73C\uB85C \uC870\uB9AC\uD558\uB294
+    \uC989\uC11D \uBA74\uC2DD."
+  marsComment: "\uC870\uB9AC \uC2DC\uAC04\uC774 \uB9E4\uC6B0 \uC9E7\uB2E4. \uB2F9\uC2DC
+    \uC778\uAC04 \uC5ED\uC2DC \uC2DC\uAC04\uC774 \uBD80\uC871\uD588\uB358 \uAC83\uC73C\uB85C
+    \uCD94\uC815\uB41C\uB2E4."
+  worldPrefab: {fileID: 7804550703676764200, guid: 02fae34edc7afe84aaaa3281ae4730f2, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 0
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

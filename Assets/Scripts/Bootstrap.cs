@@ -1,0 +1,27 @@
+using UnityEngine;
+
+namespace EarthRecovery
+{
+    public sealed class Bootstrap : MonoBehaviour
+    {
+        void Awake()
+        {
+            Application.runInBackground = true;
+            Application.targetFrameRate = 60;
+            var root = new GameObject("Earth Recovery Session");
+            var session = root.AddComponent<NetworkSession>();
+            var world = root.AddComponent<WorldView>();
+            var hud = root.AddComponent<GameHud>();
+            var voice = root.AddComponent<RadioVoice>();
+            session.world = world; session.radio = voice; world.session = session; world.hud = hud;
+            hud.session = session; hud.world = world; voice.session = session;
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            if (System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "--qa-role") >= 0)
+            {
+                world.Automated = true;
+                root.AddComponent<NetworkSmoke>().session = session;
+            }
+#endif
+        }
+    }
+}

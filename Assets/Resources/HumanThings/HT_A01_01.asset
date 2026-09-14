@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_A01_01
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_A01_01
+  locationId: COM_MUSIC_STORE
+  trueNameKo: "\uBC14\uC774\uC62C\uB9B0"
+  trueNameEn: Violin
+  categoryTag: "\uC74C\uD5A5 \uBB38\uD654"
+  materialHint: "\uBAA9\uC7AC/\uAE08\uC18D/\uC12C\uC720"
+  functionHint: "\uC9C4\uB3D9\uC73C\uB85C \uC18C\uB9AC\uB97C \uBC1C\uC0DD"
+  facilityHint: "\uB2E4\uC218\uC758 \uBAA9\uC7AC\xB7\uAE08\uC18D \uC74C\uD5A5 \uAD6C\uC870\uBB3C\uC774
+    \uBCF4\uAD00\uB41C \uC0C1\uC5C5 \uC2DC\uC124"
+  level1Clues:
+  - "\uD604 4\uAC1C"
+  level2Clues:
+  - "\uD65C \uD615\uD0DC \uBCF4\uC870\uB3C4\uAD6C"
+  - "\uD65C \uD615\uD0DC \uBCF4\uC870\uB3C4\uAD6C"
+  dataTags:
+  - "\uC74C\uD5A5 \uBB38\uD654"
+  - "\uBAA9\uC7AC/\uAE08\uC18D/\uC12C\uC720"
+  - "\uC9C4\uB3D9\uC73C\uB85C \uC18C\uB9AC\uB97C \uBC1C\uC0DD"
+  archiveDescription: "\uD604\uC744 \uB9C8\uCC30\uD574 \uC74C\uC545\uC744 \uC5F0\uC8FC\uD558\uB294
+    \uD604\uC545\uAE30."
+  marsComment: "\uC0DD\uC874\uACFC \uC9C1\uC811 \uAD00\uACC4\uC5C6\uB294 \uC18C\uB9AC\uB97C
+    \uC815\uAD50\uD558\uAC8C \uB9CC\uB4E4\uC5C8\uB2E4."
+  worldPrefab: {fileID: 2154364779453182542, guid: 9a5f88c473fe2f44b8e41caff78821c6, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 0
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

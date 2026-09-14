@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca8c450ae0cb63459b970dc4b2f282f, type: 3}
+  m_Name: M03
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.MonsterDefinition
+  id: M03
+  displayCode: "M03 \uD1B5\uADFC\uC790"
+  kind: 2
+  prefab: {fileID: 6548717434584485274, guid: a6d3daef3749fa6418d964aa2c5c6375, type: 3}
+  patrolSpeed: 1.6
+  chaseSpeed: 3.1
+  senseRange: 18
+  perceptionTick: 0.2
+  memoryCheckInterval: 3
+  memoryGlobalCooldown: 60
+  investigateTimeout: 8
+  lostTargetGrace: 2.5
+  lightSuspicion: 0.6
+  lightChase: 1.5
+  memorySessionMax: 3
+  memories:
+  - id: M03_memory
+    requiredWorldTag: Station
+    animationId: Memory2
+    optionalAudioCue: 
+    probability: 0.25
+    duration: 6
+    cooldown: 60
+    minDistance: 2
+    maxDistance: 18
+    sessionCap: 3
+  reactions:
+  - monsterId: M03
+    artifactId: HT_B02_03
+    behavior: WaitUnderUmbrella
+    observationId: M03_HT_B02_03
+    trigger: 5
+    radius: 12
+    duration: 6.2
+    probability: 1
+    overrideChase: 1
+    once: 1
+    contextTags:
+    - Rain
+  spawnTags: []
+  routeTags:
+  - Apartment
+  - Station
+  - Office
+  - Convenience
+  - Apartment
+  legacyLines: []
+  legacyClips: []

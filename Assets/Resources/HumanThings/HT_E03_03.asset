@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_E03_03
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_E03_03
+  locationId: CUL_MUSEUM
+  trueNameKo: "\uAC00\uC871\uC0AC\uC9C4"
+  trueNameEn: Family Photograph
+  categoryTag: "\uAD00\uACC4 \uAE30\uB85D"
+  materialHint: "\uC778\uD654\uC9C0"
+  functionHint: "\uCE5C\uBC00\uD55C \uAD00\uACC4\uC758 \uBAA8\uC2B5 \uBCF4\uC874"
+  facilityHint: "\uACFC\uAC70\uC758 \uBB3C\uAC74\uACFC \uAE30\uC5B5\uC744 \uBCF4\uC874\uD558\uACE0
+    \uC804\uC2DC\uD558\uB358 \uBB38\uD654 \uC2DC\uC124"
+  level1Clues:
+  - "\uC5EC\uB7EC \uC778\uBB3C"
+  level2Clues:
+  - "\uBC18\uBCF5 \uB4F1\uC7A5"
+  - "\uBC18\uBCF5 \uB4F1\uC7A5"
+  dataTags:
+  - "\uAD00\uACC4 \uAE30\uB85D"
+  - "\uC778\uD654\uC9C0"
+  - "\uCE5C\uBC00\uD55C \uAD00\uACC4\uC758 \uBAA8\uC2B5 \uBCF4\uC874"
+  archiveDescription: "\uAC00\uC871 \uB610\uB294 \uCE5C\uBC00\uD55C \uAD00\uACC4\uC758
+    \uC0AC\uB78C\uB4E4\uC774 \uD568\uAED8 \uCC0D\uC740 \uC0AC\uC9C4."
+  marsComment: "\uAD00\uACC4\uB97C \uAE30\uC5B5\uD558\uAE30 \uC704\uD574 \uC11C\uB85C\uC758
+    \uBAA8\uC2B5\uC744 \uD55C \uC7A5\uC5D0 \uB0A8\uACBC\uB2E4."
+  worldPrefab: {fileID: 4303213373334738362, guid: 01d73592c13c3d245947785e99c3cbbb, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 0
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions:
+  - monsterId: M05
+    artifactId: HT_E03_03
+    behavior: LookAtPhotograph
+    observationId: M05_HT_E03_03
+    trigger: 2
+    radius: 12
+    duration: 6.2
+    probability: 1
+    overrideChase: 1
+    once: 1
+    contextTags: []

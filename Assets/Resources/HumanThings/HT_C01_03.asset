@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_C01_03
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_C01_03
+  locationId: IND_TOOL_SHOP
+  trueNameKo: "\uC904\uC790"
+  trueNameEn: Tape Measure
+  categoryTag: "\uCE21\uC815 \uB3C4\uAD6C"
+  materialHint: "\uAE08\uC18D/\uC218\uC9C0"
+  functionHint: "\uAE38\uC774 \uCE21\uC815"
+  facilityHint: "\uC190\uACFC \uAE30\uACC4\uC758 \uD798\uC744 \uC99D\uD3ED\uD558\uB294
+    \uB3C4\uAD6C\uB97C \uBCF4\uAD00\uD55C \uC0B0\uC5C5 \uC2DC\uC124"
+  level1Clues:
+  - "\uB208\uAE08 \uB760"
+  level2Clues:
+  - "\uC790\uB3D9 \uC218\uB0A9"
+  - "\uC790\uB3D9 \uC218\uB0A9"
+  dataTags:
+  - "\uCE21\uC815 \uB3C4\uAD6C"
+  - "\uAE08\uC18D/\uC218\uC9C0"
+  - "\uAE38\uC774 \uCE21\uC815"
+  archiveDescription: "\uB9D0\uB824 \uB4E4\uC5B4\uAC00\uB294 \uB760\uB85C \uAE38\uC774\uB97C
+    \uC7AC\uB294 \uB3C4\uAD6C."
+  marsComment: "\uC778\uAC04\uC740 \uACF5\uAC04\uC744 \uBC18\uBCF5 \uAC00\uB2A5\uD55C
+    \uC22B\uC790\uB85C \uBCC0\uD658\uD588\uB2E4."
+  worldPrefab: {fileID: 3362173649422079466, guid: 136776d53ad8a0b4ca0eb6bf6a1a1a10, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 0
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

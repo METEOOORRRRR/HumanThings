@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_C03_01
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_C03_01
+  locationId: IND_PRINT_SHOP
+  trueNameKo: "\uAD11\uACE0 \uC804\uB2E8\uC9C0"
+  trueNameEn: Flyer
+  categoryTag: "\uC0C1\uC5C5 \uAE30\uB85D"
+  materialHint: "\uC885\uC774/\uC789\uD06C"
+  functionHint: "\uC0C1\uD488\xB7\uD589\uC0AC \uC815\uBCF4 \uB300\uB7C9 \uBC30\uD3EC"
+  facilityHint: "\uBB38\uC790\uC640 \uC774\uBBF8\uC9C0\uB97C \uB300\uB7C9 \uBCF5\uC81C\uD558\uB358
+    \uC0DD\uC0B0 \uC2DC\uC124"
+  level1Clues:
+  - "\uAC00\uACA9"
+  level2Clues:
+  - "\uC774\uBBF8\uC9C0"
+  - "\uC5F0\uB77D\uCC98"
+  dataTags:
+  - "\uC0C1\uC5C5 \uAE30\uB85D"
+  - "\uC885\uC774/\uC789\uD06C"
+  - "\uC0C1\uD488\xB7\uD589\uC0AC \uC815\uBCF4 \uB300\uB7C9 \uBC30\uD3EC"
+  archiveDescription: "\uC0C1\uD488\uC774\uB098 \uD589\uC0AC\uB97C \uC54C\uB9AC\uAE30
+    \uC704\uD55C \uC77C\uD68C\uC131 \uC778\uC1C4\uBB3C."
+  marsComment: "\uD544\uC694\uD558\uC9C0 \uC54A\uC740 \uBB3C\uAC74\uC744 \uD544\uC694\uD558\uB2E4\uACE0
+    \uB290\uB07C\uAC8C \uD558\uB294 \uC815\uBCF4\uAC00 \uD3EC\uD568\uB418\uC5C8\uB2E4."
+  worldPrefab: {fileID: 4107481756353716155, guid: 33d8b5193d3807e46a7a9c55e5b982bd, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 0
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

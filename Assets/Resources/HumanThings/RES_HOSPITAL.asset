@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4324fd2e44b21f94c8b7b3147a6eb994, type: 3}
+  m_Name: RES_HOSPITAL
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.LocationDefinition
+  id: RES_HOSPITAL
+  displayNameKnown: "\uBCD1\uC6D0"
+  displayNameUnknown: "\uC778\uAC04 \uC2E0\uCCB4\uB97C \uCE21\uC815\uD558\uACE0 \uCE58\uB8CC\uD558\uB358
+    \uC2DC\uC124"
+  moduleName: "\uC758\uB8CC \uC124\uBE44 \uBCF5\uC6D0 \uBAA8\uB4C8"
+  zone: 3
+  artifacts:
+  - {fileID: 11400000, guid: b1bda5e485137cd4092c08032e86e728, type: 2}
+  - {fileID: 11400000, guid: 335e46d2d740a5b40b5630f3fd501ebf, type: 2}
+  - {fileID: 11400000, guid: 269bbfce9438aca4db0cacbd5b6efc7d, type: 2}
+  recipe: {fileID: 11400000, guid: 7215048a096f1454091ea9cef6bbb7c4, type: 2}
+  puzzle: {fileID: 11400000, guid: 7bfc3586b54d1f44d963617823525246, type: 2}
+  prefab: {fileID: 3902822566372803158, guid: 91f4234a26609e84e81f20efdccd8b5d, type: 3}
+  footprint: {x: 10, y: 10}
+  compatibilityTag: SmallBuilding
+  craftAnchorIds:
+  - FacilityConsole
+  - ArtifactSpawn
+  monsterAffinity: []

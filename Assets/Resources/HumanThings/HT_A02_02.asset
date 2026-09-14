@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_A02_02
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_A02_02
+  locationId: COM_RESTAURANT
+  trueNameKo: "\uC813\uAC00\uB77D"
+  trueNameEn: Chopsticks
+  categoryTag: "\uC2DD\uC0DD\uD65C"
+  materialHint: "\uBAA9\uC7AC/\uAE08\uC18D"
+  functionHint: "\uC2DD\uD488\uC744 \uC9D1\uC5B4 \uC774\uB3D9"
+  facilityHint: "\uC2DD\uB7C9 \uAC00\uC5F4 \uBC0F \uACF5\uB3D9 \uC12D\uCDE8\uB97C
+    \uC704\uD55C \uC0C1\uC5C5 \uC2DC\uC124"
+  level1Clues:
+  - "\uAC00\uB294 \uB9C9\uB300 2\uAC1C"
+  level2Clues:
+  - "\uC30D\uC73C\uB85C \uC0AC\uC6A9"
+  - "\uC30D\uC73C\uB85C \uC0AC\uC6A9"
+  dataTags:
+  - "\uC2DD\uC0DD\uD65C"
+  - "\uBAA9\uC7AC/\uAE08\uC18D"
+  - "\uC2DD\uD488\uC744 \uC9D1\uC5B4 \uC774\uB3D9"
+  archiveDescription: "\uB450 \uB9C9\uB300\uB97C \uC190\uAC00\uB77D\uC73C\uB85C \uC870\uC791\uD558\uB294
+    \uC2DD\uC0AC\uB3C4\uAD6C."
+  marsComment: "\uBCF5\uC7A1\uD55C \uC190\uAC00\uB77D \uC81C\uC5B4\uB97C \uC2DD\uC0AC\uC5D0
+    \uC77C\uC0C1\uC801\uC73C\uB85C \uC0AC\uC6A9\uD588\uB2E4."
+  worldPrefab: {fileID: 3779845127240404601, guid: bd60d9b04237573458bb8c082970a315, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 0
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

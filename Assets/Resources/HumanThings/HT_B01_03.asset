@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_B01_03
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_B01_03
+  locationId: RES_TOY_STORE
+  trueNameKo: "\uC7A5\uB09C\uAC10 \uC790\uB3D9\uCC28"
+  trueNameEn: Toy Car
+  categoryTag: "\uC544\uB3D9 \uB180\uC774"
+  materialHint: "\uD50C\uB77C\uC2A4\uD2F1/\uAE08\uC18D"
+  functionHint: "\uC774\uB3D9\uC218\uB2E8 \uCD95\uC18C \uBAA8\uBC29"
+  facilityHint: "\uC5B4\uB9B0 \uAC1C\uCCB4\uC758 \uB180\uC774\uC640 \uBAA8\uBC29\uC744
+    \uC704\uD55C \uBB3C\uAC74\uC744 \uD310\uB9E4\uD55C \uC2DC\uC124"
+  level1Clues:
+  - "\uBC14\uD034"
+  level2Clues:
+  - "\uCC28\uCCB4"
+  - "\uC2E4\uC81C \uCC28\uB7C9 \uCD95\uC18C"
+  dataTags:
+  - "\uC544\uB3D9 \uB180\uC774"
+  - "\uD50C\uB77C\uC2A4\uD2F1/\uAE08\uC18D"
+  - "\uC774\uB3D9\uC218\uB2E8 \uCD95\uC18C \uBAA8\uBC29"
+  archiveDescription: "\uC790\uB3D9\uCC28\uB97C \uCD95\uC18C\uD55C \uB180\uC774\uB3C4\uAD6C."
+  marsComment: "\uC131\uC778\uC774 \uC0AC\uC6A9\uD558\uB294 \uAE30\uACC4\uB97C \uC5B4\uB9B0
+    \uAC1C\uCCB4\uC5D0\uAC8C \uC791\uAC8C \uC81C\uACF5\uD588\uB2E4."
+  worldPrefab: {fileID: 6891668300530374545, guid: 2db5e8458be83864ca6084ccfab3e394, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 0
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

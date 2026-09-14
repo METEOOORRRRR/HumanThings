@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4324fd2e44b21f94c8b7b3147a6eb994, type: 3}
+  m_Name: COM_ELECTRONICS
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.LocationDefinition
+  id: COM_ELECTRONICS
+  displayNameKnown: "\uC804\uC790\uC0C1\uAC00"
+  displayNameUnknown: "\uD1B5\uC2E0\xB7\uAE30\uB85D\xB7\uC624\uB77D\uC6A9 \uC804\uC790
+    \uC7A5\uCE58\uB97C \uD310\uB9E4\uD55C \uC2DC\uC124"
+  moduleName: "\uD68C\uB85C \uC124\uBE44 \uBCF5\uC6D0 \uBAA8\uB4C8"
+  zone: 0
+  artifacts:
+  - {fileID: 11400000, guid: 586e91f2cab8e3142a4c509291779150, type: 2}
+  - {fileID: 11400000, guid: 57229ba3015352a419ef2a65b39fe882, type: 2}
+  - {fileID: 11400000, guid: 45666a4a520727748bf4275cd7b5fe9c, type: 2}
+  recipe: {fileID: 11400000, guid: 4ee32a6c13d5b874aaf204cef7d51ae9, type: 2}
+  puzzle: {fileID: 11400000, guid: dbd32033a41e82343aa6b8a6db726c5d, type: 2}
+  prefab: {fileID: 2905573956390759255, guid: 29ba7ef864c297c4fa0879aa09dc4093, type: 3}
+  footprint: {x: 10, y: 10}
+  compatibilityTag: SmallBuilding
+  craftAnchorIds:
+  - FacilityConsole
+  - ArtifactSpawn
+  monsterAffinity: []

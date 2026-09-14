@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_D01_02
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_D01_02
+  locationId: RES_HOSPITAL
+  trueNameKo: "\uC8FC\uC0AC\uAE30"
+  trueNameEn: Syringe
+  categoryTag: "\uC758\uB8CC \uB3C4\uAD6C"
+  materialHint: "\uD50C\uB77C\uC2A4\uD2F1/\uAE08\uC18D"
+  functionHint: "\uC561\uCCB4\uB97C \uC815\uB7C9 \uC8FC\uC785/\uCC44\uCDE8"
+  facilityHint: "\uC778\uAC04 \uC2E0\uCCB4\uB97C \uCE21\uC815\uD558\uACE0 \uCE58\uB8CC\uD558\uB358
+    \uC2DC\uC124"
+  level1Clues:
+  - "\uBC14\uB298"
+  level2Clues:
+  - "\uB208\uAE08"
+  - "\uD53C\uC2A4\uD1A4"
+  dataTags:
+  - "\uC758\uB8CC \uB3C4\uAD6C"
+  - "\uD50C\uB77C\uC2A4\uD2F1/\uAE08\uC18D"
+  - "\uC561\uCCB4\uB97C \uC815\uB7C9 \uC8FC\uC785/\uCC44\uCDE8"
+  archiveDescription: "\uC2E0\uCCB4\uC5D0 \uC561\uCCB4\uB97C \uC8FC\uC785\uD558\uAC70\uB098
+    \uBE7C\uB0B4\uB294 \uC758\uB8CC \uB3C4\uAD6C."
+  marsComment: "\uC2E0\uCCB4 \uC7A5\uBCBD\uC744 \uC758\uB3C4\uC801\uC73C\uB85C \uB6AB\uC5B4
+    \uCE58\uB8CC\uD588\uB2E4."
+  worldPrefab: {fileID: 2476990382082660566, guid: c1f5e5f2b1a882d4fab3dbaea7418fb9, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 0
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

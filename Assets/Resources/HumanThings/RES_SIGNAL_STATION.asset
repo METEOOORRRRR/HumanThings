@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4324fd2e44b21f94c8b7b3147a6eb994, type: 3}
+  m_Name: RES_SIGNAL_STATION
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.LocationDefinition
+  id: RES_SIGNAL_STATION
+  displayNameKnown: "\uAD00\uCE21\uC18C"
+  displayNameUnknown: "\uC804\uD30C\uC640 \uB300\uAE30 \uD658\uACBD\uC744 \uCE21\uC815\xB7\uC804\uB2EC\uD558\uB358
+    \uC5F0\uAD6C \uC2DC\uC124"
+  moduleName: "\uC2E0\uD638 \uBD84\uC11D \uC124\uBE44 \uBCF5\uC6D0 \uBAA8\uB4C8"
+  zone: 3
+  artifacts:
+  - {fileID: 11400000, guid: bd9e96c7d8b66ce45863394281c28126, type: 2}
+  - {fileID: 11400000, guid: 3637dd1dca1cf8d4b86f9df4fe1a0bcf, type: 2}
+  - {fileID: 11400000, guid: 45fb0b58ff8151341b8eaffdaf68934e, type: 2}
+  recipe: {fileID: 11400000, guid: 60dbb98cdbca8f54c96e0e41baca2c9e, type: 2}
+  puzzle: {fileID: 11400000, guid: dbd32033a41e82343aa6b8a6db726c5d, type: 2}
+  prefab: {fileID: 6388372643298768533, guid: 1794662aad23aa941a3841753ef8fc7e, type: 3}
+  footprint: {x: 10, y: 10}
+  compatibilityTag: SmallBuilding
+  craftAnchorIds:
+  - FacilityConsole
+  - ArtifactSpawn
+  monsterAffinity: []

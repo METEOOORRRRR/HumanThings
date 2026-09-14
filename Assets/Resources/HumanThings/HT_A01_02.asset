@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_A01_02
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_A01_02
+  locationId: COM_MUSIC_STORE
+  trueNameKo: "\uB4DC\uB7FC \uC138\uD2B8"
+  trueNameEn: Drum Set
+  categoryTag: "\uB9AC\uB4EC \uBB38\uD654"
+  materialHint: "\uAE08\uC18D/\uBAA9\uC7AC/\uB9C9"
+  functionHint: "\uCDA9\uACA9 \uBC18\uBCF5\uC744 \uD1B5\uD55C \uC74C\uD5A5 \uBC1C\uC0DD"
+  facilityHint: "\uB2E4\uC218\uC758 \uBAA9\uC7AC\xB7\uAE08\uC18D \uC74C\uD5A5 \uAD6C\uC870\uBB3C\uC774
+    \uBCF4\uAD00\uB41C \uC0C1\uC5C5 \uC2DC\uC124"
+  level1Clues:
+  - "\uC6D0\uD615 \uB9C9"
+  level2Clues:
+  - "\uD398\uB2EC"
+  - "\uC2A4\uD2F1"
+  dataTags:
+  - "\uB9AC\uB4EC \uBB38\uD654"
+  - "\uAE08\uC18D/\uBAA9\uC7AC/\uB9C9"
+  - "\uCDA9\uACA9 \uBC18\uBCF5\uC744 \uD1B5\uD55C \uC74C\uD5A5 \uBC1C\uC0DD"
+  archiveDescription: "\uD0C0\uACA9\uC73C\uB85C \uB9AC\uB4EC\uC744 \uB9CC\uB4DC\uB294
+    \uD0C0\uC545\uAE30 \uC138\uD2B8."
+  marsComment: "\uC5EC\uB7EC \uC778\uAC04\uC774 \uAC19\uC740 \uBC15\uC790\uB97C \uACF5\uC720\uD558\uB294
+    \uB370 \uC0AC\uC6A9\uD588\uB2E4."
+  worldPrefab: {fileID: 7224824595192899881, guid: bdb780048a258be489f562126d4ab312, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 1
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

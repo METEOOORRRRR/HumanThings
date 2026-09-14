@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4324fd2e44b21f94c8b7b3147a6eb994, type: 3}
+  m_Name: RES_CONVENIENCE
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.LocationDefinition
+  id: RES_CONVENIENCE
+  displayNameKnown: "\uD3B8\uC758\uC810"
+  displayNameUnknown: "\uC9E7\uC740 \uC2DC\uAC04\uC5D0 \uC77C\uC0C1\uC6A9\uD488\uC744
+    \uAD6C\uB9E4\uD558\uB358 \uC18C\uD615 \uC0DD\uD65C \uC2DC\uC124"
+  moduleName: "\uC0DD\uD65C\uC6A9\uD488 \uC870\uB9BD \uBAA8\uB4C8"
+  zone: 1
+  artifacts:
+  - {fileID: 11400000, guid: 11041d6bf1461984e87eb5c77d7ebfeb, type: 2}
+  - {fileID: 11400000, guid: 34062ff4ec94af34aaf4f433e389eff1, type: 2}
+  - {fileID: 11400000, guid: 5714a0d07bd4b7346b9d9a8461635d37, type: 2}
+  recipe: {fileID: 11400000, guid: 2446b2583dba95240bdc674dd326c042, type: 2}
+  puzzle: {fileID: 11400000, guid: dbd32033a41e82343aa6b8a6db726c5d, type: 2}
+  prefab: {fileID: 5353253522420171177, guid: fca8ec90db1671b4e9ef882d1734dc4e, type: 3}
+  footprint: {x: 10, y: 10}
+  compatibilityTag: SmallBuilding
+  craftAnchorIds:
+  - FacilityConsole
+  - ArtifactSpawn
+  monsterAffinity: []

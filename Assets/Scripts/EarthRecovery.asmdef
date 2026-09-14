@@ -1,0 +1,4 @@
+{
+  "name": "EarthRecovery",
+  "references": ["Unity.Netcode.Runtime", "Unity.Networking.Transport", "Unity.Collections", "Unity.InputSystem", "Unity.AI.Navigation", "Unity.RenderPipelines.Universal.Runtime", "Unity.RenderPipelines.Core.Runtime"]
+}

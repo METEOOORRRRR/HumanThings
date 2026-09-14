@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca8c450ae0cb63459b970dc4b2f282f, type: 3}
+  m_Name: M02
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.MonsterDefinition
+  id: M02
+  displayCode: "M02 \uC794\uAD11"
+  kind: 1
+  prefab: {fileID: 8485687691854632168, guid: 1a3fdf8482c806943bbd9754dea31c98, type: 3}
+  patrolSpeed: 1.6
+  chaseSpeed: 3.1
+  senseRange: 18
+  perceptionTick: 0.2
+  memoryCheckInterval: 3
+  memoryGlobalCooldown: 60
+  investigateTimeout: 8
+  lostTargetGrace: 2.5
+  lightSuspicion: 0.6
+  lightChase: 1.5
+  memorySessionMax: 3
+  memories:
+  - id: M02_memory
+    requiredWorldTag: StreetLight
+    animationId: Memory1
+    optionalAudioCue: 
+    probability: 0.25
+    duration: 6
+    cooldown: 60
+    minDistance: 2
+    maxDistance: 18
+    sessionCap: 3
+  reactions:
+  - monsterId: M02
+    artifactId: HT_A03_02
+    behavior: CoverFace
+    observationId: M02_HT_A03_02
+    trigger: 4
+    radius: 12
+    duration: 6.2
+    probability: 0.2
+    overrideChase: 1
+    once: 1
+    contextTags: []
+  spawnTags: []
+  routeTags:
+  - Apartment
+  - Station
+  - Office
+  - Convenience
+  - Apartment
+  legacyLines: []
+  legacyClips: []

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_D01_03
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_D01_03
+  locationId: RES_HOSPITAL
+  trueNameKo: "\uCCAD\uC9C4\uAE30"
+  trueNameEn: Stethoscope
+  categoryTag: "\uC758\uB8CC \uC9C4\uB2E8"
+  materialHint: "\uACE0\uBB34/\uAE08\uC18D"
+  functionHint: "\uC2E0\uCCB4 \uB0B4\uBD80 \uC18C\uB9AC \uCCAD\uCDE8"
+  facilityHint: "\uC778\uAC04 \uC2E0\uCCB4\uB97C \uCE21\uC815\uD558\uACE0 \uCE58\uB8CC\uD558\uB358
+    \uC2DC\uC124"
+  level1Clues:
+  - "\uC591\uCABD \uC774\uC5B4\uD301"
+  level2Clues:
+  - "\uD749\uBD80\uD310"
+  - "\uD749\uBD80\uD310"
+  dataTags:
+  - "\uC758\uB8CC \uC9C4\uB2E8"
+  - "\uACE0\uBB34/\uAE08\uC18D"
+  - "\uC2E0\uCCB4 \uB0B4\uBD80 \uC18C\uB9AC \uCCAD\uCDE8"
+  archiveDescription: "\uC2EC\uC7A5\uACFC \uD3D0\uC758 \uC18C\uB9AC\uB97C \uB4E3\uB294
+    \uC9C4\uB2E8 \uB3C4\uAD6C."
+  marsComment: "\uBAB8\uC744 \uC5F4\uC9C0 \uC54A\uACE0 \uB0B4\uBD80 \uC0C1\uD0DC\uB97C
+    \uC18C\uB9AC\uB85C \uCD94\uB860\uD588\uB2E4."
+  worldPrefab: {fileID: 854470335400701506, guid: e4bd6f857b6a0404f946639afd051e07, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 0
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

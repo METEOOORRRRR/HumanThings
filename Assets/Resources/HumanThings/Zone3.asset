@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef51972b5b34b544a3f4d6076318486, type: 3}
+  m_Name: Zone3
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ZoneDefinition
+  id: Research
+  displayName: "\uC5F0\uAD6C\uAD6C\uC5ED"
+  locations:
+  - {fileID: 11400000, guid: 284af1aecbe29c144b11d2b3784baedb, type: 2}
+  - {fileID: 11400000, guid: fc6d21dddcac34b4d9e45a0ed9bc19cd, type: 2}
+  - {fileID: 11400000, guid: 1d594b1fdf7fb1e41be07d6ec3ca7f59, type: 2}
+  center: {x: -27.038126, y: 0, z: -37.21478}
+  spawnSockets:
+  - {x: -12, y: 0, z: -10}
+  - {x: 12, y: 0, z: -10}
+  - {x: 0, y: 0, z: 12}
+  stationSockets:
+  - {x: -12.9783, y: 0, z: -17.863094}
+  - {x: -8.9783, y: 0, z: -17.863094}
+  - {x: -16.9783, y: 0, z: -17.863094}
+  fallbackStation: {x: -12.9783, y: 0, z: -17.863094}
+  socketFootprint: {x: 12, y: 12}
+  compatibilityTag: SmallBuilding

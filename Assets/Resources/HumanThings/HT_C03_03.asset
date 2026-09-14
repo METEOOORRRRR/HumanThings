@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_C03_03
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_C03_03
+  locationId: IND_PRINT_SHOP
+  trueNameKo: "\uC601\uC218\uC99D"
+  trueNameEn: Receipt
+  categoryTag: "\uACBD\uC81C \uAE30\uB85D"
+  materialHint: "\uAC10\uC5F4\uC9C0"
+  functionHint: "\uAC70\uB798 \uC0AC\uC2E4 \uAE30\uB85D"
+  facilityHint: "\uBB38\uC790\uC640 \uC774\uBBF8\uC9C0\uB97C \uB300\uB7C9 \uBCF5\uC81C\uD558\uB358
+    \uC0DD\uC0B0 \uC2DC\uC124"
+  level1Clues:
+  - "\uAE08\uC561"
+  level2Clues:
+  - "\uC2DC\uAC01"
+  - "\uC0C1\uD488\uBA85"
+  dataTags:
+  - "\uACBD\uC81C \uAE30\uB85D"
+  - "\uAC10\uC5F4\uC9C0"
+  - "\uAC70\uB798 \uC0AC\uC2E4 \uAE30\uB85D"
+  archiveDescription: "\uAD6C\uB9E4 \uB0B4\uC5ED\uACFC \uAE08\uC561\uC744 \uCD9C\uB825\uD55C
+    \uAC70\uB798 \uC99D\uBA85\uC11C."
+  marsComment: "\uC778\uAC04\uC758 \uD558\uB8E8\uB294 \uB9E4\uC6B0 \uB9CE\uC740 \uC18C\uC561
+    \uAC70\uB798\uC758 \uD754\uC801\uC73C\uB85C \uB0A8\uC544 \uC788\uB2E4."
+  worldPrefab: {fileID: 90423569474599603, guid: f98cf93e8e1c5c045a515301768f7bd5, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 0
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

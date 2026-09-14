@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_B01_02
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_B01_02
+  locationId: RES_TOY_STORE
+  trueNameKo: "\uBCF4\uB4DC\uAC8C\uC784"
+  trueNameEn: Board Game
+  categoryTag: "\uC0AC\uD68C \uB180\uC774"
+  materialHint: "\uC885\uC774/\uD50C\uB77C\uC2A4\uD2F1"
+  functionHint: "\uADDC\uCE59 \uAE30\uBC18 \uACBD\uC7C1/\uD611\uB825"
+  facilityHint: "\uC5B4\uB9B0 \uAC1C\uCCB4\uC758 \uB180\uC774\uC640 \uBAA8\uBC29\uC744
+    \uC704\uD55C \uBB3C\uAC74\uC744 \uD310\uB9E4\uD55C \uC2DC\uC124"
+  level1Clues:
+  - "\uD310"
+  level2Clues:
+  - "\uB9D0"
+  - "\uADDC\uCE59 \uBB38\uC11C"
+  dataTags:
+  - "\uC0AC\uD68C \uB180\uC774"
+  - "\uC885\uC774/\uD50C\uB77C\uC2A4\uD2F1"
+  - "\uADDC\uCE59 \uAE30\uBC18 \uACBD\uC7C1/\uD611\uB825"
+  archiveDescription: "\uD14C\uC774\uBE14 \uC704 \uADDC\uCE59\uC73C\uB85C \uC9C4\uD589\uD558\uB294
+    \uB180\uC774."
+  marsComment: "\uC2E4\uC81C \uC790\uC6D0\uC774 \uC544\uB2CC \uAC00\uC0C1\uC758 \uC2B9\uD328\uB97C
+    \uC704\uD574 \uC7A5\uC2DC\uAC04 \uACBD\uC7C1\uD588\uB2E4."
+  worldPrefab: {fileID: 3882167168846152285, guid: c74f2d98bed6f5c44a7800af1b4b6378, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 0
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

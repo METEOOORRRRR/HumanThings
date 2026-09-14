@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_E03_01
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_E03_01
+  locationId: CUL_MUSEUM
+  trueNameKo: "\uCD08\uC0C1\uD654"
+  trueNameEn: Portrait
+  categoryTag: "\uC2DC\uAC01 \uC608\uC220"
+  materialHint: "\uCE94\uBC84\uC2A4/\uC0C9\uC18C"
+  functionHint: "\uC778\uBB3C\uC758 \uBAA8\uC2B5 \uD45C\uD604"
+  facilityHint: "\uACFC\uAC70\uC758 \uBB3C\uAC74\uACFC \uAE30\uC5B5\uC744 \uBCF4\uC874\uD558\uACE0
+    \uC804\uC2DC\uD558\uB358 \uBB38\uD654 \uC2DC\uC124"
+  level1Clues:
+  - "\uC5BC\uAD74"
+  level2Clues:
+  - "\uC2DC\uC120"
+  - "\uBC30\uACBD"
+  dataTags:
+  - "\uC2DC\uAC01 \uC608\uC220"
+  - "\uCE94\uBC84\uC2A4/\uC0C9\uC18C"
+  - "\uC778\uBB3C\uC758 \uBAA8\uC2B5 \uD45C\uD604"
+  archiveDescription: "\uC778\uBB3C\uC744 \uADF8\uB9BC\uC73C\uB85C \uB0A8\uAE34 \uC2DC\uAC01
+    \uAE30\uB85D."
+  marsComment: "\uC0AC\uC9C4 \uAE30\uC220 \uC774\uD6C4\uC5D0\uB3C4 \uC190\uC73C\uB85C
+    \uB2E4\uC2DC \uC0AC\uB78C\uC744 \uADF8\uB838\uB2E4."
+  worldPrefab: {fileID: 8046376406324705484, guid: 3d9603762af5e7648901584202277620, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 0
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

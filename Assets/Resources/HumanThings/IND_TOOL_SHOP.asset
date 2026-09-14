@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4324fd2e44b21f94c8b7b3147a6eb994, type: 3}
+  m_Name: IND_TOOL_SHOP
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.LocationDefinition
+  id: IND_TOOL_SHOP
+  displayNameKnown: "\uACF5\uAD6C\uC810"
+  displayNameUnknown: "\uC190\uACFC \uAE30\uACC4\uC758 \uD798\uC744 \uC99D\uD3ED\uD558\uB294
+    \uB3C4\uAD6C\uB97C \uBCF4\uAD00\uD55C \uC0B0\uC5C5 \uC2DC\uC124"
+  moduleName: "\uAE30\uACC4 \uAC00\uACF5 \uC124\uBE44 \uBCF5\uC6D0 \uBAA8\uB4C8"
+  zone: 2
+  artifacts:
+  - {fileID: 11400000, guid: 4f63e996f10714748970f9b331e7c72e, type: 2}
+  - {fileID: 11400000, guid: 14d11ed93ba184641ac9b3d89a57ffd0, type: 2}
+  - {fileID: 11400000, guid: 83da6811ab9eb7648973db9c8a414d61, type: 2}
+  recipe: {fileID: 11400000, guid: c3221a841560a57499d1728f43191b1e, type: 2}
+  puzzle: {fileID: 11400000, guid: 7bfc3586b54d1f44d963617823525246, type: 2}
+  prefab: {fileID: 6432511366556626976, guid: 936cd33cfa7e8484a87088bf11c765be, type: 3}
+  footprint: {x: 10, y: 10}
+  compatibilityTag: SmallBuilding
+  craftAnchorIds:
+  - FacilityConsole
+  - ArtifactSpawn
+  monsterAffinity: []

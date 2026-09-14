@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4324fd2e44b21f94c8b7b3147a6eb994, type: 3}
+  m_Name: IND_PRINT_SHOP
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.LocationDefinition
+  id: IND_PRINT_SHOP
+  displayNameKnown: "\uC778\uC1C4\uC18C"
+  displayNameUnknown: "\uBB38\uC790\uC640 \uC774\uBBF8\uC9C0\uB97C \uB300\uB7C9 \uBCF5\uC81C\uD558\uB358
+    \uC0DD\uC0B0 \uC2DC\uC124"
+  moduleName: "\uC778\uC1C4\xB7\uBCF5\uC81C \uC124\uBE44 \uBCF5\uC6D0 \uBAA8\uB4C8"
+  zone: 2
+  artifacts:
+  - {fileID: 11400000, guid: 3d7f20a39c8447149a71500015565109, type: 2}
+  - {fileID: 11400000, guid: 68355514c1afc14489a7cd94afa61c8a, type: 2}
+  - {fileID: 11400000, guid: 47ffd2f02470a05408aaaea916488908, type: 2}
+  recipe: {fileID: 11400000, guid: 0c5cc155c4f4006469d343c74513a0aa, type: 2}
+  puzzle: {fileID: 11400000, guid: dbd32033a41e82343aa6b8a6db726c5d, type: 2}
+  prefab: {fileID: 6563706877899339681, guid: 71dcc65ab9f995741a8d312f76dd9045, type: 3}
+  footprint: {x: 10, y: 10}
+  compatibilityTag: SmallBuilding
+  craftAnchorIds:
+  - FacilityConsole
+  - ArtifactSpawn
+  monsterAffinity: []

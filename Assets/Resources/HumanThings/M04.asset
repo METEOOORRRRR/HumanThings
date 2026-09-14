@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca8c450ae0cb63459b970dc4b2f282f, type: 3}
+  m_Name: M04
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.MonsterDefinition
+  id: M04
+  displayCode: "M04 \uC5D0\uCF54"
+  kind: 4
+  prefab: {fileID: 2477050678209179235, guid: fc078ed7e3aef5d458287b213f03dd0b, type: 3}
+  patrolSpeed: 1.6
+  chaseSpeed: 3.1
+  senseRange: 18
+  perceptionTick: 0.2
+  memoryCheckInterval: 3
+  memoryGlobalCooldown: 60
+  investigateTimeout: 8
+  lostTargetGrace: 2.5
+  lightSuspicion: 0.6
+  lightChase: 1.5
+  memorySessionMax: 3
+  memories:
+  - id: M04_memory
+    requiredWorldTag: HomeAnchor
+    animationId: Memory3
+    optionalAudioCue: Legacy
+    probability: 0.25
+    duration: 6
+    cooldown: 60
+    minDistance: 2
+    maxDistance: 18
+    sessionCap: 3
+  reactions:
+  - monsterId: M04
+    artifactId: HT_D03_01
+    behavior: LegacyVoice
+    observationId: M04_HT_D03_01
+    trigger: 3
+    radius: 12
+    duration: 6.2
+    probability: 1
+    overrideChase: 1
+    once: 1
+    contextTags: []
+  - monsterId: M04
+    artifactId: HT_A03_03
+    behavior: LegacyVoice
+    observationId: M04_HT_A03_03
+    trigger: 3
+    radius: 12
+    duration: 6.2
+    probability: 1
+    overrideChase: 1
+    once: 1
+    contextTags: []
+  spawnTags: []
+  routeTags:
+  - Apartment
+  - Station
+  - Office
+  - Convenience
+  - Apartment
+  legacyLines:
+  - "\uBC25 \uBA39\uC5C8\uC5B4?"
+  - "\uB2E4\uB140\uC654\uC5B4."
+  - "\uBB38 \uC7A0\uAC00."
+  legacyClips:
+  - {fileID: 8300000, guid: 3a55e9c7cf53eff45ba070bb01b8368a, type: 3}
+  - {fileID: 8300000, guid: ab2e601d5b4abe842beb5bbda2900286, type: 3}
+  - {fileID: 8300000, guid: abcb9d17f4accfb42b39f065fe7ed5ef, type: 3}

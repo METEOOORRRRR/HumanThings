@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1280752e7158ab346b9d6dd7fdf094e0, type: 3}
+  m_Name: HT_B01_01
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.ArtifactDefinition
+  id: HT_B01_01
+  locationId: RES_TOY_STORE
+  trueNameKo: "\uC778\uD615"
+  trueNameEn: Doll
+  categoryTag: "\uC544\uB3D9 \uB180\uC774"
+  materialHint: "\uCC9C/\uD50C\uB77C\uC2A4\uD2F1"
+  functionHint: "\uC778\uAC04 \uD615\uC0C1 \uBAA8\uBC29"
+  facilityHint: "\uC5B4\uB9B0 \uAC1C\uCCB4\uC758 \uB180\uC774\uC640 \uBAA8\uBC29\uC744
+    \uC704\uD55C \uBB3C\uAC74\uC744 \uD310\uB9E4\uD55C \uC2DC\uC124"
+  level1Clues:
+  - "\uC637"
+  level2Clues:
+  - "\uBA38\uB9AC\uCE74\uB77D"
+  - "\uC5BC\uAD74"
+  dataTags:
+  - "\uC544\uB3D9 \uB180\uC774"
+  - "\uCC9C/\uD50C\uB77C\uC2A4\uD2F1"
+  - "\uC778\uAC04 \uD615\uC0C1 \uBAA8\uBC29"
+  archiveDescription: "\uC778\uAC04 \uD615\uC0C1\uC744 \uCD95\uC18C\uD574 \uB9CC\uB4E0
+    \uB180\uC774\uB3C4\uAD6C."
+  marsComment: "\uC544\uC9C1 \uC0AC\uD68C\uD65C\uB3D9\uC774 \uBD88\uAC00\uB2A5\uD55C
+    \uC5B4\uB9B0 \uAC1C\uCCB4\uC5D0\uAC8C \uC131\uC778 \uD589\uB3D9\uC744 \uBAA8\uBC29\uC2DC\uCF30\uB2E4."
+  worldPrefab: {fileID: 2830350418122581778, guid: e0a9b136fbdbc914998e104fbc8abc35, type: 3}
+  carryProfile:
+    speedMultiplier: 1
+    twoHanded: 0
+    noiseRadius: 0
+  puzzle: {fileID: 0}
+  reactions: []

@@ -1,0 +1,6 @@
+{
+  "name": "EarthRecovery.Tests",
+  "references": ["EarthRecovery"],
+  "includePlatforms": ["Editor"],
+  "optionalUnityReferences": ["TestAssemblies"]
+}
