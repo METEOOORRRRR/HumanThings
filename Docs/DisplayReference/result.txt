@@ -1,0 +1,1 @@
+PASS: 49 viewport checks; runtime captures with actual screen 1600x900; fixture peers, not network gameplay test.

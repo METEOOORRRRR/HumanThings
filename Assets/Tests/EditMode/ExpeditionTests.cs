@@ -45,6 +45,35 @@ namespace EarthRecovery.Tests
         [Test] public void DefaultAssetRequiresFourPlayersAndKeepsSpecifiedTimings()
         {Assert.That(Resources.Load<GameRules>("GameRules").minPlayers,Is.EqualTo(4));foreach(var l in HumanContent.Load().locations){Assert.That(l.recipe.scrapCost,Is.EqualTo(3));Assert.That(l.recipe.duration,Is.EqualTo(3));Assert.That(l.recipe.installDuration,Is.EqualTo(2));}}
         [Test] public void FourPlayersRequiredByDefault() {game.Disconnect(3);Assert.That(game.Start(1),Is.False);}
+        [Test] public void DeveloperSoloStartsWithOneReadyPlayerWithoutChangingNormalMinimum()
+        {
+            rules.developerSolo = true;
+            for (ulong i = 1; i < 4; i++) game.Disconnect(i);
+            rules.Sanitize();
+            Assert.That(rules.minPlayers, Is.EqualTo(4));
+            Assert.That(rules.MinimumStartPlayers, Is.EqualTo(1));
+            Assert.That(game.Start(42), Is.True);
+            Assert.That(game.State.players.Count, Is.EqualTo(1));
+            Assert.That(game.State.phase, Is.EqualTo(Phase.Expedition));
+            Assert.That(game.State.sites.Count(s => s.mission), Is.EqualTo(3));
+        }
+        [Test] public void DeveloperSoloStillRequiresReadyAndDoesNotStartEmptyLobby()
+        {
+            rules.developerSolo = true;
+            for (ulong i = 1; i < 4; i++) game.Disconnect(i);
+            game.Apply(0, new Command { action = "ready", flag = false });
+            Assert.That(game.Start(42), Is.False);
+            game.Disconnect(0);
+            Assert.That(game.Start(42), Is.False);
+        }
+        [Test] public void DisablingDeveloperSoloRestoresNormalMinimum()
+        {
+            rules.developerSolo = true;
+            for (ulong i = 1; i < 4; i++) game.Disconnect(i);
+            rules.developerSolo = false;
+            Assert.That(rules.MinimumStartPlayers, Is.EqualTo(4));
+            Assert.That(game.Start(42), Is.False);
+        }
         [Test] public void CapacityIsSix() {Assert.That(game.Join(4,"5"));Assert.That(game.Join(5,"6"));Assert.That(game.Join(6,"7"),Is.False);}
         [Test] public void UnreadyPlayerBlocksStart() {game.Apply(1,new Command{action="ready",flag=false});Assert.That(game.Start(1),Is.False);}
         [Test] public void LateJoinRejected() {Mission();Assert.That(game.Join(8,"Late"),Is.False);}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace EarthRecovery
 {
-    public sealed class GameHud : MonoBehaviour
+    public sealed partial class GameHud : MonoBehaviour
     {
         public NetworkSession session;
         public WorldView world;
@@ -12,6 +12,12 @@ namespace EarthRecovery
         public int SiteOpen = -1;
         public int StationOpen = -1;
         bool archiveOpen;
+        public bool ArchiveOpen => archiveOpen;
+        public void OpenArchive() { archiveOpen = true; }
+        public void CloseArchive() { archiveOpen = false; }
+        public MainMenu TitleMenu;
+        public ExpeditionLobby ExpeditionMenu;
+        public WaitingRoom WaitingMenu;
         Vector2 archiveScroll;
         string toast = "";
         float toastUntil, nextInstall;
@@ -72,9 +78,12 @@ namespace EarthRecovery
         void OnGUI()
         {
             if (session == null || world == null) return;
+            if (WaitingMenu != null && WaitingMenu.Visible && !archiveOpen) return;
+            if (ExpeditionMenu != null && ExpeditionMenu.Visible && !archiveOpen) return;
+            if (TitleMenu != null && TitleMenu.Visible && !archiveOpen) return;
             Styles();
-            float scale = Mathf.Min(Screen.width / 1280f, Screen.height / 720f);
-            GUI.matrix = Matrix4x4.TRS(new Vector3((Screen.width - 1280 * scale) / 2, (Screen.height - 720 * scale) / 2, 0), Quaternion.identity, Vector3.one * scale);
+            GUI.matrix = DisplayPreferences.GuiMatrix(1280, 720);
+            if (DisplayPreferences.PopupOpen) return;
             if(archiveOpen && session.View.phase!=Phase.Expedition) {ArchivePanel();return;}
             if (!session.Online || session.View.phase == Phase.Lobby) { Lobby(); return; }
             if (session.View.phase > Phase.Expedition) { Results(); RecoveryToast(); return; }
@@ -104,6 +113,7 @@ namespace EarthRecovery
         }
         void Lobby()
         {
+            if (TitleMenu != null && session.CanConnect && Button(65, 8, 180, 40, "타이틀로")) TitleMenu.Show();
             Panel(65, 60, 520, 600, "HUMAN THINGS · " + NetworkSession.BuildLabel);
             Label(87, 122, 460, 34, "탐사 대기실", heading);
             if (session.IsConnecting)
@@ -133,7 +143,7 @@ namespace EarthRecovery
                     Label(397, y + 3, 145, 30, p.ready ? "준비 완료" : "준비 중", small);
                 }
                 if (Button(88, 476, 220, 45, me?.ready == true ? "준비 취소" : "준비 완료", me != null)) session.Send(new Command { action = "ready", flag = !me.ready });
-                if (Button(326, 476, 225, 45, "탐사 시작", session.IsHost && session.View.players.Count >= session.rules.minPlayers && session.View.players.All(p => p.ready))) session.StartMission();
+                if (Button(326, 476, 225, 45, "탐사 시작", session.IsHost && session.View.players.Count >= session.rules.MinimumStartPlayers && session.View.players.All(p => p.ready))) session.StartMission();
                 if (Button(88, 538, 220, 42, "나가기")) session.Leave();
                 Label(88, 595, 462, 40, session.Status, small);
             }
@@ -248,41 +258,10 @@ namespace EarthRecovery
             else if (s.puzzleKind == PuzzleKind.Crane)
             { GUI.Label(target, "●", heading); GUI.Label(current, "+", text); }
         }
-        void CampPanel()
-        {
-            Panel(60, 122, 1160, 520, "베이스캠프"); CloseButton(1153, 135);
-            DrawMap(new Rect(80, 186, 410, 410));
-            Label(522, 187, 650, 35, "회수 임무", heading);
-            var missions = session.View.sites.Where(s => s.mission).OrderBy(s => s.assignedOrder).ToArray();
-            if (missions.Length == 0) return;
-            selectedPuzzle = Mathf.Clamp(selectedPuzzle, 0, missions.Length - 1);
-            for (int i = 0; i < missions.Length; i++)
-            {
-                var s = missions[i];
-                if (Button(523, 238 + i * 49, 385, 43, Catalog.Product(s) + " · " + Stage(s.phase))) selectedPuzzle = i;
-            }
-            var site = missions[selectedPuzzle];
-            Label(523, 403, 385, 34, Catalog.Product(site), small);
-            bool linked = site.phase == CraftPhase.Puzzle && session.View.players.Any(p => p.alive && p.connected && p.id != session.LocalId && p.viewingSite == site.id);
-            Label(523, 438, 385, 97, Catalog.MissionDetails(site),small);
-            Label(939, 190, 230, 60, linked ? PuzzleName(site.puzzleKind)+" · 연결됨" : "협동 연결 대기",small);
-            if (Button(1000, 264, 62, 48, "↑", linked)) Puzzle(site, 0, -1);
-            if (Button(930, 320, 62, 48, "←", linked)) Puzzle(site, -1, 0);
-            if (Button(1070, 320, 62, 48, "→", linked)) Puzzle(site, 1, 0);
-            if (Button(1000, 376, 62, 48, "↓", linked)) Puzzle(site, 0, 1);
-            if (site.puzzleKind != PuzzleKind.Maze && Button(939, 449, 190, 48, site.puzzleKind == PuzzleKind.Crane ? "집게 내리기" : "↻", linked)) Puzzle(site, 0, 0, true);
-            int alive = session.View.players.Count(p => p.connected && p.alive);
-            if (alive == 1)
-            {
-                if (Button(523, 545, 385, 46, confirmAbandon ? "동면 확정 · 임무 포기" : "동면 장치 가동"))
-                { if (confirmAbandon) session.Send(new Command { action = "hibernate" }); else confirmAbandon = true; }
-            }
-            Label(939, 535, 230, 60, "생존 요원 " + alive + "명", small);
-        }
         void Puzzle(SiteState s, int x, int y, bool flag = false) => session.Send(new Command { action = "puzzle", target = s.id, x = x, y = y, flag = flag });
         void DrawMap(Rect rect)
         {
-            Fill(rect, new Color(.18f, .23f, .23f));
+            TerminalDraw(rect, "03_Map/Map_Grid");
             Vector2 Map(Vector3 p) => new(rect.x + (p.x + 75) / 150 * rect.width, rect.y + (75 - p.z) / 150 * rect.height);
             var camp = Map(Vector3.zero); Fill(new Rect(camp.x - 12, camp.y - 12, 24, 24), accent);
             for (int d = 0; d < HumanContent.Load().zones.Length; d++)
@@ -329,6 +308,7 @@ namespace EarthRecovery
             RadioControls(370, 250);
             if (Button(370, 390, 250, 48, "탐사 계속")) world.MenuOpen = false;
             if (Button(640, 390, 250, 48, "방 나가기")) session.Leave();
+            if (Button(370, 455, 520, 48, "화면 비율 · " + DisplayPreferences.Labels[DisplayPreferences.Selected])) DisplayPreferences.Show();
         }
         void Results()
         {
@@ -378,7 +358,7 @@ namespace EarthRecovery
         void ArchivePanel()
         {
             Panel(80,55,1120,610,"HumanThings Archive");
-            if(Button(1115,72,60,40,"×")) archiveOpen=false;
+            if(Button(1115,72,60,40,"×")) CloseArchive();
             archiveScroll=GUI.BeginScrollView(new Rect(105,125,1070,510),archiveScroll,new Rect(0,0,1040,Mathf.Max(500,session.View.archive.Count*155)));
             int row=0;
             foreach(var entry in session.View.archive.OrderBy(e=>e.artifactId))
@@ -392,6 +372,6 @@ namespace EarthRecovery
             if(row==0) Label(10,20,1000,50,"등록된 표본 없음");
             GUI.EndScrollView();
         }
-        void OnDestroy() { if(session!=null) session.Presented-=Present; if (pixel != null) Destroy(pixel); }
+        void OnDestroy() { if(session!=null) session.Presented-=Present; if (pixel != null) Destroy(pixel); if (terminalFont != null) Destroy(terminalFont); }
     }
 }

@@ -1,0 +1,174 @@
+{
+  "canvas": {
+    "width": 1672,
+    "height": 941,
+    "referenceResolution": "1672x941"
+  },
+  "unity_hierarchy": {
+    "LobbyCanvas": {
+      "Background": [
+        "Background_Artwork",
+        "Global_Noise_Overlay",
+        "Edge_Scratch_Overlay"
+      ],
+      "SharedHeader": [
+        "Logo_HumanThings",
+        "Logo_Subtitle_Text",
+        "Screen_Title_Text",
+        "Screen_Subtitle_Text",
+        "Decorative_Lines",
+        "Background_Decoration",
+        "Version_Text"
+      ],
+      "LeftNavigation": [
+        "Menu_CreateRoom",
+        "Menu_PublicRooms",
+        "Menu_JoinCode",
+        "Menu_Back"
+      ],
+      "ContentRoot": [
+        "CreateRoomPanel",
+        "PublicRoomPanel",
+        "JoinCodePanel"
+      ]
+    }
+  },
+  "shared_text": {
+    "Screen_Title_Text": "탐사대 편성",
+    "Screen_Subtitle_Text": "함께, 잊힌 세계를 다시 걷는다.",
+    "Version_Text": "v0.1.0"
+  },
+  "left_menu_text": {
+    "Menu_CreateRoom": "방 생성",
+    "Menu_PublicRooms": "공개 방 찾기",
+    "Menu_JoinCode": "참가 코드 입력",
+    "Menu_Back": "뒤로"
+  },
+  "create_room_text": {
+    "Header": "방 생성",
+    "Description": "함께를 위한 새로운 대원을 모집합니다.",
+    "RoomName_Label": "방 이름",
+    "RoomName_Value": "탐사대의 방",
+    "Region_Label": "탐사 구역",
+    "Region_Value": "서울 (도심)",
+    "MaxPlayer_Label": "최대 인원",
+    "MaxPlayer_Value": "4명",
+    "Visibility_Label": "공개 설정",
+    "Public_Button": "공개",
+    "Private_Button": "비공개",
+    "Password_Label": "방 비밀번호",
+    "Password_Placeholder": "비밀번호 입력 (선택 사항)",
+    "RegionPreview_Title": "서울 생활권 기록 조사",
+    "RegionPreview_Label": "탐사 구역",
+    "RegionPreview_Value": "서울 (도심)",
+    "Cancel_Button": "취소",
+    "Create_Button": "생성"
+  },
+  "public_rooms_text": {
+    "Header": "공개 방 목록",
+    "Refresh_Button": "새로고침",
+    "Columns": [
+      "방 이름",
+      "탐사 구역",
+      "인원",
+      "상태",
+      "잠금"
+    ],
+    "Rooms": [
+      [
+        "강남 도심 유적 수색",
+        "서울",
+        "2 / 4",
+        "탐사 중",
+        true
+      ],
+      [
+        "서울 생활권 기록 조사",
+        "서울",
+        "1 / 4",
+        "대기 중",
+        true
+      ],
+      [
+        "부산 항만 시설 조사",
+        "부산",
+        "3 / 4",
+        "탐사 중",
+        true
+      ],
+      [
+        "DMZ 인근 잔존 시설 탐사",
+        "비무장지대",
+        "1 / 3",
+        "대기 중",
+        true
+      ],
+      [
+        "인천 산업 단지 유물 수집",
+        "인천",
+        "4 / 4",
+        "탐사 중",
+        true
+      ],
+      [
+        "대구 도심 데이터 회수",
+        "대구",
+        "2 / 4",
+        "대기 중",
+        true
+      ],
+      [
+        "제주 관측 기지 점검",
+        "제주",
+        "3 / 4",
+        "탐사 중",
+        true
+      ]
+    ],
+    "SelectedRoom": {
+      "RoomName": "서울 생활권 기록 조사",
+      "Region_Label": "탐사 구역",
+      "Region_Value": "서울",
+      "PlayerCount_Label": "인원",
+      "PlayerCount_Value": "1 / 4",
+      "Status": "대기 중",
+      "Join_Button": "참가"
+    }
+  },
+  "join_code_text": {
+    "Header": "참가 코드 입력",
+    "Instruction": "친구에게 받은 참가 코드를 입력하여 방에 참여합니다.",
+    "CodeFields": [
+      "----",
+      "----",
+      "----",
+      "----"
+    ],
+    "Help_Button": "도움말",
+    "Join_Button": "참가"
+  },
+  "asset_rules": {
+    "text_rasterized": false,
+    "reusable_menu_item": true,
+    "reusable_room_row": true,
+    "nine_slice_recommended": [
+      "MenuItem_Default_BG_9Slice.png",
+      "MenuItem_Selected_BG_9Slice.png",
+      "Panel_BG_9Slice.png",
+      "Panel_Frame_9Slice.png",
+      "Button_BG_9Slice.png",
+      "Button_Frame_9Slice.png",
+      "Input_BG_9Slice.png",
+      "Input_Frame_9Slice.png",
+      "RoomRow_BG_9Slice.png",
+      "RoomRow_Selected_Highlight_9Slice.png",
+      "CodeField_BG_9Slice.png",
+      "CodeField_Frame_9Slice.png"
+    ]
+  },
+  "notes": [
+    "원본 3장은 이미 합쳐진 래스터 이미지라 Background_Artwork는 UI 영역을 인페인팅으로 복원한 best-effort 결과다.",
+    "텍스트는 PNG로 굽지 않고 JSON에 문구만 보존했다.",
+    "Region preview 이미지는 원본에서 직접 crop했다."
+  ]
+}

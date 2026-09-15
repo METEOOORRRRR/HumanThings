@@ -306,7 +306,7 @@ namespace EarthRecovery
         }
         void InputStep()
         {
-            if (Automated) return;
+            if (Automated || DisplayPreferences.PopupOpen) return;
             var kb = Keyboard.current; var mouse = Mouse.current; var p = session.LocalPlayer;
             if (kb != null && kb.escapeKey.wasPressedThisFrame) { MenuOpen = !MenuOpen; hud.ClosePanels(); }
             bool playing = p != null && p.alive && session.View.phase == Phase.Expedition;

@@ -37,14 +37,16 @@ namespace EarthRecovery.Editor
         [MenuItem("Earth Recovery/Build Windows Prototype")]
         public static void Build()
         {
+            WaitingRoomSetup.Prepare();
             Setup();
-            Directory.CreateDirectory("Builds/Windows");
+            Directory.CreateDirectory("Builds/.staging");
             var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions {
-                scenes = new[] { "Assets/Scenes/Expedition.unity" }, locationPathName = "Builds/Windows/EarthRecovery.exe",
+                scenes = new[] { "Assets/Scenes/Expedition.unity" }, locationPathName = "Builds/.staging/EarthRecovery.exe",
                 target = BuildTarget.StandaloneWindows64, options = BuildOptions.Development
             });
             Debug.Log("BUILD_RESULT " + report.summary.result + " errors=" + report.summary.totalErrors);
             if (report.summary.result != BuildResult.Succeeded) throw new System.Exception("Windows build failed");
+            BuildRetention.Publish("Builds", "Builds/.staging");
         }
     }
 }

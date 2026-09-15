@@ -36,17 +36,21 @@ namespace EarthRecovery
         public event Action<GameEvent> Presented;
         int presentedSequence;
         string presentedRun = "";
+        string admissionId = "", admissionProof = "";
 
         void Awake()
         {
             rules ??= Resources.Load<GameRules>("GameRules");
             rules = rules == null ? ScriptableObject.CreateInstance<GameRules>() : Instantiate(rules);
             rules.Sanitize();
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            rules.developerSolo |= Environment.GetCommandLineArgs().Contains("--dev-solo");
+#endif
             manager = gameObject.AddComponent<NetworkManager>();
             var transport = gameObject.AddComponent<UnityTransport>();
             transport.MaxPayloadSize = 32768;
             manager.NetworkConfig = new NetworkConfig { NetworkTransport = transport, EnableSceneManagement = false, ConnectionApproval = true, TickRate = 30 };
-            manager.NetworkConfig.ProtocolVersion = 5;
+            manager.NetworkConfig.ProtocolVersion = 7;
             PersistArchive = !Environment.GetCommandLineArgs().Any(a => a == "--qa-role" || a == "-runTests");
             archiveStore = new ArchiveStore(System.IO.Path.Combine(Application.persistentDataPath,"human-things-archive-v1.json"));
             if(PersistArchive) View.archive=archiveStore.Load();
@@ -60,16 +64,25 @@ namespace EarthRecovery
         void Approve(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
         {
             response.Approved = HostGame != null && HostGame.State.phase == Phase.Lobby && manager.ConnectedClientsIds.Count < rules.maxPlayers;
+            if (response.Approved && !string.IsNullOrEmpty(admissionId))
+            {
+                RoomAdmission admission = null;
+                try { if (request.Payload != null && request.Payload.Length <= 512) admission = JsonUtility.FromJson<RoomAdmission>(System.Text.Encoding.UTF8.GetString(request.Payload)); }
+                catch (ArgumentException) { }
+                response.Approved = admission != null && admission.id == admissionId && admission.proof == admissionProof;
+            }
             response.CreatePlayerObject = false;
             response.Pending = false;
-            response.Reason = response.Approved ? "" : "탐사 중이거나 방이 가득 찼습니다.";
+            response.Reason = response.Approved ? "" : "방이 종료되었거나, 비밀번호가 다르거나, 참가할 수 없는 상태입니다.";
         }
-        public bool Connect(bool host, string address, ushort port)
+        public bool Connect(bool host, string address, ushort port, string roomId = "", string proof = "")
         {
             if (!CanConnect) return false;
             if (port == 0 || !IPAddress.TryParse(address?.Trim(), out var ip) || ip.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)
             { Status = "올바른 IPv4 주소와 포트를 입력해 주세요."; return false; }
             address = ip.ToString(); UserName = Expedition.CleanName(UserName); rules.Sanitize();
+            admissionId = host ? roomId : ""; admissionProof = host ? proof : "";
+            manager.NetworkConfig.ConnectionData = string.IsNullOrEmpty(roomId) ? Array.Empty<byte>() : System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(new RoomAdmission { id = roomId, proof = proof }));
             budgets.Clear(); snapshotTimer = 0;
             Status = host ? "방 생성 중" : "접속 중";
             manager.GetComponent<UnityTransport>().SetConnectionData(address, port, host ? "0.0.0.0" : null);
@@ -157,7 +170,7 @@ namespace EarthRecovery
             bool result;
             try { result = HostGame.Start(seed == 0 ? UnityEngine.Random.Range(1, int.MaxValue) : seed); }
             catch(InvalidOperationException e) {StopSession("콘텐츠 설정 오류: "+e.Message);return false;}
-            if (!result) Status = "최소 "+rules.minPlayers+"명의 준비 완료가 필요합니다.";
+            if (!result) Status = "최소 "+rules.MinimumStartPlayers+"명의 준비 완료가 필요합니다.";
             return result;
         }
         public void ReturnToLobby() { if (IsHost && HostGame.State.phase > Phase.Expedition) HostGame.ResetLobby(); }

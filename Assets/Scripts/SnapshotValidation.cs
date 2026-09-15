@@ -13,6 +13,7 @@ namespace EarthRecovery
             if (s == null || s.phase < Phase.Lobby || s.phase > Phase.Abandoned || !float.IsFinite(s.oxygen)
                 || s.oxygen < 0 || s.oxygen > 1740 || !float.IsFinite(s.elapsed) || s.elapsed < 0 || s.elapsed > 100000
                 || !Text(s.message, 256) || !Text(s.rulesJson, 4096)) return false;
+            if (ExpeditionRegions.Find(s.regionId) == null) return false;
             if (s.players == null || s.sites == null || s.loot == null || s.monsters == null
                 || s.players.Count > 6 || s.loot.Count > 512 || s.monsters.Count > 32
                 || s.sites.Count != (s.phase == Phase.Lobby ? 0 : HumanContent.Load().locations.Length)) return false;
@@ -21,6 +22,7 @@ namespace EarthRecovery
             if(s.moduleDrops.Any(d=>d==null||!Position(d.position)||d.location<0||d.location>=s.sites.Count)) return false;
             if(s.archive.Any(e=>e==null||!Text(e.artifactId,64)||e.observations==null||e.observations.Count>64||e.recoverCount<0)) return false;
             if(s.events.Any(e=>e==null||!Text(e.kind,64)||!Text(e.text,12000)||!Position(e.position)||!float.IsFinite(e.at))) return false;
+            if (s.lobbyChat == null || s.lobbyChat.Count > 24 || s.lobbyChat.Any(c => c == null || c.sequence < 1 || !Text(c.name, 32) || !Text(c.text, 120))) return false;
             if (s.players.Any(p => p == null || !Text(p.name, 32) || !Text(p.deathReason, 256) || !Position(p.position)
                 || !float.IsFinite(p.yaw) || !float.IsFinite(p.stationary) || !float.IsFinite(p.lastInputAt)
                 || p.inventory == null || p.inventory.Length != (p.id == localId ? 1 : 0)

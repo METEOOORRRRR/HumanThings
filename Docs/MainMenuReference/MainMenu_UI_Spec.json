@@ -1,0 +1,94 @@
+{
+  "canvas": {
+    "width": 1672,
+    "height": 941,
+    "referenceResolution": "1664x936"
+  },
+  "unity": {
+    "recommendedCanvasScaler": "Scale With Screen Size",
+    "match": 0.5,
+    "text": "TextMeshPro",
+    "sprites": "PNG RGBA"
+  },
+  "hierarchy": {
+    "MainMenu": [
+      "BG/MainMenu_BG_Clean_Base",
+      "FX/FX_ScreenEdge_Frame",
+      "Branding/Logo_HumanThings",
+      "Branding/Subtitle_Text",
+      "Menu/Button_Start",
+      "Menu/Button_Continue",
+      "Menu/Button_Archive",
+      "Menu/Button_Settings",
+      "Menu/Button_Quit",
+      "Decorative/LeftTop_ArchiveText",
+      "Decorative/LeftMiddle_Text",
+      "Decorative/RightTop_Text",
+      "Decorative/RightBottom_Text",
+      "Decorative/Polaroid",
+      "Decorative/Version_Text"
+    ]
+  },
+  "text_layers": {
+    "Subtitle_Text": "화성 세대의 지구 문화 복원 탐사",
+    "Button_Start_Text": "탐사 시작",
+    "Button_Continue_Text": "이어하기",
+    "Button_Archive_Text": "기록 보관소",
+    "Button_Settings_Text": "설정",
+    "Button_Quit_Text": "종료",
+    "LeftTop_ArchiveText": "ARCHIVE\\nTHE PLACES\\nTHE PEOPLE\\nTHE THINGS\\nTHAT REMAIN",
+    "LeftMiddle_Text": "SOME\\nTHINGS\\nSTILL\\nWAIT",
+    "RightTop_Text": "잊힌 세계를 걷는 일.\\n그것은 여전히, 인간의 일이다.",
+    "RightTop_Date": "2147. 03",
+    "RightBottom_Text": "\"사라진 것들은 끝이 아니라,\\n다른 어딘가에 남아 있다.\"",
+    "Version_Text": "v0.1.0",
+    "Polaroid_Note_Text": "여기에도, 사람이 있었다"
+  },
+  "approx_layout": {
+    "Logo_HumanThings": {
+      "x": 95,
+      "y": 135,
+      "w": 755,
+      "h": 165
+    },
+    "Subtitle_Text": {
+      "x": 300,
+      "y": 305,
+      "w": 390,
+      "h": 34
+    },
+    "MenuRoot": {
+      "x": 195,
+      "y": 395,
+      "w": 520,
+      "h": 350
+    },
+    "Polaroid": {
+      "x": 0,
+      "y": 600,
+      "w": 230,
+      "h": 285
+    }
+  },
+  "export_notes": {
+    "Button_Default_BG_9Slice": {
+      "border": [
+        18,
+        18,
+        18,
+        18
+      ]
+    },
+    "Button_Selected_BG_9Slice": {
+      "border": [
+        18,
+        18,
+        18,
+        18
+      ]
+    },
+    "text_not_rasterized": true,
+    "source_was_flattened": true,
+    "background_note": "MainMenu_BG_Clean_Base is reconstructed by inpainting from the flattened reference; inspect before shipping."
+  }
+}

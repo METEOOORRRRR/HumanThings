@@ -29,6 +29,17 @@ namespace EarthRecovery
         public float noiseMemorySeconds = 14;
         public float stillnessSeconds = 12;
         public int minPlayers = 4;
+        public bool developerSolo;
+        public int MinimumStartPlayers
+        {
+            get
+            {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+                if (developerSolo) return 1;
+#endif
+                return minPlayers;
+            }
+        }
         public float stationMinDistance = 24, stationMinDistanceFromBase = 15, stationMinDistanceFromEntrance = 8;
         public float refundCutoff = .5f, observationDistance = 12, recoveryToastSeconds = 3.5f;
         public bool retainArchiveKnowledge, rainy, debugAllModules;
@@ -78,7 +89,7 @@ namespace EarthRecovery
         public string name;
         public Vector3 position;
         public float yaw;
-        public bool alive = true, connected = true, ready, flashlight;
+        public bool alive = true, connected = true, ready, flashlight, voiceEnabled;
         public int carrying = -1;
         public int[] inventory = new int[1];
         public List<int> modules = new(), knownLocations = new();
@@ -134,6 +145,7 @@ namespace EarthRecovery
     }
     [Serializable] public sealed class Snapshot
     {
+        public string regionId = ExpeditionRegions.DefaultId;
         public Phase phase;
         public int seed;
         public float oxygen, elapsed;
@@ -149,7 +161,9 @@ namespace EarthRecovery
         public List<ModuleDrop> moduleDrops = new();
         public List<ArchiveEntry> archive = new();
         public List<GameEvent> events = new();
+        public List<LobbyChat> lobbyChat = new();
     }
+    [Serializable] public sealed class LobbyChat { public int sequence; public ulong sender; public string name, text; }
     [Serializable] public sealed class StationState
     {
         public int id, zone, target = -1, paid;

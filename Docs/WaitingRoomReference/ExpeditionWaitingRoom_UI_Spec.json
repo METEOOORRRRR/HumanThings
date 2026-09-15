@@ -1,0 +1,269 @@
+{
+  "canvas": {
+    "width": 1672,
+    "height": 941,
+    "referenceResolution": "1672x941"
+  },
+  "goal": "Rebuild the provided Expedition Waiting Room UI in Unity as a reusable multiplayer lobby for up to 6 players.",
+  "warning": [
+    "The source is a single flattened final image.",
+    "Background_Artwork is a best-effort inpainted base after removing UI from the flattened screenshot.",
+    "All runtime-changeable text should be implemented as TextMeshPro, not baked PNG."
+  ],
+  "recommended_filenames": {
+    "Background": [
+      "Background_Artwork.png",
+      "Global_Noise_Overlay.png",
+      "Edge_Scratch_Overlay.png"
+    ],
+    "Title": [
+      "Title_Underline.png"
+    ],
+    "PlayerCard": [
+      "PlayerCard_Card_BG_9Slice.png",
+      "PlayerCard_Card_Frame.png",
+      "PlayerCard_Card_ReadyHighlight.png",
+      "PlayerCard_Portrait_Mask.png",
+      "PlayerCard_Host_Badge_BG.png",
+      "PlayerCard_Voice_On.png",
+      "PlayerCard_Voice_Muted.png",
+      "PlayerCard_ReadyState_Waiting_BG.png",
+      "PlayerCard_ReadyState_Ready_BG.png",
+      "Icon_Ready_Check.png",
+      "Icon_Waiting_Ring.png",
+      "PlayerCard_Noise_Overlay.png"
+    ],
+    "PlayerLayouts": [
+      "PlayerLayout_1.png",
+      "PlayerLayout_2.png",
+      "PlayerLayout_3.png",
+      "PlayerLayout_4.png",
+      "PlayerLayout_5.png",
+      "PlayerLayout_6.png"
+    ],
+    "ExpeditionRegion": [
+      "RegionPanel_BG_9Slice.png",
+      "RegionPanel_Frame.png",
+      "Region_Image_Seoul_RecoveryZone03.png",
+      "Region_Image_Mask.png",
+      "Region_Decoration_Line.png"
+    ],
+    "Buttons": [
+      "Leave_Default_BG_9Slice.png",
+      "Leave_Hover_BG_9Slice.png",
+      "Leave_Pressed_BG_9Slice.png",
+      "Ready_Default_BG_9Slice.png",
+      "Ready_Ready_BG_9Slice.png",
+      "Ready_Hover_BG_9Slice.png",
+      "Ready_Pressed_BG_9Slice.png",
+      "Start_Enabled_BG_9Slice.png",
+      "Start_Disabled_BG_9Slice.png",
+      "Start_Arrow_Icon.png",
+      "Button_Frame_9Slice.png",
+      "Button_Highlight_Overlay.png",
+      "Button_Disabled_Overlay.png"
+    ],
+    "Chat": [
+      "Chat_BG_9Slice.png",
+      "Chat_Icon.png",
+      "Chat_Send_Icon.png"
+    ],
+    "Decorations": [
+      "Decorative_Line.png",
+      "Misc_Decoration_Photo.png"
+    ]
+  },
+  "text_layers": {
+    "Title_Text": "탐사대 대기실",
+    "Subtitle_Text": "함께, 아직 남아 있는 것을 찾아서.",
+    "PlayerID_Examples": [
+      "Traveler_03",
+      "Moonlight",
+      "kepler7",
+      "Lumen"
+    ],
+    "ReadyState_Waiting": "대기 중",
+    "ReadyState_Ready": "준비 완료",
+    "Region_Label": "탐사 지역",
+    "Region_Name_Text": "서울 제3 회수구역",
+    "Region_SubText": "무너진 일상 속, 아직 남아 있는 것을 찾는다.",
+    "Leave_Button_Text": "방 나가기",
+    "Ready_Button_Text": "준비 완료",
+    "Start_Button_Text": "탐사 시작",
+    "Chat_Placeholder_Text": "메시지를 입력하세요.",
+    "Decorative_Archive_Text": "ARCHIVE\\nTHE PLACES\\nTHE PEOPLE\\nTHE THINGS\\nTHAT REMAIN",
+    "Decorative_LeftMid_Text": "SOME\\nTHINGS\\nSTILL\\nWAIT",
+    "Decorative_RightTop_Text": "잊힌 세계를 걷는 일.\\n그것은 여전히, 인간의 일이다.",
+    "Decorative_RightTop_Date": "2147. 03",
+    "Version_Text": "v0.1.0",
+    "Decorative_RightLower_Text": "HUMAN THINGS\\nARE NEVER REALLY GONE"
+  },
+  "ui_hierarchy": {
+    "ExpeditionLobby": {
+      "Background": [
+        "Background_Artwork",
+        "Global_Noise_Overlay",
+        "Edge_Scratch_Overlay"
+      ],
+      "Title": [
+        "Title_Text",
+        "Subtitle_Text",
+        "Title_Underline"
+      ],
+      "PlayerArea": {
+        "Layout_1to4": "Use a HorizontalLayoutGroup or manual anchors. Center align active cards.",
+        "Layout_5": "3 cards on row 1, 2 cards centered on row 2. Card scale 0.84~0.85.",
+        "Layout_6": "3 cards on row 1, 3 cards on row 2. Card scale 0.80~0.83.",
+        "PlayerCard_Prefab": [
+          "Card_BG",
+          "Card_Frame",
+          "Card_ReadyHighlight",
+          "Portrait_Mask",
+          "Portrait_Image (runtime sprite)",
+          "Host_Badge",
+          "Host_Badge_Text (TMP: '호스트')",
+          "Voice_On / Voice_Muted",
+          "PlayerID_Text",
+          "ReadyState_BG",
+          "ReadyState_Icon",
+          "ReadyState_Text",
+          "Card_Noise_Overlay"
+        ]
+      },
+      "ExpeditionRegionPanel": [
+        "RegionPanel_BG",
+        "RegionPanel_Frame",
+        "Region_Label_Text",
+        "Region_Name_Text",
+        "Region_Image_Mask",
+        "Region_Image",
+        "Region_SubText",
+        "Region_Decoration_Line"
+      ],
+      "BottomActions": [
+        "Leave_Button",
+        "Ready_Button",
+        "Start_Button"
+      ],
+      "Chat": [
+        "Chat_BG",
+        "Chat_Icon",
+        "Chat_InputField (TMP runtime input)",
+        "Chat_Send_Icon"
+      ],
+      "Decorations": [
+        "Decorative_Line",
+        "Decorative_Text",
+        "Misc_Decoration_Photo"
+      ]
+    }
+  },
+  "prefab_rules": {
+    "PlayerCard": {
+      "states": [
+        "Host + Waiting",
+        "Host + Ready",
+        "Participant + Waiting",
+        "Participant + Ready"
+      ],
+      "ready_highlight_rule": "Ready highlight depends only on Ready state, not host state.",
+      "voice_states": [
+        "Voice_On",
+        "Voice_Muted"
+      ],
+      "portrait_runtime_replaceable": true,
+      "player_id_runtime_replaceable": true
+    },
+    "Buttons": {
+      "StartButton": {
+        "host_only": true,
+        "participant_behavior": "Prefer hidden for participants. Alternative: show disabled.",
+        "states": [
+          "Enabled",
+          "Disabled"
+        ]
+      },
+      "ReadyButton": {
+        "type": "toggle",
+        "states": [
+          "Default",
+          "Ready",
+          "Hover",
+          "Pressed"
+        ]
+      },
+      "LeaveButton": {
+        "states": [
+          "Default",
+          "Hover",
+          "Pressed"
+        ]
+      }
+    }
+  },
+  "layout_presets": {
+    "1_player": {
+      "rows": [
+        1
+      ],
+      "card_scale": 1.0,
+      "alignment": "center"
+    },
+    "2_players": {
+      "rows": [
+        2
+      ],
+      "card_scale": 1.0,
+      "alignment": "center"
+    },
+    "3_players": {
+      "rows": [
+        3
+      ],
+      "card_scale": 1.0,
+      "alignment": "center"
+    },
+    "4_players": {
+      "rows": [
+        4
+      ],
+      "card_scale": 0.96,
+      "alignment": "center"
+    },
+    "5_players": {
+      "rows": [
+        3,
+        2
+      ],
+      "card_scale": 0.84,
+      "alignment": "row2 centered"
+    },
+    "6_players": {
+      "rows": [
+        3,
+        3
+      ],
+      "card_scale": 0.82,
+      "alignment": "center"
+    }
+  },
+  "recommended_unity_setup": {
+    "CanvasScaler": "Scale With Screen Size",
+    "ReferenceResolution": [
+      1672,
+      941
+    ],
+    "Text": "TextMeshPro",
+    "Sprites": "PNG RGBA",
+    "9SliceRecommended": [
+      "PlayerCard_Card_BG_9Slice.png",
+      "RegionPanel_BG_9Slice.png",
+      "Leave_Default_BG_9Slice.png",
+      "Ready_Default_BG_9Slice.png",
+      "Ready_Ready_BG_9Slice.png",
+      "Start_Enabled_BG_9Slice.png",
+      "Start_Disabled_BG_9Slice.png",
+      "Chat_BG_9Slice.png"
+    ]
+  }
+}

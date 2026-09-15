@@ -1,0 +1,11 @@
+{
+  "regions": [
+    {
+      "id": "seoul",
+      "name": "서울 (도심)",
+      "title": "서울 생활권 기록 조사",
+      "description": "무너진 일상 속,\n아직 남아 있는 것을 찾는다.",
+      "image": "ExpeditionLobby/ContentPanel/CreateRoom/RegionPreview_Seoul"
+    }
+  ]
+}

@@ -21,6 +21,8 @@ namespace EarthRecovery
         public int Alive => State.players.Count(p => p.alive && p.connected);
         readonly Dictionary<int, Vector3> dropped = new();
         int eventSequence;
+        int chatSequence;
+        readonly Dictionary<ulong, float> nextChat = new();
         public Expedition(GameRules rules, HumanContent content = null)
         { Rules = rules != null ? rules : throw new ArgumentNullException(nameof(rules)); Rules.Sanitize(); Content = content != null ? content : HumanContent.Load(); }
         public PlayerState Player(ulong id) => State.players.Find(p => p.id == id && p.connected);
@@ -47,10 +49,11 @@ namespace EarthRecovery
             if (State.phase == Phase.Lobby) State.players.Remove(p);
             else { if (State.phase == Phase.Expedition) Kill(p, "통신 두절"); p.connected = false; }
             Inputs.Remove(id);
+            nextChat.Remove(id);
         }
         public bool Start(int seed)
         {
-            if (State.phase != Phase.Lobby || State.players.Count < Rules.minPlayers || State.players.Any(p => !p.ready)) return false;
+            if (State.phase != Phase.Lobby || State.players.Count < Rules.MinimumStartPlayers || State.players.Any(p => !p.ready)) return false;
             Content.Validate(); Rules.Sanitize();
             var missionRng = new System.Random(seed ^ 1097);
             var layoutRng = new System.Random(seed ^ 2309);
@@ -136,7 +139,7 @@ namespace EarthRecovery
         public void ResetLobby()
         {
             var players = State.players.Where(p => p.connected).ToList(); var archive = State.archive;
-            State = new Snapshot { players = players, archive = archive }; Inputs.Clear(); dropped.Clear();
+            State = new Snapshot { players = players, archive = archive, regionId = State.regionId }; Inputs.Clear(); dropped.Clear();
             for (int i = 0; i < players.Count; i++) { ResetPlayer(players[i], i); players[i].ready = false; }
         }
         public void Tick(float dt)
@@ -210,7 +213,22 @@ namespace EarthRecovery
         {
             var p = Player(sender); if (p == null || c == null) return false;
             if (State.phase == Phase.Lobby)
-            { if (c.action == "ready") { p.ready = c.flag; return true; } if (c.action == "name") { p.name = CleanName(c.text); return true; } return false; }
+            {
+                if (c.action == "ready") { p.ready = c.flag; return true; }
+                if (c.action == "name") { p.name = CleanName(c.text); return true; }
+                if (c.action == "voiceState") { p.voiceEnabled = c.flag; return true; }
+                if (c.action == "chat")
+                {
+                    if (c.text == null || c.text.Length > 120 || (nextChat.TryGetValue(sender, out var next) && Time.realtimeSinceStartup < next)) return false;
+                    string text = new string(c.text.Where(ch => !char.IsControl(ch)).ToArray()).Trim();
+                    if (text.Length == 0) return false;
+                    nextChat[sender] = Time.realtimeSinceStartup + .75f;
+                    State.lobbyChat.Add(new LobbyChat { sequence = ++chatSequence, sender = sender, name = p.name, text = text });
+                    if (State.lobbyChat.Count > 24) State.lobbyChat.RemoveAt(0);
+                    return true;
+                }
+                return false;
+            }
             if (!p.alive || State.phase != Phase.Expedition) return false;
             if (c.action == "move")
             {
