@@ -176,14 +176,18 @@ namespace EarthRecovery
             Label(400, 28, 490, 35, session.View.message, small);
             bool showMissions = !CampOpen && SiteOpen < 0 && StationOpen < 0 && !InventoryOpen && !world.MenuOpen;
             if (showMissions) Fill(new Rect(936, 18, 324, 525), panel);
-            int i = 0;
-            foreach (var s in session.View.sites.Where(s => s.mission && showMissions))
+            if (showMissions)
             {
-                float y=30+i++*171;
-                Label(952,y,292,26,Catalog.Product(s),small);
-                Label(952,y+27,292,32,s.category+" / "+Stage(s.phase),small);
-                Label(952,y+59,292,48,s.materialHint+" · "+s.functionHint,small);
-                Label(952,y+108,292,54,s.discovered?Catalog.Sites[s.id]+" · "+s.clueText:s.facilityHint,small);
+                int i = 0;
+                foreach (var s in session.View.sites.Where(s => s.mission).OrderBy(s => s.assignedOrder))
+                {
+                    float y = 30 + i++ * 171;
+                    Label(952, y, 292, 24, Catalog.Product(s), small);
+                    Label(952, y + 24, 292, 22, Stage(s.phase), small);
+                    var hint = Catalog.MissionDetails(s);
+                    var style = FitText(small, hint, 292, 120);
+                    Label(952, y + 46, 292, 120, hint, style);
+                }
             }
             var p = session.LocalPlayer;
             if (p != null)
@@ -217,7 +221,7 @@ namespace EarthRecovery
             else if (s.phase == CraftPhase.Crafting)
             {
                 Label(240, 255, 750, 40, "제작 진행 " + s.checks + "/" + session.rules.checksRequired);
-                Label(240,292,750,36,s.clueText,small);
+                Label(240,292,750,36,s.missionHint.structure,small);
                 Rect bar = new(240, 335, 790, 50); Fill(bar, new Color(.22f, .26f, .26f));
                 Fill(new Rect(bar.x + bar.width * (.65f - session.rules.skillWindow / 2), bar.y, bar.width * session.rules.skillWindow, bar.height), accent);
                 if (s.checkStarted >= 0)
@@ -262,9 +266,23 @@ namespace EarthRecovery
         void DrawMap(Rect rect)
         {
             TerminalDraw(rect, "03_Map/Map_Grid");
-            Vector2 Map(Vector3 p) => new(rect.x + (p.x + 75) / 150 * rect.width, rect.y + (75 - p.z) / 150 * rect.height);
-            var camp = Map(Vector3.zero); Fill(new Rect(camp.x - 12, camp.y - 12, 24, 24), accent);
-            for (int d = 0; d < HumanContent.Load().zones.Length; d++)
+            var size = session.View.mapSize;
+            Vector2 Map(Vector3 p) => new(rect.x + (p.x / size.x + .5f) * rect.width, rect.y + (.5f - p.z / size.y) * rect.height);
+            if (session.View.cityWorld && world.City != null)
+                foreach (var chunk in world.City.chunks)
+                {
+                    var b = chunk.node.worldBounds;
+                    var corner = Map(new Vector3(b.min.x, 0, b.max.z));
+                    var tint = Color.HSVToRGB((int)chunk.node.district * .137f, .24f, .28f);
+                    Fill(new Rect(corner.x + 1, corner.y + 1, b.size.x / size.x * rect.width - 2, b.size.z / size.y * rect.height - 2), tint);
+                    foreach (var road in chunk.city.roads)
+                    {
+                        var rb = road.bounds; rb.center += chunk.node.worldBounds.center;
+                        var at = Map(new Vector3(rb.min.x, 0, rb.max.z));
+                        Fill(new Rect(at.x, at.y, rb.size.x / size.x * rect.width, rb.size.z / size.y * rect.height), new Color(.35f,.38f,.38f));
+                    }
+                }
+            for (int d = 0; !session.View.cityWorld && d < HumanContent.Load().zones.Length; d++)
             {
                 var zone = HumanContent.Load().zones[d];
                 float minX = zone.spawnSockets.Min(p=>p.x)-6, maxX = zone.spawnSockets.Max(p=>p.x)+6;
@@ -274,6 +292,7 @@ namespace EarthRecovery
                 Fill(new Rect(corner.x,corner.y,(maxX-minX)/150*rect.width,(maxZ-minZ)/150*rect.height),colors[d%colors.Length]);
                 Label(corner.x,corner.y-22,110,22,zone.displayName,small);
             }
+            var camp = Map(Vector3.zero); Fill(new Rect(camp.x - 6, camp.y - 6, 12, 12), accent);
             foreach (var s in session.View.sites)
             {
                 var at = Map(s.position); Fill(new Rect(at.x - 5, at.y - 5, 10, 10), s.discovered ? accent : muted);
@@ -359,18 +378,41 @@ namespace EarthRecovery
         {
             Panel(80,55,1120,610,"HumanThings Archive");
             if(Button(1115,72,60,40,"×")) CloseArchive();
-            archiveScroll=GUI.BeginScrollView(new Rect(105,125,1070,510),archiveScroll,new Rect(0,0,1040,Mathf.Max(500,session.View.archive.Count*155)));
-            int row=0;
-            foreach(var entry in session.View.archive.OrderBy(e=>e.artifactId))
+            var rows = session.View.archive.OrderBy(e => e.artifactId).Select(Catalog.ArchiveLines).ToArray();
+            float total = rows.Sum(lines => lines.Select((line, i) => (i == 0 ? heading : text).CalcHeight(new GUIContent(line), 1000) + 6).Sum() + 20);
+            archiveScroll=GUI.BeginScrollView(new Rect(105,125,1070,510),archiveScroll,new Rect(0,0,1040,Mathf.Max(500,total)));
+            float y = 0;
+            foreach(var lines in rows)
             {
-                float y=row++*155;
-                Label(10,y,1000,32,entry.discovered?entry.trueNameEn+" / "+entry.trueNameKo+" · "+entry.recoverCount+"회":"미식별 관찰 기록",heading);
-                Label(10,y+39,1000,50,entry.discovered?entry.archiveDescription:"",text);
-                Label(10,y+83,1000,40,entry.discovered?"Mars: "+entry.marsComment:"",small);
-                Label(10,y+122,1000,30,string.Join(" | ",entry.observations),small);
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    var style = i == 0 ? heading : text;
+                    float height = style.CalcHeight(new GUIContent(lines[i]), 1000);
+                    Label(10, y, 1000, height, lines[i], style); y += height + 6;
+                }
+                y += 20;
             }
-            if(row==0) Label(10,20,1000,50,"등록된 표본 없음");
+            if(rows.Length==0) Label(10,20,1000,50,"등록된 표본 없음");
             GUI.EndScrollView();
+        }
+        static void ScrollText(Rect area, ref Vector2 scroll, string[] lines, GUIStyle style)
+        {
+            float width = area.width - 20;
+            var heights = lines.Select(line => style.CalcHeight(new GUIContent(line), width) + 5).ToArray();
+            scroll = GUI.BeginScrollView(area, scroll, new Rect(0, 0, width, Mathf.Max(area.height, heights.Sum())));
+            float y = 0;
+            for (int i = 0; i < lines.Length; i++)
+            {
+                GUI.Label(new Rect(0, y, width, heights[i] - 5), lines[i], style);
+                y += heights[i];
+            }
+            GUI.EndScrollView();
+        }
+        public static GUIStyle FitText(GUIStyle original, string value, float width, float height)
+        {
+            var style = new GUIStyle(original);
+            while (style.fontSize > 10 && style.CalcHeight(new GUIContent(value), width) > height) style.fontSize--;
+            return style;
         }
         void OnDestroy() { if(session!=null) session.Presented-=Present; if (pixel != null) Destroy(pixel); if (terminalFont != null) Destroy(terminalFont); }
     }

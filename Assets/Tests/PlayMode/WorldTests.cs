@@ -126,10 +126,11 @@ namespace EarthRecovery.Tests
             var game=session.HostGame;var m=game.State.monsters.First(x=>x.kind==MonsterKind.Sound);
             m.nextMemory=float.MaxValue;
             yield return new WaitForSeconds(1);
-            m.destination=new Vector3(150,0,150);m.alert=AlertState.Return;
+            m.destination=new Vector3(game.State.mapSize.x,0,game.State.mapSize.y);m.alert=AlertState.Return;
             yield return new WaitForSeconds(8);
             Assert.That(session.Online,Is.True);
-            Assert.That(m.destination.x,Is.LessThan(75));Assert.That(m.destination.z,Is.LessThan(75));
+            Assert.That(Mathf.Abs(m.destination.x),Is.LessThan(game.State.mapSize.x / 2));
+            Assert.That(Mathf.Abs(m.destination.z),Is.LessThan(game.State.mapSize.y / 2));
             Assert.That(m.alert,Is.EqualTo(AlertState.Idle));
             LogAssert.NoUnexpectedReceived();
         }
@@ -174,7 +175,8 @@ namespace EarthRecovery.Tests
         }
         [UnityTest] public IEnumerator GeneratedWorldSignsUseAllFifteenApprovedNames()
         {
-            var signs=Object.FindObjectsByType<TextMesh>(FindObjectsSortMode.None).Select(t=>t.text).ToArray();
+            var signs=Object.FindObjectsByType<TextMesh>(FindObjectsSortMode.None).Select(t=>t.text)
+                .Concat(Object.FindObjectsByType<TMPro.TextMeshPro>(FindObjectsSortMode.None).Select(t=>t.text.Trim('[',']'))).ToArray();
             foreach(var name in Catalog.Sites) Assert.That(signs,Does.Contain(name));
             foreach(var old in new[]{"병원/약국","학교/교실","인쇄소/소형 공장","식당/주방용품점"})
                 Assert.That(signs,Does.Not.Contain(old));

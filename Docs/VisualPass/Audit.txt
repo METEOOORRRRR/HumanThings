@@ -1,0 +1,7 @@
+Pipeline=PC_RPAsset
+ColorSpace=Linear
+Camera HDR=True
+Original shared shaders:
+Universal Render Pipeline/Lit: 94
+TextMeshPro/Mobile/Distance Field: 16
+Synty/Generic_Basic: 2323

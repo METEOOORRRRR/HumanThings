@@ -1,0 +1,15 @@
+roads=6 lots=16 buildings=3 vehicles=3 props=49
+6 narrow residual blocks excluded (minimum side 8m).
+REQUIRED RequiredSubways: placed 0/1 (fit/clearance/candidate limit).
+Lot_0000: placed 0/1 (fit/clearance/candidate limit).
+Lot_0001: placed 0/1 (fit/clearance/candidate limit).
+Lot_0002: placed 0/1 (fit/clearance/candidate limit).
+Lot_0003: missing assets; skipped.
+Lot_0004: placed 0/1 (fit/clearance/candidate limit).
+Lot_0005: placed 0/1 (fit/clearance/candidate limit).
+Lot_0006: missing assets; skipped.
+Lot_0007: missing assets; skipped.
+Lot_0009: placed 0/1 (fit/clearance/candidate limit).
+Lot_0013: placed 0/1 (fit/clearance/candidate limit).
+Lamp: placed 15/22 (fit/clearance/candidate limit).
+Road markings use fitted surface tiles; lane markings at junctions are approximate.

@@ -4,7 +4,7 @@ namespace EarthRecovery
     [CreateAssetMenu(menuName = "Human Things/Location")]
     public sealed class LocationDefinition : ScriptableObject
     {
-        public string id, displayNameKnown, displayNameUnknown, moduleName;
+        public string id, displayNameKnown, missionLocationHint, moduleName;
         public int zone;
         public ArtifactDefinition[] artifacts;
         public RestorationRecipe recipe;

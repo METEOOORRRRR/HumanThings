@@ -76,7 +76,24 @@ namespace EarthRecovery
         public static string Material(int id) => "고철";
         public static string Product(SiteState site) => string.IsNullOrEmpty(site.displayName) ? "표본 " + site.sampleCode + " / ???" : site.displayName;
         public static string MapName(SiteState site) => site.discovered ? Sites[site.id] : "??";
-        public static string MissionDetails(SiteState site) => site.category + "\n" + site.materialHint + "\n" + site.functionHint;
+        public static string MissionDetails(SiteState site) => string.Join("\n", MissionLines(site));
+        public static string[] MissionLines(SiteState site) => new[] { site.missionHint.category, site.missionHint.structure, site.missionHint.function, site.missionLocationHint };
+        public static string[] ArchiveLines(ArchiveEntry entry)
+        {
+            if (!entry.discovered) return new[] { "미식별 관찰 기록" }.Concat(entry.observations).ToArray();
+            // Save files own progress; the ID resolves the current text without migrating old saves.
+            var artifact = HumanContent.Load().artifacts.FirstOrDefault(a => a.id == entry.artifactId);
+            var lines = new List<string> { (artifact != null ? artifact.trueNameEn + " / " + artifact.trueNameKo : entry.trueNameEn + " / " + entry.trueNameKo) + " · " + entry.recoverCount + "회" };
+            if (artifact != null)
+            {
+                lines.Add(artifact.missionHint.category);
+                lines.AddRange(artifact.archiveDetails);
+            }
+            lines.Add(artifact != null ? artifact.archiveDescription : entry.archiveDescription);
+            lines.Add("Mars: " + (artifact != null ? artifact.marsComment : entry.marsComment));
+            lines.AddRange(entry.observations);
+            return lines.ToArray();
+        }
         public static Vector3 DistrictCenter(int district)
         {
             return HumanContent.Load().zones[district].center;
@@ -118,8 +135,8 @@ namespace EarthRecovery
         public int assignedOrder, revealClues, puzzleAttempts;
         public bool discovered, activated;
         public bool moduleExists;
-        public string sampleCode = "", displayName = "", category = "", materialHint = "", functionHint = "", facilityHint = "", clueText = "";
-        public string dataTags = "";
+        public string sampleCode = "", displayName = "", missionLocationHint = "";
+        public MissionHint missionHint = new();
         public float assignedAt, restoredAt = -1, craftedAt = -1, recoveredAt = -1;
         public ulong recoveredBy = ulong.MaxValue;
     }
@@ -148,6 +165,8 @@ namespace EarthRecovery
         public string regionId = ExpeditionRegions.DefaultId;
         public Phase phase;
         public int seed;
+        public bool cityWorld;
+        public Vector2 mapSize = new(150, 150);
         public float oxygen, elapsed;
         public List<PlayerState> players = new();
         public List<SiteState> sites = new();

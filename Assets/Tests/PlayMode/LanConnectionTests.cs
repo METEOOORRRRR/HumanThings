@@ -36,6 +36,27 @@ namespace EarthRecovery.Tests
             Assert.That(hostSession.View.players.Count, Is.EqualTo(1));
             Assert.That(hostSession.rules.minPlayers, Is.EqualTo(4));
         }
+        [UnityTest] public IEnumerator NewMissionHintsReplicateToFieldClient()
+        {
+            hostSession.rules.minPlayers = 2;
+            Assert.That(host.Create("Hint test", 4, false, ""));
+            yield return new WaitForSecondsRealtime(.5f);
+            var room = host.Hosted; room.address = "127.0.0.1";
+            Assert.That(client.Join(room, "")); yield return new WaitForSecondsRealtime(1);
+            hostSession.Send(new Command { action = "ready", flag = true });
+            clientSession.Send(new Command { action = "ready", flag = true });
+            yield return new WaitForSecondsRealtime(.4f);
+            Assert.That(hostSession.StartMission(42));
+            hostSession.HostGame.Player(clientSession.LocalId).position = new Vector3(60, 0, 60);
+            yield return new WaitForSecondsRealtime(.5f);
+            Assert.That(clientSession.View.phase, Is.EqualTo(Phase.Expedition));
+            Assert.That(SnapshotValidation.Valid(clientSession.View, clientSession.LocalId));
+            foreach (var site in clientSession.View.sites)
+            {
+                CollectionAssert.AreEqual(Catalog.MissionLines(hostSession.View.sites[site.id]), Catalog.MissionLines(site));
+                Assert.That(site.displayName, Is.Empty);
+            }
+        }
         [UnityTest] public IEnumerator PublicDiscoveryJoinAndLeave()
         {
             Assert.That(host.Create("공개 검증", 4, true, "")); yield return new WaitForSecondsRealtime(.4f);

@@ -1,5 +1,5 @@
 {
   "name": "EarthRecovery.PlayTests",
-  "references": ["EarthRecovery", "Unity.AI.Navigation", "Unity.Netcode.Runtime", "Unity.Collections"],
+  "references": ["EarthRecovery", "Unity.AI.Navigation", "Unity.Netcode.Runtime", "Unity.Collections", "Unity.TextMeshPro"],
   "optionalUnityReferences": ["TestAssemblies"]
 }

@@ -51,7 +51,7 @@ namespace EarthRecovery
             Inputs.Remove(id);
             nextChat.Remove(id);
         }
-        public bool Start(int seed)
+        public bool Start(int seed, CityWorldPlan city = null)
         {
             if (State.phase != Phase.Lobby || State.players.Count < Rules.MinimumStartPlayers || State.players.Any(p => !p.ready)) return false;
             Content.Validate(); Rules.Sanitize();
@@ -103,6 +103,7 @@ namespace EarthRecovery
                 Vector3 home = Content.zones[zone].center * .48f + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * 4;
                 State.monsters.Add(new MonsterState { id = i, definition = i, kind = def.kind, position = home, home = home, destination = home });
             }
+            if (city != null) RuntimeCityLayout.Apply(this, city);
             for (int i = 0; i < State.players.Count; i++) ResetPlayer(State.players[i], i);
             Emit("SessionStarted"); foreach (var s in State.sites.Where(s => s.mission)) Emit("MissionAssigned", s.id);
             State.message = "미확인 표본 3개 회수"; return true;
@@ -356,11 +357,8 @@ namespace EarthRecovery
                 s.objectPosition = ObjectPosition(State.sites[s.id]);
                 s.discovered = camp ? s.discovered : p != null && p.knownLocations.Contains(s.id);
                 s.displayName = s.reveal == RevealLevel.Recovered ? a.trueNameKo : "";
-                s.category = a.categoryTag; s.materialHint = camp ? a.materialHint : a.materialHint.Split('/')[0];
-                s.dataTags = camp ? string.Join(" | ",a.dataTags ?? Array.Empty<string>()) : "";
-                s.functionHint = camp ? a.functionHint : "불완전 기능 데이터";
-                s.facilityHint = camp ? location.displayNameUnknown + " / " + Content.zones[location.zone].displayName : s.discovered ? location.displayNameKnown : "복원 시설 UNKNOWN";
-                s.clueText = s.reveal >= RevealLevel.OnLocation ? string.Join(" / ", a.level1Clues.Concat(a.level2Clues.Take(s.revealClues))) : "";
+                s.missionHint = new MissionHint { category = a.missionHint.category, structure = a.missionHint.structure, function = a.missionHint.function };
+                s.missionLocationHint = location.missionLocationHint;
             }
             foreach (var other in copy.players) if (other.id != id) { other.inventory = Array.Empty<int>(); other.modules.Clear(); other.knownLocations.Clear(); }
             return copy;

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e1cf53bea868f4a8642245357d8219, type: 3}
+  m_Name: WideAvenue
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.CityLayoutTemplate
+  templateName: WideAvenue
+  districtType: 2
+  map:
+    width:
+      min: 220
+      max: 270
+    depth:
+      min: 180
+      max: 220
+  roads:
+    mainRoadCount:
+      min: 1
+      max: 2
+    sideRoadCount:
+      min: 2
+      max: 4
+    alleyCount:
+      min: 0
+      max: 1
+    intersectionCount:
+      min: 2
+      max: 4
+    width:
+      min: 20
+      max: 26
+    blockSize:
+      min: 24
+      max: 38
+    sidewalkWidth: 6
+  buildings:
+    density:
+      min: 0.5
+      max: 0.8
+    commercialRatio:
+      min: 0.3
+      max: 0.5
+    residentialRatio:
+      min: 0.2
+      max: 0.4
+    officeRatio:
+      min: 0.1
+      max: 0.3
+    publicRatio:
+      min: 0.05
+      max: 0.15
+  pois:
+    shopCount:
+      min: 1
+      max: 3
+    subwayEntranceCount:
+      min: 0
+      max: 1
+    busStopCount:
+      min: 1
+      max: 2
+    publicBuildingCount:
+      min: 0
+      max: 1
+  vehicles:
+    parkedCount:
+      min: 8
+      max: 16
+  props:
+    density:
+      min: 0.3
+      max: 0.6

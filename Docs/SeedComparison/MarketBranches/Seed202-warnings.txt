@@ -1,0 +1,4 @@
+11 narrow residual blocks excluded (minimum side 8m).
+Lot_0000: placed 0/1 (fit/clearance/candidate limit).
+Lamp: placed 11/13 (fit/clearance/candidate limit).
+Road markings use fitted surface tiles; lane markings at junctions are approximate.

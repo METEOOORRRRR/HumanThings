@@ -6,7 +6,7 @@ namespace EarthRecovery
     public static class SnapshotValidation
     {
         static bool Position(Vector3 p) => float.IsFinite(p.x) && float.IsFinite(p.y) && float.IsFinite(p.z)
-            && Mathf.Abs(p.x) <= 200 && Mathf.Abs(p.y) <= 200 && Mathf.Abs(p.z) <= 200;
+            && Mathf.Abs(p.x) <= 1024 && Mathf.Abs(p.y) <= 200 && Mathf.Abs(p.z) <= 1024;
         static bool Text(string value, int limit) => value != null && value.Length <= limit;
         public static bool Valid(Snapshot s, ulong localId)
         {
@@ -14,6 +14,8 @@ namespace EarthRecovery
                 || s.oxygen < 0 || s.oxygen > 1740 || !float.IsFinite(s.elapsed) || s.elapsed < 0 || s.elapsed > 100000
                 || !Text(s.message, 256) || !Text(s.rulesJson, 4096)) return false;
             if (ExpeditionRegions.Find(s.regionId) == null) return false;
+            if (!float.IsFinite(s.mapSize.x) || !float.IsFinite(s.mapSize.y) || s.mapSize.x < 100 || s.mapSize.y < 100
+                || s.mapSize.x > 2000 || s.mapSize.y > 2000) return false;
             if (s.players == null || s.sites == null || s.loot == null || s.monsters == null
                 || s.players.Count > 6 || s.loot.Count > 512 || s.monsters.Count > 32
                 || s.sites.Count != (s.phase == Phase.Lobby ? 0 : HumanContent.Load().locations.Length)) return false;
@@ -42,7 +44,7 @@ namespace EarthRecovery
                     || x.targetX < -1 || x.targetX > 5 || x.targetY < -1 || x.targetY > 5 || x.targetAngle < -1 || x.targetAngle > 3
                     || x.maze == null || (x.maze.Length != 0 && x.maze.Length != 36) || x.maze.Any(n => n != 0 && n != 1)) return false;
                 if (x.targetX >= 0 && (x.targetY < 0 || x.targetAngle < 0 || (x.puzzleKind == PuzzleKind.Maze && x.maze.Length != 36))) return false;
-                if(!Text(x.sampleCode,32)||!Text(x.displayName,128)||!Text(x.category,128)||!Text(x.materialHint,256)||!Text(x.functionHint,256)||!Text(x.facilityHint,512)||!Text(x.clueText,1024)
+                if(!Text(x.sampleCode,32)||!Text(x.displayName,128)||!HumanContentSource.ValidHint(x.missionHint)||!Text(x.missionLocationHint,512)
                     || x.reveal<RevealLevel.Assignment||x.reveal>RevealLevel.Recovered||x.revealClues<0||x.revealClues>2||x.facility<FacilityState.ModuleRequired||x.facility>FacilityState.Crafting) return false;
             }
             if (s.phase != Phase.Lobby && s.sites.Count(x => x.mission) != 3) return false;

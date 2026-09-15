@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221207c25f16bca48832983909053844, type: 3}
+  m_Name: HumanThingsVisualProfile
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.HumanThingsVisualProfile
+  environmentShader: {fileID: 4800000, guid: b2312efb57cad0744a2e450d5e388659, type: 3}
+  detailTexture: {fileID: 2800000, guid: 091d9a37d20364e4390804c4a85d333d, type: 2}
+  materialSaturation: 0.3
+  materialBrightness: 1
+  valueFloor: 0.105
+  concreteTint: {r: 0.84, g: 0.87, b: 0.88, a: 1}
+  roadTint: {r: 0.8, g: 0.82, b: 0.83, a: 1}
+  metalTint: {r: 0.73, g: 0.8, b: 0.83, a: 1}
+  vegetationTint: {r: 0.63, g: 0.7, b: 0.53, a: 1}
+  brickTint: {r: 0.86, g: 0.78, b: 0.71, a: 1}
+  dirt: 0.35
+  detailStrength: 0.12
+  wetness: 0.45
+  detailNormal: 0.012
+  concreteSmoothness: 0.08
+  roadSmoothness: 0.12
+  metalSmoothness: 0.24
+  lightRotation: {x: 28, y: -35, z: 0}
+  lightColor: {r: 0.86, g: 0.9, b: 0.92, a: 1}
+  lightIntensity: 1.05
+  shadowStrength: 0.8
+  ambientSky: {r: 0.42, g: 0.46, b: 0.48, a: 1}
+  ambientEquator: {r: 0.28, g: 0.3, b: 0.31, a: 1}
+  ambientGround: {r: 0.13, g: 0.14, b: 0.15, a: 1}
+  fogColor: {r: 0.395, g: 0.41, b: 0.415, a: 1}
+  fogDensity: 0.0065
+  exposure: 0.1
+  saturation: -40
+  contrast: 9
+  temperature: -2
+  bloom: 0.06
+  bloomThreshold: 1.4
+  vignette: 0.1
+  localLights: 1
+  localLightBudget: 4
+  localLightIntensity: 1.8
+  localLightRange: 7
+  localLightColor: {r: 0.82, g: 0.74, b: 0.58, a: 1}

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: EarthRecovery::EarthRecovery.LocationDefinition
   id: COM_RESTAURANT
   displayNameKnown: "\uC2DD\uB2F9"
-  displayNameUnknown: "\uC2DD\uB7C9 \uAC00\uC5F4 \uBC0F \uACF5\uB3D9 \uC12D\uCDE8\uB97C
-    \uC704\uD55C \uC0C1\uC5C5 \uC2DC\uC124"
+  missionLocationHint: "\uC2DD\uC7AC\uB8CC\uB97C \uAC00\uC5F4\uD558\uACE0 \uC5EC\uB7EC
+    \uC0AC\uB78C\uC774 \uC2DD\uC0AC\uB97C \uD558\uB358 \uC0C1\uC5C5 \uC2DC\uC124"
   moduleName: "\uC5F4\uCC98\uB9AC \uC124\uBE44 \uBCF5\uC6D0 \uBAA8\uB4C8"
   zone: 0
   artifacts:

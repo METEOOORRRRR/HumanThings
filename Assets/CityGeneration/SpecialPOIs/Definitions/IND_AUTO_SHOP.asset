@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db53a0601c55f754c9c1e3c1b497d533, type: 3}
+  m_Name: IND_AUTO_SHOP
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.SpecialPOIDefinition
+  id: IND_AUTO_SHOP
+  displayName: "\uC815\uBE44\uC18C"
+  prefab: {fileID: 3285819700415490333, guid: f1769913e23220b41bbfd4d06d167689, type: 3}
+  boundsCenter: {x: 0, y: 1.97, z: 0}
+  boundsSize: {x: 10.4, y: 4.06, z: 10.4}
+  footprint: {x: 10.4, y: 10.4}
+  frontFacesRoad: 1
+  localForward: {x: 0, y: 0, z: -1}
+  minDistanceFromOtherPOI: 0
+  minDistanceFromBaseCamp: 0
+  placementEnabled: 1
+  tags:
+  - ind
+  - ind_auto_shop

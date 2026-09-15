@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: EarthRecovery::EarthRecovery.LocationDefinition
   id: CUL_SCHOOL
   displayNameKnown: "\uD559\uAD50"
-  displayNameUnknown: "\uC5B4\uB9B0 \uC778\uAC04\uC5D0\uAC8C \uC9C0\uC2DD\uACFC \uADDC\uBC94\uC744
-    \uC804\uB2EC\uD558\uB358 \uAD50\uC721 \uC2DC\uC124"
+  missionLocationHint: "\uC5B4\uB9B0 \uC778\uAC04\uC5D0\uAC8C \uC9C0\uC2DD\uACFC
+    \uC0AC\uD68C \uADDC\uBC94\uC744 \uAD50\uC721\uD558\uB358 \uC2DC\uC124"
   moduleName: "\uAD50\uC721 \uC124\uBE44 \uBCF5\uC6D0 \uBAA8\uB4C8"
   zone: 4
   artifacts:

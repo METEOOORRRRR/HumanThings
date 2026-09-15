@@ -1,6 +1,8 @@
 {
   "name": "EarthRecovery.Tests",
-  "references": ["EarthRecovery"],
+  "references": ["EarthRecovery", "EarthRecovery.Editor", "Unity.RenderPipelines.Universal.Runtime", "Unity.RenderPipelines.Core.Runtime"],
+  "overrideReferences": true,
+  "precompiledReferences": ["nunit.framework.dll"],
   "includePlatforms": ["Editor"],
   "optionalUnityReferences": ["TestAssemblies"]
 }

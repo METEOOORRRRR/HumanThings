@@ -1,0 +1,3 @@
+5 narrow residual blocks excluded (minimum side 8m).
+Lamp: placed 7/9 (fit/clearance/candidate limit).
+Road markings use fitted surface tiles; lane markings at junctions are approximate.

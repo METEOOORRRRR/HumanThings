@@ -8,10 +8,41 @@ namespace EarthRecovery.Editor
 {
     public static class HumanContentBuilder
     {
-        [Serializable] public sealed class Seed { public LocationSeed[] locations; public ArtifactSeed[] artifacts; }
-        [Serializable] public sealed class LocationSeed { public string id, displayNameKnown, displayNameUnknown, moduleName; public int zone; public string[] artifactIds; }
-        [Serializable] public sealed class ArtifactSeed { public string id, locationId, trueNameKo, trueNameEn, categoryTag, materialHint, functionHint, facilityHint, archiveDescription, marsComment; public string[] level1Clues, level2Clues; }
         const string Folder = "Assets/Resources/HumanThings";
+        [MenuItem("Earth Recovery/Update Artifact Text Data")]
+        public static void UpdateTextData()
+        {
+            var source = HumanContentSource.Parse(File.ReadAllText("Assets/Resources/HumanThingsSeed.json"));
+            var db = AssetDatabase.LoadAssetAtPath<HumanContent>("Assets/Resources/HumanContent.asset");
+            if (db == null || db.locations.Length != 15 || db.artifacts.Length != 45
+                || db.locations.Any(l => l == null) || db.artifacts.Any(a => a == null)
+                || db.locations.Select(l => l.id).Distinct().Count() != 15 || db.artifacts.Select(a => a.id).Distinct().Count() != 45)
+                throw new InvalidOperationException("Existing content database is incomplete");
+            // Validate identities before updating text; do not regenerate prefabs, recipes or layout.
+            foreach (var l in source.locations)
+            {
+                var target = db.locations.SingleOrDefault(x => x.id == l.id);
+                if (target == null || target.zone != l.zone || !target.artifacts.Select(a => a.id).SequenceEqual(l.artifactIds))
+                    throw new InvalidOperationException("Location mapping changed: " + l.id);
+            }
+            foreach (var a in source.artifacts)
+                if (!db.artifacts.Any(x => x.id == a.id && x.locationId == a.locationId))
+                    throw new InvalidOperationException("Artifact identity changed: " + a.id);
+            foreach (var l in source.locations)
+            {
+                var target = db.locations.Single(x => x.id == l.id);
+                target.displayNameKnown = l.displayNameKnown; target.missionLocationHint = l.missionLocationHint; target.moduleName = l.moduleName;
+                EditorUtility.SetDirty(target);
+            }
+            foreach (var a in source.artifacts)
+            {
+                var target = db.artifacts.Single(x => x.id == a.id);
+                JsonUtility.FromJsonOverwrite(JsonUtility.ToJson(a), target);
+                EditorUtility.SetDirty(target);
+            }
+            db.Validate(); AssetDatabase.SaveAssets();
+            Debug.Log("ARTIFACT_TEXT_IMPORT_PASS locations=15 artifacts=45 identities=unchanged");
+        }
         static T Asset<T>(string path) where T : ScriptableObject
         { var a = AssetDatabase.LoadAssetAtPath<T>(path); if (a == null) { a = ScriptableObject.CreateInstance<T>(); AssetDatabase.CreateAsset(a, path); } return a; }
         static GameObject Shape(Transform root, string name, Vector3 p, Vector3 scale, PrimitiveType primitive = PrimitiveType.Cube)
@@ -27,7 +58,7 @@ namespace EarthRecovery.Editor
         public static void Build()
         {
             Directory.CreateDirectory(Folder + "/Prefabs"); AssetDatabase.Refresh();
-            var seed = JsonUtility.FromJson<Seed>(File.ReadAllText("Assets/Resources/HumanThingsSeed.json"));
+            var seed = HumanContentSource.Parse(File.ReadAllText("Assets/Resources/HumanThingsSeed.json"));
             var db = Asset<HumanContent>("Assets/Resources/HumanContent.asset");
             var puzzles = new PuzzleProfile[3];
             for (int i = 0; i < 3; i++) { puzzles[i] = Asset<PuzzleProfile>(Folder + "/Puzzle" + i + ".asset"); puzzles[i].puzzleType = (PuzzleKind)i; EditorUtility.SetDirty(puzzles[i]); }
@@ -36,7 +67,6 @@ namespace EarthRecovery.Editor
             {
                 var data = seed.artifacts[i]; var a = Asset<ArtifactDefinition>(Folder + "/" + data.id + ".asset");
                 JsonUtility.FromJsonOverwrite(JsonUtility.ToJson(data), a);
-                a.dataTags = new[]{ data.categoryTag, data.materialHint, data.functionHint };
                 a.carryProfile = new CarryProfile { twoHanded = data.trueNameEn is "Piano" or "Drum Set" or "Tire", speedMultiplier = data.trueNameEn == "Piano" ? .7f : 1 };
                 var go = new GameObject("Unidentified specimen"); var visual = Shape(go.transform, "Specimen shell", Vector3.zero, Vector3.one * .7f, (PrimitiveType)(i % 3));
                 foreach (var c in go.GetComponentsInChildren<Collider>()) UnityEngine.Object.DestroyImmediate(c);
@@ -53,7 +83,7 @@ namespace EarthRecovery.Editor
             for (int i = 0; i < db.locations.Length; i++)
             {
                 var data = seed.locations[i]; var l = Asset<LocationDefinition>(Folder + "/" + data.id + ".asset");
-                l.id = data.id; l.zone = data.zone; l.displayNameKnown = data.displayNameKnown; l.displayNameUnknown = data.displayNameUnknown; l.moduleName = data.moduleName;
+                l.id = data.id; l.zone = data.zone; l.displayNameKnown = data.displayNameKnown; l.missionLocationHint = data.missionLocationHint; l.moduleName = data.moduleName;
                 l.artifacts = data.artifactIds.Select(id => db.artifacts.First(a => a.id == id)).ToArray(); l.puzzle = puzzles[i % 3];
                 l.recipe = Asset<RestorationRecipe>(Folder + "/MOD_" + data.id + ".asset"); l.recipe.id = "MOD_" + data.id; l.recipe.locationId = data.id; EditorUtility.SetDirty(l.recipe);
                 var go = new GameObject(data.id); var c = go.AddComponent<LocationController>(); c.definition = l;

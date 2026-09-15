@@ -1,0 +1,66 @@
+[
+  {
+    "View": "Street",
+    "Pass": "Original",
+    "MeanLuma": 0.3806,
+    "MeanSaturation": 0.0796,
+    "DarkPercent": 0.0,
+    "MagentaPixels": 0
+  },
+  {
+    "View": "Street",
+    "Pass": "Pass5",
+    "MeanLuma": 0.183,
+    "MeanSaturation": 0.0582,
+    "DarkPercent": 1.41,
+    "MagentaPixels": 0
+  },
+  {
+    "View": "Boulevard",
+    "Pass": "Original",
+    "MeanLuma": 0.2938,
+    "MeanSaturation": 0.0985,
+    "DarkPercent": 0.0,
+    "MagentaPixels": 0
+  },
+  {
+    "View": "Boulevard",
+    "Pass": "Pass5",
+    "MeanLuma": 0.1414,
+    "MeanSaturation": 0.0448,
+    "DarkPercent": 11.2,
+    "MagentaPixels": 0
+  },
+  {
+    "View": "Detail",
+    "Pass": "Original",
+    "MeanLuma": 0.3512,
+    "MeanSaturation": 0.0946,
+    "DarkPercent": 0.0,
+    "MagentaPixels": 0
+  },
+  {
+    "View": "Detail",
+    "Pass": "Pass5",
+    "MeanLuma": 0.1902,
+    "MeanSaturation": 0.0462,
+    "DarkPercent": 2.45,
+    "MagentaPixels": 0
+  },
+  {
+    "View": "Overview",
+    "Pass": "Original",
+    "MeanLuma": 0.3199,
+    "MeanSaturation": 0.081,
+    "DarkPercent": 0.0,
+    "MagentaPixels": 0
+  },
+  {
+    "View": "Overview",
+    "Pass": "Pass5",
+    "MeanLuma": 0.2015,
+    "MeanSaturation": 0.0376,
+    "DarkPercent": 0.01,
+    "MagentaPixels": 0
+  }
+]

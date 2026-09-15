@@ -3,12 +3,16 @@ using UnityEngine;
 namespace EarthRecovery
 {
     [Serializable] public sealed class CarryProfile { public float speedMultiplier = 1; public bool twoHanded; public float noiseRadius; }
+    [Serializable] public sealed class MissionHint
+    {
+        public string category = "", structure = "", function = "";
+    }
     [CreateAssetMenu(menuName = "Human Things/Artifact")]
     public sealed class ArtifactDefinition : ScriptableObject
     {
-        public string id, locationId, trueNameKo, trueNameEn, categoryTag, materialHint, functionHint, facilityHint;
-        public string[] level1Clues, level2Clues;
-        public string[] dataTags;
+        public string id, locationId, trueNameKo, trueNameEn;
+        public MissionHint missionHint = new();
+        public string[] archiveDetails = Array.Empty<string>();
         [TextArea] public string archiveDescription, marsComment;
         public GameObject worldPrefab;
         public CarryProfile carryProfile = new();

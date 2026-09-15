@@ -57,7 +57,8 @@ namespace EarthRecovery
             {
                 float angle=(float)random.NextDouble()*Mathf.PI*2, distance=8+(float)random.NextDouble()*18;
                 var candidate=m.position+new Vector3(Mathf.Cos(angle),0,Mathf.Sin(angle))*distance;
-                candidate.x=Mathf.Clamp(candidate.x,-69,69); candidate.z=Mathf.Clamp(candidate.z,-69,69);
+                var half = game.State.mapSize * .5f - Vector2.one * 6;
+                candidate.x=Mathf.Clamp(candidate.x,-half.x,half.x); candidate.z=Mathf.Clamp(candidate.z,-half.y,half.y);
                 if (!NavMesh.SamplePosition(candidate,out var hit,4,agent.areaMask) || WorldGeometry.Safe(game.State,hit.position)
                     || Vector3.Distance(hit.position,m.position)<5) continue;
                 if (agent.CalculatePath(hit.position,patrolPath) && patrolPath.status==NavMeshPathStatus.PathComplete)

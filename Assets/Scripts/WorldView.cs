@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 namespace EarthRecovery
 {
-    public sealed class WorldView : MonoBehaviour
+    public sealed partial class WorldView : MonoBehaviour
     {
         public NetworkSession session;
         public GameHud hud;
@@ -86,11 +86,19 @@ namespace EarthRecovery
             {
                 var instance = Instantiate(HumanContent.Load().locations[siteId].prefab, position, Quaternion.Euler(0, quarter * 90, 0), root);
                 locations[siteId] = instance.GetComponent<LocationController>();
+                if (City != null)
+                {
+                    var exterior = City.specialPOIs.Single(p => p.id == HumanContent.Load().locations[siteId].id);
+                    instance.transform.SetParent(exterior.instance.transform, true);
+                    foreach (var renderer in instance.GetComponentsInChildren<MeshRenderer>())
+                        if (renderer.name == "Floor" || renderer.name == "Front" || renderer.name == "Rear" || renderer.name == "Side")
+                            renderer.gameObject.SetActive(false);
+                }
                 var console = instance.transform.Find("Console");
                 if (console != null) console.GetComponent<Renderer>().sharedMaterial = Material(new Color(.12f, .65f, .72f));
                 Label("시설 단말기", new Vector3(0, 2.2f, 2), instance.transform, 22);
                 SafeVolume(instance.transform, new Vector3(10.4f,6,10.4f));
-                Label(name,new Vector3(0,3.1f,-5.25f),instance.transform);
+                if (City == null) Label(name,new Vector3(0,3.1f,-5.25f),instance.transform);
                 behaviorAnchors.AddRange(instance.GetComponentsInChildren<WorldBehaviorAnchor>());
                 return;
             }
@@ -127,13 +135,16 @@ namespace EarthRecovery
             foreach (var m in materials) Destroy(m); materials.Clear();
             bodies.Clear(); controllers.Clear(); torches.Clear(); loot.Clear(); objects.Clear(); monsters.Clear(); agents.Clear();
             moduleVisuals.Clear(); locations.Clear(); behaviorAnchors.Clear();
-            root = new GameObject("Generated greybox world").transform;
-            Shape("Ground", PrimitiveType.Cube, new Vector3(0, -.55f, 0), new Vector3(150, 1, 150), new Color(.29f, .32f, .32f), root);
+            City = null;
+            root = new GameObject(state.cityWorld ? "Expedition city world" : "Lobby world").transform;
+            var size = state.mapSize;
+            Shape("Ground", PrimitiveType.Cube, new Vector3(0, -.55f, 0), new Vector3(size.x, 1, size.y), new Color(.29f, .32f, .32f), root);
             foreach (int side in new[] { -1, 1 })
             {
-                Shape("Map boundary", PrimitiveType.Cube, new Vector3(side * 74, 2, 0), new Vector3(1, 4, 150), Color.gray, root);
-                Shape("Map boundary", PrimitiveType.Cube, new Vector3(0, 2, side * 74), new Vector3(150, 4, 1), Color.gray, root);
+                Shape("Map boundary", PrimitiveType.Cube, new Vector3(side * (size.x / 2 - .5f), 2, 0), new Vector3(1, 4, size.y), Color.gray, root);
+                Shape("Map boundary", PrimitiveType.Cube, new Vector3(0, 2, side * (size.y / 2 - .5f)), new Vector3(size.x, 4, 1), Color.gray, root);
             }
+            if (state.cityWorld) BuildCity(state);
             Building("베이스캠프", Vector3.zero, 0, true);
             Instantiate(HumanContent.Load().recoveryPrefab,Vector3.zero,Quaternion.identity,root);
             if (state.phase != Phase.Lobby)
@@ -148,14 +159,14 @@ namespace EarthRecovery
                     Label("복원기 " + (station.id+1),Vector3.up*3,go.transform,24);
                 }
                 var rng = new System.Random(state.seed ^ 89123);
-                for (int i = 0; i < 45; i++)
+                for (int i = 0; !state.cityWorld && i < 45; i++)
                 {
                     var pos = new Vector3(rng.Next(-67, 68), 0, rng.Next(-67, 68));
                     if (WorldGeometry.Safe(state, pos) || state.sites.Any(s => Vector3.Distance(s.position, pos) < 10 || Vector3.Distance(WorldGeometry.Entrance(s), pos) < 6)
                         || state.loot.Any(l => Vector3.Distance(l.position, pos) < 3) || pos.magnitude < 12) continue;
                     Shape("Rubble", PrimitiveType.Cube, pos + Vector3.up * .8f, new Vector3(1.5f, 1.6f, 2), new Color(.34f, .35f, .33f), root);
                 }
-                for (int d = 0; d < HumanContent.Load().zones.Length; d++)
+                for (int d = 0; !state.cityWorld && d < HumanContent.Load().zones.Length; d++)
                 {
                     Vector3 center = Catalog.DistrictCenter(d);
                     var sign = new GameObject("District sign").transform; sign.SetParent(root); sign.position = center + new Vector3(0, 0, -19);
@@ -170,7 +181,10 @@ namespace EarthRecovery
                 surface = root.gameObject.AddComponent<NavMeshSurface>(); surface.collectObjects = CollectObjects.Children;
                 surface.useGeometry = NavMeshCollectGeometry.PhysicsColliders; surface.layerMask = 1 << 8;
                 surface.BuildNavMesh();
+                if (state.cityWorld && session.IsHost) ValidateCitySpawns(state);
             }
+            if (state.cityWorld)
+                root.gameObject.AddComponent<HumanThingsVisualTreatment>().Apply(Resources.Load<HumanThingsVisualProfile>("HumanThingsVisualProfile"), eye, sun.GetComponent<Light>());
         }
         GameObject Body(PlayerState p)
         {
@@ -182,7 +196,7 @@ namespace EarthRecovery
             torch.type = LightType.Spot; torch.range = 22; torch.spotAngle = 50; torch.intensity = 3; torches[p.id] = torch;
             if (session.IsHost)
             {
-                var cc = body.AddComponent<CharacterController>(); cc.height = 1.8f; cc.radius = .3f; cc.center = Vector3.up * .9f; cc.stepOffset = .2f;
+                var cc = body.AddComponent<CharacterController>(); cc.height = 1.8f; cc.radius = .3f; cc.center = Vector3.up * .9f; cc.stepOffset = .45f;
                 controllers[p.id] = cc;
             }
             bodies[p.id] = body; return body;
@@ -241,7 +255,9 @@ namespace EarthRecovery
         void Update()
         {
             var state = session.IsHost ? session.HostGame.State : session.View;
-            EnsureWorld(session.IsHost ? session.HostGame.State : state);
+            try { EnsureWorld(state); }
+            catch (System.Exception e) when (e is System.InvalidOperationException || e is System.ArgumentException)
+            { session.Leave(); session.Status = "맵 생성 실패: " + e.Message; return; }
             foreach (var p in state.players)
             {
                 var body = Body(p);

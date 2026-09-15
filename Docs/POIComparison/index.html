@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HumanThings · 장소 배치 검증</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f5f6;color:#182226;font:15px/1.6 "Malgun Gothic",sans-serif}header{padding:18px 28px;border-bottom:1px solid #bdc7cd;background:white}h1{font-size:23px;margin:0}main{max-width:1600px;margin:auto;padding:24px}h2{font-size:20px;margin:24px 0 12px}button,select{font:inherit;padding:8px 14px;border:1px solid #a7b4bb;background:white;color:#182226;border-radius:3px;cursor:pointer}button[aria-selected=true]{background:#174e53;color:white}nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}img{max-width:100%;height:auto;display:block}a{color:#14656d}table{border-collapse:collapse;width:100%;background:white}th,td{padding:8px 12px;text-align:left;border-bottom:1px solid #d6dde0;white-space:nowrap}.scroll{overflow:auto}.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.pair label{display:block;margin-bottom:10px}.facades{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.facades figure{margin:0}.facades figcaption{background:white;padding:8px}.status{color:#166a48}small{color:#52636b}@media(max-width:760px){main{padding:12px}.pair,.facades{grid-template-columns:1fr}header{padding:16px}}
+</style>
+<header><h1>HumanThings · 고정 장소 15개 배치 검증</h1><span>World Seeds 100 / 200 / 300 / 400 / 500</span></header>
+<main>
+<div id="status" class="status"></div>
+<p>시각 검토 주의: 간판의 이름·한글·정면 배치는 정상입니다. 다만 일부 정면 시점에서는 앞쪽 신호등이 글자를 가립니다. 확대 사진은 주변 소품을 숨기지 않은 실제 배치 상태입니다.</p>
+<h2>전체 맵 비교</h2>
+<a href="MapComparison.png" target="_blank"><img src="MapComparison.png" alt="Seed 다섯 개의 동일 시점 맵 비교"></a>
+<small>흰 번호·점선·청록색 캠프 표시는 캡처 위에 추가한 비교 주석입니다. 아래에서 원본 캡처도 열 수 있습니다.</small>
+<h2>두 Seed 나란히 보기</h2>
+<div class="pair"><section><label>왼쪽 <select id="left"></select></label><a id="left-link" target="_blank"><img id="left-image" alt="왼쪽 Seed 맵"></a></section><section><label>오른쪽 <select id="right"></select></label><a id="right-link" target="_blank"><img id="right-image" alt="오른쪽 Seed 맵"></a></section></div>
+<h2>Seed별 결과 및 15개 외관·간판</h2>
+<nav id="seeds" role="tablist"></nav><p id="summary"></p><p id="links"></p>
+<div class="scroll"><table><thead><tr><th>번호</th><th>장소</th><th>청크</th><th>X</th><th>Z</th><th>전용 외관</th><th>간판 생성·방향</th></tr></thead><tbody id="rows"></tbody></table></div>
+<h2>실제 배치된 외관 확대</h2><div class="facades" id="facades"></div>
+<p><a href="Report.json" target="_blank">전체 검사 결과 JSON</a></p>
+</main>
+<script src="report-data.js"></script>
+<script>
+const report=window.POI_REPORT;
+document.querySelector('#status').textContent=report.passed?'5개 월드 구조 검증 통과 · 75개 장소 인스턴스 · 장소별 5개 위치 모두 다름 · Seed 100 재현 확인':'검증 실패 항목 있음: Report.json 확인';
+function imageLink(path){const a=document.createElement('a');a.href=path;a.target='_blank';return a;}
+function selectSeed(seed){
+const s=report.seeds.find(s=>s.seed===seed);
+document.querySelectorAll('#seeds button').forEach(b=>b.setAttribute('aria-selected',String(+b.dataset.seed===seed)));
+document.querySelector('#summary').textContent=`Seed ${seed} · 장소 ${s.pois.length}/15 · 분포 ${s.chunks.map(c=>c.id+': '+c.count).join(' / ')} · 캠프 (${s.campPosition.x.toFixed(1)}, ${s.campPosition.z.toFixed(1)}) · 일반 건물 Renderer 겹침 ${s.ordinaryBuildingOverlaps}`;
+const links=document.querySelector('#links');links.replaceChildren();
+for(const [label,path] of [['주석 맵',`Seed${seed}-Annotated.png`],['원본 맵',`Seed${seed}-Map.png`],['15개 외관 모음',`Seed${seed}-Facades.png`]]){const a=imageLink(path);a.textContent=label;links.append(a,document.createTextNode('　'));}
+const rows=document.querySelector('#rows'),facades=document.querySelector('#facades');rows.replaceChildren();facades.replaceChildren();
+for(const p of s.pois){const tr=document.createElement('tr');for(const v of [p.number,p.name,p.chunk,p.position.x.toFixed(2),p.position.z.toFixed(2),p.fixedPrefab?'일치':'실패',p.labelCorrect?'정상':'실패']){const td=document.createElement('td');td.textContent=v;tr.append(td);}rows.append(tr);const f=document.createElement('figure'),a=imageLink(p.image),im=document.createElement('img'),caption=document.createElement('figcaption');im.src=p.image;im.loading='lazy';im.alt=p.name+' 외관 및 간판';a.append(im);caption.textContent=`${p.number}. ${p.name} · ${p.chunk}`;f.append(a,caption);facades.append(f);}
+}
+for(const s of report.seeds){const b=document.createElement('button');b.dataset.seed=s.seed;b.textContent='Seed '+s.seed;b.role='tab';b.onclick=()=>selectSeed(s.seed);document.querySelector('#seeds').append(b);}
+for(const side of ['left','right']){const select=document.querySelector('#'+side);for(const s of report.seeds){const o=document.createElement('option');o.value=s.seed;o.textContent='Seed '+s.seed;select.append(o);}select.value=side==='left'?100:200;select.onchange=()=>{const p=`Seed${select.value}-Annotated.png`;document.querySelector('#'+side+'-image').src=p;document.querySelector('#'+side+'-link').href=p;};select.onchange();}
+selectSeed(100);
+</script>
+</html>

@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 920b4fbd4cee3ce4ea0cbb5ad6780b02, type: 3}
+  m_Name: StandardCity
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.CityWorldTemplate
+  templateName: StandardCity
+  description: Connected districts populated by existing measured city templates.
+  worldWidthRange:
+    min: 540
+    max: 600
+  worldDepthRange:
+    min: 540
+    max: 600
+  chunkCountXRange:
+    min: 3
+    max: 3
+  chunkCountZRange:
+    min: 3
+    max: 3
+  chunkTemplates:
+  - district: 2
+    template: {fileID: 11400000, guid: f41270f4a1f41e6488c2b7b60e5cc93e, type: 2}
+    weight: 2
+  - district: 2
+    template: {fileID: 11400000, guid: d98aca3a31413294b96109613630229b, type: 2}
+    weight: 1
+  - district: 0
+    template: {fileID: 11400000, guid: d067dbe63da97154293b9c8aa6773fb6, type: 2}
+    weight: 2
+  - district: 6
+    template: {fileID: 11400000, guid: 809a3ca77f39db145ae98182b81afad7, type: 2}
+    weight: 1.5
+  - district: 4
+    template: {fileID: 11400000, guid: b6e5f99de3d69ce45aaaa5e41a071228, type: 2}
+    weight: 1
+  - district: 3
+    template: {fileID: 11400000, guid: c3d1927a2bd33be40b64fa9d510b6c6b, type: 2}
+    weight: 1
+  adjacency:
+  - a: 3
+    b: 0
+    multiplier: 2
+  - a: 3
+    b: 6
+    multiplier: 2
+  - a: 4
+    b: 0
+    multiplier: 2
+  - a: 4
+    b: 3
+    multiplier: 2
+  - a: 1
+    b: 2
+    multiplier: 2
+  - a: 1
+    b: 5
+    multiplier: 2
+  - a: 5
+    b: 0
+    multiplier: 2
+  extraConnectionChance: 0.22
+  maxSameDistrictRun: 2
+  mainRoadWidth: 14
+  sideRoadWidth: 8
+  sidewalkWidth: 6
+  specialPOIDatabase: {fileID: 11400000, guid: 086f2fff93b1f4840b97ad09dbd2af20, type: 2}
+  baseCamp: {fileID: 11400000, guid: c4e9235ab7fa09a4381d1b0234f33c5c, type: 2}
+  specialPOISettings:
+    footprintDistanceFactor: 2
+    chunkDistanceRatio: 0.2
+    maxRetries: 10
+    searchBudgetPerRetry: 10000
+    showDebugLocationLabels: 1
+    labelFont: {fileID: 11400000, guid: 81fffc7e1e7fb7e42b84b8fb6983d48c, type: 2}
+  columnVariation: 0.12

@@ -4,181 +4,181 @@
       "id": "COM_MUSIC_STORE",
       "zone": 0,
       "displayNameKnown": "악기점",
-      "displayNameUnknown": "다수의 목재·금속 음향 구조물이 보관된 상업 시설",
       "moduleName": "공명 설비 복원 모듈",
       "artifactIds": [
         "HT_A01_01",
         "HT_A01_02",
         "HT_A01_03"
-      ]
+      ],
+      "missionLocationHint": "음향을 만드는 다양한 구조물이 보관·판매되던 상업 시설"
     },
     {
       "id": "COM_RESTAURANT",
       "zone": 0,
       "displayNameKnown": "식당",
-      "displayNameUnknown": "식량 가열 및 공동 섭취를 위한 상업 시설",
       "moduleName": "열처리 설비 복원 모듈",
       "artifactIds": [
         "HT_A02_01",
         "HT_A02_02",
         "HT_A02_03"
-      ]
+      ],
+      "missionLocationHint": "식재료를 가열하고 여러 사람이 식사를 하던 상업 시설"
     },
     {
       "id": "COM_ELECTRONICS",
       "zone": 0,
       "displayNameKnown": "전자상가",
-      "displayNameUnknown": "통신·기록·오락용 전자 장치를 판매한 시설",
       "moduleName": "회로 설비 복원 모듈",
       "artifactIds": [
         "HT_A03_01",
         "HT_A03_02",
         "HT_A03_03"
-      ]
+      ],
+      "missionLocationHint": "통신·기록·오락에 쓰이는 전자 장치를 판매하던 상업 시설"
     },
     {
       "id": "RES_TOY_STORE",
       "zone": 1,
       "displayNameKnown": "문방구",
-      "displayNameUnknown": "어린 개체의 놀이와 모방을 위한 물건을 판매한 시설",
       "moduleName": "소형 구동 설비 복원 모듈",
       "artifactIds": [
         "HT_B01_01",
         "HT_B01_02",
         "HT_B01_03"
-      ]
+      ],
+      "missionLocationHint": "어린 개체의 놀이와 모방 활동을 위한 물건을 판매하던 소형 상점"
     },
     {
       "id": "RES_CLOTHING",
       "zone": 1,
       "displayNameKnown": "의류점",
-      "displayNameUnknown": "신체 외부에 착용하는 섬유 물품을 관리·판매한 시설",
       "moduleName": "섬유 가공 설비 복원 모듈",
       "artifactIds": [
         "HT_B02_01",
         "HT_B02_02",
         "HT_B02_03"
-      ]
+      ],
+      "missionLocationHint": "신체에 착용하는 섬유 제품과 생활 보호용품을 판매하던 상점"
     },
     {
       "id": "RES_CONVENIENCE",
       "zone": 1,
       "displayNameKnown": "편의점",
-      "displayNameUnknown": "짧은 시간에 일상용품을 구매하던 소형 생활 시설",
       "moduleName": "생활용품 조립 모듈",
       "artifactIds": [
         "HT_B03_01",
         "HT_B03_02",
         "HT_B03_03"
-      ]
+      ],
+      "missionLocationHint": "다양한 일상용품과 소형 소비재를 한곳에서 판매하던 소형 생활 상점"
     },
     {
       "id": "IND_TOOL_SHOP",
       "zone": 2,
       "displayNameKnown": "공구점",
-      "displayNameUnknown": "손과 기계의 힘을 증폭하는 도구를 보관한 산업 시설",
       "moduleName": "기계 가공 설비 복원 모듈",
       "artifactIds": [
         "HT_C01_01",
         "HT_C01_02",
         "HT_C01_03"
-      ]
+      ],
+      "missionLocationHint": "수작업과 기계 작업에 사용하는 각종 도구를 보관·판매하던 산업 상점"
     },
     {
       "id": "IND_AUTO_SHOP",
       "zone": 2,
       "displayNameKnown": "정비소",
-      "displayNameUnknown": "바퀴 기반 개인 이동기계를 수리하던 시설",
       "moduleName": "동력계 복원 모듈",
       "artifactIds": [
         "HT_C02_01",
         "HT_C02_02",
         "HT_C02_03"
-      ]
+      ],
+      "missionLocationHint": "바퀴식 개인 이동기계의 부품을 교체하고 수리하던 작업 시설"
     },
     {
       "id": "IND_PRINT_SHOP",
       "zone": 2,
       "displayNameKnown": "인쇄소",
-      "displayNameUnknown": "문자와 이미지를 대량 복제하던 생산 시설",
       "moduleName": "인쇄·복제 설비 복원 모듈",
       "artifactIds": [
         "HT_C03_01",
         "HT_C03_02",
         "HT_C03_03"
-      ]
+      ],
+      "missionLocationHint": "문자와 이미지를 종이 위에 반복적으로 출력·복제하던 생산 시설"
     },
     {
       "id": "RES_HOSPITAL",
       "zone": 3,
       "displayNameKnown": "병원",
-      "displayNameUnknown": "인간 신체를 측정하고 치료하던 시설",
       "moduleName": "의료 설비 복원 모듈",
       "artifactIds": [
         "HT_D01_01",
         "HT_D01_02",
         "HT_D01_03"
-      ]
+      ],
+      "missionLocationHint": "인간의 신체 상태를 측정하고 질환과 손상을 치료하던 시설"
     },
     {
       "id": "RES_LAB",
       "zone": 3,
       "displayNameKnown": "실험실",
-      "displayNameUnknown": "물질과 생명 현상을 정밀 관찰·실험하던 시설",
       "moduleName": "정밀 분석 설비 복원 모듈",
       "artifactIds": [
         "HT_D02_01",
         "HT_D02_02",
         "HT_D02_03"
-      ]
+      ],
+      "missionLocationHint": "물질과 생명 현상을 작은 규모에서 관찰하고 실험하던 연구 시설"
     },
     {
       "id": "RES_SIGNAL_STATION",
       "zone": 3,
       "displayNameKnown": "관측소",
-      "displayNameUnknown": "전파와 대기 환경을 측정·전달하던 연구 시설",
       "moduleName": "신호 분석 설비 복원 모듈",
       "artifactIds": [
         "HT_D03_01",
         "HT_D03_02",
         "HT_D03_03"
-      ]
+      ],
+      "missionLocationHint": "전파와 주변 환경의 변화를 측정하고 정보를 송수신하던 관측 시설"
     },
     {
       "id": "CUL_LIBRARY",
       "zone": 4,
       "displayNameKnown": "도서관",
-      "displayNameUnknown": "문자 기록을 대량 보관·열람하던 문화 시설",
       "moduleName": "기록 복원 설비 모듈",
       "artifactIds": [
         "HT_E01_01",
         "HT_E01_02",
         "HT_E01_03"
-      ]
+      ],
+      "missionLocationHint": "문자로 기록된 자료를 대량으로 보관하고 열람하던 문화 시설"
     },
     {
       "id": "CUL_SCHOOL",
       "zone": 4,
       "displayNameKnown": "학교",
-      "displayNameUnknown": "어린 인간에게 지식과 규범을 전달하던 교육 시설",
       "moduleName": "교육 설비 복원 모듈",
       "artifactIds": [
         "HT_E02_01",
         "HT_E02_02",
         "HT_E02_03"
-      ]
+      ],
+      "missionLocationHint": "어린 인간에게 지식과 사회 규범을 교육하던 시설"
     },
     {
       "id": "CUL_MUSEUM",
       "zone": 4,
       "displayNameKnown": "박물관",
-      "displayNameUnknown": "과거의 물건과 기억을 보존하고 전시하던 문화 시설",
       "moduleName": "보존·복원 설비 모듈",
       "artifactIds": [
         "HT_E03_01",
         "HT_E03_02",
         "HT_E03_03"
-      ]
+      ],
+      "missionLocationHint": "과거의 물건과 기록을 보존하고 사람들에게 공개하던 문화 시설"
     }
   ],
   "artifacts": [
@@ -187,855 +187,810 @@
       "locationId": "COM_MUSIC_STORE",
       "trueNameKo": "바이올린",
       "trueNameEn": "Violin",
-      "categoryTag": "음향 문화",
-      "materialHint": "목재/금속/섬유",
-      "functionHint": "진동으로 소리를 발생",
-      "facilityHint": "다수의 목재·금속 음향 구조물이 보관된 상업 시설",
-      "level1Clues": [
-        "현 4개"
-      ],
-      "level2Clues": [
-        "활 형태 보조도구",
-        "활 형태 보조도구"
-      ],
       "archiveDescription": "현을 마찰해 음악을 연주하는 현악기.",
-      "marsComment": "생존과 직접 관계없는 소리를 정교하게 만들었다."
+      "marsComment": "생존과 직접 관계없는 소리를 정교하게 만들었다.",
+      "missionHint": {
+        "category": "음향 문화",
+        "structure": "목재 몸체에 여러 개의 가는 장력선이 연결된 소형 구조물",
+        "function": "마찰로 발생한 진동을 증폭해 소리를 내는 것으로 추정"
+      },
+      "archiveDetails": [
+        "4개의 현이 일정한 간격으로 배치되어 있다.",
+        "별도의 활 모양 도구로 현을 마찰해 사용한다.",
+        "목과 어깨 사이에 고정해 연주하도록 설계되었다."
+      ]
     },
     {
       "id": "HT_A01_02",
       "locationId": "COM_MUSIC_STORE",
       "trueNameKo": "드럼 세트",
       "trueNameEn": "Drum Set",
-      "categoryTag": "리듬 문화",
-      "materialHint": "금속/목재/막",
-      "functionHint": "충격 반복을 통한 음향 발생",
-      "facilityHint": "다수의 목재·금속 음향 구조물이 보관된 상업 시설",
-      "level1Clues": [
-        "원형 막"
-      ],
-      "level2Clues": [
-        "페달",
-        "스틱"
-      ],
       "archiveDescription": "타격으로 리듬을 만드는 타악기 세트.",
-      "marsComment": "여러 인간이 같은 박자를 공유하는 데 사용했다."
+      "marsComment": "여러 인간이 같은 박자를 공유하는 데 사용했다.",
+      "missionHint": {
+        "category": "리듬 문화",
+        "structure": "크기가 다른 원형 막과 금속 구조물이 여러 개 결합된 장치",
+        "function": "반복적인 타격으로 서로 다른 음과 박자를 만드는 것으로 추정"
+      },
+      "archiveDetails": [
+        "여러 개의 북과 금속 원판이 한 세트로 구성된다.",
+        "손에 쥔 막대와 발로 조작하는 페달을 함께 사용한다.",
+        "여러 부위를 동시에 연주해 복합적인 리듬을 만든다."
+      ]
     },
     {
       "id": "HT_A01_03",
       "locationId": "COM_MUSIC_STORE",
       "trueNameKo": "피아노",
       "trueNameEn": "Piano",
-      "categoryTag": "음향 문화",
-      "materialHint": "목재/금속",
-      "functionHint": "다수 입력부에 따른 음향 발생",
-      "facilityHint": "다수의 목재·금속 음향 구조물이 보관된 상업 시설",
-      "level1Clues": [
-        "흑백 건반"
-      ],
-      "level2Clues": [
-        "내부 현",
-        "내부 현"
-      ],
       "archiveDescription": "건반으로 여러 음을 연주하는 대형 악기.",
-      "marsComment": "입력부가 88개이며 운반 효율은 매우 낮다."
+      "marsComment": "입력부가 88개이며 운반 효율은 매우 낮다.",
+      "missionHint": {
+        "category": "음향 문화",
+        "structure": "대형 목재 몸체에 다수의 반복 입력부가 배열된 구조물",
+        "function": "각 입력부를 누르면 내부 진동 구조가 작동해 서로 다른 음을 내는 것으로 추정"
+      },
+      "archiveDetails": [
+        "검은색과 흰색의 건반이 일정한 순서로 배열되어 있다.",
+        "건반 입력은 내부의 망치 구조와 현으로 전달된다.",
+        "표준형은 88개의 건반을 갖는다."
+      ]
     },
     {
       "id": "HT_A02_01",
       "locationId": "COM_RESTAURANT",
       "trueNameKo": "프라이팬",
       "trueNameEn": "Frying Pan",
-      "categoryTag": "식생활",
-      "materialHint": "금속/수지",
-      "functionHint": "열을 이용한 식품 가공",
-      "facilityHint": "식량 가열 및 공동 섭취를 위한 상업 시설",
-      "level1Clues": [
-        "평평한 가열면"
-      ],
-      "level2Clues": [
-        "손잡이",
-        "손잡이"
-      ],
       "archiveDescription": "식재료를 굽거나 볶는 조리도구.",
-      "marsComment": "불과 매우 가까이 두면서 손잡이는 차갑게 유지하려 했다."
+      "marsComment": "불과 매우 가까이 두면서 손잡이는 차갑게 유지하려 했다.",
+      "missionHint": {
+        "category": "식생활",
+        "structure": "넓고 얕은 금속 용기에 길게 돌출된 손잡이가 연결된 구조",
+        "function": "열원 위에서 식재료를 가열하고 섞는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "바닥면이 넓어 식재료를 직접 가열하기 적합하다.",
+        "손잡이는 뜨거운 본체와 거리를 두도록 길게 설계되었다.",
+        "굽기와 볶기 등 다양한 조리에 사용되었다."
+      ]
     },
     {
       "id": "HT_A02_02",
       "locationId": "COM_RESTAURANT",
       "trueNameKo": "젓가락",
       "trueNameEn": "Chopsticks",
-      "categoryTag": "식생활",
-      "materialHint": "목재/금속",
-      "functionHint": "식품을 집어 이동",
-      "facilityHint": "식량 가열 및 공동 섭취를 위한 상업 시설",
-      "level1Clues": [
-        "가는 막대 2개"
-      ],
-      "level2Clues": [
-        "쌍으로 사용",
-        "쌍으로 사용"
-      ],
       "archiveDescription": "두 막대를 손가락으로 조작하는 식사도구.",
-      "marsComment": "복잡한 손가락 제어를 식사에 일상적으로 사용했다."
+      "marsComment": "복잡한 손가락 제어를 식사에 일상적으로 사용했다.",
+      "missionHint": {
+        "category": "식생활",
+        "structure": "길고 가는 막대 두 개가 한 쌍을 이루는 단순한 구조",
+        "function": "두 막대를 손가락으로 조작해 작은 물체를 집는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "항상 두 개를 한 쌍으로 사용한다.",
+        "한 손의 손가락 움직임만으로 끝부분의 간격을 조절한다.",
+        "식사 중 음식물을 집어 옮기는 도구였다."
+      ]
     },
     {
       "id": "HT_A02_03",
       "locationId": "COM_RESTAURANT",
       "trueNameKo": "컵라면",
       "trueNameEn": "Cup Noodles",
-      "categoryTag": "즉석 식생활",
-      "materialHint": "종이/플라스틱/건조식품",
-      "functionHint": "열수 반응형 휴대 식량",
-      "facilityHint": "식량 가열 및 공동 섭취를 위한 상업 시설",
-      "level1Clues": [
-        "뚜껑"
-      ],
-      "level2Clues": [
-        "뜨거운 물",
-        "짧은 대기시간"
-      ],
       "archiveDescription": "뜨거운 물만으로 조리하는 즉석 면식.",
-      "marsComment": "조리 시간이 매우 짧다. 당시 인간 역시 시간이 부족했던 것으로 추정된다."
+      "marsComment": "조리 시간이 매우 짧다. 당시 인간 역시 시간이 부족했던 것으로 추정된다.",
+      "missionHint": {
+        "category": "즉석 식생활",
+        "structure": "건조 식품이 들어 있는 가벼운 일회용 용기와 밀봉 덮개로 구성",
+        "function": "고온의 물을 넣은 뒤 짧은 시간 안에 섭취 가능한 상태로 만드는 것으로 추정"
+      },
+      "archiveDetails": [
+        "용기 자체가 조리와 식사에 모두 사용된다.",
+        "뜨거운 물을 붓고 수 분간 기다려 조리한다.",
+        "장기 보관이 가능한 건조 면과 분말 조미료가 들어 있다."
+      ]
     },
     {
       "id": "HT_A03_01",
       "locationId": "COM_ELECTRONICS",
       "trueNameKo": "스마트폰",
       "trueNameEn": "Smartphone",
-      "categoryTag": "개인 전자",
-      "materialHint": "유리/금속/회로",
-      "functionHint": "통신·연산·기록",
-      "facilityHint": "통신·기록·오락용 전자 장치를 판매한 시설",
-      "level1Clues": [
-        "화면"
-      ],
-      "level2Clues": [
-        "카메라",
-        "터치 입력"
-      ],
       "archiveDescription": "다기능 휴대용 통신·연산 장치.",
-      "marsComment": "사용자가 장시간 화면을 바라본 기록이 많다. 이유는 불명."
+      "marsComment": "사용자가 장시간 화면을 바라본 기록이 많다. 이유는 불명.",
+      "missionHint": {
+        "category": "개인 전자",
+        "structure": "한쪽 면 대부분이 평평한 유리판으로 이루어진 소형 전자 장치",
+        "function": "통신·기록·연산 등 여러 기능을 하나의 장치에서 수행한 것으로 추정"
+      },
+      "archiveDetails": [
+        "화면을 직접 손가락으로 눌러 조작한다.",
+        "영상 촬영용 카메라와 음성 입출력 장치가 내장되어 있다.",
+        "통신, 사진, 정보 검색, 오락 등 다양한 기능을 통합했다."
+      ]
     },
     {
       "id": "HT_A03_02",
       "locationId": "COM_ELECTRONICS",
       "trueNameKo": "카메라",
       "trueNameEn": "Camera",
-      "categoryTag": "기록 기술",
-      "materialHint": "광학 유리/회로",
-      "functionHint": "광학 장면 기록",
-      "facilityHint": "통신·기록·오락용 전자 장치를 판매한 시설",
-      "level1Clues": [
-        "렌즈"
-      ],
-      "level2Clues": [
-        "셔터",
-        "저장매체"
-      ],
       "archiveDescription": "빛을 이용해 순간의 장면을 기록하는 장치.",
-      "marsComment": "사라질 순간을 보존하려는 행동이 반복적으로 관찰된다."
+      "marsComment": "사라질 순간을 보존하려는 행동이 반복적으로 관찰된다.",
+      "missionHint": {
+        "category": "기록 기술",
+        "structure": "전면에 투명한 원형 광학 부품이 돌출된 휴대형 전자 장치",
+        "function": "외부에서 들어오는 빛을 받아 장면을 기록하는 것으로 추정"
+      },
+      "archiveDetails": [
+        "여러 장의 렌즈를 통해 빛을 모은다.",
+        "셔터 조작으로 특정 순간을 기록한다.",
+        "기록된 이미지는 필름 또는 전자 저장매체에 보존된다."
+      ]
     },
     {
       "id": "HT_A03_03",
       "locationId": "COM_ELECTRONICS",
       "trueNameKo": "라디오",
       "trueNameEn": "Radio",
-      "categoryTag": "통신/오락",
-      "materialHint": "회로/금속",
-      "functionHint": "전파 수신 및 음향 출력",
-      "facilityHint": "통신·기록·오락용 전자 장치를 판매한 시설",
-      "level1Clues": [
-        "안테나"
-      ],
-      "level2Clues": [
-        "주파수 다이얼",
-        "주파수 다이얼"
-      ],
       "archiveDescription": "전파 방송을 수신해 소리로 출력하는 장치.",
-      "marsComment": "보이지 않는 곳의 목소리를 일상 공간에 가져왔다."
+      "marsComment": "보이지 않는 곳의 목소리를 일상 공간에 가져왔다.",
+      "missionHint": {
+        "category": "통신·오락",
+        "structure": "소리를 출력하는 본체와 외부 신호를 받기 위한 돌출형 수신 구조를 갖춘 장치",
+        "function": "원거리에서 전달되는 전파 신호를 소리로 변환하는 것으로 추정"
+      },
+      "archiveDetails": [
+        "안테나를 이용해 전파를 수신한다.",
+        "다이얼 또는 버튼으로 수신 주파수를 선택한다.",
+        "방송 음성이나 음악을 실시간으로 들을 수 있었다."
+      ]
     },
     {
       "id": "HT_B01_01",
       "locationId": "RES_TOY_STORE",
       "trueNameKo": "인형",
       "trueNameEn": "Doll",
-      "categoryTag": "아동 놀이",
-      "materialHint": "천/플라스틱",
-      "functionHint": "인간 형상 모방",
-      "facilityHint": "어린 개체의 놀이와 모방을 위한 물건을 판매한 시설",
-      "level1Clues": [
-        "옷"
-      ],
-      "level2Clues": [
-        "머리카락",
-        "얼굴"
-      ],
       "archiveDescription": "인간 형상을 축소해 만든 놀이도구.",
-      "marsComment": "아직 사회활동이 불가능한 어린 개체에게 성인 행동을 모방시켰다."
+      "marsComment": "아직 사회활동이 불가능한 어린 개체에게 성인 행동을 모방시켰다.",
+      "missionHint": {
+        "category": "아동 놀이",
+        "structure": "천과 수지로 만든 소형 인간 형태의 모형",
+        "function": "사람의 모습과 행동을 모방하는 놀이에 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "얼굴, 머리카락, 의복 등 인간의 특징을 축소해 표현한다.",
+        "옷이나 장식물을 교체할 수 있는 형태가 많다.",
+        "역할 놀이와 사회적 행동 모방에 사용되었다."
+      ]
     },
     {
       "id": "HT_B01_02",
       "locationId": "RES_TOY_STORE",
       "trueNameKo": "보드게임",
       "trueNameEn": "Board Game",
-      "categoryTag": "사회 놀이",
-      "materialHint": "종이/플라스틱",
-      "functionHint": "규칙 기반 경쟁/협력",
-      "facilityHint": "어린 개체의 놀이와 모방을 위한 물건을 판매한 시설",
-      "level1Clues": [
-        "판"
-      ],
-      "level2Clues": [
-        "말",
-        "규칙 문서"
-      ],
       "archiveDescription": "테이블 위 규칙으로 진행하는 놀이.",
-      "marsComment": "실제 자원이 아닌 가상의 승패를 위해 장시간 경쟁했다."
+      "marsComment": "실제 자원이 아닌 가상의 승패를 위해 장시간 경쟁했다.",
+      "missionHint": {
+        "category": "사회 놀이",
+        "structure": "평평한 판과 여러 개의 작은 표식, 규칙이 적힌 인쇄물로 구성된 세트",
+        "function": "정해진 규칙에 따라 여러 사람이 경쟁하거나 협력하는 놀이에 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "게임판 위에서 작은 말을 이동시키며 진행한다.",
+        "승패와 행동 순서는 별도의 규칙 문서에 정의된다.",
+        "주사위, 카드, 토큰 등 부속물이 함께 쓰이는 경우가 많다."
+      ]
     },
     {
       "id": "HT_B01_03",
       "locationId": "RES_TOY_STORE",
       "trueNameKo": "장난감 자동차",
       "trueNameEn": "Toy Car",
-      "categoryTag": "아동 놀이",
-      "materialHint": "플라스틱/금속",
-      "functionHint": "이동수단 축소 모방",
-      "facilityHint": "어린 개체의 놀이와 모방을 위한 물건을 판매한 시설",
-      "level1Clues": [
-        "바퀴"
-      ],
-      "level2Clues": [
-        "차체",
-        "실제 차량 축소"
-      ],
       "archiveDescription": "자동차를 축소한 놀이도구.",
-      "marsComment": "성인이 사용하는 기계를 어린 개체에게 작게 제공했다."
+      "marsComment": "성인이 사용하는 기계를 어린 개체에게 작게 제공했다.",
+      "missionHint": {
+        "category": "아동 놀이",
+        "structure": "바퀴가 달린 이동기계를 매우 작게 축소한 모형",
+        "function": "실제 운송 수단의 형태와 움직임을 모방하는 놀이에 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "실제 자동차와 유사한 차체와 바퀴 구조를 갖는다.",
+        "손으로 밀거나 내부 장치로 바퀴를 움직이는 형태가 있다.",
+        "성인의 이동수단을 어린이용 크기로 재현한 물건이다."
+      ]
     },
     {
       "id": "HT_B02_01",
       "locationId": "RES_CLOTHING",
       "trueNameKo": "후드티",
       "trueNameEn": "Hoodie",
-      "categoryTag": "의복",
-      "materialHint": "섬유",
-      "functionHint": "체온 유지/신체 장식",
-      "facilityHint": "신체 외부에 착용하는 섬유 물품을 관리·판매한 시설",
-      "level1Clues": [
-        "몸통"
-      ],
-      "level2Clues": [
-        "소매",
-        "후드"
-      ],
       "archiveDescription": "머리 덮개가 붙은 일상복.",
-      "marsComment": "기능과 취향을 동시에 표현하는 외피였다."
+      "marsComment": "기능과 취향을 동시에 표현하는 외피였다.",
+      "missionHint": {
+        "category": "의복",
+        "structure": "부드러운 섬유로 된 몸통과 양팔 부분, 머리를 덮는 부분이 연결된 형태",
+        "function": "신체를 덮어 체온을 유지하고 외형을 꾸미는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "몸통 양옆에 긴 소매가 연결되어 있다.",
+        "등 뒤에는 머리를 덮을 수 있는 후드가 붙어 있다.",
+        "보온과 일상복의 기능을 함께 가진 의류다."
+      ]
     },
     {
       "id": "HT_B02_02",
       "locationId": "RES_CLOTHING",
       "trueNameKo": "운동화",
       "trueNameEn": "Sneakers",
-      "categoryTag": "의복",
-      "materialHint": "섬유/고무",
-      "functionHint": "발 보호와 이동 보조",
-      "facilityHint": "신체 외부에 착용하는 섬유 물품을 관리·판매한 시설",
-      "level1Clues": [
-        "좌우 한 쌍"
-      ],
-      "level2Clues": [
-        "밑창",
-        "끈"
-      ],
       "archiveDescription": "운동 및 일상 이동용 신발.",
-      "marsComment": "좌우를 따로 제작하면서도 반드시 한 쌍으로 사용했다."
+      "marsComment": "좌우를 따로 제작하면서도 반드시 한 쌍으로 사용했다.",
+      "missionHint": {
+        "category": "의복",
+        "structure": "고무 밑면과 섬유 외피로 된 좌우 한 쌍의 착용물",
+        "function": "발을 보호하고 이동 시 충격을 줄이는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "좌우 발에 각각 하나씩 착용한다.",
+        "바닥에는 마찰력을 높이기 위한 고무 밑창이 있다.",
+        "끈이나 다른 고정 구조로 발에 맞게 조절한다."
+      ]
     },
     {
       "id": "HT_B02_03",
       "locationId": "RES_CLOTHING",
       "trueNameKo": "우산",
       "trueNameEn": "Umbrella",
-      "categoryTag": "생활 보호",
-      "materialHint": "금속/방수천",
-      "functionHint": "강수 차단",
-      "facilityHint": "신체 외부에 착용하는 섬유 물품을 관리·판매한 시설",
-      "level1Clues": [
-        "접이식 골격"
-      ],
-      "level2Clues": [
-        "방수막",
-        "방수막"
-      ],
       "archiveDescription": "비를 막기 위해 머리 위에 펼치는 도구.",
-      "marsComment": "행성의 물이 하늘에서 내리는 상황을 피하기 위한 개인 구조물."
+      "marsComment": "행성의 물이 하늘에서 내리는 상황을 피하기 위한 개인 구조물.",
+      "missionHint": {
+        "category": "생활 보호",
+        "structure": "가느다란 금속 골격 위에 얇은 방수 재질이 펼쳐지는 휴대형 구조",
+        "function": "사용자 위쪽에 넓은 차단면을 만들어 낙하하는 물을 막는 것으로 추정"
+      },
+      "archiveDetails": [
+        "중앙 축을 따라 여러 개의 살이 방사형으로 펼쳐진다.",
+        "표면은 물이 스며들지 않는 천으로 덮여 있다.",
+        "사용하지 않을 때는 접어서 길고 좁은 형태로 보관한다."
+      ]
     },
     {
       "id": "HT_B03_01",
       "locationId": "RES_CONVENIENCE",
       "trueNameKo": "빗",
       "trueNameEn": "Comb",
-      "categoryTag": "신체 관리",
-      "materialHint": "플라스틱/목재",
-      "functionHint": "모발 정렬",
-      "facilityHint": "짧은 시간에 일상용품을 구매하던 소형 생활 시설",
-      "level1Clues": [
-        "다수의 가는 이빨"
-      ],
-      "level2Clues": [
-        "다수의 가는 이빨",
-        "다수의 가는 이빨"
-      ],
       "archiveDescription": "머리카락을 정리하는 도구.",
-      "marsComment": "신체 기능과 무관한 배열 상태를 반복 관리했다."
+      "marsComment": "신체 기능과 무관한 배열 상태를 반복 관리했다.",
+      "missionHint": {
+        "category": "신체 관리",
+        "structure": "한쪽 가장자리에 일정한 간격의 가는 돌기가 반복된 소형 도구",
+        "function": "가느다란 섬유성 구조를 풀고 가지런히 정리하는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "돌기 사이로 머리카락을 통과시키며 사용한다.",
+        "엉킨 모발을 풀고 방향을 정돈하는 데 적합하다.",
+        "휴대용 소형 제품부터 손잡이가 달린 형태까지 다양했다."
+      ]
     },
     {
       "id": "HT_B03_02",
       "locationId": "RES_CONVENIENCE",
       "trueNameKo": "거울",
       "trueNameEn": "Mirror",
-      "categoryTag": "신체/생활",
-      "materialHint": "유리/금속막",
-      "functionHint": "자신의 외형 확인",
-      "facilityHint": "짧은 시간에 일상용품을 구매하던 소형 생활 시설",
-      "level1Clues": [
-        "반사면"
-      ],
-      "level2Clues": [
-        "평면 프레임",
-        "평면 프레임"
-      ],
       "archiveDescription": "빛을 반사해 자신의 모습을 보는 도구.",
-      "marsComment": "인간은 타인뿐 아니라 자신의 외형도 자주 확인했다."
+      "marsComment": "인간은 타인뿐 아니라 자신의 외형도 자주 확인했다.",
+      "missionHint": {
+        "category": "신체·생활",
+        "structure": "매우 매끄러운 평면을 가진 판형 물체",
+        "function": "들어온 빛을 되돌려 사용자에게 자신의 외형을 보여주는 것으로 추정"
+      },
+      "archiveDetails": [
+        "유리 뒤에 빛을 반사하는 금속막이 형성되어 있다.",
+        "표면 앞의 대상을 좌우가 반전된 상으로 보여준다.",
+        "개인의 외모 확인과 공간 장식에 널리 사용되었다."
+      ]
     },
     {
       "id": "HT_B03_03",
       "locationId": "RES_CONVENIENCE",
       "trueNameKo": "알람시계",
       "trueNameEn": "Alarm Clock",
-      "categoryTag": "시간 생활",
-      "materialHint": "플라스틱/회로",
-      "functionHint": "지정 시각에 소리 발생",
-      "facilityHint": "짧은 시간에 일상용품을 구매하던 소형 생활 시설",
-      "level1Clues": [
-        "시간 표시"
-      ],
-      "level2Clues": [
-        "알람",
-        "알람"
-      ],
       "archiveDescription": "정한 시간에 사용자를 깨우는 시계.",
-      "marsComment": "인간은 수면 중에도 정해진 시각에 강제로 깨어날 필요가 있었다."
+      "marsComment": "인간은 수면 중에도 정해진 시각에 강제로 깨어날 필요가 있었다.",
+      "missionHint": {
+        "category": "시간 생활",
+        "structure": "시간을 표시하는 화면 또는 눈금과 소리를 내는 장치가 결합된 소형 기기",
+        "function": "설정한 시각이 되면 사용자의 주의를 강제로 끌기 위한 신호를 발생시키는 것으로 추정"
+      },
+      "archiveDetails": [
+        "현재 시각을 숫자나 바늘로 표시한다.",
+        "사용자가 특정 시각을 미리 지정할 수 있다.",
+        "설정된 시각에 큰 소리를 내어 잠든 사람을 깨우는 데 자주 쓰였다."
+      ]
     },
     {
       "id": "HT_C01_01",
       "locationId": "IND_TOOL_SHOP",
       "trueNameKo": "망치",
       "trueNameEn": "Hammer",
-      "categoryTag": "수공구",
-      "materialHint": "금속/목재",
-      "functionHint": "반복 타격",
-      "facilityHint": "손과 기계의 힘을 증폭하는 도구를 보관한 산업 시설",
-      "level1Clues": [
-        "금속 헤드"
-      ],
-      "level2Clues": [
-        "손잡이",
-        "손잡이"
-      ],
       "archiveDescription": "못 박기와 형상 가공에 쓰는 타격 도구.",
-      "marsComment": "단순한 충격을 정밀 작업으로 바꾸었다."
+      "marsComment": "단순한 충격을 정밀 작업으로 바꾸었다.",
+      "missionHint": {
+        "category": "수공구",
+        "structure": "무거운 금속 덩어리와 길쭉한 손잡이가 직각에 가깝게 결합된 도구",
+        "function": "손의 움직임을 큰 충격으로 전달하는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "금속 헤드에 질량이 집중되어 있다.",
+        "긴 손잡이를 휘둘러 충격력을 키운다.",
+        "못을 박거나 물체의 형태를 가공하는 데 사용했다."
+      ]
     },
     {
       "id": "HT_C01_02",
       "locationId": "IND_TOOL_SHOP",
       "trueNameKo": "전동드릴",
       "trueNameEn": "Electric Drill",
-      "categoryTag": "전동 공구",
-      "materialHint": "금속/회로",
-      "functionHint": "회전력으로 천공/체결",
-      "facilityHint": "손과 기계의 힘을 증폭하는 도구를 보관한 산업 시설",
-      "level1Clues": [
-        "모터"
-      ],
-      "level2Clues": [
-        "비트 교체",
-        "비트 교체"
-      ],
       "archiveDescription": "회전 비트로 구멍을 내거나 나사를 조이는 도구.",
-      "marsComment": "손목의 회전을 전기 동력으로 대체했다."
+      "marsComment": "손목의 회전을 전기 동력으로 대체했다.",
+      "missionHint": {
+        "category": "전동 공구",
+        "structure": "손잡이가 달린 전동 본체 앞쪽에 가느다란 회전 부품을 장착하는 구조",
+        "function": "빠른 회전력을 이용해 재료를 뚫거나 체결하는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "내부 모터가 앞쪽 축을 고속으로 회전시킨다.",
+        "작업 종류에 따라 끝부분의 비트를 교체한다.",
+        "구멍을 뚫거나 나사를 조이는 작업에 사용되었다."
+      ]
     },
     {
       "id": "HT_C01_03",
       "locationId": "IND_TOOL_SHOP",
       "trueNameKo": "줄자",
       "trueNameEn": "Tape Measure",
-      "categoryTag": "측정 도구",
-      "materialHint": "금속/수지",
-      "functionHint": "길이 측정",
-      "facilityHint": "손과 기계의 힘을 증폭하는 도구를 보관한 산업 시설",
-      "level1Clues": [
-        "눈금 띠"
-      ],
-      "level2Clues": [
-        "자동 수납",
-        "자동 수납"
-      ],
       "archiveDescription": "말려 들어가는 띠로 길이를 재는 도구.",
-      "marsComment": "인간은 공간을 반복 가능한 숫자로 변환했다."
+      "marsComment": "인간은 공간을 반복 가능한 숫자로 변환했다.",
+      "missionHint": {
+        "category": "측정 도구",
+        "structure": "숫자 눈금이 인쇄된 길고 얇은 띠가 작은 케이스 안에 말려 들어가는 구조",
+        "function": "두 지점 사이의 거리를 수치로 확인하는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "띠 전체에 일정한 간격의 길이 눈금이 표시되어 있다.",
+        "사용 후 내부 스프링이 띠를 자동으로 감아 넣는다.",
+        "건축과 제작 작업에서 길이 측정에 널리 쓰였다."
+      ]
     },
     {
       "id": "HT_C02_01",
       "locationId": "IND_AUTO_SHOP",
       "trueNameKo": "자동차 핸들",
       "trueNameEn": "Steering Wheel",
-      "categoryTag": "이동 기술",
-      "materialHint": "금속/수지",
-      "functionHint": "차량 방향 입력",
-      "facilityHint": "바퀴 기반 개인 이동기계를 수리하던 시설",
-      "level1Clues": [
-        "원형 조향 입력부"
-      ],
-      "level2Clues": [
-        "원형 조향 입력부",
-        "원형 조향 입력부"
-      ],
       "archiveDescription": "자동차의 진행 방향을 조절하는 조향 장치.",
-      "marsComment": "대형 이동 구조물의 방향을 작은 원 하나로 제어했다."
+      "marsComment": "대형 이동 구조물의 방향을 작은 원 하나로 제어했다.",
+      "missionHint": {
+        "category": "이동 기술",
+        "structure": "사람이 양손으로 잡을 수 있는 크기의 원형 입력 장치",
+        "function": "대형 이동기계의 진행 방향을 좌우로 조절하는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "운전자가 원형 구조물을 회전시켜 방향을 입력한다.",
+        "회전 입력은 앞바퀴의 각도 변화로 전달된다.",
+        "자동차 운전석 전면에 설치되는 조향 장치다."
+      ]
     },
     {
       "id": "HT_C02_02",
       "locationId": "IND_AUTO_SHOP",
       "trueNameKo": "자동차 잭",
       "trueNameEn": "Car Jack",
-      "categoryTag": "정비 도구",
-      "materialHint": "금속",
-      "functionHint": "차량을 수직 상승",
-      "facilityHint": "바퀴 기반 개인 이동기계를 수리하던 시설",
-      "level1Clues": [
-        "수동 레버"
-      ],
-      "level2Clues": [
-        "지지대",
-        "지지대"
-      ],
       "archiveDescription": "차량 일부를 들어 올리는 정비 장치.",
-      "marsComment": "작은 인력이 큰 질량을 다루도록 힘의 구조를 재배치했다."
+      "marsComment": "작은 인력이 큰 질량을 다루도록 힘의 구조를 재배치했다.",
+      "missionHint": {
+        "category": "정비 도구",
+        "structure": "금속 지지 구조와 수동 조작부가 결합된 소형 승강 장치",
+        "function": "사람의 힘보다 훨씬 무거운 물체의 일부를 들어 올리는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "레버나 나사 구조로 작은 입력 힘을 증폭한다.",
+        "차량 하부의 지정 지점을 받쳐 올린다.",
+        "타이어 교체와 하부 정비에 사용되는 도구다."
+      ]
     },
     {
       "id": "HT_C02_03",
       "locationId": "IND_AUTO_SHOP",
       "trueNameKo": "타이어",
       "trueNameEn": "Tire",
-      "categoryTag": "이동 기술",
-      "materialHint": "고무/섬유",
-      "functionHint": "회전을 통한 접지 이동",
-      "facilityHint": "바퀴 기반 개인 이동기계를 수리하던 시설",
-      "level1Clues": [
-        "원형"
-      ],
-      "level2Clues": [
-        "탄성",
-        "트레드"
-      ],
       "archiveDescription": "차량이 지면 위를 이동하도록 하는 고무 바퀴 외피.",
-      "marsComment": "한 인간을 이동시키기 위해 수백 kg의 구조물을 함께 움직였다."
+      "marsComment": "한 인간을 이동시키기 위해 수백 kg의 구조물을 함께 움직였다.",
+      "missionHint": {
+        "category": "이동 기술",
+        "structure": "두껍고 탄성 있는 재질로 만든 원형 고리 구조",
+        "function": "회전하면서 지면과 접촉해 무거운 이동기계의 움직임을 전달하는 것으로 추정"
+      },
+      "archiveDetails": [
+        "주재료는 탄성이 큰 고무다.",
+        "표면에는 접지력을 높이기 위한 반복 무늬가 새겨져 있다.",
+        "금속 바퀴 바깥쪽에 장착되어 충격과 마찰을 담당한다."
+      ]
     },
     {
       "id": "HT_C03_01",
       "locationId": "IND_PRINT_SHOP",
       "trueNameKo": "광고 전단지",
       "trueNameEn": "Flyer",
-      "categoryTag": "상업 기록",
-      "materialHint": "종이/잉크",
-      "functionHint": "상품·행사 정보 대량 배포",
-      "facilityHint": "문자와 이미지를 대량 복제하던 생산 시설",
-      "level1Clues": [
-        "가격"
-      ],
-      "level2Clues": [
-        "이미지",
-        "연락처"
-      ],
       "archiveDescription": "상품이나 행사를 알리기 위한 일회성 인쇄물.",
-      "marsComment": "필요하지 않은 물건을 필요하다고 느끼게 하는 정보가 포함되었다."
+      "marsComment": "필요하지 않은 물건을 필요하다고 느끼게 하는 정보가 포함되었다.",
+      "missionHint": {
+        "category": "상업 기록",
+        "structure": "얇은 종이 한 장에 큰 글자, 이미지, 숫자가 밀집된 인쇄물",
+        "function": "많은 사람에게 특정 상품이나 행사를 알리기 위해 배포한 것으로 추정"
+      },
+      "archiveDetails": [
+        "가격과 상품 이미지가 눈에 띄게 배치된다.",
+        "연락처나 위치 정보가 함께 인쇄되는 경우가 많다.",
+        "짧은 기간 사용한 뒤 버리는 대량 홍보물이었다."
+      ]
     },
     {
       "id": "HT_C03_02",
       "locationId": "IND_PRINT_SHOP",
       "trueNameKo": "포스트잇",
       "trueNameEn": "Sticky Note",
-      "categoryTag": "개인 기록",
-      "materialHint": "종이/접착제",
-      "functionHint": "짧은 임시 메모",
-      "facilityHint": "문자와 이미지를 대량 복제하던 생산 시설",
-      "level1Clues": [
-        "작은 정사각형"
-      ],
-      "level2Clues": [
-        "약한 접착면",
-        "약한 접착면"
-      ],
       "archiveDescription": "붙였다 떼는 짧은 메모지.",
-      "marsComment": "중요하지 않아 보이는 생각을 잊지 않기 위해 벽에 붙였다."
+      "marsComment": "중요하지 않아 보이는 생각을 잊지 않기 위해 벽에 붙였다.",
+      "missionHint": {
+        "category": "개인 기록",
+        "structure": "작은 종이 여러 장이 겹쳐 있으며 각 장의 한쪽 면 일부에 약한 접착 성분이 있는 구조",
+        "function": "짧은 내용을 적어 눈에 잘 띄는 곳에 임시로 붙이는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "한 장씩 떼어 사용할 수 있다.",
+        "접착력이 약해 붙였다가 흔적 없이 떼기 쉽다.",
+        "간단한 메모나 표시를 남기는 데 사용되었다."
+      ]
     },
     {
       "id": "HT_C03_03",
       "locationId": "IND_PRINT_SHOP",
       "trueNameKo": "영수증",
       "trueNameEn": "Receipt",
-      "categoryTag": "경제 기록",
-      "materialHint": "감열지",
-      "functionHint": "거래 사실 기록",
-      "facilityHint": "문자와 이미지를 대량 복제하던 생산 시설",
-      "level1Clues": [
-        "금액"
-      ],
-      "level2Clues": [
-        "시각",
-        "상품명"
-      ],
       "archiveDescription": "구매 내역과 금액을 출력한 거래 증명서.",
-      "marsComment": "인간의 하루는 매우 많은 소액 거래의 흔적으로 남아 있다."
+      "marsComment": "인간의 하루는 매우 많은 소액 거래의 흔적으로 남아 있다.",
+      "missionHint": {
+        "category": "경제 기록",
+        "structure": "길고 얇은 종이에 숫자와 짧은 문자열이 세로로 반복 인쇄된 기록물",
+        "function": "물건이나 서비스를 교환한 사실과 금액을 남기는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "구매한 항목과 각각의 금액이 순서대로 기록된다.",
+        "거래 시각과 총 결제 금액이 함께 표시된다.",
+        "상점에서 거래가 끝난 뒤 구매자에게 발급되었다."
+      ]
     },
     {
       "id": "HT_D01_01",
       "locationId": "RES_HOSPITAL",
       "trueNameKo": "체온계",
       "trueNameEn": "Thermometer",
-      "categoryTag": "의료 측정",
-      "materialHint": "유리/회로",
-      "functionHint": "체온 측정",
-      "facilityHint": "인간 신체를 측정하고 치료하던 시설",
-      "level1Clues": [
-        "온도 표시"
-      ],
-      "level2Clues": [
-        "신체 접촉",
-        "신체 접촉"
-      ],
       "archiveDescription": "신체 온도를 측정하는 의료 도구.",
-      "marsComment": "아주 작은 온도 변화가 생존 판단에 사용되었다."
+      "marsComment": "아주 작은 온도 변화가 생존 판단에 사용되었다.",
+      "missionHint": {
+        "category": "의료 측정",
+        "structure": "온도를 수치로 표시하는 소형 측정 장치",
+        "function": "사람의 신체와 접촉하거나 가까이 대어 체온을 확인하는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "측정부를 신체에 접촉하거나 근접시켜 사용한다.",
+        "측정 결과는 숫자나 눈금으로 표시된다.",
+        "작은 체온 변화로 건강 상태를 판단하는 의료 도구다."
+      ]
     },
     {
       "id": "HT_D01_02",
       "locationId": "RES_HOSPITAL",
       "trueNameKo": "주사기",
       "trueNameEn": "Syringe",
-      "categoryTag": "의료 도구",
-      "materialHint": "플라스틱/금속",
-      "functionHint": "액체를 정량 주입/채취",
-      "facilityHint": "인간 신체를 측정하고 치료하던 시설",
-      "level1Clues": [
-        "바늘"
-      ],
-      "level2Clues": [
-        "눈금",
-        "피스톤"
-      ],
       "archiveDescription": "신체에 액체를 주입하거나 빼내는 의료 도구.",
-      "marsComment": "신체 장벽을 의도적으로 뚫어 치료했다."
+      "marsComment": "신체 장벽을 의도적으로 뚫어 치료했다.",
+      "missionHint": {
+        "category": "의료 도구",
+        "structure": "눈금이 있는 투명한 원통과 움직이는 밀대, 매우 가는 금속 관으로 이루어진 구조",
+        "function": "소량의 액체를 정해진 양만큼 밀어 넣거나 빼내는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "앞쪽에는 피부를 통과할 수 있는 가는 바늘이 결합된다.",
+        "원통의 눈금으로 액체의 양을 확인한다.",
+        "피스톤을 밀거나 당겨 주입과 채취를 수행한다."
+      ]
     },
     {
       "id": "HT_D01_03",
       "locationId": "RES_HOSPITAL",
       "trueNameKo": "청진기",
       "trueNameEn": "Stethoscope",
-      "categoryTag": "의료 진단",
-      "materialHint": "고무/금속",
-      "functionHint": "신체 내부 소리 청취",
-      "facilityHint": "인간 신체를 측정하고 치료하던 시설",
-      "level1Clues": [
-        "양쪽 이어팁"
-      ],
-      "level2Clues": [
-        "흉부판",
-        "흉부판"
-      ],
       "archiveDescription": "심장과 폐의 소리를 듣는 진단 도구.",
-      "marsComment": "몸을 열지 않고 내부 상태를 소리로 추론했다."
+      "marsComment": "몸을 열지 않고 내부 상태를 소리로 추론했다.",
+      "missionHint": {
+        "category": "의료 진단",
+        "structure": "두 갈래의 귀 접촉부와 긴 관, 넓적한 원형 접촉부가 연결된 도구",
+        "function": "신체 표면을 통해 내부에서 발생하는 미세한 소리를 듣는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "두 개의 이어팁을 양쪽 귀에 끼운다.",
+        "원형 흉부판을 가슴이나 등에 접촉시킨다.",
+        "심장과 폐에서 나는 소리를 진단에 활용했다."
+      ]
     },
     {
       "id": "HT_D02_01",
       "locationId": "RES_LAB",
       "trueNameKo": "현미경",
       "trueNameEn": "Microscope",
-      "categoryTag": "관측 기술",
-      "materialHint": "금속/광학유리",
-      "functionHint": "극소 구조 확대 관찰",
-      "facilityHint": "물질과 생명 현상을 정밀 관찰·실험하던 시설",
-      "level1Clues": [
-        "대물렌즈"
-      ],
-      "level2Clues": [
-        "접안렌즈",
-        "접안렌즈"
-      ],
       "archiveDescription": "작은 대상을 확대해 보는 광학 장치.",
-      "marsComment": "보이지 않는 것을 보기 위해 더 많은 렌즈를 쌓았다."
+      "marsComment": "보이지 않는 것을 보기 위해 더 많은 렌즈를 쌓았다.",
+      "missionHint": {
+        "category": "관측 기술",
+        "structure": "여러 개의 광학 렌즈와 작은 표본을 고정하는 받침대가 결합된 정밀 장치",
+        "function": "맨눈으로 보기 어려운 매우 작은 구조를 확대해 관찰하는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "표본 가까이에 여러 배율의 대물렌즈가 배치된다.",
+        "사용자는 상단의 접안렌즈를 통해 확대된 상을 본다.",
+        "미세한 생물이나 재료 구조를 관찰하는 데 사용된다."
+      ]
     },
     {
       "id": "HT_D02_02",
       "locationId": "RES_LAB",
       "trueNameKo": "시험관",
       "trueNameEn": "Test Tube",
-      "categoryTag": "실험 도구",
-      "materialHint": "유리",
-      "functionHint": "소량 물질 보관/반응",
-      "facilityHint": "물질과 생명 현상을 정밀 관찰·실험하던 시설",
-      "level1Clues": [
-        "가늘고 긴 유리 용기"
-      ],
-      "level2Clues": [
-        "가늘고 긴 유리 용기",
-        "가늘고 긴 유리 용기"
-      ],
       "archiveDescription": "작은 양의 물질을 담아 실험하는 용기.",
-      "marsComment": "위험한 물질도 투명한 얇은 벽 너머에서 관찰했다."
+      "marsComment": "위험한 물질도 투명한 얇은 벽 너머에서 관찰했다.",
+      "missionHint": {
+        "category": "실험 도구",
+        "structure": "한쪽 끝이 막혀 있는 가늘고 긴 투명 용기",
+        "function": "아주 적은 양의 물질을 담아 관찰하거나 반응시키는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "대부분 투명한 유리 또는 유사 재질로 만들어진다.",
+        "작은 양의 액체나 시료를 담기에 적합하다.",
+        "여러 개를 거치대에 세워 동시에 실험하기도 한다."
+      ]
     },
     {
       "id": "HT_D02_03",
       "locationId": "RES_LAB",
       "trueNameKo": "보안경",
       "trueNameEn": "Safety Goggles",
-      "categoryTag": "안전 장비",
-      "materialHint": "투명 수지",
-      "functionHint": "눈 보호",
-      "facilityHint": "물질과 생명 현상을 정밀 관찰·실험하던 시설",
-      "level1Clues": [
-        "얼굴 앞 투명판"
-      ],
-      "level2Clues": [
-        "얼굴 앞 투명판",
-        "얼굴 앞 투명판"
-      ],
       "archiveDescription": "실험 중 눈을 보호하는 장비.",
-      "marsComment": "관찰하기 위해 먼저 관찰기관을 보호해야 했다."
+      "marsComment": "관찰하기 위해 먼저 관찰기관을 보호해야 했다.",
+      "missionHint": {
+        "category": "안전 장비",
+        "structure": "눈 주변을 넓게 덮는 투명한 판과 얼굴에 고정하는 밴드로 구성된 착용물",
+        "function": "작업 중 튀는 물질이나 파편이 시각 기관에 닿는 것을 막는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "두 눈과 주변부를 투명 보호판으로 덮는다.",
+        "머리 뒤쪽의 밴드나 다리 구조로 고정한다.",
+        "실험과 작업 중 화학물질이나 파편으로부터 눈을 보호한다."
+      ]
     },
     {
       "id": "HT_D03_01",
       "locationId": "RES_SIGNAL_STATION",
       "trueNameKo": "무전기",
       "trueNameEn": "Walkie Talkie",
-      "categoryTag": "통신 기술",
-      "materialHint": "회로/금속",
-      "functionHint": "양방향 단거리 음성 통신",
-      "facilityHint": "전파와 대기 환경을 측정·전달하던 연구 시설",
-      "level1Clues": [
-        "안테나"
-      ],
-      "level2Clues": [
-        "송신 버튼",
-        "송신 버튼"
-      ],
       "archiveDescription": "전파로 음성을 주고받는 휴대 통신 장치.",
-      "marsComment": "보이지 않는 상대에게 말을 전달하는 기술이 생존 장비가 되었다."
+      "marsComment": "보이지 않는 상대에게 말을 전달하는 기술이 생존 장비가 되었다.",
+      "missionHint": {
+        "category": "통신 기술",
+        "structure": "휴대 가능한 전자 본체에 짧은 안테나와 음성 입출력부가 결합된 장치",
+        "function": "가까운 거리의 다른 장치와 실시간으로 음성을 주고받는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "안테나를 통해 무선 신호를 송수신한다.",
+        "버튼을 누른 동안 자신의 음성을 송신하는 방식이 일반적이다.",
+        "별도의 통신망 없이 근거리에서 여러 사람이 연락할 수 있었다."
+      ]
     },
     {
       "id": "HT_D03_02",
       "locationId": "RES_SIGNAL_STATION",
       "trueNameKo": "나침반",
       "trueNameEn": "Compass",
-      "categoryTag": "항법",
-      "materialHint": "금속/자석",
-      "functionHint": "자기장 기반 방향 표시",
-      "facilityHint": "전파와 대기 환경을 측정·전달하던 연구 시설",
-      "level1Clues": [
-        "회전 바늘"
-      ],
-      "level2Clues": [
-        "N 표식",
-        "N 표식"
-      ],
       "archiveDescription": "행성 자기장을 이용해 방향을 찾는 도구.",
-      "marsComment": "하늘을 보지 못해도 북쪽을 찾았다."
+      "marsComment": "하늘을 보지 못해도 북쪽을 찾았다.",
+      "missionHint": {
+        "category": "항법",
+        "structure": "자유롭게 회전하는 가는 바늘이 방향 표시가 있는 원형 케이스 안에 들어 있는 도구",
+        "function": "행성의 자연적인 물리장을 기준으로 일정한 방향을 가리키는 것으로 추정"
+      },
+      "archiveDetails": [
+        "내부 바늘은 자성을 띠어 특정 방향으로 정렬된다.",
+        "원형 눈금에는 동서남북 방향이 표시된다.",
+        "전원 없이도 북쪽을 기준으로 방향을 찾을 수 있다."
+      ]
     },
     {
       "id": "HT_D03_03",
       "locationId": "RES_SIGNAL_STATION",
       "trueNameKo": "기상 관측기",
       "trueNameEn": "Weather Station",
-      "categoryTag": "환경 관측",
-      "materialHint": "금속/센서",
-      "functionHint": "대기 상태 측정",
-      "facilityHint": "전파와 대기 환경을 측정·전달하던 연구 시설",
-      "level1Clues": [
-        "온도/압력/풍향 센서"
-      ],
-      "level2Clues": [
-        "온도/압력/풍향 센서",
-        "온도/압력/풍향 센서"
-      ],
       "archiveDescription": "날씨 변화를 측정하는 복합 관측 장치.",
-      "marsComment": "예측하기 어려운 하늘을 수치로 바꾸려 했다."
+      "marsComment": "예측하기 어려운 하늘을 수치로 바꾸려 했다.",
+      "missionHint": {
+        "category": "환경 관측",
+        "structure": "여러 종류의 외부 센서와 측정 장치가 하나의 설비에 결합된 구조",
+        "function": "주변 대기의 여러 상태를 동시에 측정하고 기록하는 것으로 추정"
+      },
+      "archiveDetails": [
+        "온도, 기압, 풍향, 풍속 등 서로 다른 값을 측정한다.",
+        "센서 일부는 바람이나 외부 공기에 직접 노출된다.",
+        "축적된 데이터를 이용해 날씨 변화를 관찰하고 예측했다."
+      ]
     },
     {
       "id": "HT_E01_01",
       "locationId": "CUL_LIBRARY",
       "trueNameKo": "소설책",
       "trueNameEn": "Novel",
-      "categoryTag": "서사 기록",
-      "materialHint": "종이/잉크",
-      "functionHint": "허구의 사건과 인물 기록",
-      "facilityHint": "문자 기록을 대량 보관·열람하던 문화 시설",
-      "level1Clues": [
-        "연속 문장"
-      ],
-      "level2Clues": [
-        "장 구분",
-        "장 구분"
-      ],
       "archiveDescription": "실재하지 않는 사건을 읽기 위해 만든 책.",
-      "marsComment": "사실이 아닌 이야기에 감정을 소비했다."
+      "marsComment": "사실이 아닌 이야기에 감정을 소비했다.",
+      "missionHint": {
+        "category": "서사 기록",
+        "structure": "다수의 종이를 한쪽에서 묶어 순서대로 넘겨 읽는 기록물",
+        "function": "실제로 일어난 사실보다 인물과 사건을 구성해 긴 이야기를 전달하는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "여러 페이지에 연속된 문장이 길게 이어진다.",
+        "내용은 장이나 절 단위로 구분되는 경우가 많다.",
+        "허구의 인물과 사건을 읽는 문화적 기록물이다."
+      ]
     },
     {
       "id": "HT_E01_02",
       "locationId": "CUL_LIBRARY",
       "trueNameKo": "지도",
       "trueNameEn": "Map",
-      "categoryTag": "공간 기록",
-      "materialHint": "종이/잉크",
-      "functionHint": "공간을 평면 기호로 표현",
-      "facilityHint": "문자 기록을 대량 보관·열람하던 문화 시설",
-      "level1Clues": [
-        "도로"
-      ],
-      "level2Clues": [
-        "건물",
-        "축척"
-      ],
       "archiveDescription": "실제 공간을 축소해 표시한 기록물.",
-      "marsComment": "세상을 작게 접어 들고 다녔다."
+      "marsComment": "세상을 작게 접어 들고 다녔다.",
+      "missionHint": {
+        "category": "공간 기록",
+        "structure": "넓은 평면 위에 선, 기호, 문자 등이 복잡하게 배치된 인쇄 기록물",
+        "function": "실제 공간의 위치 관계를 작게 축소해 표시하는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "도로와 건물, 지형 등이 기호로 표시된다.",
+        "실제 거리와 종이 위 거리의 비율을 나타내는 축척이 있다.",
+        "길 찾기와 지역 이해에 사용되었다."
+      ]
     },
     {
       "id": "HT_E01_03",
       "locationId": "CUL_LIBRARY",
       "trueNameKo": "일기장",
       "trueNameEn": "Diary",
-      "categoryTag": "개인 기록",
-      "materialHint": "종이/잉크",
-      "functionHint": "개인의 날짜별 경험 기록",
-      "facilityHint": "문자 기록을 대량 보관·열람하던 문화 시설",
-      "level1Clues": [
-        "날짜"
-      ],
-      "level2Clues": [
-        "1인칭 문장",
-        "1인칭 문장"
-      ],
       "archiveDescription": "개인이 자신의 생각과 하루를 기록한 책.",
-      "marsComment": "누구에게 보여주지 않을 생각까지 보존했다."
+      "marsComment": "누구에게 보여주지 않을 생각까지 보존했다.",
+      "missionHint": {
+        "category": "개인 기록",
+        "structure": "날짜 표시와 긴 문장이 반복되는 개인용 책 형태의 기록물",
+        "function": "한 사람이 자신의 경험과 생각을 시간 순서대로 남기는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "기록마다 날짜가 함께 적히는 경우가 많다.",
+        "작성자가 자신을 지칭하는 1인칭 문장이 반복된다.",
+        "공개 목적이 아닌 개인적인 감정과 사건도 기록되었다."
+      ]
     },
     {
       "id": "HT_E02_01",
       "locationId": "CUL_SCHOOL",
       "trueNameKo": "연필",
       "trueNameEn": "Pencil",
-      "categoryTag": "기록 도구",
-      "materialHint": "목재/흑연",
-      "functionHint": "지우고 다시 쓸 수 있는 기록",
-      "facilityHint": "어린 인간에게 지식과 규범을 전달하던 교육 시설",
-      "level1Clues": [
-        "깎인 흑연심"
-      ],
-      "level2Clues": [
-        "지우개",
-        "지우개"
-      ],
       "archiveDescription": "흑연으로 글과 그림을 쓰는 도구.",
-      "marsComment": "실수를 완전히 고정하지 않는 기록 방식이었다."
+      "marsComment": "실수를 완전히 고정하지 않는 기록 방식이었다.",
+      "missionHint": {
+        "category": "기록 도구",
+        "structure": "나무 몸체 안에 검은색의 가는 심이 들어 있는 길쭉한 필기 도구",
+        "function": "표면에 흔적을 남기되 필요하면 일부를 지울 수 있는 기록 방식에 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "끝부분을 깎아 내부의 흑연심을 노출시켜 사용한다.",
+        "종이와의 마찰로 흑연이 묻어나 글과 그림을 만든다.",
+        "일부 제품에는 반대쪽 끝에 지우개가 부착되어 있다."
+      ]
     },
     {
       "id": "HT_E02_02",
       "locationId": "CUL_SCHOOL",
       "trueNameKo": "성적표",
       "trueNameEn": "Report Card",
-      "categoryTag": "교육 기록",
-      "materialHint": "종이/잉크",
-      "functionHint": "학습 결과 평가",
-      "facilityHint": "어린 인간에게 지식과 규범을 전달하던 교육 시설",
-      "level1Clues": [
-        "과목"
-      ],
-      "level2Clues": [
-        "점수",
-        "등급"
-      ],
       "archiveDescription": "학생의 학업 성취를 수치와 등급으로 기록한 문서.",
-      "marsComment": "어린 인간의 능력을 여러 숫자로 요약했다."
+      "marsComment": "어린 인간의 능력을 여러 숫자로 요약했다.",
+      "missionHint": {
+        "category": "교육 기록",
+        "structure": "여러 항목명 옆에 숫자와 등급이 반복되는 표 형식의 문서",
+        "function": "교육 대상자의 학습 결과를 항목별로 평가하고 비교하기 위해 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "교육 과목별로 점수나 등급이 기록된다.",
+        "한 사람의 일정 기간 학습 결과를 한 문서에 정리한다.",
+        "학생과 보호자에게 학업 성취도를 전달하는 기록물이다."
+      ]
     },
     {
       "id": "HT_E02_03",
       "locationId": "CUL_SCHOOL",
       "trueNameKo": "어린이 그림",
       "trueNameEn": "Child Drawing",
-      "categoryTag": "감정/표현",
-      "materialHint": "종이/색소",
-      "functionHint": "경험과 관계를 그림으로 표현",
-      "facilityHint": "어린 인간에게 지식과 규범을 전달하던 교육 시설",
-      "level1Clues": [
-        "집"
-      ],
-      "level2Clues": [
-        "태양",
-        "사람 형상"
-      ],
       "archiveDescription": "어린이가 경험과 상상을 그린 그림.",
-      "marsComment": "정확한 정보보다 기억과 감정 전달이 중요했던 기록."
+      "marsComment": "정확한 정보보다 기억과 감정 전달이 중요했던 기록.",
+      "missionHint": {
+        "category": "감정·표현",
+        "structure": "종이 위에 단순한 사람, 건물, 자연물 등이 비정형적인 색과 선으로 표현된 기록물",
+        "function": "정확한 정보 전달보다 개인의 경험과 상상을 시각적으로 표현하는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "집, 태양, 사람 등 익숙한 대상이 단순한 형태로 자주 등장한다.",
+        "실제 비율이나 색보다 그린 사람의 기억과 감정이 우선된다.",
+        "어린이가 자신의 경험과 상상을 표현한 그림이다."
+      ]
     },
     {
       "id": "HT_E03_01",
       "locationId": "CUL_MUSEUM",
       "trueNameKo": "초상화",
       "trueNameEn": "Portrait",
-      "categoryTag": "시각 예술",
-      "materialHint": "캔버스/색소",
-      "functionHint": "인물의 모습 표현",
-      "facilityHint": "과거의 물건과 기억을 보존하고 전시하던 문화 시설",
-      "level1Clues": [
-        "얼굴"
-      ],
-      "level2Clues": [
-        "시선",
-        "배경"
-      ],
       "archiveDescription": "인물을 그림으로 남긴 시각 기록.",
-      "marsComment": "사진 기술 이후에도 손으로 다시 사람을 그렸다."
+      "marsComment": "사진 기술 이후에도 손으로 다시 사람을 그렸다.",
+      "missionHint": {
+        "category": "시각 예술",
+        "structure": "평평한 천이나 판 위에 한 사람의 얼굴과 상반신을 중심으로 색소를 덧입힌 기록물",
+        "function": "특정 인물의 외형과 인상을 오래 남기기 위해 제작한 것으로 추정"
+      },
+      "archiveDetails": [
+        "한 명의 인물이 화면 중심에 크게 표현되는 경우가 많다.",
+        "얼굴의 표정과 시선, 의복 등이 세밀하게 묘사된다.",
+        "사진과 달리 사람이 직접 색과 형태를 해석해 그린 기록이다."
+      ]
     },
     {
       "id": "HT_E03_02",
       "locationId": "CUL_MUSEUM",
       "trueNameKo": "공연 티켓",
       "trueNameEn": "Performance Ticket",
-      "categoryTag": "문화 기록",
-      "materialHint": "종이/잉크",
-      "functionHint": "행사 입장 권한 및 기억",
-      "facilityHint": "과거의 물건과 기억을 보존하고 전시하던 문화 시설",
-      "level1Clues": [
-        "날짜"
-      ],
-      "level2Clues": [
-        "좌석",
-        "장소"
-      ],
       "archiveDescription": "공연에 입장하기 위한 표.",
-      "marsComment": "몇 시간의 경험을 위해 작은 종이를 소중히 보관하기도 했다."
+      "marsComment": "몇 시간의 경험을 위해 작은 종이를 소중히 보관하기도 했다.",
+      "missionHint": {
+        "category": "문화 기록",
+        "structure": "작은 종이 조각에 날짜, 장소, 숫자 코드 등이 정해진 형식으로 인쇄된 기록물",
+        "function": "특정 시간과 장소에서 열리는 행사에 참여할 권한을 증명하는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "행사 날짜와 장소가 명시되어 있다.",
+        "좌석 번호나 입장 구역이 기록되는 경우가 많다.",
+        "행사 입장 후에도 기념품처럼 보관되곤 했다."
+      ]
     },
     {
       "id": "HT_E03_03",
       "locationId": "CUL_MUSEUM",
       "trueNameKo": "가족사진",
       "trueNameEn": "Family Photograph",
-      "categoryTag": "관계 기록",
-      "materialHint": "인화지",
-      "functionHint": "친밀한 관계의 모습 보존",
-      "facilityHint": "과거의 물건과 기억을 보존하고 전시하던 문화 시설",
-      "level1Clues": [
-        "여러 인물"
-      ],
-      "level2Clues": [
-        "반복 등장",
-        "반복 등장"
-      ],
       "archiveDescription": "가족 또는 친밀한 관계의 사람들이 함께 찍은 사진.",
-      "marsComment": "관계를 기억하기 위해 서로의 모습을 한 장에 남겼다."
+      "marsComment": "관계를 기억하기 위해 서로의 모습을 한 장에 남겼다.",
+      "missionHint": {
+        "category": "관계 기록",
+        "structure": "한 장의 인화물 안에 여러 사람이 가까이 모여 있는 모습이 기록된 물체",
+        "function": "친밀한 관계를 가진 사람들의 모습을 함께 보존하는 데 사용한 것으로 추정"
+      },
+      "archiveDetails": [
+        "동일한 인물들이 여러 시기의 사진에 반복해서 등장하기도 한다.",
+        "사람들이 서로 가까이 서거나 앉은 구도가 흔하다.",
+        "가족이나 가까운 관계의 사람들을 함께 촬영한 사진이다."
+      ]
     }
   ]
 }

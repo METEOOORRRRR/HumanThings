@@ -23,7 +23,10 @@ namespace EarthRecovery
             foreach(var l in locations)
                 if(l.recipe.scrapCost<1||l.recipe.scrapCost>30||!float.IsFinite(l.recipe.duration)||l.recipe.duration<=0||!float.IsFinite(l.recipe.installDuration)||l.recipe.installDuration<=0)throw new InvalidOperationException("Invalid recipe: "+l.id);
             foreach (var a in artifacts)
-                if (a.worldPrefab == null || string.IsNullOrEmpty(a.archiveDescription) || a.level2Clues.Length < 2) throw new InvalidOperationException("Artifact incomplete: " + a.id);
+                if (a.worldPrefab == null || string.IsNullOrEmpty(a.archiveDescription) || !HumanContentSource.ValidHint(a.missionHint)
+                    || a.archiveDetails == null || a.archiveDetails.Any(string.IsNullOrWhiteSpace)) throw new InvalidOperationException("Artifact incomplete: " + a.id);
+            foreach (var l in locations)
+                if (string.IsNullOrWhiteSpace(l.missionLocationHint) || l.missionLocationHint.Length > 512) throw new InvalidOperationException("Location hint missing: " + l.id);
             foreach(var m in monsters)
                 if(m.prefab==null||m.prefab.GetComponent<MonsterBrain>()==null||m.memories==null||m.memories.Length==0||m.reactions==null||!float.IsFinite(m.perceptionTick)||m.perceptionTick<=0)throw new InvalidOperationException("Monster incomplete: "+m.id);
         }

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HumanThings Visual Review</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#191c1d;color:#e0e2df;font:15px/1.6 system-ui,"Malgun Gothic",sans-serif;letter-spacing:0}header,main{max-width:1800px;margin:auto;padding:22px 28px}header{border-bottom:1px solid #4a4c4b}h1{font-size:24px;margin:0}p{margin:8px 0;color:#b4bab7}nav{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-bottom:20px}select{font:inherit;color:inherit;background:#303637;border:1px solid #717572;padding:7px 10px;max-width:100%}.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0}img{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#101212}figcaption{padding:8px 0;color:#c1c5c2}a{color:#b9d4cf}.stages{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px}.stages figcaption{font-size:13px}footer{padding-top:28px;font-size:14px;border-top:1px solid #454c49;margin-top:28px}@media(max-width:800px){header,main{padding:18px}.pair{grid-template-columns:1fr}.stages{grid-template-columns:1fr 1fr}}@media(max-width:420px){.stages{grid-template-columns:1fr}h1{font-size:21px}}
+</style></head><body><header><h1>HumanThings · Visual Pass</h1><p>Seed 100 · 동일한 맵과 카메라 · Original / HumanThings</p></header><main>
+<nav><label for="view">시점 </label><select id="view"><option value="Boulevard">도로 원근</option><option value="Street">건물 정면</option><option value="Detail">근거리 표면</option><option value="Overview">도시 조망</option></select><a href="Report.md">설정·검토 보고서</a></nav>
+<section class="pair"><figure><a id="beforeLink"><img id="before" alt="기존 게임 렌더링"></a><figcaption>Original · 기존 게임 조명과 Synty 재질</figcaption></figure><figure><a id="afterLink"><img id="after" alt="HumanThings 비주얼 적용 결과"></a><figcaption>HumanThings · 최종 적용</figcaption></figure></section>
+<section class="stages" id="stages"></section>
+<footer>Unity 카메라에서 직접 렌더링한 원본 PNG입니다. 이미지에 별도의 색 보정을 하지 않았습니다. 배치·메시·임무 로직은 이번 비주얼 패스의 변경 대상이 아닙니다.</footer>
+</main><script>
+const select=document.getElementById('view'), stages=document.getElementById('stages');
+const names=['재질·거칠기','조명·환경광','안개','후처리','오염·부분 젖음'];
+function update(){const view=select.value;for(const [id,prefix] of [['before','Original'],['after','Pass5']]){const src=prefix+'-'+view+'.png';document.getElementById(id).src=src;document.getElementById(id+'Link').href=src;}stages.replaceChildren();names.forEach((name,i)=>{const figure=document.createElement('figure'),link=document.createElement('a'),image=document.createElement('img'),caption=document.createElement('figcaption');link.href=image.src='Pass'+(i+1)+'-'+view+'.png';image.alt=name;caption.textContent=(i+1)+'. '+name;link.append(image);figure.append(link,caption);stages.append(figure);});}
+select.addEventListener('change',update);update();
+</script></body></html>

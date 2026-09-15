@@ -17,6 +17,10 @@ namespace EarthRecovery
             session.world = world; session.radio = voice; world.session = session; world.hud = hud;
             hud.session = session; hud.world = world; voice.session = session;
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
+            if (System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "--city-smoke") >= 0)
+            { root.AddComponent<CityRuntimeSmoke>().session = session; return; }
+            if (System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "--artifact-qa") >= 0)
+            { root.AddComponent<ArtifactSmoke>(); return; }
             if (System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "--terminal-qa") >= 0)
             { root.AddComponent<TerminalSmoke>(); return; }
 #endif

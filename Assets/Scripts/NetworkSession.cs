@@ -15,13 +15,14 @@ namespace EarthRecovery
         public Snapshot View { get; private set; } = new();
         public Expedition HostGame { get; private set; }
         public WorldView world;
+        public CityWorldPlan CityPlan { get; private set; }
         public RadioVoice radio;
         public string Status = "대기", UserName = "요원";
         bool TransportActive => manager != null && !closing && !manager.ShutdownInProgress && manager.IsListening;
         public bool Online => TransportActive && manager.IsConnectedClient && !connecting && LocalPlayer?.connected == true;
         public bool IsConnecting => connecting && !closing;
         public const float ConnectionTimeoutSeconds = 8;
-        public const string BuildLabel = "Revision2";
+        public const string BuildLabel = "Revision3";
         public bool IsHost => TransportActive && manager.IsHost && HostGame != null;
         public bool CanConnect => manager != null && !closing && !connecting && !manager.IsListening && !manager.ShutdownInProgress;
         public ulong LocalId => manager == null ? ulong.MaxValue : manager.LocalClientId;
@@ -50,7 +51,7 @@ namespace EarthRecovery
             var transport = gameObject.AddComponent<UnityTransport>();
             transport.MaxPayloadSize = 32768;
             manager.NetworkConfig = new NetworkConfig { NetworkTransport = transport, EnableSceneManagement = false, ConnectionApproval = true, TickRate = 30 };
-            manager.NetworkConfig.ProtocolVersion = 7;
+            manager.NetworkConfig.ProtocolVersion = 9;
             PersistArchive = !Environment.GetCommandLineArgs().Any(a => a == "--qa-role" || a == "-runTests");
             archiveStore = new ArchiveStore(System.IO.Path.Combine(Application.persistentDataPath,"human-things-archive-v1.json"));
             if(PersistArchive) View.archive=archiveStore.Load();
@@ -148,7 +149,7 @@ namespace EarthRecovery
         }
         void ClearSession()
         {
-            connecting = false; View = new Snapshot(); HostGame = null;
+            connecting = false; View = new Snapshot(); HostGame = null; CityPlan = null;
             if(PersistArchive && archiveStore!=null) View.archive=archiveStore.Load();
             budgets.Clear(); snapshotTimer = 0;
             if (radio != null) radio.ResetSession();
@@ -168,8 +169,16 @@ namespace EarthRecovery
         {
             if (!IsHost) return false;
             bool result;
-            try { result = HostGame.Start(seed == 0 ? UnityEngine.Random.Range(1, int.MaxValue) : seed); }
-            catch(InvalidOperationException e) {StopSession("콘텐츠 설정 오류: "+e.Message);return false;}
+            try
+            {
+                if (HostGame.State.phase != Phase.Lobby || HostGame.State.players.Count < rules.MinimumStartPlayers || HostGame.State.players.Any(p => !p.ready)) return false;
+                int selectedSeed = seed == 0 ? UnityEngine.Random.Range(1, int.MaxValue) : seed;
+                CityPlan = RuntimeCitySettings.Load().Generate(selectedSeed);
+                result = HostGame.Start(selectedSeed, CityPlan);
+                if (result && world != null) world.EnsureWorld(HostGame.State);
+            }
+            catch(Exception e) when (e is InvalidOperationException || e is ArgumentException)
+            {StopSession("콘텐츠 설정 오류: "+e.Message);return false;}
             if (!result) Status = "최소 "+rules.MinimumStartPlayers+"명의 준비 완료가 필요합니다.";
             return result;
         }
@@ -260,7 +269,10 @@ namespace EarthRecovery
             { StopSession("방에 연결할 수 없습니다. 방 생성 여부와 주소를 확인해 주세요."); return; }
             if (!IsHost || HostGame == null) return;
             float dt = Mathf.Min(Time.deltaTime, .05f);
-            if (world != null) world.EnsureWorld(HostGame.State);
+            if (world != null)
+                try { world.EnsureWorld(HostGame.State); }
+                catch (Exception e) when (e is InvalidOperationException || e is ArgumentException)
+                { StopSession("맵 생성 실패: " + e.Message); return; }
             if (HostGame.State.phase == Phase.Expedition)
             {
                 if (world != null) world.HostStep(HostGame, dt);

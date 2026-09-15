@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db53a0601c55f754c9c1e3c1b497d533, type: 3}
+  m_Name: COM_RESTAURANT
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.SpecialPOIDefinition
+  id: COM_RESTAURANT
+  displayName: "\uC2DD\uB2F9"
+  prefab: {fileID: 4021524778822723120, guid: e57463eed4a809341ad5bb62bb512eac, type: 3}
+  boundsCenter: {x: 0, y: 1.97, z: 0}
+  boundsSize: {x: 10.4, y: 4.06, z: 10.4}
+  footprint: {x: 10.4, y: 10.4}
+  frontFacesRoad: 1
+  localForward: {x: 0, y: 0, z: -1}
+  minDistanceFromOtherPOI: 0
+  minDistanceFromBaseCamp: 0
+  placementEnabled: 1
+  tags:
+  - com
+  - com_restaurant

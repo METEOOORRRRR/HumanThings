@@ -1,0 +1,16 @@
+id,name,chunk,x,y,z,prefab
+COM_ELECTRONICS,전자상가,Chunk_0_1,-227.569,2.03,-44.98104,Assets/CityGeneration/SpecialPOIs/Exteriors/COM_ELECTRONICS.prefab
+COM_MUSIC_STORE,악기점,Chunk_1_1,-73.94707,2.03,35.6836,Assets/CityGeneration/SpecialPOIs/Exteriors/COM_MUSIC_STORE.prefab
+COM_RESTAURANT,식당,Chunk_2_0,119.5445,2.03,-172.4556,Assets/CityGeneration/SpecialPOIs/Exteriors/COM_RESTAURANT.prefab
+CUL_LIBRARY,도서관,Chunk_1_2,71.93941,2.03,231.5636,Assets/CityGeneration/SpecialPOIs/Exteriors/CUL_LIBRARY.prefab
+CUL_MUSEUM,박물관,Chunk_1_0,-20.96107,2.03,-126.9101,Assets/CityGeneration/SpecialPOIs/Exteriors/CUL_MUSEUM.prefab
+CUL_SCHOOL,학교,Chunk_0_2,-170.3834,2.03,152.8175,Assets/CityGeneration/SpecialPOIs/Exteriors/CUL_SCHOOL.prefab
+IND_AUTO_SHOP,정비소,Chunk_0_0,-106.3192,2.03,-215.0479,Assets/CityGeneration/SpecialPOIs/Exteriors/IND_AUTO_SHOP.prefab
+IND_PRINT_SHOP,인쇄소,Chunk_2_1,237.884,2.03,106.6435,Assets/CityGeneration/SpecialPOIs/Exteriors/IND_PRINT_SHOP.prefab
+IND_TOOL_SHOP,공구점,Chunk_2_2,223.915,2.03,216.5448,Assets/CityGeneration/SpecialPOIs/Exteriors/IND_TOOL_SHOP.prefab
+RES_CLOTHING,의류점,Chunk_2_2,237.884,2.03,148.2848,Assets/CityGeneration/SpecialPOIs/Exteriors/RES_CLOTHING.prefab
+RES_CONVENIENCE,편의점,Chunk_1_2,59.07733,2.03,199.1636,Assets/CityGeneration/SpecialPOIs/Exteriors/RES_CONVENIENCE.prefab
+RES_HOSPITAL,병원,Chunk_0_0,-227.569,2.03,-104.2089,Assets/CityGeneration/SpecialPOIs/Exteriors/RES_HOSPITAL.prefab
+RES_LAB,실험실,Chunk_2_1,237.884,2.03,35.71163,Assets/CityGeneration/SpecialPOIs/Exteriors/RES_LAB.prefab
+RES_SIGNAL_STATION,관측소,Chunk_1_1,-22.49822,2.03,-43.11704,Assets/CityGeneration/SpecialPOIs/Exteriors/RES_SIGNAL_STATION.prefab
+RES_TOY_STORE,문방구,Chunk_1_0,-42.33627,2.03,-263.5526,Assets/CityGeneration/SpecialPOIs/Exteriors/RES_TOY_STORE.prefab

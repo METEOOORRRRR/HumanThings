@@ -7,6 +7,7 @@ namespace EarthRecovery
     public sealed partial class GameHud
     {
         Font terminalFont;
+        Vector2 terminalMissionScroll;
         readonly Dictionary<string, Texture2D> terminalImages = new();
         Texture2D TerminalImage(string name)
         {
@@ -77,9 +78,9 @@ namespace EarthRecovery
                 {
                     selectedPuzzle = Mathf.Clamp(selectedPuzzle, 0, missions.Length - 1);
                     for (int i = 0; i < missions.Length; i++)
-                        if (TerminalButton(new Rect(696, 316 + i * 88, 440, 76), Catalog.Product(missions[i]) + "\n" + Stage(missions[i].phase), selected: i == selectedPuzzle)) selectedPuzzle = i;
+                        if (TerminalButton(new Rect(696, 316 + i * 88, 440, 76), Catalog.Product(missions[i]) + "\n" + Stage(missions[i].phase), selected: i == selectedPuzzle)) { selectedPuzzle = i; terminalMissionScroll = Vector2.zero; }
                     var site = missions[selectedPuzzle];
-                    GUI.Label(new Rect(696, 590, 440, 116), Catalog.MissionDetails(site), TerminalText(18));
+                    ScrollText(new Rect(696, 590, 440, 116), ref terminalMissionScroll, Catalog.MissionLines(site), TerminalText(18));
                     bool linked = site.phase == CraftPhase.Puzzle && session.View.players.Any(p => p.alive && p.connected && p.id != session.LocalId && p.viewingSite == site.id);
                     TerminalDraw(new Rect(1170, 327, 24, 24), "07_Coop/Connection_" + (linked ? "Linked" : "Waiting"));
                     GUI.Label(new Rect(1206, 324, 302, 58), linked ? PuzzleName(site.puzzleKind) + " · 연결됨" : "협동 연결 대기", TerminalText(19));

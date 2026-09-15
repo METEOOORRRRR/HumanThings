@@ -1,5 +1,5 @@
 {
   "name": "EarthRecovery.Editor",
-  "references": ["EarthRecovery", "Unity.RenderPipelines.Universal.Runtime", "Unity.RenderPipelines.Core.Runtime"],
+  "references": ["EarthRecovery", "EarthRecovery.CitySmoke", "Unity.RenderPipelines.Universal.Runtime", "Unity.RenderPipelines.Core.Runtime", "Unity.TextMeshPro"],
   "includePlatforms": ["Editor"]
 }

@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: EarthRecovery::EarthRecovery.LocationDefinition
   id: COM_MUSIC_STORE
   displayNameKnown: "\uC545\uAE30\uC810"
-  displayNameUnknown: "\uB2E4\uC218\uC758 \uBAA9\uC7AC\xB7\uAE08\uC18D \uC74C\uD5A5
-    \uAD6C\uC870\uBB3C\uC774 \uBCF4\uAD00\uB41C \uC0C1\uC5C5 \uC2DC\uC124"
+  missionLocationHint: "\uC74C\uD5A5\uC744 \uB9CC\uB4DC\uB294 \uB2E4\uC591\uD55C
+    \uAD6C\uC870\uBB3C\uC774 \uBCF4\uAD00\xB7\uD310\uB9E4\uB418\uB358 \uC0C1\uC5C5
+    \uC2DC\uC124"
   moduleName: "\uACF5\uBA85 \uC124\uBE44 \uBCF5\uC6D0 \uBAA8\uB4C8"
   zone: 0
   artifacts:

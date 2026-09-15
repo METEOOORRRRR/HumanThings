@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: EarthRecovery::EarthRecovery.LocationDefinition
   id: RES_SIGNAL_STATION
   displayNameKnown: "\uAD00\uCE21\uC18C"
-  displayNameUnknown: "\uC804\uD30C\uC640 \uB300\uAE30 \uD658\uACBD\uC744 \uCE21\uC815\xB7\uC804\uB2EC\uD558\uB358
-    \uC5F0\uAD6C \uC2DC\uC124"
+  missionLocationHint: "\uC804\uD30C\uC640 \uC8FC\uBCC0 \uD658\uACBD\uC758 \uBCC0\uD654\uB97C
+    \uCE21\uC815\uD558\uACE0 \uC815\uBCF4\uB97C \uC1A1\uC218\uC2E0\uD558\uB358 \uAD00\uCE21
+    \uC2DC\uC124"
   moduleName: "\uC2E0\uD638 \uBD84\uC11D \uC124\uBE44 \uBCF5\uC6D0 \uBAA8\uB4C8"
   zone: 3
   artifacts:

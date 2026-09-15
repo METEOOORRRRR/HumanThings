@@ -14,7 +14,6 @@ namespace EarthRecovery.Tests
         SiteState Mission() {Assert.That(game.Start(42));return game.State.sites.First(s=>s.mission);}
         [Test] public void DataAssetsHaveAllRequiredRelationships()
         {var c=HumanContent.Load();Assert.That(c.zones.Length,Is.EqualTo(5));Assert.That(c.locations.Length,Is.EqualTo(15));Assert.That(c.artifacts.Length,Is.EqualTo(45));Assert.That(c.monsters.Length,Is.EqualTo(6));Assert.DoesNotThrow(c.Validate);}
-        [Serializable] sealed class TextSource {public TextRow[] artifacts;}
         [Test] public void FacilityPrefabsContainNoCallBells()
         {
             foreach(var location in HumanContent.Load().locations)
@@ -32,14 +31,25 @@ namespace EarthRecovery.Tests
             Assert.That(game.State.events.Count,Is.EqualTo(count));
             CollectionAssert.AreEqual(destination,game.State.monsters.Select(m=>m.destination).ToArray());
         }
-        [Serializable] sealed class TextRow {public string id,locationId,trueNameKo,trueNameEn,categoryTag,materialHint,functionHint,archiveDescription,marsComment;}
         [Test] public void All45ContentTextsMatchSourceTablesExactly()
         {
-            var source=JsonUtility.FromJson<TextSource>(Resources.Load<TextAsset>("HumanThingsSeed").text);Assert.That(source.artifacts.Length,Is.EqualTo(45));
+            var source=HumanContentSource.Parse(Resources.Load<TextAsset>("HumanThingsSeed").text);Assert.That(source.artifacts.Length,Is.EqualTo(45));
             foreach(var row in source.artifacts)
             {
                 var asset=HumanContent.Load().artifacts.Single(a=>a.id==row.id);
-                foreach(var field in typeof(TextRow).GetFields())Assert.That(typeof(ArtifactDefinition).GetField(field.Name).GetValue(asset),Is.EqualTo(field.GetValue(row)),row.id+" "+field.Name);
+                foreach(var field in typeof(HumanContentSource.Artifact).GetFields())
+                {
+                    var actual = typeof(ArtifactDefinition).GetField(field.Name).GetValue(asset);
+                    if (field.Name == "missionHint") Assert.That(JsonUtility.ToJson(actual), Is.EqualTo(JsonUtility.ToJson(row.missionHint)), row.id);
+                    else Assert.That(actual, Is.EqualTo(field.GetValue(row)), row.id + " " + field.Name);
+                }
+            }
+            foreach (var row in source.locations)
+            {
+                var asset = HumanContent.Load().locations.Single(l => l.id == row.id);
+                Assert.That(asset.missionLocationHint, Is.EqualTo(row.missionLocationHint));
+                Assert.That(asset.zone, Is.EqualTo(row.zone));
+                CollectionAssert.AreEqual(row.artifactIds, asset.artifacts.Select(a => a.id));
             }
         }
         [Test] public void DefaultAssetRequiresFourPlayersAndKeepsSpecifiedTimings()
@@ -167,8 +177,17 @@ namespace EarthRecovery.Tests
                 Assert.That(zone.spawnSockets.Any(p=>Vector3.Distance(zone.center+p,s.position)<.01f));
             }
         }
-        [Test] public void AssignmentHasRoleSpecificInformation()
-        {var s=Mission();game.Player(1).position=new Vector3(60,0,60);Assert.That(game.ForClient(0).sites[s.id].facilityHint,Is.Not.EqualTo(game.ForClient(1).sites[s.id].facilityHint));}
+        [Test] public void MissionHintsAreIdenticalInsideAndOutsideCamp()
+        {
+            Mission(); game.Player(1).position = new Vector3(60, 0, 60);
+            var camp = game.ForClient(0); var field = game.ForClient(1);
+            foreach (var site in camp.sites)
+            {
+                CollectionAssert.AreEqual(Catalog.MissionLines(site), Catalog.MissionLines(field.sites[site.id]));
+                var a = game.Content.Artifact(site);
+                CollectionAssert.AreEqual(new[] { a.missionHint.category, a.missionHint.structure, a.missionHint.function, game.Content.locations[site.id].missionLocationHint }, Catalog.MissionLines(site));
+            }
+        }
         [Test] public void FailedCheckEmitsNoiseAndReleasesLease()
         {var s=Mission();Module(s);Install(s);game.Player(1).viewingSite=s.id;game.Apply(1,new Command{action="craft",target=s.id});game.Apply(1,new Command{action="check",target=s.id});Assert.That(s.worker,Is.EqualTo(ulong.MaxValue));Assert.That(game.State.events.Any(e=>e.kind=="CraftFailed"));}
         [Test] public void CraftLeaseReleasesOnExit()

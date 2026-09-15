@@ -1,0 +1,11 @@
+seed,passed,chunks,connectors,connected,buildingsRequested,buildingsPlaced,emptyChunks,roadFailures,overlaps
+1234,True,9,8,9,90,83,0,0,0
+5678,True,9,9,9,79,70,0,0,0
+16847,True,9,8,9,66,54,0,0,0
+24766,True,9,8,9,88,75,0,0,0
+32685,True,9,8,9,100,85,0,0,0
+40604,True,9,9,9,83,69,0,0,0
+48523,True,9,8,9,112,86,0,0,0
+56442,True,9,9,9,95,76,0,0,0
+64361,True,9,8,9,91,71,0,0,0
+72280,True,9,9,9,110,86,0,0,0
