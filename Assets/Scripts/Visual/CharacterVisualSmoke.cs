@@ -105,7 +105,7 @@ namespace EarthRecovery
         void LateUpdate() { if (fixedCamera && world != null) { world.eye.transform.position = cameraAt; world.eye.transform.LookAt(cameraLook); } }
         IEnumerator Pair(string name)
         {
-            foreach (bool original in new[] { true, false })
+            foreach (bool original in visual.originalMaterial != null ? new[] { true, false } : new[] { false })
             {
                 visual.CompareOriginal(original); yield return new WaitForSecondsRealtime(.25f);
                 yield return Capture((original ? "Original-" : "HumanThings-") + name); if (done) yield break;

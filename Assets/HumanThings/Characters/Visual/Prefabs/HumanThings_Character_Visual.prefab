@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: EarthRecovery::EarthRecovery.HumanThingsCharacterVisual
   skin: {fileID: 500706542065461905}
-  originalMaterial: {fileID: 111690740065759945, guid: 4bdfe5f1e1aab2e4494741fa6c29213f, type: 3}
+  originalMaterialGuid: 4bdfe5f1e1aab2e4494741fa6c29213f
+  originalMaterialLocalId: 111690740065759945
   humanThingsMaterial: {fileID: 2100000, guid: e899947cdad635248bc7608bdc6887da, type: 2}
   profileOverride: {fileID: 0}

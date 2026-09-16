@@ -20,6 +20,7 @@ namespace EarthRecovery
             Directory.CreateDirectory(output);
             session = GetComponent<NetworkSession>(); world = GetComponent<WorldView>();
             session.PersistArchive = false; session.rules.developerSolo = true; world.Automated = true;
+            session.FillDeveloperSlots = false; // This fixture measures one moving character, not the developer party.
             Screen.SetResolution(1280, 720, false);
             if (!session.Connect(true, "127.0.0.1", 17998)) { Fail("host connection"); yield break; }
             float deadline = Time.realtimeSinceStartup + 20;
@@ -32,6 +33,12 @@ namespace EarthRecovery
             world.MenuOpen = false;
             var catalog = PlayerCharacterCatalog.Load();
             if (catalog == null || !catalog.characters.Any(c => c.id == PlayerCharacterCatalog.NeonOutriderId)) { Fail("character roster missing"); yield break; }
+#if !UNITY_EDITOR
+            if (Resources.FindObjectsOfTypeAll<Texture2D>().Any(t => t.format == TextureFormat.ARGB32
+                && (t.name == "texture_0" || t.name == "normal" || t.name == "texture_0_metallic_roughness")))
+            { Fail("editor comparison textures loaded in player"); yield break; }
+            Debug.Log("CHARACTER_COMPARISON_SEPARATION_PASS");
+#endif
             Debug.Log("CHARACTER_RANDOM_ASSIGNMENT " + session.HostGame.Player(session.LocalId).characterId);
             foreach (var character in catalog.characters)
             {

@@ -43,7 +43,8 @@ namespace EarthRecovery
             characters = PlayerCharacterCatalog.Load();
             var characterVisual = Resources.Load<HumanThingsCharacterVisualProfile>("HumanThingsCharacterVisualProfile");
             playerPrefab = characterVisual != null && characterVisual.visualPrefab != null
-                ? characterVisual.visualPrefab : Resources.Load<GameObject>("PlayerCharacter");
+                ? characterVisual.visualPrefab : characters?.Resolve(PlayerCharacterCatalog.DefaultId)?.Prefab;
+            if (playerPrefab == null) throw new System.InvalidOperationException("Gameplay character prefab is missing.");
             font = Font.CreateDynamicFontFromOSFont(new[] { "Malgun Gothic", "Arial" }, 18);
             textMaterial = new Material(Shader.Find("EarthRecovery/WorldText"));
             Font.textureRebuilt += RefreshFont;

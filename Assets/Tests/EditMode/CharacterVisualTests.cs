@@ -10,6 +10,45 @@ namespace EarthRecovery.Tests
     public sealed class CharacterVisualTests
     {
         [Test]
+        public void AllRosterMaterialsExcludeEmbeddedOriginalTexturesAndLegacyResource()
+        {
+            Assert.DoesNotThrow(GraphicsUploadAudit.ValidateRuntimeReferences);
+            Assert.That(AssetDatabase.LoadAssetAtPath<GameObject>(PlayerCharacterBuilder.PrefabPath), Is.Not.Null);
+        }
+
+        [Test]
+        public void OriginalComparisonUsesAnEditorLocatorInsteadOfAMaterialReference()
+        {
+            foreach (var entry in PlayerCharacterCatalog.Load().characters)
+            {
+                var visual = entry.Prefab.GetComponent<HumanThingsCharacterVisual>();
+                var serialized = new SerializedObject(visual);
+                Assert.That(serialized.FindProperty("originalMaterial"), Is.Null);
+                Assert.That(serialized.FindProperty("originalMaterialGuid").stringValue, Is.Not.Empty);
+                Assert.That(visual.originalMaterial, Is.Not.Null, entry.id);
+            }
+        }
+
+        [Test]
+        public void MissingComparisonDoesNotPreventGameplayMaterialOrOverrides()
+        {
+            var go = new GameObject("Comparison fallback test");
+            try
+            {
+                var skin = go.AddComponent<SkinnedMeshRenderer>();
+                var visual = go.AddComponent<HumanThingsCharacterVisual>();
+                visual.skin = skin;
+                visual.humanThingsMaterial = PlayerCharacterCatalog.Load().characters[0].Prefab.GetComponent<HumanThingsCharacterVisual>().humanThingsMaterial;
+                visual.CompareOriginal(false);
+                Assert.That(skin.sharedMaterial, Is.SameAs(visual.humanThingsMaterial));
+                visual.CompareOriginal(true);
+                Assert.That(visual.ShowingOriginal, Is.False);
+                Assert.That(skin.sharedMaterial, Is.SameAs(visual.humanThingsMaterial));
+            }
+            finally { Object.DestroyImmediate(go); }
+        }
+
+        [Test]
         public void VisualIsAVariantAndPreservesAllOriginalGeometryAndAnimation()
         {
             var original = AssetDatabase.LoadAssetAtPath<GameObject>(PlayerCharacterBuilder.PrefabPath);

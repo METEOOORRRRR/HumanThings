@@ -6,17 +6,28 @@ namespace EarthRecovery
     {
         void Awake()
         {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            GraphicsUploadProbe.Mark("Bootstrap begin");
+            if (GraphicsUploadProbe.Enabled && System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "--graphics-isolate") >= 0) return;
+#endif
             Application.runInBackground = true;
             Application.targetFrameRate = 60;
             var root = new GameObject("Earth Recovery Session");
             root.AddComponent<DisplayPreferences>();
             var session = root.AddComponent<NetworkSession>();
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            GraphicsUploadProbe.Mark("NetworkSession loaded; WorldView begin");
+#endif
             var world = root.AddComponent<WorldView>();
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            GraphicsUploadProbe.Mark("WorldView loaded");
+#endif
             var hud = root.AddComponent<GameHud>();
             var voice = root.AddComponent<RadioVoice>();
             session.world = world; session.radio = voice; world.session = session; world.hud = hud;
             hud.session = session; hud.world = world; voice.session = session;
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
+            if (GraphicsUploadProbe.Enabled) { GraphicsUploadProbe.Mark("Bootstrap ready"); return; }
             if (System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "--camera-qa") >= 0)
             { root.AddComponent<CameraMotionSmoke>(); return; }
             if (System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "--character-visual-qa") >= 0)

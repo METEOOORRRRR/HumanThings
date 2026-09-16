@@ -40,6 +40,7 @@ namespace EarthRecovery.Editor
             var characters = PlayerCharacterCatalog.Load();
             if (characters == null) throw new System.InvalidOperationException("Build the player character catalog first.");
             characters.Validate();
+            GraphicsUploadAudit.ValidateRuntimeReferences();
             WaitingRoomSetup.Prepare();
             Setup();
             Directory.CreateDirectory("Builds/.staging");

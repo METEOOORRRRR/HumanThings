@@ -3,7 +3,7 @@
 ## 1. 실제 에셋 구조
 
 - 원본 모델: `Assets/Character/Meshy_AI_Neon_Vanguard_All_Animations.glb`
-- 원본 플레이어 프리팹: `Assets/Resources/PlayerCharacter.prefab`
+- 원본 플레이어 프리팹: `Assets/Character/Generated/PlayerCharacter.prefab` (Resources 자동 포함 대상에서 분리)
 - 계층: PlayerCharacter / Facing / Neon Vanguard / target_character / output_unwrapped.
 - SkinnedMeshRenderer 1개, 메시 1개, 서브메시 1개, 머터리얼 슬롯 1개, 정점 19,590개, 본 27개.
 - 피부, 머리, 코트, 장비는 별도 머터리얼이 아니라 하나의 UV 아틀라스에 함께 들어 있다.

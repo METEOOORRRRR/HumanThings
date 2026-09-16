@@ -17,7 +17,7 @@ namespace EarthRecovery.Tests
         public void Setup()
         {
             root = new GameObject("Avatar test agent");
-            var prefab = Resources.Load<GameObject>("PlayerCharacter");
+            var prefab = PlayerCharacterCatalog.Load().Resolve(PlayerCharacterCatalog.DefaultId).Prefab;
             Assert.That(prefab, Is.Not.Null);
             avatar = Object.Instantiate(prefab, root.transform, false).GetComponent<PlayerAvatar>();
             player = new PlayerState(); rules = ScriptableObject.CreateInstance<GameRules>();
@@ -108,7 +108,7 @@ namespace EarthRecovery.Tests
         [UnityTest]
         public IEnumerator EachPlayerOwnsAnIndependentAnimatedRig()
         {
-            var guest = Object.Instantiate(Resources.Load<GameObject>("PlayerCharacter"), root.transform, false);
+            var guest = Object.Instantiate(PlayerCharacterCatalog.Load().Resolve(PlayerCharacterCatalog.DefaultId).Prefab, root.transform, false);
             try
             {
                 var other = guest.GetComponent<PlayerAvatar>();

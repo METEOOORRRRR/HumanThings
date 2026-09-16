@@ -12,7 +12,7 @@ namespace EarthRecovery.Editor
     {
         public const string Source = "Assets/Character/Meshy_AI_Neon_Vanguard_All_Animations.glb";
         public const string Output = "Assets/Character/Generated";
-        public const string PrefabPath = "Assets/Resources/PlayerCharacter.prefab";
+        public const string PrefabPath = "Assets/Character/Generated/PlayerCharacter.prefab";
 
         [MenuItem("Earth Recovery/Rebuild Player Character")]
         public static void Build() => BuildCharacter(Source, Output, PrefabPath, "Neon Vanguard");

@@ -6,7 +6,35 @@ namespace EarthRecovery
     public sealed class HumanThingsCharacterVisual : MonoBehaviour
     {
         public SkinnedMeshRenderer skin;
-        public Material originalMaterial;
+        [SerializeField, HideInInspector] string originalMaterialGuid;
+        [SerializeField, HideInInspector] long originalMaterialLocalId;
+#if UNITY_EDITOR
+        Material cachedOriginal;
+#endif
+        // Keep editor comparison available without a serialized runtime dependency.
+        public Material originalMaterial
+        {
+            get
+            {
+#if UNITY_EDITOR
+                if (cachedOriginal == null && !string.IsNullOrEmpty(originalMaterialGuid))
+                    foreach (var asset in UnityEditor.AssetDatabase.LoadAllAssetsAtPath(UnityEditor.AssetDatabase.GUIDToAssetPath(originalMaterialGuid)))
+                        if (asset is Material material && UnityEditor.AssetDatabase.TryGetGUIDAndLocalFileIdentifier(material, out string guid, out long id)
+                            && id == originalMaterialLocalId) { cachedOriginal = material; break; }
+                return cachedOriginal;
+#else
+                return null;
+#endif
+            }
+#if UNITY_EDITOR
+            set
+            {
+                cachedOriginal = value;
+                originalMaterialGuid = ""; originalMaterialLocalId = 0;
+                if (value != null) UnityEditor.AssetDatabase.TryGetGUIDAndLocalFileIdentifier(value, out originalMaterialGuid, out originalMaterialLocalId);
+            }
+#endif
+        }
         public Material humanThingsMaterial;
         public HumanThingsCharacterVisualProfile profileOverride;
         Material instanceMaterial;
@@ -27,9 +55,10 @@ namespace EarthRecovery
 
         public void CompareOriginal(bool original)
         {
-            ShowingOriginal = original;
-            if (skin != null && originalMaterial != null && humanThingsMaterial != null)
-                skin.sharedMaterial = original ? originalMaterial : instanceMaterial != null ? instanceMaterial : humanThingsMaterial;
+            var comparison = original ? originalMaterial : null;
+            ShowingOriginal = comparison != null;
+            if (skin != null && humanThingsMaterial != null)
+                skin.sharedMaterial = ShowingOriginal ? comparison : instanceMaterial != null ? instanceMaterial : humanThingsMaterial;
         }
 
         void OnDisable()
