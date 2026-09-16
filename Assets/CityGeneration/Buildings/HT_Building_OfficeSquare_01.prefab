@@ -1,0 +1,265 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2595020506944242349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4824327702072832345}
+  - component: {fileID: 3203807654680598623}
+  - component: {fileID: 4063320582892950694}
+  m_Layer: 0
+  m_Name: HT_Building_OfficeSquare_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4824327702072832345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2595020506944242349}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1438707094444760205}
+  - {fileID: 1110068348217197786}
+  - {fileID: 3044379622268882797}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3203807654680598623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2595020506944242349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250964ee36b0f4847abaca0abd5fb1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.CityBuildingAssembly
+  family: OfficeSquare
+  reviewed: 1
+  joints:
+  - 3.5
+  - 33.5
+--- !u!65 &4063320582892950694
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2595020506944242349}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15.550177, y: 34.136166, z: 15.550177}
+  m_Center: {x: -7.500003, y: 17.068083, z: -7.499997}
+--- !u!1001 &1110068348217080740
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4824327702072832345}
+    m_Modifications:
+    - target: {fileID: 131184, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+      propertyPath: m_Name
+      value: SM_Bld_OfficeSquare_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 409470, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409470, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 409470, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409470, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 409470, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409470, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409470, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409470, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409470, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409470, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 65664705954415930, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+--- !u!4 &1110068348217197786 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 409470, guid: f70c8059d9b8d60429d824a17015ed49, type: 3}
+  m_PrefabInstance: {fileID: 1110068348217080740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1438707094444348383
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4824327702072832345}
+    m_Modifications:
+    - target: {fileID: 148902, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+      propertyPath: m_Name
+      value: SM_Bld_OfficeSquare_Base_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 413522, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413522, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413522, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413522, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 413522, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413522, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413522, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413522, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413522, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413522, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 65360870157553034, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+--- !u!4 &1438707094444760205 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 413522, guid: e2b1e7ce58c743c4d8d59a66eec6422b, type: 3}
+  m_PrefabInstance: {fileID: 1438707094444348383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3044379622268542929
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4824327702072832345}
+    m_Modifications:
+    - target: {fileID: 111276, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+      propertyPath: m_Name
+      value: SM_Bld_OfficeSquare_Roof_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 479420, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479420, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 33.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 479420, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479420, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 479420, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479420, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479420, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479420, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479420, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479420, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 65285164381999652, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+--- !u!4 &3044379622268882797 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 479420, guid: 8e6be04d8370d1c4fa754d22592984f1, type: 3}
+  m_PrefabInstance: {fileID: 3044379622268542929}
+  m_PrefabAsset: {fileID: 0}

@@ -14,6 +14,7 @@ namespace EarthRecovery
         HumanThingsVisualProfile profile;
         Camera eye; Light sun;
         VolumeProfile volumeProfile;
+        Material duskMaterial;
         bool applied, fog, post, hdr;
         Color fogColor, ambientSky, ambientEquator, ambientGround, ambientLight, lightColor, background;
         float fogDensity, ambientIntensity, reflectionIntensity, intensity, shadowStrength, shadowBias, normalBias;
@@ -56,12 +57,16 @@ namespace EarthRecovery
             RenderSettings.fog=true; RenderSettings.fogMode=FogMode.ExponentialSquared;
             RenderSettings.fogColor=profile.fogColor; RenderSettings.fogDensity=profile.fogDensity;
             eye.clearFlags=CameraClearFlags.SolidColor; eye.backgroundColor=profile.fogColor; eye.allowHDR=true;
+            ApplySky();
             data.renderPostProcessing=true; data.antialiasing=AntialiasingMode.TemporalAntiAliasing;
             data.taaSettings=TemporalAA.Settings.Create();
             data.taaSettings.baseBlendFactor=.85f;
             data.taaSettings.contrastAdaptiveSharpening=.1f;
             data.resetHistory=true;
             CreateVolume(); AddFocalLights();
+            var ruins=Resources.Load<HumanThingsRuinProfile>("HumanThingsRuinProfile");
+            if(ruins!=null && ruins.enabledByDefault && !System.Array.Exists(System.Environment.GetCommandLineArgs(),a=>a=="--original-surfaces"))
+                (GetComponent<HumanThingsRuinSurfaces>() ?? gameObject.AddComponent<HumanThingsRuinSurfaces>()).Apply(ruins);
         }
         static string Category(Renderer r)
         {
@@ -72,6 +77,27 @@ namespace EarthRecovery
             if (name.Contains("metal") || name.Contains("fence") || name.Contains("lamp") || name.Contains("barrier") || name.Contains("sign")) return "Metal";
             if (name.Contains("brick") || name.Contains("shop")) return "Brick";
             return "Concrete";
+        }
+        void ApplySky()
+        {
+            if (!profile.duskSky || profile.skyShader==null) return;
+            duskMaterial=new Material(profile.skyShader) { name="HumanThings dusk sky", hideFlags=HideFlags.DontSave };
+            duskMaterial.SetColor("_Zenith",profile.skyZenith);
+            duskMaterial.SetColor("_Middle",profile.skyMiddle);
+            duskMaterial.SetColor("_Horizon",profile.skyHorizon);
+            duskMaterial.SetColor("_Lower",profile.fogColor);
+            duskMaterial.SetColor("_Glow",profile.afterglowColor);
+            duskMaterial.SetColor("_Cloud",profile.cloudColor);
+            duskMaterial.SetVector("_SunDirection",-sun.transform.forward);
+            duskMaterial.SetFloat("_Brightness",profile.skyBrightness);
+            duskMaterial.SetFloat("_GlowStrength",profile.afterglowStrength);
+            duskMaterial.SetFloat("_GlowHeight",profile.afterglowHeight);
+            duskMaterial.SetFloat("_GlowWidth",profile.afterglowWidth);
+            duskMaterial.SetFloat("_CloudCoverage",profile.cloudCoverage);
+            duskMaterial.SetFloat("_CloudOpacity",profile.cloudOpacity);
+            RenderSettings.skybox=duskMaterial;
+            eye.clearFlags=CameraClearFlags.Skybox;
+            HumanThingsHorizonSaturation.Register(eye,profile);
         }
         Material Override(Material original,string category)
         {
@@ -133,6 +159,8 @@ namespace EarthRecovery
         }
         public void Restore()
         {
+            HumanThingsHorizonSaturation.Unregister(eye);
+            GetComponent<HumanThingsRuinSurfaces>()?.Restore();
             foreach(var pair in originals) if(pair.Key!=null) pair.Key.sharedMaterials=pair.Value;
             originals.Clear(); foreach(var mat in overrides.Values) Release(mat); overrides.Clear();
             foreach(var go in additions) if(go!=null) {go.SetActive(false); Release(go);} additions.Clear();
@@ -142,6 +170,7 @@ namespace EarthRecovery
             RenderSettings.ambientMode=ambientMode; RenderSettings.ambientLight=ambientLight; RenderSettings.ambientSkyColor=ambientSky;
             RenderSettings.ambientEquatorColor=ambientEquator; RenderSettings.ambientGroundColor=ambientGround; RenderSettings.ambientIntensity=ambientIntensity;
             RenderSettings.reflectionIntensity=reflectionIntensity; RenderSettings.skybox=skybox;
+            Release(duskMaterial); duskMaterial=null;
             RenderSettings.ambientProbe=ambientProbe;
             if(sun!=null) {sun.transform.rotation=rotation; sun.color=lightColor; sun.intensity=intensity; sun.shadows=shadows; sun.shadowStrength=shadowStrength; sun.shadowBias=shadowBias; sun.shadowNormalBias=normalBias;}
             if(eye!=null) {var data=eye.GetUniversalAdditionalCameraData(); data.renderPostProcessing=post; data.antialiasing=aa; data.taaSettings=taa; data.resetHistory=true; eye.allowHDR=hdr; eye.backgroundColor=background; eye.clearFlags=clearFlags;}

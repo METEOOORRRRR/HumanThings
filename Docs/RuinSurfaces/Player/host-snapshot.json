@@ -1,0 +1,2361 @@
+{
+    "regionId": "seoul",
+    "phase": 1,
+    "seed": 100,
+    "cityWorld": true,
+    "mapSize": {
+        "x": 580.00927734375,
+        "y": 594.1472778320313
+    },
+    "oxygen": 1199.6666259765625,
+    "elapsed": 0.3333333432674408,
+    "players": [
+        {
+            "id": 0,
+            "name": "host",
+            "characterId": "neon-vanguard",
+            "position": {
+                "x": -2.0,
+                "y": 0.09999990463256836,
+                "z": -2.0
+            },
+            "yaw": 0.0,
+            "alive": true,
+            "connected": true,
+            "ready": true,
+            "flashlight": false,
+            "voiceEnabled": false,
+            "carrying": -1,
+            "inventory": [
+                0
+            ],
+            "modules": [],
+            "knownLocations": [],
+            "installing": -1,
+            "installStarted": 0.0,
+            "installHeartbeat": 0.0,
+            "viewingSite": -1,
+            "stationary": 0.0,
+            "lastInputAt": 0.0,
+            "deathReason": ""
+        },
+        {
+            "id": 1,
+            "name": "client",
+            "characterId": "neon-vanguard",
+            "position": {
+                "x": 0.0,
+                "y": 0.09999990463256836,
+                "z": -2.0
+            },
+            "yaw": 0.0,
+            "alive": true,
+            "connected": true,
+            "ready": true,
+            "flashlight": false,
+            "voiceEnabled": false,
+            "carrying": -1,
+            "inventory": [],
+            "modules": [],
+            "knownLocations": [],
+            "installing": -1,
+            "installStarted": 0.0,
+            "installHeartbeat": 0.0,
+            "viewingSite": -1,
+            "stationary": 0.0,
+            "lastInputAt": 0.0,
+            "deathReason": ""
+        }
+    ],
+    "sites": [
+        {
+            "id": 0,
+            "product": 1,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": -145.97434997558595,
+                "y": 0.059999942779541019,
+                "z": -5.404468536376953
+            },
+            "objectPosition": {
+                "x": -147.97434997558595,
+                "y": 0.059999942779541019,
+                "z": -4.404468536376953
+            },
+            "quarterTurn": 2,
+            "mission": true,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 0,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 1,
+            "reveal": 0,
+            "assignedOrder": 1,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-002",
+            "displayName": "",
+            "missionLocationHint": "음향을 만드는 다양한 구조물이 보관·판매되던 상업 시설",
+            "missionHint": {
+                "category": "리듬 문화",
+                "structure": "크기가 다른 원형 막과 금속 구조물이 여러 개 결합된 장치",
+                "function": "반복적인 타격으로 서로 다른 음과 박자를 만드는 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 1,
+            "product": 0,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": -27.121623992919923,
+                "y": 0.059999942779541019,
+                "z": 250.03616333007813
+            },
+            "objectPosition": {
+                "x": -26.121623992919923,
+                "y": 0.059999942779541019,
+                "z": 252.03616333007813
+            },
+            "quarterTurn": 3,
+            "mission": false,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 1,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 0,
+            "reveal": 0,
+            "assignedOrder": -1,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-004",
+            "displayName": "",
+            "missionLocationHint": "식재료를 가열하고 여러 사람이 식사를 하던 상업 시설",
+            "missionHint": {
+                "category": "식생활",
+                "structure": "넓고 얕은 금속 용기에 길게 돌출된 손잡이가 연결된 구조",
+                "function": "열원 위에서 식재료를 가열하고 섞는 데 사용한 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 2,
+            "product": 1,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": 173.58148193359376,
+                "y": 0.059999942779541019,
+                "z": -20.930099487304689
+            },
+            "objectPosition": {
+                "x": 174.58148193359376,
+                "y": 0.059999942779541019,
+                "z": -18.930099487304689
+            },
+            "quarterTurn": 3,
+            "mission": false,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 2,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 0,
+            "reveal": 0,
+            "assignedOrder": -1,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-008",
+            "displayName": "",
+            "missionLocationHint": "통신·기록·오락에 쓰이는 전자 장치를 판매하던 상업 시설",
+            "missionHint": {
+                "category": "기록 기술",
+                "structure": "전면에 투명한 원형 광학 부품이 돌출된 휴대형 전자 장치",
+                "function": "외부에서 들어오는 빛을 받아 장면을 기록하는 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 3,
+            "product": 0,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": 127.1850814819336,
+                "y": 0.059999942779541019,
+                "z": -215.78195190429688
+            },
+            "objectPosition": {
+                "x": 125.1850814819336,
+                "y": 0.059999942779541019,
+                "z": -214.78195190429688
+            },
+            "quarterTurn": 2,
+            "mission": false,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 0,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 0,
+            "reveal": 0,
+            "assignedOrder": -1,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-010",
+            "displayName": "",
+            "missionLocationHint": "어린 개체의 놀이와 모방 활동을 위한 물건을 판매하던 소형 상점",
+            "missionHint": {
+                "category": "아동 놀이",
+                "structure": "천과 수지로 만든 소형 인간 형태의 모형",
+                "function": "사람의 모습과 행동을 모방하는 놀이에 사용한 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 4,
+            "product": 0,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": 7.791419982910156,
+                "y": 0.059999942779541019,
+                "z": 136.90481567382813
+            },
+            "objectPosition": {
+                "x": 6.791419982910156,
+                "y": 0.059999942779541019,
+                "z": 134.90481567382813
+            },
+            "quarterTurn": 1,
+            "mission": false,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 1,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 0,
+            "reveal": 0,
+            "assignedOrder": -1,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-013",
+            "displayName": "",
+            "missionLocationHint": "신체에 착용하는 섬유 제품과 생활 보호용품을 판매하던 상점",
+            "missionHint": {
+                "category": "의복",
+                "structure": "부드러운 섬유로 된 몸통과 양팔 부분, 머리를 덮는 부분이 연결된 형태",
+                "function": "신체를 덮어 체온을 유지하고 외형을 꾸미는 데 사용한 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 5,
+            "product": 0,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": -154.57373046875,
+                "y": 0.059999942779541019,
+                "z": 99.944580078125
+            },
+            "objectPosition": {
+                "x": -155.57373046875,
+                "y": 0.059999942779541019,
+                "z": 97.944580078125
+            },
+            "quarterTurn": 1,
+            "mission": false,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 2,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 0,
+            "reveal": 0,
+            "assignedOrder": -1,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-016",
+            "displayName": "",
+            "missionLocationHint": "다양한 일상용품과 소형 소비재를 한곳에서 판매하던 소형 생활 상점",
+            "missionHint": {
+                "category": "신체 관리",
+                "structure": "한쪽 가장자리에 일정한 간격의 가는 돌기가 반복된 소형 도구",
+                "function": "가느다란 섬유성 구조를 풀고 가지런히 정리하는 데 사용한 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 6,
+            "product": 2,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": 174.87562561035157,
+                "y": 0.059999942779541019,
+                "z": -119.4444580078125
+            },
+            "objectPosition": {
+                "x": 175.87562561035157,
+                "y": 0.059999942779541019,
+                "z": -117.4444580078125
+            },
+            "quarterTurn": 3,
+            "mission": false,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 0,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 0,
+            "reveal": 0,
+            "assignedOrder": -1,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-021",
+            "displayName": "",
+            "missionLocationHint": "수작업과 기계 작업에 사용하는 각종 도구를 보관·판매하던 산업 상점",
+            "missionHint": {
+                "category": "측정 도구",
+                "structure": "숫자 눈금이 인쇄된 길고 얇은 띠가 작은 케이스 안에 말려 들어가는 구조",
+                "function": "두 지점 사이의 거리를 수치로 확인하는 데 사용한 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 7,
+            "product": 0,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": 173.89109802246095,
+                "y": 0.059999942779541019,
+                "z": 228.00051879882813
+            },
+            "objectPosition": {
+                "x": 175.89109802246095,
+                "y": 0.059999942779541019,
+                "z": 227.00051879882813
+            },
+            "quarterTurn": 0,
+            "mission": false,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 1,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 0,
+            "reveal": 0,
+            "assignedOrder": -1,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-022",
+            "displayName": "",
+            "missionLocationHint": "바퀴식 개인 이동기계의 부품을 교체하고 수리하던 작업 시설",
+            "missionHint": {
+                "category": "이동 기술",
+                "structure": "사람이 양손으로 잡을 수 있는 크기의 원형 입력 장치",
+                "function": "대형 이동기계의 진행 방향을 좌우로 조절하는 데 사용한 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 8,
+            "product": 0,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": 4.099048614501953,
+                "y": 0.059999942779541019,
+                "z": -288.3590087890625
+            },
+            "objectPosition": {
+                "x": 3.0990488529205324,
+                "y": 0.059999942779541019,
+                "z": -290.3590087890625
+            },
+            "quarterTurn": 1,
+            "mission": true,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 2,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 1,
+            "reveal": 0,
+            "assignedOrder": 2,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-025",
+            "displayName": "",
+            "missionLocationHint": "문자와 이미지를 종이 위에 반복적으로 출력·복제하던 생산 시설",
+            "missionHint": {
+                "category": "상업 기록",
+                "structure": "얇은 종이 한 장에 큰 글자, 이미지, 숫자가 밀집된 인쇄물",
+                "function": "많은 사람에게 특정 상품이나 행사를 알리기 위해 배포한 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 9,
+            "product": 1,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": 4.099048614501953,
+                "y": 0.059999942779541019,
+                "z": -230.86875915527345
+            },
+            "objectPosition": {
+                "x": 3.0990488529205324,
+                "y": 0.059999942779541019,
+                "z": -232.86875915527345
+            },
+            "quarterTurn": 1,
+            "mission": false,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 0,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 0,
+            "reveal": 0,
+            "assignedOrder": -1,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-029",
+            "displayName": "",
+            "missionLocationHint": "인간의 신체 상태를 측정하고 질환과 손상을 치료하던 시설",
+            "missionHint": {
+                "category": "의료 도구",
+                "structure": "눈금이 있는 투명한 원통과 움직이는 밀대, 매우 가는 금속 관으로 이루어진 구조",
+                "function": "소량의 액체를 정해진 양만큼 밀어 넣거나 빼내는 데 사용한 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 10,
+            "product": 0,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": 173.58148193359376,
+                "y": 0.059999942779541019,
+                "z": -61.37378692626953
+            },
+            "objectPosition": {
+                "x": 174.58148193359376,
+                "y": 0.059999942779541019,
+                "z": -59.37378692626953
+            },
+            "quarterTurn": 3,
+            "mission": false,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 1,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 0,
+            "reveal": 0,
+            "assignedOrder": -1,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-031",
+            "displayName": "",
+            "missionLocationHint": "물질과 생명 현상을 작은 규모에서 관찰하고 실험하던 연구 시설",
+            "missionHint": {
+                "category": "관측 기술",
+                "structure": "여러 개의 광학 렌즈와 작은 표본을 고정하는 받침대가 결합된 정밀 장치",
+                "function": "맨눈으로 보기 어려운 매우 작은 구조를 확대해 관찰하는 데 사용한 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 11,
+            "product": 2,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": 210.78526306152345,
+                "y": 0.059999942779541019,
+                "z": 183.78089904785157
+            },
+            "objectPosition": {
+                "x": 208.78526306152345,
+                "y": 0.059999942779541019,
+                "z": 184.78089904785157
+            },
+            "quarterTurn": 2,
+            "mission": true,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 2,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 1,
+            "reveal": 0,
+            "assignedOrder": 0,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-036",
+            "displayName": "",
+            "missionLocationHint": "전파와 주변 환경의 변화를 측정하고 정보를 송수신하던 관측 시설",
+            "missionHint": {
+                "category": "환경 관측",
+                "structure": "여러 종류의 외부 센서와 측정 장치가 하나의 설비에 결합된 구조",
+                "function": "주변 대기의 여러 상태를 동시에 측정하고 기록하는 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 12,
+            "product": 0,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": -182.1688995361328,
+                "y": 0.059999942779541019,
+                "z": 270.1482849121094
+            },
+            "objectPosition": {
+                "x": -183.1688995361328,
+                "y": 0.059999942779541019,
+                "z": 268.1482849121094
+            },
+            "quarterTurn": 1,
+            "mission": false,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 0,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 0,
+            "reveal": 0,
+            "assignedOrder": -1,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-037",
+            "displayName": "",
+            "missionLocationHint": "문자로 기록된 자료를 대량으로 보관하고 열람하던 문화 시설",
+            "missionHint": {
+                "category": "서사 기록",
+                "structure": "다수의 종이를 한쪽에서 묶어 순서대로 넘겨 읽는 기록물",
+                "function": "실제로 일어난 사실보다 인물과 사건을 구성해 긴 이야기를 전달하는 데 사용한 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 13,
+            "product": 2,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": -178.22418212890626,
+                "y": 0.059999942779541019,
+                "z": -212.4393310546875
+            },
+            "objectPosition": {
+                "x": -180.22418212890626,
+                "y": 0.059999942779541019,
+                "z": -211.4393310546875
+            },
+            "quarterTurn": 2,
+            "mission": false,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 1,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 0,
+            "reveal": 0,
+            "assignedOrder": -1,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-042",
+            "displayName": "",
+            "missionLocationHint": "어린 인간에게 지식과 사회 규범을 교육하던 시설",
+            "missionHint": {
+                "category": "감정·표현",
+                "structure": "종이 위에 단순한 사람, 건물, 자연물 등이 비정형적인 색과 선으로 표현된 기록물",
+                "function": "정확한 정보 전달보다 개인의 경험과 상상을 시각적으로 표현하는 데 사용한 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        },
+        {
+            "id": 14,
+            "product": 0,
+            "level": 0,
+            "checks": 0,
+            "position": {
+                "x": -92.62921905517578,
+                "y": 0.059999942779541019,
+                "z": 47.90022659301758
+            },
+            "objectPosition": {
+                "x": -90.62921905517578,
+                "y": 0.059999942779541019,
+                "z": 46.90022659301758
+            },
+            "quarterTurn": 0,
+            "mission": false,
+            "phase": 0,
+            "checkStarted": -1.0,
+            "worker": 18446744073709551615,
+            "puzzleX": 0,
+            "puzzleY": 0,
+            "angle": 0,
+            "targetX": -1,
+            "targetY": -1,
+            "targetAngle": -1,
+            "puzzleKind": 2,
+            "maze": [],
+            "lastPuzzleInput": 0.0,
+            "facility": 0,
+            "missionState": 0,
+            "reveal": 0,
+            "assignedOrder": -1,
+            "revealClues": 0,
+            "puzzleAttempts": 0,
+            "discovered": false,
+            "activated": false,
+            "moduleExists": false,
+            "sampleCode": "H-043",
+            "displayName": "",
+            "missionLocationHint": "과거의 물건과 기록을 보존하고 사람들에게 공개하던 문화 시설",
+            "missionHint": {
+                "category": "시각 예술",
+                "structure": "평평한 천이나 판 위에 한 사람의 얼굴과 상반신을 중심으로 색소를 덧입힌 기록물",
+                "function": "특정 인물의 외형과 인상을 오래 남기기 위해 제작한 것으로 추정"
+            },
+            "assignedAt": 0.0,
+            "restoredAt": -1.0,
+            "craftedAt": -1.0,
+            "recoveredAt": -1.0,
+            "recoveredBy": 18446744073709551615
+        }
+    ],
+    "loot": [
+        {
+            "id": 0,
+            "material": 0,
+            "position": {
+                "x": -5.463030815124512,
+                "y": 0.07857264578342438,
+                "z": -27.315155029296876
+            },
+            "collected": false
+        },
+        {
+            "id": 1,
+            "material": 0,
+            "position": {
+                "x": -27.315155029296876,
+                "y": 0.08333349227905274,
+                "z": -21.852123260498048
+            },
+            "collected": false
+        },
+        {
+            "id": 2,
+            "material": 0,
+            "position": {
+                "x": 192.39358520507813,
+                "y": 0.08554957807064057,
+                "z": -123.31588745117188
+            },
+            "collected": false
+        },
+        {
+            "id": 3,
+            "material": 0,
+            "position": {
+                "x": 192.39358520507813,
+                "y": 0.05924156308174133,
+                "z": -168.42068481445313
+            },
+            "collected": false
+        },
+        {
+            "id": 4,
+            "material": 0,
+            "position": {
+                "x": -14.721721649169922,
+                "y": 0.08333349227905274,
+                "z": 229.70587158203126
+            },
+            "collected": false
+        },
+        {
+            "id": 5,
+            "material": 0,
+            "position": {
+                "x": 183.95204162597657,
+                "y": 0.08333349227905274,
+                "z": -154.95516967773438
+            },
+            "collected": false
+        },
+        {
+            "id": 6,
+            "material": 0,
+            "position": {
+                "x": -9.6651029586792,
+                "y": 0.08333349227905274,
+                "z": 245.52146911621095
+            },
+            "collected": false
+        },
+        {
+            "id": 7,
+            "material": 0,
+            "position": {
+                "x": -173.7737274169922,
+                "y": 0.08333349227905274,
+                "z": 157.09320068359376
+            },
+            "collected": false
+        },
+        {
+            "id": 8,
+            "material": 0,
+            "position": {
+                "x": -200.3098907470703,
+                "y": 0.08333349227905274,
+                "z": 219.3370361328125
+            },
+            "collected": false
+        },
+        {
+            "id": 9,
+            "material": 0,
+            "position": {
+                "x": 89.80166625976563,
+                "y": 0.09771691262722016,
+                "z": -199.5819549560547
+            },
+            "collected": false
+        },
+        {
+            "id": 10,
+            "material": 0,
+            "position": {
+                "x": -198.29583740234376,
+                "y": 0.08333349227905274,
+                "z": -231.1517791748047
+            },
+            "collected": false
+        },
+        {
+            "id": 11,
+            "material": 0,
+            "position": {
+                "x": 27.315153121948243,
+                "y": 0.0466071218252182,
+                "z": 0.0
+            },
+            "collected": false
+        },
+        {
+            "id": 12,
+            "material": 0,
+            "position": {
+                "x": -190.25994873046876,
+                "y": 0.09179170429706574,
+                "z": -190.17689514160157
+            },
+            "collected": false
+        },
+        {
+            "id": 13,
+            "material": 0,
+            "position": {
+                "x": -178.98880004882813,
+                "y": 0.08333349227905274,
+                "z": 7.358335494995117
+            },
+            "collected": false
+        },
+        {
+            "id": 14,
+            "material": 0,
+            "position": {
+                "x": 192.39358520507813,
+                "y": 0.055643774569034579,
+                "z": -138.35081481933595
+            },
+            "collected": false
+        },
+        {
+            "id": 15,
+            "material": 0,
+            "position": {
+                "x": -173.7737274169922,
+                "y": 0.08333349227905274,
+                "z": 104.73754119873047
+            },
+            "collected": false
+        },
+        {
+            "id": 16,
+            "material": 0,
+            "position": {
+                "x": 213.33319091796876,
+                "y": 0.07411248981952667,
+                "z": -218.05377197265626
+            },
+            "collected": false
+        },
+        {
+            "id": 17,
+            "material": 0,
+            "position": {
+                "x": -9.6651029586792,
+                "y": 0.08333349227905274,
+                "z": 211.13424682617188
+            },
+            "collected": false
+        },
+        {
+            "id": 18,
+            "material": 0,
+            "position": {
+                "x": 190.72958374023438,
+                "y": 0.08333349227905274,
+                "z": 201.77468872070313
+            },
+            "collected": false
+        },
+        {
+            "id": 19,
+            "material": 0,
+            "position": {
+                "x": -126.50003051757813,
+                "y": 0.025503400713205339,
+                "z": 31.700225830078126
+            },
+            "collected": false
+        },
+        {
+            "id": 20,
+            "material": 0,
+            "position": {
+                "x": 185.66104125976563,
+                "y": 0.08333349227905274,
+                "z": 201.77468872070313
+            },
+            "collected": false
+        },
+        {
+            "id": 21,
+            "material": 0,
+            "position": {
+                "x": -9.6651029586792,
+                "y": 0.08333349227905274,
+                "z": 225.2325897216797
+            },
+            "collected": false
+        },
+        {
+            "id": 22,
+            "material": 0,
+            "position": {
+                "x": -194.5446014404297,
+                "y": 0.08333349227905274,
+                "z": 31.700225830078126
+            },
+            "collected": false
+        },
+        {
+            "id": 23,
+            "material": 0,
+            "position": {
+                "x": 190.91464233398438,
+                "y": 0.09715525805950165,
+                "z": -12.50290298461914
+            },
+            "collected": false
+        },
+        {
+            "id": 24,
+            "material": 0,
+            "position": {
+                "x": -225.39613342285157,
+                "y": 0.06046464666724205,
+                "z": 240.39743041992188
+            },
+            "collected": false
+        },
+        {
+            "id": 25,
+            "material": 0,
+            "position": {
+                "x": 199.29701232910157,
+                "y": 0.11611329764127732,
+                "z": -92.25692749023438
+            },
+            "collected": false
+        },
+        {
+            "id": 26,
+            "material": 0,
+            "position": {
+                "x": 27.315155029296876,
+                "y": 0.05138050764799118,
+                "z": -16.38909339904785
+            },
+            "collected": false
+        },
+        {
+            "id": 27,
+            "material": 0,
+            "position": {
+                "x": 27.315155029296876,
+                "y": 0.08333349227905274,
+                "z": 5.463032245635986
+            },
+            "collected": false
+        },
+        {
+            "id": 28,
+            "material": 0,
+            "position": {
+                "x": -198.29583740234376,
+                "y": 0.0913214161992073,
+                "z": -215.87261962890626
+            },
+            "collected": false
+        },
+        {
+            "id": 29,
+            "material": 0,
+            "position": {
+                "x": 199.29701232910157,
+                "y": 0.035385407507419589,
+                "z": -132.7457275390625
+            },
+            "collected": false
+        },
+        {
+            "id": 30,
+            "material": 0,
+            "position": {
+                "x": -51.67229461669922,
+                "y": 0.08193375170230866,
+                "z": -241.251953125
+            },
+            "collected": false
+        },
+        {
+            "id": 31,
+            "material": 0,
+            "position": {
+                "x": 34.500850677490237,
+                "y": 0.11272460222244263,
+                "z": -217.06272888183595
+            },
+            "collected": false
+        },
+        {
+            "id": 32,
+            "material": 0,
+            "position": {
+                "x": -178.98880004882813,
+                "y": 0.05156959593296051,
+                "z": -71.43680572509766
+            },
+            "collected": false
+        },
+        {
+            "id": 33,
+            "material": 0,
+            "position": {
+                "x": 190.91464233398438,
+                "y": 0.14236241579055787,
+                "z": 47.81031799316406
+            },
+            "collected": false
+        },
+        {
+            "id": 34,
+            "material": 0,
+            "position": {
+                "x": -178.98880004882813,
+                "y": 0.08333349227905274,
+                "z": 2.10532283782959
+            },
+            "collected": false
+        },
+        {
+            "id": 35,
+            "material": 0,
+            "position": {
+                "x": 185.0414581298828,
+                "y": 0.06657198071479798,
+                "z": 8.95266342163086
+            },
+            "collected": false
+        },
+        {
+            "id": 36,
+            "material": 0,
+            "position": {
+                "x": -184.17575073242188,
+                "y": 0.08333349227905274,
+                "z": 12.611342430114746
+            },
+            "collected": false
+        },
+        {
+            "id": 37,
+            "material": 0,
+            "position": {
+                "x": -31.85092544555664,
+                "y": 0.08333349227905274,
+                "z": -208.0809783935547
+            },
+            "collected": false
+        },
+        {
+            "id": 38,
+            "material": 0,
+            "position": {
+                "x": -10.310294151306153,
+                "y": 0.08333349227905274,
+                "z": -202.88510131835938
+            },
+            "collected": false
+        },
+        {
+            "id": 39,
+            "material": 0,
+            "position": {
+                "x": 192.39358520507813,
+                "y": 0.08333349227905274,
+                "z": -238.58370971679688
+            },
+            "collected": false
+        },
+        {
+            "id": 40,
+            "material": 0,
+            "position": {
+                "x": 124.83860778808594,
+                "y": 0.08333349227905274,
+                "z": 201.77468872070313
+            },
+            "collected": false
+        },
+        {
+            "id": 41,
+            "material": 0,
+            "position": {
+                "x": -178.98880004882813,
+                "y": 0.08333349227905274,
+                "z": -107.34022521972656
+            },
+            "collected": false
+        },
+        {
+            "id": 42,
+            "material": 0,
+            "position": {
+                "x": -200.3098907470703,
+                "y": 0.07616710662841797,
+                "z": 229.3412322998047
+            },
+            "collected": false
+        },
+        {
+            "id": 43,
+            "material": 0,
+            "position": {
+                "x": 59.308677673339847,
+                "y": 0.08333349227905274,
+                "z": -199.5819549560547
+            },
+            "collected": false
+        },
+        {
+            "id": 44,
+            "material": 0,
+            "position": {
+                "x": -105.7408218383789,
+                "y": 0.08862720429897309,
+                "z": 229.70587158203126
+            },
+            "collected": false
+        },
+        {
+            "id": 45,
+            "material": 0,
+            "position": {
+                "x": 34.500850677490237,
+                "y": 0.08333349227905274,
+                "z": -212.0245361328125
+            },
+            "collected": false
+        },
+        {
+            "id": 46,
+            "material": 0,
+            "position": {
+                "x": -157.90521240234376,
+                "y": 0.08333349227905274,
+                "z": 31.700225830078126
+            },
+            "collected": false
+        },
+        {
+            "id": 47,
+            "material": 0,
+            "position": {
+                "x": 192.29916381835938,
+                "y": 0.08333349227905274,
+                "z": 175.21493530273438
+            },
+            "collected": false
+        },
+        {
+            "id": 48,
+            "material": 0,
+            "position": {
+                "x": -200.3098907470703,
+                "y": 0.08333349227905274,
+                "z": 204.33071899414063
+            },
+            "collected": false
+        },
+        {
+            "id": 49,
+            "material": 0,
+            "position": {
+                "x": -200.3098907470703,
+                "y": 0.041205767542123798,
+                "z": 254.3517303466797
+            },
+            "collected": false
+        },
+        {
+            "id": 50,
+            "material": 0,
+            "position": {
+                "x": 199.29701232910157,
+                "y": 0.03898988291621208,
+                "z": -29.403316497802736
+            },
+            "collected": false
+        },
+        {
+            "id": 51,
+            "material": 0,
+            "position": {
+                "x": 10.184856414794922,
+                "y": 0.08333349227905274,
+                "z": -187.93345642089845
+            },
+            "collected": false
+        },
+        {
+            "id": 52,
+            "material": 0,
+            "position": {
+                "x": -46.905799865722659,
+                "y": 0.08333349227905274,
+                "z": -208.0809783935547
+            },
+            "collected": false
+        },
+        {
+            "id": 53,
+            "material": 0,
+            "position": {
+                "x": 192.39358520507813,
+                "y": 0.06411400437355042,
+                "z": -248.60699462890626
+            },
+            "collected": false
+        },
+        {
+            "id": 54,
+            "material": 0,
+            "position": {
+                "x": -201.4904022216797,
+                "y": 0.08333349227905274,
+                "z": 18.171878814697267
+            },
+            "collected": false
+        },
+        {
+            "id": 55,
+            "material": 0,
+            "position": {
+                "x": 221.14080810546876,
+                "y": 0.08333349227905274,
+                "z": 201.77468872070313
+            },
+            "collected": false
+        },
+        {
+            "id": 56,
+            "material": 0,
+            "position": {
+                "x": -52.332096099853519,
+                "y": 0.08333349227905274,
+                "z": -176.75717163085938
+            },
+            "collected": false
+        },
+        {
+            "id": 57,
+            "material": 0,
+            "position": {
+                "x": 192.39358520507813,
+                "y": 0.10730190575122833,
+                "z": -163.40904235839845
+            },
+            "collected": false
+        },
+        {
+            "id": 58,
+            "material": 0,
+            "position": {
+                "x": 5.754569053649902,
+                "y": 0.07209407538175583,
+                "z": 80.80984497070313
+            },
+            "collected": false
+        },
+        {
+            "id": 59,
+            "material": 0,
+            "position": {
+                "x": -231.59262084960938,
+                "y": 0.05033402889966965,
+                "z": 172.38690185546876
+            },
+            "collected": false
+        },
+        {
+            "id": 60,
+            "material": 0,
+            "position": {
+                "x": -9.6651029586792,
+                "y": 0.08333349227905274,
+                "z": 133.9326171875
+            },
+            "collected": false
+        },
+        {
+            "id": 61,
+            "material": 0,
+            "position": {
+                "x": -178.98880004882813,
+                "y": 0.08333349227905274,
+                "z": -24.159725189208986
+            },
+            "collected": false
+        },
+        {
+            "id": 62,
+            "material": 0,
+            "position": {
+                "x": 209.2611846923828,
+                "y": 0.10992246866226196,
+                "z": -154.95516967773438
+            },
+            "collected": false
+        },
+        {
+            "id": 63,
+            "material": 0,
+            "position": {
+                "x": -72.33366394042969,
+                "y": 0.08333349227905274,
+                "z": -176.75717163085938
+            },
+            "collected": false
+        },
+        {
+            "id": 64,
+            "material": 0,
+            "position": {
+                "x": 17.673410415649415,
+                "y": 0.08333349227905274,
+                "z": -176.75717163085938
+            },
+            "collected": false
+        },
+        {
+            "id": 65,
+            "material": 0,
+            "position": {
+                "x": 34.500850677490237,
+                "y": 0.08333349227905274,
+                "z": -186.83355712890626
+            },
+            "collected": false
+        },
+        {
+            "id": 66,
+            "material": 0,
+            "position": {
+                "x": -69.1822509765625,
+                "y": 0.08333349227905274,
+                "z": -193.2393341064453
+            },
+            "collected": false
+        },
+        {
+            "id": 67,
+            "material": 0,
+            "position": {
+                "x": 199.29701232910157,
+                "y": 0.0998370572924614,
+                "z": -71.43423461914063
+            },
+            "collected": false
+        },
+        {
+            "id": 68,
+            "material": 0,
+            "position": {
+                "x": 192.39358520507813,
+                "y": 0.16660168766975404,
+                "z": -253.61863708496095
+            },
+            "collected": false
+        },
+        {
+            "id": 69,
+            "material": 0,
+            "position": {
+                "x": -201.4904022216797,
+                "y": 0.08333349227905274,
+                "z": 33.39591979980469
+            },
+            "collected": false
+        },
+        {
+            "id": 70,
+            "material": 0,
+            "position": {
+                "x": -200.3098907470703,
+                "y": 0.08333349227905274,
+                "z": 239.34542846679688
+            },
+            "collected": false
+        },
+        {
+            "id": 71,
+            "material": 0,
+            "position": {
+                "x": 58.47833251953125,
+                "y": 0.08333349227905274,
+                "z": -208.0809783935547
+            },
+            "collected": false
+        },
+        {
+            "id": 72,
+            "material": 0,
+            "position": {
+                "x": 192.39358520507813,
+                "y": 0.08333349227905274,
+                "z": -223.54876708984376
+            },
+            "collected": false
+        },
+        {
+            "id": 73,
+            "material": 0,
+            "position": {
+                "x": -100.39363861083985,
+                "y": 0.04259488731622696,
+                "z": -193.2393341064453
+            },
+            "collected": false
+        },
+        {
+            "id": 74,
+            "material": 0,
+            "position": {
+                "x": 19.430158615112306,
+                "y": 0.08333349227905274,
+                "z": 203.14334106445313
+            },
+            "collected": false
+        },
+        {
+            "id": 75,
+            "material": 0,
+            "position": {
+                "x": -178.84201049804688,
+                "y": 0.08333347737789154,
+                "z": 31.700225830078126
+            },
+            "collected": false
+        },
+        {
+            "id": 76,
+            "material": 0,
+            "position": {
+                "x": 79.20149230957031,
+                "y": 0.0726887583732605,
+                "z": 211.80050659179688
+            },
+            "collected": false
+        },
+        {
+            "id": 77,
+            "material": 0,
+            "position": {
+                "x": -142.3900604248047,
+                "y": 0.1178450882434845,
+                "z": 229.70587158203126
+            },
+            "collected": false
+        },
+        {
+            "id": 78,
+            "material": 0,
+            "position": {
+                "x": -1.6772980690002442,
+                "y": 0.08333349227905274,
+                "z": -199.5819549560547
+            },
+            "collected": false
+        },
+        {
+            "id": 79,
+            "material": 0,
+            "position": {
+                "x": -220.89585876464845,
+                "y": 0.07122617959976196,
+                "z": 172.38690185546876
+            },
+            "collected": false
+        },
+        {
+            "id": 80,
+            "material": 0,
+            "position": {
+                "x": -16.38909149169922,
+                "y": 0.05723264068365097,
+                "z": -27.315155029296876
+            },
+            "collected": false
+        },
+        {
+            "id": 81,
+            "material": 0,
+            "position": {
+                "x": -173.7737274169922,
+                "y": 0.08333349227905274,
+                "z": 162.34181213378907
+            },
+            "collected": false
+        },
+        {
+            "id": 82,
+            "material": 0,
+            "position": {
+                "x": -84.28691864013672,
+                "y": 0.06966903060674668,
+                "z": 31.700225830078126
+            },
+            "collected": false
+        },
+        {
+            "id": 83,
+            "material": 0,
+            "position": {
+                "x": 192.39358520507813,
+                "y": 0.08469648659229279,
+                "z": -113.2926025390625
+            },
+            "collected": false
+        },
+        {
+            "id": 84,
+            "material": 0,
+            "position": {
+                "x": 10.184856414794922,
+                "y": 0.08333349227905274,
+                "z": -65.42103576660156
+            },
+            "collected": false
+        },
+        {
+            "id": 85,
+            "material": 0,
+            "position": {
+                "x": -77.01555633544922,
+                "y": 0.08333349227905274,
+                "z": -208.0809783935547
+            },
+            "collected": false
+        },
+        {
+            "id": 86,
+            "material": 0,
+            "position": {
+                "x": 206.0900115966797,
+                "y": 0.08333349227905274,
+                "z": -228.55821228027345
+            },
+            "collected": false
+        },
+        {
+            "id": 87,
+            "material": 0,
+            "position": {
+                "x": -11.96136474609375,
+                "y": 0.08333349227905274,
+                "z": -193.2393341064453
+            },
+            "collected": false
+        },
+        {
+            "id": 88,
+            "material": 0,
+            "position": {
+                "x": 190.91464233398438,
+                "y": 0.05339331179857254,
+                "z": 7.601503372192383
+            },
+            "collected": false
+        },
+        {
+            "id": 89,
+            "material": 0,
+            "position": {
+                "x": -201.4904022216797,
+                "y": 0.08333349227905274,
+                "z": 2.9478378295898439
+            },
+            "collected": false
+        },
+        {
+            "id": 90,
+            "material": 0,
+            "position": {
+                "x": -225.39613342285157,
+                "y": 0.06348361074924469,
+                "z": 224.9402618408203
+            },
+            "collected": false
+        },
+        {
+            "id": 91,
+            "material": 0,
+            "position": {
+                "x": -146.82618713378907,
+                "y": 0.0012156832963228226,
+                "z": -193.2393341064453
+            },
+            "collected": false
+        },
+        {
+            "id": 92,
+            "material": 0,
+            "position": {
+                "x": 21.6995792388916,
+                "y": 0.08333349227905274,
+                "z": 211.80050659179688
+            },
+            "collected": false
+        },
+        {
+            "id": 93,
+            "material": 0,
+            "position": {
+                "x": -173.7737274169922,
+                "y": 0.08333349227905274,
+                "z": 27.965709686279298
+            },
+            "collected": false
+        },
+        {
+            "id": 94,
+            "material": 0,
+            "position": {
+                "x": 190.91464233398438,
+                "y": 0.06227428838610649,
+                "z": -27.581207275390626
+            },
+            "collected": false
+        },
+        {
+            "id": 95,
+            "material": 0,
+            "position": {
+                "x": 0.0,
+                "y": 0.04660731181502342,
+                "z": 27.315155029296876
+            },
+            "collected": false
+        },
+        {
+            "id": 96,
+            "material": 0,
+            "position": {
+                "x": 179.16827392578126,
+                "y": 0.07804303616285324,
+                "z": 8.95266342163086
+            },
+            "collected": false
+        },
+        {
+            "id": 97,
+            "material": 0,
+            "position": {
+                "x": -6.97433614730835,
+                "y": 0.08333349227905274,
+                "z": 203.14334106445313
+            },
+            "collected": false
+        },
+        {
+            "id": 98,
+            "material": 0,
+            "position": {
+                "x": -25.963773727416993,
+                "y": 0.034177955240011218,
+                "z": -38.62675476074219
+            },
+            "collected": false
+        },
+        {
+            "id": 99,
+            "material": 0,
+            "position": {
+                "x": -152.6710205078125,
+                "y": 0.08333349227905274,
+                "z": 31.700225830078126
+            },
+            "collected": false
+        },
+        {
+            "id": 100,
+            "material": 0,
+            "position": {
+                "x": -199.77880859375,
+                "y": 0.08333349227905274,
+                "z": 25.337265014648439
+            },
+            "collected": false
+        },
+        {
+            "id": 101,
+            "material": 0,
+            "position": {
+                "x": -131.38528442382813,
+                "y": 0.10748898983001709,
+                "z": -193.2393341064453
+            },
+            "collected": false
+        },
+        {
+            "id": 102,
+            "material": 0,
+            "position": {
+                "x": 192.39358520507813,
+                "y": 0.10702608525753021,
+                "z": -153.38575744628907
+            },
+            "collected": false
+        },
+        {
+            "id": 103,
+            "material": 0,
+            "position": {
+                "x": -178.98880004882813,
+                "y": 0.05156959593296051,
+                "z": -81.94282531738281
+            },
+            "collected": false
+        },
+        {
+            "id": 104,
+            "material": 0,
+            "position": {
+                "x": -173.7737274169922,
+                "y": 0.08333349227905274,
+                "z": 151.84457397460938
+            },
+            "collected": false
+        },
+        {
+            "id": 105,
+            "material": 0,
+            "position": {
+                "x": -167.41404724121095,
+                "y": 0.031500380486249927,
+                "z": -193.2393341064453
+            },
+            "collected": false
+        },
+        {
+            "id": 106,
+            "material": 0,
+            "position": {
+                "x": 37.674983978271487,
+                "y": 0.08333349227905274,
+                "z": -176.75717163085938
+            },
+            "collected": false
+        },
+        {
+            "id": 107,
+            "material": 0,
+            "position": {
+                "x": -43.172760009765628,
+                "y": 0.08333349227905274,
+                "z": -193.2393341064453
+            },
+            "collected": false
+        },
+        {
+            "id": 108,
+            "material": 0,
+            "position": {
+                "x": 18.65135955810547,
+                "y": 0.08333349227905274,
+                "z": -199.5819549560547
+            },
+            "collected": false
+        },
+        {
+            "id": 109,
+            "material": 0,
+            "position": {
+                "x": 34.500850677490237,
+                "y": 0.08178520202636719,
+                "z": -232.1773223876953
+            },
+            "collected": false
+        },
+        {
+            "id": 110,
+            "material": 0,
+            "position": {
+                "x": -177.55010986328126,
+                "y": 0.08333349227905274,
+                "z": 155.5224609375
+            },
+            "collected": false
+        },
+        {
+            "id": 111,
+            "material": 0,
+            "position": {
+                "x": -9.6651029586792,
+                "y": 0.08333349227905274,
+                "z": 235.3770294189453
+            },
+            "collected": false
+        },
+        {
+            "id": 112,
+            "material": 0,
+            "position": {
+                "x": -172.56100463867188,
+                "y": 0.062424436211586,
+                "z": -193.2393341064453
+            },
+            "collected": false
+        },
+        {
+            "id": 113,
+            "material": 0,
+            "position": {
+                "x": 211.0037384033203,
+                "y": 0.12803636491298676,
+                "z": 201.77468872070313
+            },
+            "collected": false
+        },
+        {
+            "id": 114,
+            "material": 0,
+            "position": {
+                "x": -25.963773727416993,
+                "y": 0.05191884934902191,
+                "z": 69.91947937011719
+            },
+            "collected": false
+        },
+        {
+            "id": 115,
+            "material": 0,
+            "position": {
+                "x": 44.06218719482422,
+                "y": 0.08333349227905274,
+                "z": -199.5819549560547
+            },
+            "collected": false
+        },
+        {
+            "id": 116,
+            "material": 0,
+            "position": {
+                "x": 5.754569053649902,
+                "y": 0.07648156583309174,
+                "z": 75.46038055419922
+            },
+            "collected": false
+        },
+        {
+            "id": 117,
+            "material": 0,
+            "position": {
+                "x": -25.963773727416993,
+                "y": 0.08333349227905274,
+                "z": 37.96623229980469
+            },
+            "collected": false
+        },
+        {
+            "id": 118,
+            "material": 0,
+            "position": {
+                "x": 10.184856414794922,
+                "y": 0.08333349227905274,
+                "z": -49.08994674682617
+            },
+            "collected": false
+        },
+        {
+            "id": 119,
+            "material": 0,
+            "position": {
+                "x": 187.26148986816407,
+                "y": 0.08333349227905274,
+                "z": -199.5819549560547
+            },
+            "collected": false
+        }
+    ],
+    "monsters": [
+        {
+            "id": 0,
+            "definition": 0,
+            "kind": 0,
+            "position": {
+                "x": 151.33685302734376,
+                "y": 0.04343948885798454,
+                "z": -199.5819549560547
+            },
+            "home": {
+                "x": 151.33685302734376,
+                "y": 0.04343948885798454,
+                "z": -199.5819549560547
+            },
+            "destination": {
+                "x": 162.57266235351563,
+                "y": 0.0004088655114173889,
+                "z": -203.2459716796875
+            },
+            "aggroUntil": 0.0,
+            "target": 18446744073709551615,
+            "alert": 0,
+            "stateUntil": 0.0,
+            "nextPerception": 0.20000000298023225,
+            "nextMemory": 0.0,
+            "lastSeen": 0.0,
+            "lightExposure": 0.0,
+            "memoryCount": 0,
+            "routeIndex": 0,
+            "anchor": -1,
+            "behavior": "",
+            "protectedMemory": false,
+            "usedReactions": []
+        },
+        {
+            "id": 1,
+            "definition": 1,
+            "kind": 1,
+            "position": {
+                "x": 79.63733673095703,
+                "y": 0.06348365545272827,
+                "z": -199.5819549560547
+            },
+            "home": {
+                "x": 79.63733673095703,
+                "y": 0.06348365545272827,
+                "z": -199.5819549560547
+            },
+            "destination": {
+                "x": 86.2568359375,
+                "y": 0.021928202360868455,
+                "z": -191.6892852783203
+            },
+            "aggroUntil": 0.0,
+            "target": 18446744073709551615,
+            "alert": 0,
+            "stateUntil": 0.0,
+            "nextPerception": 0.20000000298023225,
+            "nextMemory": 0.0,
+            "lastSeen": 0.0,
+            "lightExposure": 0.0,
+            "memoryCount": 0,
+            "routeIndex": 0,
+            "anchor": -1,
+            "behavior": "",
+            "protectedMemory": false,
+            "usedReactions": []
+        },
+        {
+            "id": 2,
+            "definition": 2,
+            "kind": 2,
+            "position": {
+                "x": -51.67229461669922,
+                "y": 0.05657963827252388,
+                "z": -136.1587371826172
+            },
+            "home": {
+                "x": -51.67229461669922,
+                "y": 0.05657963827252388,
+                "z": -136.1587371826172
+            },
+            "destination": {
+                "x": -175.22418212890626,
+                "y": 0.059999942779541019,
+                "z": -204.4393310546875
+            },
+            "aggroUntil": 0.0,
+            "target": 18446744073709551615,
+            "alert": 0,
+            "stateUntil": 0.0,
+            "nextPerception": 0.20000000298023225,
+            "nextMemory": 0.0,
+            "lastSeen": 0.0,
+            "lightExposure": 0.0,
+            "memoryCount": 0,
+            "routeIndex": 0,
+            "anchor": -1,
+            "behavior": "",
+            "protectedMemory": false,
+            "usedReactions": []
+        },
+        {
+            "id": 3,
+            "definition": 3,
+            "kind": 4,
+            "position": {
+                "x": 49.144351959228519,
+                "y": 0.08333349227905274,
+                "z": -199.5819549560547
+            },
+            "home": {
+                "x": 49.144351959228519,
+                "y": 0.08333349227905274,
+                "z": -199.5819549560547
+            },
+            "destination": {
+                "x": 49.57040786743164,
+                "y": 0.08333349227905274,
+                "z": -209.4425506591797
+            },
+            "aggroUntil": 0.0,
+            "target": 18446744073709551615,
+            "alert": 0,
+            "stateUntil": 0.0,
+            "nextPerception": 0.20000000298023225,
+            "nextMemory": 0.0,
+            "lastSeen": 0.0,
+            "lightExposure": 0.0,
+            "memoryCount": 0,
+            "routeIndex": 0,
+            "anchor": -1,
+            "behavior": "",
+            "protectedMemory": false,
+            "usedReactions": []
+        },
+        {
+            "id": 4,
+            "definition": 4,
+            "kind": 5,
+            "position": {
+                "x": 207.64869689941407,
+                "y": 0.0770568922162056,
+                "z": 222.955078125
+            },
+            "home": {
+                "x": 207.64869689941407,
+                "y": 0.0770568922162056,
+                "z": 222.955078125
+            },
+            "destination": {
+                "x": 192.1608428955078,
+                "y": 0.0582517646253109,
+                "z": 235.77706909179688
+            },
+            "aggroUntil": 0.0,
+            "target": 18446744073709551615,
+            "alert": 0,
+            "stateUntil": 0.0,
+            "nextPerception": 0.20000000298023225,
+            "nextMemory": 0.0,
+            "lastSeen": 0.0,
+            "lightExposure": 0.0,
+            "memoryCount": 0,
+            "routeIndex": 0,
+            "anchor": -1,
+            "behavior": "",
+            "protectedMemory": false,
+            "usedReactions": []
+        },
+        {
+            "id": 5,
+            "definition": 5,
+            "kind": 3,
+            "position": {
+                "x": -136.25672912597657,
+                "y": 0.08333349227905274,
+                "z": 12.611342430114746
+            },
+            "home": {
+                "x": -136.25672912597657,
+                "y": 0.08333349227905274,
+                "z": 12.611342430114746
+            },
+            "destination": {
+                "x": -152.6005859375,
+                "y": 0.08333349227905274,
+                "z": 3.7541093826293947
+            },
+            "aggroUntil": 0.0,
+            "target": 18446744073709551615,
+            "alert": 0,
+            "stateUntil": 0.0,
+            "nextPerception": 0.20000000298023225,
+            "nextMemory": 0.0,
+            "lastSeen": 0.0,
+            "lightExposure": 0.0,
+            "memoryCount": 0,
+            "routeIndex": 0,
+            "anchor": -1,
+            "behavior": "",
+            "protectedMemory": false,
+            "usedReactions": []
+        }
+    ],
+    "message": "미확인 표본 3개 회수",
+    "rulesJson": "{\"maxPlayers\":6,\"oxygenSeconds\":1200.0,\"walkSpeed\":4.0,\"runSpeed\":6.0,\"carrySpeed\":3.0,\"resourceCapacity\":12,\"checksRequired\":4,\"skillCycleSeconds\":2.4000000953674318,\"skillWindow\":0.2199999988079071,\"monsterSpeed\":3.0999999046325685,\"monsterSenseRange\":18.0,\"noiseMemorySeconds\":14.0,\"stillnessSeconds\":12.0,\"minPlayers\":2,\"developerSolo\":true,\"stationMinDistance\":24.0,\"stationMinDistanceFromBase\":15.0,\"stationMinDistanceFromEntrance\":8.0,\"refundCutoff\":0.5,\"observationDistance\":12.0,\"recoveryToastSeconds\":3.5,\"retainArchiveKnowledge\":false,\"rainy\":false,\"debugAllModules\":false}",
+    "runId": "60157bf90e2a41ea98302739a7a6aeb4",
+    "rainy": false,
+    "stations": [
+        {
+            "id": 0,
+            "zone": 4,
+            "target": -1,
+            "paid": 0,
+            "position": {
+                "x": -121.09136199951172,
+                "y": 0.0,
+                "z": -193.2393341064453
+            },
+            "phase": 0,
+            "worker": 18446744073709551615,
+            "started": 0.0
+        },
+        {
+            "id": 1,
+            "zone": 2,
+            "target": -1,
+            "paid": 0,
+            "position": {
+                "x": 202.53219604492188,
+                "y": 0.0,
+                "z": 222.955078125
+            },
+            "phase": 0,
+            "worker": 18446744073709551615,
+            "started": 0.0
+        },
+        {
+            "id": 2,
+            "zone": 4,
+            "target": -1,
+            "paid": 0,
+            "position": {
+                "x": -211.2230682373047,
+                "y": 0.0,
+                "z": -190.17689514160157
+            },
+            "phase": 0,
+            "worker": 18446744073709551615,
+            "started": 0.0
+        }
+    ],
+    "moduleDrops": [],
+    "archive": [],
+    "events": [
+        {
+            "sequence": 1,
+            "target": -1,
+            "kind": "SessionStarted",
+            "text": "",
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "at": 0.0
+        },
+        {
+            "sequence": 2,
+            "target": 0,
+            "kind": "MissionAssigned",
+            "text": "",
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "at": 0.0
+        },
+        {
+            "sequence": 3,
+            "target": 8,
+            "kind": "MissionAssigned",
+            "text": "",
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "at": 0.0
+        },
+        {
+            "sequence": 4,
+            "target": 11,
+            "kind": "MissionAssigned",
+            "text": "",
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "at": 0.0
+        }
+    ],
+    "lobbyChat": []
+}

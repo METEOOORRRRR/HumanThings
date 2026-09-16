@@ -94,7 +94,8 @@ namespace EarthRecovery.Tests
             if (db == null) Assert.Ignore("City Pack is not installed in this project.");
             var guids = AssetDatabase.FindAssets("t:Prefab", new[] { db.sourceFolderPath })
                 .Where(g => AssetDatabase.GUIDToAssetPath(g).EndsWith(".prefab", StringComparison.OrdinalIgnoreCase)).ToArray();
-            CollectionAssert.AreEquivalent(guids, db.entries.Select(e => e.assetGuid));
+            CollectionAssert.AreEquivalent(guids, db.entries.Where(e=>e.assetPath.StartsWith(db.sourceFolderPath+"/",StringComparison.Ordinal)).Select(e => e.assetGuid));
+            Assert.That(db.entries.Where(e=>!e.assetPath.StartsWith(db.sourceFolderPath+"/",StringComparison.Ordinal)).All(e=>e.prefab.GetComponent<CityBuildingAssembly>()?.reviewed==true),Is.True);
             Assert.That(db.entries.All(e => e.prefab != null));
             foreach (string word in new[] { "도로", "상점", "차량", "버스정류장" }) Assert.That(db.Search(word).Any(), Is.True, word);
             Assert.That(db.Search("", AssetCategory.Unknown).All(e => e.category == AssetCategory.Unknown));

@@ -15,11 +15,12 @@ namespace EarthRecovery.Tests
         {
             var db = Db(); string before = JsonUtility.ToJson(db);
             var a = CityAssetAnalysis.Analyze(db);
-            Assert.That(a.total, Is.EqualTo(335));
+            Assert.That(a.total, Is.EqualTo(355));
             var b = a.categories.Single(c => c.category == AssetCategory.Building);
-            Assert.That(b.total, Is.EqualTo(62)); Assert.That(b.usable, Is.EqualTo(13));
-            Assert.That(b.usableSizes.meanFootprint.x, Is.EqualTo(9.2835f).Within(.001f));
-            Assert.That(b.usableSizes.meanFootprint.y, Is.EqualTo(8.9578f).Within(.001f));
+            Assert.That(b.total, Is.EqualTo(82)); Assert.That(b.usable, Is.EqualTo(33));
+            var buildings=db.FindAssets(AssetCategory.Building).Where(HumanThingsAssetEligibility.Usable).ToArray();
+            Assert.That(b.usableSizes.meanFootprint.x, Is.EqualTo(buildings.Average(e=>e.footprintWidth)).Within(.001f));
+            Assert.That(b.usableSizes.meanFootprint.y, Is.EqualTo(buildings.Average(e=>e.footprintDepth)).Within(.001f));
             Assert.That(b.usableSizes.frontFacesRoadRatio, Is.EqualTo(1));
             Assert.That(a.unknownNames.Count, Is.EqualTo(59));
             Assert.That(a.warnings.Any(w => w.Contains("SidewalkPoles")), Is.True);
@@ -34,7 +35,7 @@ namespace EarthRecovery.Tests
             {
                 original = CityTemplateDesigner.Design(CityAssetAnalysis.Analyze(clone), new());
                 Assert.That(original.Count, Is.InRange(4, 8));
-                Assert.That(original.All(t => t.buildings.residentialRatio.max == 0), Is.True);
+                Assert.That(original.Any(t => t.buildings.residentialRatio.max > 0), Is.True);
                 foreach (var e in clone.entries.Where(e => e.category == AssetCategory.Building && e.placementEnabled))
                 { e.footprintWidth *= 1.5f; e.footprintDepth *= 1.5f; }
                 clone.entries.RemoveAll(e => e.category == AssetCategory.Transit);

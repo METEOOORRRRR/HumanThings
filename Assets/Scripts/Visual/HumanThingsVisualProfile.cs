@@ -17,7 +17,7 @@ namespace EarthRecovery
         [Range(0,1)] public float dirt=.35f, detailStrength=.12f, wetness=.45f;
         [Range(0,.2f)] public float detailNormal=.012f;
         [Range(0,1)] public float concreteSmoothness=.08f, roadSmoothness=.12f, metalSmoothness=.24f;
-        [Header("Overcast light")]
+        [Header("Directional light (negative X = sun below horizon)")]
         public Vector3 lightRotation=new(28,-35,0);
         public Color lightColor=new(.86f,.9f,.92f);
         public float lightIntensity=1.05f;
@@ -26,6 +26,17 @@ namespace EarthRecovery
         [Header("Atmosphere")]
         public Color fogColor=new(.395f,.41f,.415f);
         public float fogDensity=.0065f;
+        [Header("Dusk sky (no sun disc)")]
+        public Shader skyShader;
+        public bool duskSky;
+        public Color skyZenith=new(.14f,.18f,.28f), skyMiddle=new(.22f,.19f,.27f), skyHorizon=new(.22f,.24f,.29f);
+        public Color afterglowColor=new(.42f,.19f,.12f), cloudColor=new(.09f,.115f,.17f);
+        [Range(0,2)] public float skyBrightness=1;
+        [Range(0,1)] public float afterglowStrength=.35f;
+        [Range(0,1)] public float horizonSaturation=1;
+        [Range(.01f,.6f)] public float afterglowHeight=.035f;
+        [Range(10,90)] public float afterglowWidth=40;
+        [Range(0,1)] public float cloudCoverage=.5f, cloudOpacity=.6f;
         [Header("Post processing")]
         public float exposure=.1f, saturation=-40, contrast=9, temperature=-2;
         public float bloom=.06f, bloomThreshold=1.4f, vignette=.1f;

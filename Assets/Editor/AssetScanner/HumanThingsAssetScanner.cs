@@ -68,6 +68,14 @@ namespace EarthRecovery.Editor
                 if (entry.placementVersion == 0) HumanThingsPlacementMetadata.Initialize(entry);
                 result.Add(entry);
             }
+            // Reviewed assemblies live outside the purchased pack. Retain these explicit
+            // supplementary entries when that source folder is scanned again.
+            foreach(var saved in existing.Values.Where(e=>e.prefab!=null && e.prefab.GetComponent<CityBuildingAssembly>()?.reviewed==true))
+            {
+                string path=AssetDatabase.GUIDToAssetPath(saved.assetGuid);
+                if(string.IsNullOrEmpty(path) || path.StartsWith(folder+"/",StringComparison.Ordinal) || result.Any(e=>e.assetGuid==saved.assetGuid))continue;
+                var copy=saved.Copy();copy.assetPath=path;copy.displayName=copy.prefab.name;result.Add(copy);
+            }
             return result;
         }
     }

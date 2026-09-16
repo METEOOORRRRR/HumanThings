@@ -1,0 +1,1 @@
+CITY_PLAYER_PASS role=host seed=100 players=2 facilities=15
