@@ -70,7 +70,7 @@ namespace EarthRecovery
                 small = TerminalText(14);
                 DrawMap(new Rect(212, 316, 450, 450));
                 var missions = session.View.sites.Where(s => s.mission).OrderBy(s => s.assignedOrder).Take(3).ToArray();
-                int alive = session.View.players.Count(p => p.connected && p.alive);
+                int alive = session.View.players.Count(p => p.connected && p.alive && !p.developerDummy);
                 if (alive != 1) confirmAbandon = false;
                 PixelGui.Label(new Rect(1194, 708, 290, 40), "생존 요원 " + alive + "명", TerminalText(18));
                 if (missions.Length == 0) PixelGui.Label(new Rect(696, 316, 440, 60), "회수 임무 대기", TerminalText(20));

@@ -30,6 +30,8 @@ namespace EarthRecovery
             physicalKeyboard = Keyboard.current; if (physicalKeyboard != null) InputSystem.DisableDevice(physicalKeyboard);
             testKeyboard = InputSystem.AddDevice<Keyboard>("Waiting QA Keyboard");
             var session = GetComponent<NetworkSession>(); var lobby = GetComponent<ExpeditionLobby>();
+            // This fixture deliberately exercises one through six real network clients.
+            session.FillDeveloperSlots = false;
             Check(!room.Visible, "No waiting room before connection");
             GetComponent<MainMenu>().Activate(0);
             Check(lobby.Rooms.Create("대기실 검증", 6, false, ""), "Real host created");
@@ -82,8 +84,10 @@ namespace EarthRecovery
                     client.Send(new Command { action = "name", text = client.UserName });
                 }
                 var assigned = session.HostGame.State.players.Where(p => p.connected).OrderBy(p => p.id).ToArray();
+                Check(assigned.Select(p => p.characterId).Distinct().Count() == count, "Unique automatic assignments before portrait overrides " + count);
+                var roster = PlayerCharacterCatalog.Load().characters;
                 for (int i = 0; i < assigned.Length; i++)
-                    assigned[i].characterId = i % 2 == 0 ? PlayerCharacterCatalog.ToxicBunnyId : PlayerCharacterCatalog.DefaultId;
+                    assigned[i].characterId = roster[i % roster.Length].id;
                 yield return new WaitForSecondsRealtime(.3f);
                 Check(room.Visible && !lobby.Visible && !GetComponent<MainMenu>().Visible, "Independent screen " + count);
                 Check(room.Cards.Count(c => c.gameObject.activeSelf) == count, "Actual card count " + count);
@@ -116,10 +120,29 @@ namespace EarthRecovery
             yield return new WaitForSecondsRealtime(.4f);
             Check(session.View.lobbyChat.Count == 2 && room.ChatInput.text == "", "Chat send button works");
             yield return Capture("02-ready-chat");
-            Check(room.PortraitFor(PlayerCharacterCatalog.ToxicBunnyId) != room.PortraitFor(PlayerCharacterCatalog.DefaultId), "Characters have distinct portraits");
+            var characters = PlayerCharacterCatalog.Load().characters;
+            // Exercise the remaining roster members even when the lobby capacity is six.
+            var players = session.HostGame.State.players.Where(p => p.connected).OrderBy(p => p.id).ToArray();
+            for (int offset = 0; offset < characters.Length; offset += players.Length)
+            {
+                for (int i = 0; i < players.Length; i++) players[i].characterId = characters[(offset + i) % characters.Length].id;
+                yield return new WaitForSecondsRealtime(.4f);
+                for (int i = 0; i < players.Length; i++)
+                    Check(room.Cards[i].GetComponentInChildren<UnityEngine.UI.RawImage>().texture == room.PortraitFor(players[i].characterId),
+                        "Rotated roster portrait " + players[i].characterId);
+                yield return Capture("02-roster-" + offset);
+            }
+            Check(characters.Select(c => room.PortraitFor(c.id)).Distinct().Count() == characters.Length, "All characters have distinct portraits");
             var portraits = room.GetComponentInChildren<WaitingCharacterPortraits>();
             var bunny = portraits.GetComponentsInChildren<HumanThingsCharacterVisual>().Single(v => v.name == PlayerCharacterCatalog.ToxicBunnyId);
             Check(!bunny.ShowingOriginal && bunny.skin.sharedMaterial.GetTexture("_BaseMap").name == "ToxicBunny_R31_BaseColor_4K", "Bunny portrait uses corrected gameplay texture");
+            foreach (var character in characters.Where(c => c.id != PlayerCharacterCatalog.DefaultId))
+            {
+                var visual = portraits.GetComponentsInChildren<HumanThingsCharacterVisual>().Single(v => v.name == character.id);
+                var albedo = visual.skin.sharedMaterial.GetTexture("_BaseMap");
+                Check(!visual.ShowingOriginal && albedo.name.EndsWith("_BaseColor_4K") && albedo.width == 4096,
+                    "Clean portrait material " + character.id);
+            }
             Check(portraits.GetComponentsInChildren<Camera>().All(c => !c.enabled), "Cached portraits stop rendering");
             foreach (var character in PlayerCharacterCatalog.Load().characters) CapturePortrait(character.id);
             foreach (var size in new[] { new Vector2Int(1280, 720), new Vector2Int(1920, 1080), new Vector2Int(2560, 1440), new Vector2Int(1024, 768) })
@@ -141,6 +164,7 @@ namespace EarthRecovery
             Check(!room.Visible && lobby.Visible, "Disconnect returns to browser");
             foreach (var client in clients) Destroy(client.gameObject); clients.Clear();
             var host = new GameObject("Waiting QA second host").AddComponent<NetworkSession>(); clients.Add(host); host.PersistArchive = false;
+            host.FillDeveloperSlots = false;
             var hosts = host.gameObject.AddComponent<LanRooms>(); hosts.Initialize(host); Check(hosts.Create("클라이언트 검증", 4, false, ""), "Second host created"); yield return new WaitForSecondsRealtime(.4f);
             var destination = hosts.Hosted; destination.address = "127.0.0.1"; Check(lobby.Rooms.Join(destination, ""), "Primary joins as client"); yield return new WaitForSecondsRealtime(.8f);
             Check(session.Online && room.Visible && !room.StartButton.gameObject.activeSelf, "Client has no start button"); yield return Capture("04-client");

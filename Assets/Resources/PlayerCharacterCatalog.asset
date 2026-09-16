@@ -19,3 +19,21 @@ MonoBehaviour:
   - id: toxic-bunny-r31
     displayName: Toxic Bunny R-31
     visualProfile: {fileID: 11400000, guid: 1152636b87cb5f8438c3133a60b3e9fe, type: 2}
+  - id: neon-outrider
+    displayName: Neon Outrider
+    visualProfile: {fileID: 11400000, guid: f50fabb955d63b64b99480ab00194fe8, type: 2}
+  - id: tomorrows-sentinel
+    displayName: HAZE
+    visualProfile: {fileID: 11400000, guid: 143d66f155c0bff44b5b671632de17fe, type: 2}
+  - id: ashen-sentinel
+    displayName: KAI
+    visualProfile: {fileID: 11400000, guid: 6b516930d1377f64583d0efd39ae8712, type: 2}
+  - id: nova-ghost-scout
+    displayName: NOVA
+    visualProfile: {fileID: 11400000, guid: 1ff0dbeb620f7d54c8fda59bb1be3525, type: 2}
+  - id: crimson-reclaimer
+    displayName: REI
+    visualProfile: {fileID: 11400000, guid: c4db686c5da1589468612b89f0c5a1ea, type: 2}
+  - id: wasteland-sentinel
+    displayName: ASH
+    visualProfile: {fileID: 11400000, guid: e80a65e97f74e1d4b97d4253a62a0959, type: 2}

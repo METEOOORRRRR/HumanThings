@@ -4,6 +4,8 @@ Keep at most four completed versions: the latest build and the three most recent
 
 - Stable player path: `Builds/Latest/EarthRecovery.exe`.
 - Developer launch: `Play-DeveloperSolo.cmd` always starts that exact player with `--dev-solo`, using Latest as its working directory. It reports a missing Latest instead of falling back to an archive or QA executable.
+- With `--dev-solo`, hosting fills a six-person party with five idle test characters. They use the normal random character/portrait assignment without duplicates within the party and are automatically ready, including after returning to the lobby. The local operator still presses Ready and Start. Real LAN participants replace stand-ins; leaving a lobby restores the vacant stand-in. Stand-ins have no network/voice connection and do not block solo death or hibernation. Normal launches do not add them.
+- Developer party runtime verification uses this same Latest player with `--dev-solo --developer-solo-qa`; its report and screenshots go to `QA/DeveloperSolo/Runtime`. The existing `--waiting-qa` fixture explicitly disables stand-ins to continue testing one through six real connections.
 - Previous versions: `Builds/Archive/`.
 - Temporary build output: `Builds/.staging/` (not a published version).
 - Unity command: `EarthRecovery.Editor.ProjectBuilder.Build`, or menu `Earth Recovery/Build Windows Prototype`.

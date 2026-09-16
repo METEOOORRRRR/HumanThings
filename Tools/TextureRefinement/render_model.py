@@ -6,8 +6,12 @@ args = sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
 source = args[0] if args else str(ROOT/'Assets/Character/Meshy_AI_Toxic_Bunny_R_31_All_Animations.glb')
 tag = args[1] if len(args)>1 else 'original'
 texture = args[2] if len(args)>2 else None
+texture = texture if texture and texture != '-' else None
+qa = pathlib.Path(args[3]) if len(args)>3 else ROOT/'QA/ToxicBunnyTexture'
+face_height = float(args[4]) if len(args)>4 else 1.43
+face_scale = float(args[5]) if len(args)>5 else .56
 flat = tag=='projection_source' or tag.startswith('flat_')
-OUT = ROOT / 'QA/ToxicBunnyTexture' / tag
+OUT = qa / tag
 OUT.mkdir(parents=True,exist_ok=True)
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
@@ -19,6 +23,14 @@ for ob in bpy.context.scene.objects:
 mesh=next(o for o in bpy.context.scene.objects if o.type=='MESH')
 print('BOUNDING_BOX', [tuple(mesh.matrix_world @ Vector(c)) for c in mesh.bound_box])
 mat=mesh.data.materials[0]
+if texture:
+    bsdf=next(n for n in mat.node_tree.nodes if n.type=='BSDF_PRINCIPLED')
+    node=mat.node_tree.nodes.new('ShaderNodeTexImage')
+    node.image=bpy.data.images.load(texture)
+    mat.node_tree.links.new(node.outputs['Color'], bsdf.inputs['Base Color'])
+    for key,value in [('Metallic',0.0),('Roughness',.82),('Normal',None)]:
+        for link in list(bsdf.inputs[key].links): mat.node_tree.links.remove(link)
+        if value is not None: bsdf.inputs[key].default_value=value
 if flat:
     bsdf=next(n for n in mat.node_tree.nodes if n.type=='BSDF_PRINCIPLED')
     base=bsdf.inputs['Base Color'].links[0].from_socket
@@ -26,11 +38,6 @@ if flat:
     mat.node_tree.links.new(base,emission.inputs['Color'])
     output=next(n for n in mat.node_tree.nodes if n.type=='OUTPUT_MATERIAL')
     mat.node_tree.links.new(emission.outputs[0],output.inputs['Surface'])
-if texture:
-    bsdf=next(n for n in mat.node_tree.nodes if n.type=='BSDF_PRINCIPLED')
-    node=mat.node_tree.nodes.new('ShaderNodeTexImage')
-    node.image=bpy.data.images.load(texture)
-    mat.node_tree.links.new(node.outputs['Color'], bsdf.inputs['Base Color'])
 scene=bpy.context.scene
 scene.render.engine='BLENDER_EEVEE'
 scene.eevee.use_gtao=True
@@ -59,7 +66,7 @@ area('Fill',(-3,-1,2),140,3)
 area('Rim',(1,3,3),160,3)
 cam_data=bpy.data.cameras.new('ReviewCamera'); cam=bpy.data.objects.new('ReviewCamera',cam_data)
 scene.collection.objects.link(cam);scene.camera=cam;cam_data.type='ORTHO';cam_data.lens=50
-views=[('front',(0,-4,0.85),(0,0,0.82),1.8),('back',(0,4,0.85),(0,0,0.82),1.8),('left',(-4,0,0.85),(0,0,0.82),1.8),('right',(4,0,0.85),(0,0,0.82),1.8),('face',(0,-4,1.43),(0,0,1.43),0.56),('threequarter',(2.8,-4,1.0),(0,0,0.86),1.8)]
+views=[('front',(0,-4,0.85),(0,0,0.82),1.8),('back',(0,4,0.85),(0,0,0.82),1.8),('left',(-4,0,0.85),(0,0,0.82),1.8),('right',(4,0,0.85),(0,0,0.82),1.8),('face',(0,-4,face_height),(0,0,face_height),face_scale),('threequarter',(2.8,-4,1.0),(0,0,0.86),1.8)]
 for name,pos,target,scale in views:
     cam.location=pos;cam.rotation_euler=(Vector(target)-cam.location).to_track_quat('-Z','Y').to_euler();cam_data.ortho_scale=scale
     scene.render.resolution_x=900 if name=='face' else 700

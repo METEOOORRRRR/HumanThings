@@ -21,6 +21,8 @@ namespace EarthRecovery
         {
             role = Arg("--city-smoke", "host"); output = Arg("--city-output", Application.persistentDataPath);
             Directory.CreateDirectory(output); started = Time.realtimeSinceStartup;
+            // City replication is verified with two real processes.
+            session.FillDeveloperSlots = false;
             session.PersistArchive = false; session.rules.minPlayers = 2; session.world.Automated = true;
             session.UserName = role; session.radio.Muted = true;
             session.Connect(role == "host", "127.0.0.1", 17998);

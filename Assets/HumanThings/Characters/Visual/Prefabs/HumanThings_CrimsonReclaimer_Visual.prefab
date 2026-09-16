@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3350881216325926818
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1010572577817510626, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f6b6f7f2c3ed7b499093c6d747dd599, type: 2}
+    - target: {fileID: 6453006048804640279, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453006048804640279, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453006048804640279, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453006048804640279, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453006048804640279, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453006048804640279, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453006048804640279, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453006048804640279, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453006048804640279, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6453006048804640279, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756561648159108014, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+      propertyPath: m_Name
+      value: HumanThings_CrimsonReclaimer_Visual
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7756561648159108014, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7612277272631463302}
+  m_SourcePrefab: {fileID: 100100000, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+--- !u!137 &2343840832499678528 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1010572577817510626, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+  m_PrefabInstance: {fileID: 3350881216325926818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4982229199928661004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7756561648159108014, guid: 8d0c5c12477bed24f95fb93bd98c18e5, type: 3}
+  m_PrefabInstance: {fileID: 3350881216325926818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7612277272631463302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4982229199928661004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4952dca39793cd4dbce8f3f297415f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.HumanThingsCharacterVisual
+  skin: {fileID: 2343840832499678528}
+  originalMaterial: {fileID: 111690740065759945, guid: e8b03c3b753e39547b9e7e12c44a2e3d, type: 3}
+  humanThingsMaterial: {fileID: 2100000, guid: 1f6b6f7f2c3ed7b499093c6d747dd599, type: 2}
+  profileOverride: {fileID: 0}

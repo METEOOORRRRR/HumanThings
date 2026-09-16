@@ -31,7 +31,7 @@ namespace EarthRecovery
             yield return new WaitForSecondsRealtime(.6f);
             world.MenuOpen = false;
             var catalog = PlayerCharacterCatalog.Load();
-            if (catalog == null || catalog.characters.Length < 2) { Fail("character roster missing"); yield break; }
+            if (catalog == null || !catalog.characters.Any(c => c.id == PlayerCharacterCatalog.NeonOutriderId)) { Fail("character roster missing"); yield break; }
             Debug.Log("CHARACTER_RANDOM_ASSIGNMENT " + session.HostGame.Player(session.LocalId).characterId);
             foreach (var character in catalog.characters)
             {
@@ -58,6 +58,23 @@ namespace EarthRecovery
                     { Fail("clean Toxic Bunny texture/material not active"); yield break; }
                     Debug.Log("TOXIC_BUNNY_CLEAN_RUNTIME_PASS texture=" + albedo.name + " size=" + albedo.width + "x" + albedo.height);
                 }
+                if (character.id == PlayerCharacterCatalog.NeonOutriderId)
+                {
+                    var albedo = skin.sharedMaterial.GetTexture("_BaseMap");
+                    var surfaces = skin.sharedMaterial.GetVector("_Surfaces");
+                    if (albedo == null || albedo.name != "NeonOutrider_BaseColor_4K" || albedo.width != 4096
+                        || surfaces.z != 0 || surfaces.w != 0 || skin.sharedMaterial.GetVector("_Weather") != Vector4.zero)
+                    { Fail("clean Neon Outrider texture/material not active"); yield break; }
+                    Debug.Log("NEON_OUTRIDER_CLEAN_RUNTIME_PASS texture=" + albedo.name + " size=" + albedo.width + "x" + albedo.height);
+                }
+                if (character.id != PlayerCharacterCatalog.DefaultId)
+                {
+                    var albedo = skin.sharedMaterial.GetTexture("_BaseMap");
+                    if (albedo == null || !albedo.name.EndsWith("_BaseColor_4K") || albedo.width != 4096
+                        || skin.sharedMaterial.GetVector("_Weather") != Vector4.zero)
+                    { Fail("clean texture not active: " + character.id); yield break; }
+                    Debug.Log("CLEAN_CHARACTER_RUNTIME_PASS id=" + character.id + " texture=" + albedo.name);
+                }
                 yield return Capture(character.id + "-idle"); if (finished) yield break;
                 yield return Move(false, .65f);
                 if (avatar.Speed < 2) { Fail("walking does not drive animation"); yield break; }
@@ -71,7 +88,7 @@ namespace EarthRecovery
                 Debug.Log("CHARACTER_ROSTER_MODEL_PASS " + character.id + " mesh=" + skin.sharedMesh.vertexCount);
             }
             finished = true;
-            File.WriteAllText(Path.Combine(output, "player-result.txt"), "PASS: both registered HumanThings characters visible; idle, walking, sprinting and return to idle; shared host controller; development solo fixture.");
+            File.WriteAllText(Path.Combine(output, "player-result.txt"), "PASS: all " + catalog.characters.Length + " registered HumanThings characters visible; idle, walking, sprinting and return to idle; shared host controller; development solo fixture.");
             Debug.Log("CHARACTER_PLAYER_PASS");
             session.Leave(); Application.Quit();
         }
@@ -98,7 +115,7 @@ namespace EarthRecovery
             finally { Destroy(image); }
         }
 
-        void OnEnable() { Application.logMessageReceived += Log; Invoke(nameof(Timeout), 90); }
+        void OnEnable() { Application.logMessageReceived += Log; Invoke(nameof(Timeout), 120); }
         void OnDisable() { Application.logMessageReceived -= Log; }
         void Timeout() { if (!finished) Fail("timeout"); }
         void Log(string message, string trace, LogType type) { if (!finished && type == LogType.Exception) Fail(message); }

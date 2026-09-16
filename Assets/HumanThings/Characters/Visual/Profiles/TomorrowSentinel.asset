@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f4ae4f4115a5e43ba0a1d81c789d14, type: 3}
+  m_Name: TomorrowSentinel
+  m_EditorClassIdentifier: EarthRecovery::EarthRecovery.HumanThingsCharacterVisualProfile
+  visualPrefab: {fileID: 4110223055563940679, guid: 8013718a19cc47146a87382a39024098, type: 3}
+  environmentLighting: {fileID: 11400000, guid: a4a36ab650758b541b9c6c4f489994e2, type: 2}
+  saturation: 1
+  brightness: 1
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  whiteCompression: 0
+  charcoalFloor: 0
+  skinSaturation: 1
+  skinBrightness: 1
+  skinSmoothness: 0.18
+  hairSmoothness: 0.18
+  clothSmoothness: 0.18
+  equipmentSmoothness: 0.18
+  metallicMultiplier: 0
+  normalStrength: 0
+  detailStrength: 0
+  dustColor: {r: 0.27, g: 0.285, b: 0.28, a: 1}
+  dirtStrength: 0
+  dustStrength: 0
+  wearStrength: 0
+  cavityStrength: 0
+  wetness: 0

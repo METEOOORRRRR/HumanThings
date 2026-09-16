@@ -1,0 +1,38 @@
+{
+  "source_sha256": "c42b20434f6f3c57f704cfe0cb5baab90edcc108329b57b2762c61538b671d40",
+  "source_unchanged": true,
+  "geometry_uv_rig_animations_identical": true,
+  "preserved_sections": [
+    "meshes",
+    "nodes",
+    "skins",
+    "animations",
+    "accessors",
+    "scenes",
+    "scene",
+    "samplers"
+  ],
+  "original_binary_preserved_byte_for_byte": true,
+  "animations": [
+    "Running",
+    "Walking",
+    "restpose"
+  ],
+  "new_glb": "D:\\HumanThings\\Assets\\Character\\NovaGhostScoutClean\\Meshy_AI_Nova_Ghost_Scout_Clean_All_Animations.glb",
+  "new_glb_sha256": "ed93d936931d48a56c361352829c22fa61386bc4e159a0e1c4679236ffcef9ff",
+  "texture": "D:\\HumanThings\\Assets\\Character\\NovaGhostScoutClean\\NovaGhostScout_BaseColor_4K.png",
+  "material": {
+    "name": "NovaGhostScout_Clean_Matte",
+    "normalTexture": {
+      "index": 0,
+      "scale": 0.0
+    },
+    "pbrMetallicRoughness": {
+      "baseColorTexture": {
+        "index": 1
+      },
+      "metallicFactor": 0.0,
+      "roughnessFactor": 0.82
+    }
+  }
+}

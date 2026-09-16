@@ -72,6 +72,12 @@ namespace EarthRecovery.Tests
 
         [TestCase(PlayerCharacterCatalog.DefaultId)]
         [TestCase(PlayerCharacterCatalog.ToxicBunnyId)]
+        [TestCase(PlayerCharacterCatalog.NeonOutriderId)]
+        [TestCase(PlayerCharacterCatalog.TomorrowSentinelId)]
+        [TestCase(PlayerCharacterCatalog.AshenSentinelId)]
+        [TestCase(PlayerCharacterCatalog.NovaGhostScoutId)]
+        [TestCase(PlayerCharacterCatalog.CrimsonReclaimerId)]
+        [TestCase(PlayerCharacterCatalog.WastelandSentinelId)]
         public void RegisteredCharactersAnimateAtTheSameGameplayScale(string id)
         {
             Object.DestroyImmediate(avatar.gameObject);

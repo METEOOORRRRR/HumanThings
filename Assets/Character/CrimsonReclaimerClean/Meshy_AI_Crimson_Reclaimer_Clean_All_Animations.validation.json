@@ -1,0 +1,38 @@
+{
+  "source_sha256": "375e26ff7a86584ed49d242f632349b9c3d3f4d5b0878aad4d6cab215e9f64c0",
+  "source_unchanged": true,
+  "geometry_uv_rig_animations_identical": true,
+  "preserved_sections": [
+    "meshes",
+    "nodes",
+    "skins",
+    "animations",
+    "accessors",
+    "scenes",
+    "scene",
+    "samplers"
+  ],
+  "original_binary_preserved_byte_for_byte": true,
+  "animations": [
+    "Running",
+    "Walking",
+    "restpose"
+  ],
+  "new_glb": "D:\\HumanThings\\Assets\\Character\\CrimsonReclaimerClean\\Meshy_AI_Crimson_Reclaimer_Clean_All_Animations.glb",
+  "new_glb_sha256": "1318d6031d8ac15a1f7ed869132109b35196a49d6481b3bd582ccdf80ab88c6d",
+  "texture": "D:\\HumanThings\\Assets\\Character\\CrimsonReclaimerClean\\CrimsonReclaimer_BaseColor_4K.png",
+  "material": {
+    "name": "CrimsonReclaimer_Clean_Matte",
+    "normalTexture": {
+      "index": 0,
+      "scale": 0.0
+    },
+    "pbrMetallicRoughness": {
+      "baseColorTexture": {
+        "index": 1
+      },
+      "metallicFactor": 0.0,
+      "roughnessFactor": 0.82
+    }
+  }
+}

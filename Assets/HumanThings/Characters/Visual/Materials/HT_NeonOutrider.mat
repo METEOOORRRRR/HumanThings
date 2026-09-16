@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: HT_NeonOutrider
+  m_Shader: {fileID: 4800000, guid: 841fd2b5ed1fccc40a4167e0b07d68cc, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: 48e39f93c6167a944967c3e53ece8b0a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: f38639acb66822c4bae28547eb2c7939, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMap:
+        m_Texture: {fileID: 2800000, guid: 091d9a37d20364e4390804c4a85d333d, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicRoughnessMap:
+        m_Texture: {fileID: 2800000, guid: cc99bacd90c39fd47865e98727e86a5b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Regions:
+        m_Texture: {fileID: 2800000, guid: 2c97fccf147a2914380a67449ab4d2a6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WeatherMask:
+        m_Texture: {fileID: 2800000, guid: 0691849a2bb51bd43b8c5da4e46f4b18, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Brightness: 1
+    - _CavityStrength: 0
+    - _Cull: 2
+    - _Cutoff: 0
+    - _DetailStrength: 0
+    - _Saturation: 1
+    - _Surface: 0
+    - _ValueFloor: 0
+    - _WhiteCompression: 0
+    m_Colors:
+    - _AmbientEquator: {r: 0.28, g: 0.3, b: 0.31, a: 1}
+    - _AmbientGround: {r: 0.13, g: 0.14, b: 0.15, a: 1}
+    - _AmbientSky: {r: 0.42, g: 0.46, b: 0.48, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _DustColor: {r: 0.27, g: 0.285, b: 0.28, a: 1}
+    - _PaletteTint: {r: 1, g: 1, b: 1, a: 1}
+    - _SkinHair: {r: 1, g: 1, b: 0.18, a: 0.18}
+    - _Surfaces: {r: 0.18, g: 0.18, b: 0, a: 0}
+    - _Weather: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

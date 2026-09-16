@@ -269,7 +269,9 @@ namespace EarthRecovery
             ReadyButton.interactable = me != null;
             StartButton.gameObject.SetActive(session.IsHost); StartButton.interactable = session.IsHost && players.Length >= session.rules.MinimumStartPlayers && players.All(p => p.ready);
             message.text = players.Length < session.rules.MinimumStartPlayers ? "최소 " + session.rules.MinimumStartPlayers + "명의 요원이 필요합니다." : players.Any(p => !p.ready) ? "요원들의 준비를 기다리는 중입니다." : session.IsHost ? "탐사를 시작할 수 있습니다." : "호스트의 출발을 기다리는 중입니다.";
-            if (session.rules.MinimumStartPlayers == 1) message.text = "[개발자 1인 모드] " + message.text;
+            int standIns = players.Count(p => p.developerDummy);
+            if (standIns > 0) message.text = "[개발자 모드 · 가짜 요원 " + standIns + "명] " + message.text;
+            else if (session.rules.MinimumStartPlayers == 1) message.text = "[개발자 1인 모드] " + message.text;
             roomCode.text = lobby.Rooms.Hosted == null ? "" : "참가 코드  " + ExpeditionLobby.FormatCode(lobby.Rooms.Hosted.Code);
             if (alignedRegionCode != roomCode.text)
             {
@@ -354,7 +356,7 @@ namespace EarthRecovery
             voice.sprite = owner.Asset(player.voiceEnabled ? "03_PlayerCard/PlayerCard_Voice_On" : "03_PlayerCard/PlayerCard_Voice_Muted");
             stateBG.sprite = owner.Asset(player.ready ? "03_PlayerCard/PlayerCard_ReadyState_Ready_BG" : "03_PlayerCard/PlayerCard_ReadyState_Waiting_BG");
             stateIcon.sprite = owner.Asset(player.ready ? "03_PlayerCard/Icon_Ready_Check" : "03_PlayerCard/Icon_Waiting_Ring");
-            stateText.text = player.ready ? "준비 완료" : "대기 중"; stateText.color = player.ready ? new Color(.61f, .81f, .58f) : new Color(.67f, .69f, .65f);
+            stateText.text = player.developerDummy ? "자동 준비" : player.ready ? "준비 완료" : "대기 중"; stateText.color = player.ready ? new Color(.61f, .81f, .58f) : new Color(.67f, .69f, .65f);
             replacement.sprite = PortraitOverride; replacement.gameObject.SetActive(PortraitOverride != null); portrait.gameObject.SetActive(PortraitOverride == null);
         }
     }

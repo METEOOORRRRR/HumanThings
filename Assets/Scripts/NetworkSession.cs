@@ -34,6 +34,11 @@ namespace EarthRecovery
         readonly Dictionary<ulong, (float time, int count)> budgets = new();
         ArchiveStore archiveStore;
         public bool PersistArchive = true;
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        public bool FillDeveloperSlots { get; set; }
+#else
+        public bool FillDeveloperSlots => false;
+#endif
         public event Action<GameEvent> Presented;
         int presentedSequence;
         string presentedRun = "";
@@ -46,12 +51,13 @@ namespace EarthRecovery
             rules.Sanitize();
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
             rules.developerSolo |= Environment.GetCommandLineArgs().Contains("--dev-solo");
+            FillDeveloperSlots = Environment.GetCommandLineArgs().Contains("--dev-solo");
 #endif
             manager = gameObject.AddComponent<NetworkManager>();
             var transport = gameObject.AddComponent<UnityTransport>();
             transport.MaxPayloadSize = 32768;
             manager.NetworkConfig = new NetworkConfig { NetworkTransport = transport, EnableSceneManagement = false, ConnectionApproval = true, TickRate = 30 };
-            manager.NetworkConfig.ProtocolVersion = 10;
+            manager.NetworkConfig.ProtocolVersion = 14;
             PersistArchive = !Environment.GetCommandLineArgs().Any(a => a == "--qa-role" || a == "-runTests");
             archiveStore = new ArchiveStore(System.IO.Path.Combine(Application.persistentDataPath,"human-things-archive-v1.json"));
             if(PersistArchive) View.archive=archiveStore.Load();
@@ -89,7 +95,7 @@ namespace EarthRecovery
             manager.GetComponent<UnityTransport>().SetConnectionData(address, port, host ? "0.0.0.0" : null);
             if (host)
             {
-                HostGame = new Expedition(rules);
+                HostGame = new Expedition(rules, developerParty: FillDeveloperSlots);
                 if(PersistArchive) HostGame.State.archive = archiveStore.Load();
                 HostGame.Changed += e =>
                 {
@@ -318,7 +324,7 @@ namespace EarthRecovery
             if(radio!=null && talker.alive) radio.Remember(samples: data);
             foreach (var p in HostGame.State.players)
             {
-                if (!p.connected || p.id == speaker || (!talker.alive && p.alive)) continue;
+                if (!p.connected || p.developerDummy || p.id == speaker || (!talker.alive && p.alive)) continue;
                 if (p.id == LocalId) radio?.Receive(speaker, data);
                 else VoicePacket(p.id, speaker, data);
             }

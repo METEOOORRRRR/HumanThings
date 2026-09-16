@@ -36,6 +36,42 @@ namespace EarthRecovery.Tests
             Assert.That(hostSession.View.players.Count, Is.EqualTo(1));
             Assert.That(hostSession.rules.minPlayers, Is.EqualTo(4));
         }
+        [UnityTest] public IEnumerator DeveloperStandInsReplicateReplaceRealJoinsAndRefillOnLeave()
+        {
+            hostSession.FillDeveloperSlots = true;
+            Assert.That(host.Create("Developer party", 4, false, ""));
+            yield return new WaitForSecondsRealtime(.5f);
+            Assert.That(hostSession.Online);
+            Assert.That(host.Hosted.capacity, Is.EqualTo(6));
+            Assert.That(host.Hosted.players, Is.EqualTo(1), "Stand-ins leave LAN admission slots available.");
+            Assert.That(hostSession.View.players.Count(p => p.developerDummy && p.ready), Is.EqualTo(5));
+            Assert.That(hostSession.View.players.Select(p => p.characterId).Distinct().Count(), Is.EqualTo(6));
+            var room = host.Hosted; room.address = "127.0.0.1";
+            Assert.That(client.Join(room, "")); yield return new WaitForSecondsRealtime(1);
+            Assert.That(clientSession.Online);
+            Assert.That(clientSession.View.players.Count, Is.EqualTo(6));
+            Assert.That(clientSession.View.players.Select(p => p.characterId).Distinct().Count(), Is.EqualTo(6));
+            CollectionAssert.AreEqual(hostSession.View.players.Select(p => p.characterId), clientSession.View.players.Select(p => p.characterId));
+            Assert.That(clientSession.View.players.Count(p => p.developerDummy), Is.EqualTo(4));
+            Assert.That(clientSession.LocalPlayer.developerDummy, Is.False);
+            Assert.That(SnapshotValidation.Valid(clientSession.View, clientSession.LocalId));
+            hostSession.SendVoice(new byte[800]);
+            clientSession.Leave(); yield return new WaitForSecondsRealtime(.6f);
+            Assert.That(hostSession.View.players.Count(p => p.developerDummy && p.ready), Is.EqualTo(5));
+            Assert.That(hostSession.View.players.Select(p => p.characterId).Distinct().Count(), Is.EqualTo(6));
+            Assert.That(hostSession.StartMission(42), Is.False);
+            hostSession.Send(new Command { action = "ready", flag = true });
+            Assert.That(hostSession.StartMission(42));
+            hostSession.HostGame.End(Phase.Abandoned, "test"); hostSession.ReturnToLobby();
+            yield return new WaitForSecondsRealtime(.3f);
+            Assert.That(hostSession.LocalPlayer.ready, Is.False);
+            Assert.That(hostSession.View.players.Count(p => p.developerDummy && p.ready), Is.EqualTo(5));
+            hostSession.Leave(); yield return new WaitForSecondsRealtime(.6f);
+            Assert.That(hostSession.View.players, Is.Empty);
+            Assert.That(host.Create("Developer rehost", 4, false, ""));
+            yield return new WaitForSecondsRealtime(.5f);
+            Assert.That(hostSession.View.players.Count, Is.EqualTo(6));
+        }
         [UnityTest] public IEnumerator NewMissionHintsReplicateToFieldClient()
         {
             hostSession.rules.minPlayers = 2;
@@ -64,6 +100,7 @@ namespace EarthRecovery.Tests
             var room = client.Rooms.FirstOrDefault(r => r.id == host.Hosted.id); Assert.That(room, Is.Not.Null);
             room.address = "127.0.0.1"; Assert.That(client.Join(room, "")); Assert.That(clientSession.Online, Is.False);
             yield return new WaitForSecondsRealtime(1); Assert.That(clientSession.Online); Assert.That(hostSession.View.players.Count, Is.EqualTo(2));
+            Assert.That(clientSession.View.players.Select(p => p.characterId).Distinct().Count(), Is.EqualTo(2));
             hostSession.Leave(); yield return new WaitForSecondsRealtime(1); Assert.That(clientSession.Online, Is.False);
         }
         [UnityTest] public IEnumerator DifferentRegionIsAdvertisedAndReplicatedInsteadOfDefault()

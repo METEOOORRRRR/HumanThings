@@ -18,18 +18,24 @@ namespace EarthRecovery
         public IPollutionProvider Pollution = new NoPollutionProvider();
         public IReadOnlyList<WorldBehaviorAnchor> Anchors = Array.Empty<WorldBehaviorAnchor>();
         public event Action<GameEvent> Changed;
-        public int Alive => State.players.Count(p => p.alive && p.connected);
+        // Idle test stand-ins must not prevent a solo tester from dying or hibernating.
+        public int Alive => State.players.Count(p => p.alive && p.connected && !p.developerDummy);
+        public bool DeveloperParty { get; }
         readonly Dictionary<int, Vector3> dropped = new();
         int eventSequence;
         int chatSequence;
         readonly Dictionary<ulong, float> nextChat = new();
         readonly PlayerCharacterCatalog characters;
         readonly System.Random characterRandom;
-        public Expedition(GameRules rules, HumanContent content = null, System.Random characterRandom = null)
+        public Expedition(GameRules rules, HumanContent content = null, System.Random characterRandom = null, bool developerParty = false)
         {
             Rules = rules != null ? rules : throw new ArgumentNullException(nameof(rules)); Rules.Sanitize();
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            DeveloperParty = developerParty;
+            if (DeveloperParty) { Rules.maxPlayers = 6; Rules.developerSolo = true; }
+#endif
             Content = content != null ? content : HumanContent.Load();
-            characters = PlayerCharacterCatalog.Load();
+            characters = PlayerCharacterCatalog.Load() ?? throw new InvalidOperationException("Player character catalog is missing.");
             // Cosmetic rolls must not change the seeded mission generation sequence.
             this.characterRandom = characterRandom ?? new System.Random();
         }
@@ -42,10 +48,34 @@ namespace EarthRecovery
         static Vector3 Spawn(int n) => new((n % 3 - 1) * 2, 0, -2 - n / 3 * 2);
         public bool Join(ulong id, string name)
         {
-            if (State.phase != Phase.Lobby || State.players.Count >= Rules.maxPlayers || Player(id) != null) return false;
+            if (State.phase != Phase.Lobby || Player(id) != null || id >= ulong.MaxValue - 5) return false;
+            if (State.players.Count >= Rules.maxPlayers)
+            {
+                var standIn = State.players.LastOrDefault(p => p.developerDummy);
+                if (!DeveloperParty || standIn == null) return false;
+                State.players.Remove(standIn);
+            }
+            AddPlayer(id, name);
+            FillDeveloperParty();
+            return true;
+        }
+        void AddPlayer(ulong id, string name, bool dummy = false)
+        {
             int slot = Enumerable.Range(0, 6).First(n => State.players.All(p => Vector3.Distance(p.position, Spawn(n)) > .5f));
             State.players.Add(new PlayerState { id = id, name = CleanName(name), position = Spawn(slot),
-                characterId = characters != null ? characters.PickId(characterRandom) : PlayerCharacterCatalog.DefaultId }); return true;
+                developerDummy = dummy, ready = dummy,
+                characterId = characters.PickId(characterRandom, State.players.Select(p => p.characterId)) });
+        }
+        void FillDeveloperParty()
+        {
+            if (!DeveloperParty || State.phase != Phase.Lobby) return;
+            if (!State.players.Any(p => p.connected && !p.developerDummy))
+            { State.players.RemoveAll(p => p.developerDummy); return; }
+            for (int i = 1; i <= 5 && State.players.Count < Rules.maxPlayers; i++)
+            {
+                ulong id = ulong.MaxValue - 6 + (ulong)i;
+                if (Player(id) == null) AddPlayer(id, "테스트 요원 " + i, true);
+            }
         }
         public void Emit(string kind, int target = -1, string text = "", Vector3 position = default)
         {
@@ -59,6 +89,7 @@ namespace EarthRecovery
             else { if (State.phase == Phase.Expedition) Kill(p, "통신 두절"); p.connected = false; }
             Inputs.Remove(id);
             nextChat.Remove(id);
+            FillDeveloperParty();
         }
         public bool Start(int seed, CityWorldPlan city = null)
         {
@@ -150,7 +181,8 @@ namespace EarthRecovery
         {
             var players = State.players.Where(p => p.connected).ToList(); var archive = State.archive;
             State = new Snapshot { players = players, archive = archive, regionId = State.regionId }; Inputs.Clear(); dropped.Clear();
-            for (int i = 0; i < players.Count; i++) { ResetPlayer(players[i], i); players[i].ready = false; }
+            for (int i = 0; i < players.Count; i++) { ResetPlayer(players[i], i); players[i].ready = players[i].developerDummy; }
+            FillDeveloperParty();
         }
         public void Tick(float dt)
         {

@@ -37,6 +37,7 @@ namespace EarthRecovery
                 root.AddComponent<WaitingRoom>().Initialize(session, hud, lobby);
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
                 if (System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "--display-qa") >= 0) root.AddComponent<DisplaySmoke>();
+                if (System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "--developer-solo-qa") >= 0) root.AddComponent<DeveloperSoloSmoke>();
 #endif
             }
 #if UNITY_EDITOR || DEVELOPMENT_BUILD

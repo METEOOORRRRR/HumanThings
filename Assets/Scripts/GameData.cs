@@ -108,6 +108,7 @@ namespace EarthRecovery
         public Vector3 position;
         public float yaw;
         public bool alive = true, connected = true, ready, flashlight, voiceEnabled;
+        public bool developerDummy;
         public int carrying = -1;
         public int[] inventory = new int[1];
         public List<int> modules = new(), knownLocations = new();

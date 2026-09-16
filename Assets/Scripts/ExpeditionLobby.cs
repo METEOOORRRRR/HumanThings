@@ -172,9 +172,10 @@ namespace EarthRecovery
             Image("Dropdown", region.transform, "CommonControls/Icon_DropdownArrow", new Rect(324, 14, 22, 18));
             Label("CapacityLabel", p, "최대 인원", new Rect(590, 131, 140, 40));
             Image("CapacityFrame", p, "CommonControls/Input_Frame_9Slice", new Rect(716, 124, 270, 44), true);
-            capacityText = Label("Capacity", p, "4명", new Rect(775, 124, 153, 44), 23, ink, TextAnchor.MiddleCenter);
-            Button("LessPlayers", p, "", new Rect(718, 125, 48, 42), () => ChangeCapacity(-1), "Icon_StepperLeft");
-            Button("MorePlayers", p, "", new Rect(934, 125, 48, 42), () => ChangeCapacity(1), "Icon_StepperRight");
+            if (session.FillDeveloperSlots) capacity = 6;
+            capacityText = Label("Capacity", p, capacity + "명", new Rect(775, 124, 153, 44), 23, ink, TextAnchor.MiddleCenter);
+            Button("LessPlayers", p, "", new Rect(718, 125, 48, 42), () => ChangeCapacity(-1), "Icon_StepperLeft").gameObject.SetActive(!session.FillDeveloperSlots);
+            Button("MorePlayers", p, "", new Rect(934, 125, 48, 42), () => ChangeCapacity(1), "Icon_StepperRight").gameObject.SetActive(!session.FillDeveloperSlots);
             Label("VisibilityLabel", p, "공개 설정", new Rect(590, 193, 140, 40));
             publicButton = Button("Public", p, "공개", new Rect(716, 186, 132, 44), () => SetPublic(true));
             privateButton = Button("Private", p, "비공개", new Rect(860, 186, 126, 44), () => SetPublic(false));
@@ -200,7 +201,7 @@ namespace EarthRecovery
             ChooseRegion(chosenRegion);
             SetPublic(true);
         }
-        void ChangeCapacity(int delta) { capacity = Mathf.Clamp(capacity + delta, 4, 6); capacityText.text = capacity + "명"; }
+        void ChangeCapacity(int delta) { capacity = session.FillDeveloperSlots ? 6 : Mathf.Clamp(capacity + delta, 4, 6); capacityText.text = capacity + "명"; }
         void SetPublic(bool value)
         {
             publicRoom = value;

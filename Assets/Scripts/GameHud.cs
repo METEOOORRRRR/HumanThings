@@ -341,7 +341,7 @@ namespace EarthRecovery
             Label(270, 212, 735, 65, session.View.message, heading);
             int recovered = session.View.sites.Count(s => s.mission && s.phase == CraftPhase.Delivered);
             Label(270, 298, 720, 44, "회수 표본 " + recovered + "/3");
-            Label(270, 356, 720, 44, "생존 " + session.View.players.Count(p => p.alive && p.connected) + "명");
+            Label(270, 356, 720, 44, "생존 " + session.View.players.Count(p => p.alive && p.connected && !p.developerDummy) + "명");
             if(Button(660,356,340,42,"HumanThings Archive")) archiveOpen=true;
             if (Button(270, 461, 340, 50, "대기실로", session.IsHost)) session.ReturnToLobby();
             if (Button(639, 461, 340, 50, "방 나가기")) session.Leave();

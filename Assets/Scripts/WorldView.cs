@@ -407,7 +407,7 @@ namespace EarthRecovery
             }
             else if (local != null && !local.alive)
             {
-                var alive = session.View.players.Where(p => p.alive && p.connected).ToArray();
+                var alive = session.View.players.Where(p => p.alive && p.connected && !p.developerDummy).ToArray();
                 if (alive.Length > 0)
                 {
                     SpectatorIndex = (SpectatorIndex % alive.Length + alive.Length) % alive.Length;

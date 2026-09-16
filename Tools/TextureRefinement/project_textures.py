@@ -2,13 +2,19 @@
 No mesh, skin, animation, or source image is modified. Numerical operations
 here implement 3D texture projection, visibility, resampling and UV padding.
 """
-import pathlib, json, numpy as np, cv2
+import pathlib, json, sys, numpy as np, cv2
 from PIL import Image
 from scipy.ndimage import distance_transform_edt
 from scipy.spatial import cKDTree
 from numba import njit
 
 ROOT=pathlib.Path(r'D:\HumanThings'); QA=ROOT/'QA/ToxicBunnyTexture'
+if len(sys.argv)>1: QA=pathlib.Path(sys.argv[1])
+output=pathlib.Path(sys.argv[2]) if len(sys.argv)>2 else QA/'ToxicBunny_Clean_BaseColor_v5.png'
+face_height=float(sys.argv[3]) if len(sys.argv)>3 else 1.43
+face_scale=float(sys.argv[4]) if len(sys.argv)>4 else .56
+face_min_z=float(sys.argv[5]) if len(sys.argv)>5 else 1.32
+registration=json.loads((QA/'registration.json').read_text()) if (QA/'registration.json').exists() else {}
 SIZE=4096
 surf=np.load(QA/'surface.npz'); pos=surf['pos']; uv=surf['uv']; norms=surf['norm']
 
@@ -37,7 +43,7 @@ def raster(xy, attributes, width, height, depth_test=False):
     return out,mask
 
 def camera(coords, name, width, height):
-    definitions={'front':((0,-4,.85),(0,0,.82),1.8),'back':((0,4,.85),(0,0,.82),1.8),'right':((4,0,.85),(0,0,.82),1.8),'left':((-4,0,.85),(0,0,.82),1.8),'face':((0,-4,1.43),(0,0,1.43),.56)}
+    definitions={'front':((0,-4,.85),(0,0,.82),1.8),'back':((0,4,.85),(0,0,.82),1.8),'right':((4,0,.85),(0,0,.82),1.8),'left':((-4,0,.85),(0,0,.82),1.8),'face':((0,-4,face_height),(0,0,face_height),face_scale)}
     origin,target,scale=definitions[name];origin=np.array(origin);target=np.array(target)
     f=target-origin;f/=np.linalg.norm(f);r=np.cross(f,[0,0,1]);r/=np.linalg.norm(r);u=np.cross(r,f)
     d=coords-target
@@ -61,7 +67,14 @@ del field
 sheet=np.asarray(Image.open(QA/'turnaround_clean.png').convert('RGB'))
 face=np.asarray(Image.open(QA/'face_clean.png').convert('RGB'))
 views={v:sheet[:,i*(sheet.shape[1]//4):(i+1)*(sheet.shape[1]//4)] for i,v in enumerate(['front','right','back','left'])}
-views['front']=np.asarray(Image.open(QA/'front_clean_v5.png').convert('RGB'))
+if (QA/'sides_clean.png').exists():
+    sides=np.asarray(Image.open(QA/'sides_clean.png').convert('RGB'))
+    views['left']=sides[:,:sides.shape[1]//2]
+    views['right']=sides[:,sides.shape[1]//2:]
+if (QA/'front_clean.png').exists():
+    views['front']=np.asarray(Image.open(QA/'front_clean.png').convert('RGB'))
+elif (QA/'front_clean_v5.png').exists():
+    views['front']=np.asarray(Image.open(QA/'front_clean_v5.png').convert('RGB'))
 views['face']=face
 color_sum=np.zeros((len(points),3),np.float32);weight_sum=np.zeros(len(points),np.float32)
 
@@ -82,16 +95,24 @@ for name,im in views.items():
     sx=sample_xy[:,0];sy=sample_xy[:,1]
     ix=np.clip(np.round(sx).astype(int),0,w-1);iy=np.clip(np.round(sy).astype(int),0,h-1)
     visible=(sx>=0)&(sx<w-1)&(sy>=0)&(sy<h-1)&(dep-depth_map[iy,ix]<.0045)
+    # Calibrate generated-view framing at projection time; source mesh and image stay unchanged.
+    fit=registration.get(name,{})
+    sx=(sx+.5)*fit.get('scale_x',1)+fit.get('offset_x',0)*w-.5
+    sy=(sy+.5)*fit.get('scale_y',1)+fit.get('offset_y',0)*h-.5
+    if 'y_knots' in fit:
+        knots=np.asarray(fit['y_knots'],dtype=np.float32)
+        sy=np.interp((sy+.5)/h,knots[:,0],knots[:,1]).astype(np.float32)*h-.5
     # Meshy contains inconsistent vertex normals on thin folds/hair. Visibility
     # is determined by depth, while the angular preference is two-sided.
-    priority=6.0 if name in ['front','back'] else 1.0
+    priority=fit.get('priority',6.0 if name in ['front','back'] else 1.0)
     weight=priority*np.maximum(np.abs(normal@view_dir)**4,.025)*visible
     if name=='face':
         # Dedicated face projection takes priority over the low-resolution
         # turnaround without spilling into shoulders or the side hood logos.
-        fade_z=np.clip((points[:,2]-1.32)/.055,0,1)
+        fade_z=np.clip((points[:,2]-face_min_z)/.055,0,1)
         fade_x=np.clip((.205-np.abs(points[:,0]))/.055,0,1)
         weight*=100*fade_z*fade_x
+    weight=np.power(weight,registration.get('_weight_power',1))
     # Samples are flattened into <=32766-wide remap blocks (OpenCV limit).
     sampled=np.zeros((len(points),3),np.float32)
     for start in range(0,len(points),25000):
@@ -120,7 +141,6 @@ print('Occluded texels extended in 3D',int(extend.sum()),'of',len(missing),flush
 distance,near=distance_transform_edt(mask==0,return_indices=True)
 pad=(mask==0)&(distance<=12)
 original[pad]=original[near[0][pad],near[1][pad]]
-output=QA/'ToxicBunny_Clean_BaseColor_v5.png'
 Image.fromarray(original).save(output)
 (QA/'projection_report.json').write_text(json.dumps({'texture_size':[SIZE,SIZE],'surface_texels':int(len(points)),'direct_projection_texels':int(valid.sum()),'direct_projection_percent':float(valid.mean()*100),'occluded_texels_extended_in_3d':int(extend.sum()),'total_retextured_percent':float((valid.sum()+extend.sum())/len(points)*100),'remaining_deeply_hidden_surface':'original albedo retained','uv_padding_pixels':12},indent=2))
 print('SAVED',output,'coverage',valid.mean(),flush=True)

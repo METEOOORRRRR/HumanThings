@@ -40,6 +40,8 @@ namespace EarthRecovery
             role = Arg("--qa-role", "field"); actor = int.Parse(Arg("--qa-actor", "1")); expected = int.Parse(Arg("--qa-count", "6"));
             output = Arg("--qa-output", Application.persistentDataPath); port = int.Parse(Arg("--qa-port", "7788")); Directory.CreateDirectory(output);
             started = Time.realtimeSinceStartup;
+            // This transport fixture waits for its real external clients.
+            session.FillDeveloperSlots = false;
             Application.targetFrameRate = 30;
             session.radio.Muted = true;
             session.rules.walkSpeed = 8; session.rules.runSpeed = 8; session.rules.carrySpeed = 8; session.rules.oxygenSeconds = 1200;

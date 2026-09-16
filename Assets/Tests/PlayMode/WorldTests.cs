@@ -106,19 +106,22 @@ namespace EarthRecovery.Tests
             while (client.LocalPlayer == null && Time.realtimeSinceStartup < deadline) yield return null;
             Assert.That(client.LocalPlayer, Is.Not.Null);
             CollectionAssert.AreEqual(session.HostGame.State.players.Select(p => p.characterId), client.View.players.Select(p => p.characterId));
-            // Exercise both prefabs independent of the random result, including an existing body's replacement.
-            session.HostGame.Player(session.LocalId).characterId = PlayerCharacterCatalog.ToxicBunnyId;
-            session.HostGame.Player(client.LocalId).characterId = PlayerCharacterCatalog.DefaultId;
-            yield return new WaitForSeconds(.4f);
             var catalog = PlayerCharacterCatalog.Load();
-            foreach (var player in client.View.players)
+            // Exercise every prefab and replace existing bodies independently of the random roll.
+            for (int i = 0; i < catalog.characters.Length; i++)
             {
-                Assert.That(player.characterId, Is.EqualTo(session.HostGame.Player(player.id).characterId));
-                var avatar = GameObject.Find("Agent " + player.id).GetComponentInChildren<PlayerAvatar>();
-                Assert.That(avatar.CharacterId, Is.EqualTo(player.characterId));
-                Assert.That(avatar.GetComponentInChildren<SkinnedMeshRenderer>().sharedMesh,
-                    Is.SameAs(catalog.Resolve(player.characterId).Prefab.GetComponentInChildren<SkinnedMeshRenderer>().sharedMesh));
-                Assert.That(avatar.GetComponentInParent<CharacterController>().radius, Is.EqualTo(.3f));
+                session.HostGame.Player(session.LocalId).characterId = catalog.characters[i].id;
+                session.HostGame.Player(client.LocalId).characterId = catalog.characters[(i + 1) % catalog.characters.Length].id;
+                yield return new WaitForSeconds(.4f);
+                foreach (var player in client.View.players)
+                {
+                    Assert.That(player.characterId, Is.EqualTo(session.HostGame.Player(player.id).characterId));
+                    var avatar = GameObject.Find("Agent " + player.id).GetComponentInChildren<PlayerAvatar>();
+                    Assert.That(avatar.CharacterId, Is.EqualTo(player.characterId));
+                    Assert.That(avatar.GetComponentInChildren<SkinnedMeshRenderer>().sharedMesh,
+                        Is.SameAs(catalog.Resolve(player.characterId).Prefab.GetComponentInChildren<SkinnedMeshRenderer>().sharedMesh));
+                    Assert.That(avatar.GetComponentInParent<CharacterController>().radius, Is.EqualTo(.3f));
+                }
             }
             var assignments = client.View.players.Select(p => p.characterId).ToArray();
             foreach (var player in session.HostGame.State.players) player.ready = true;

@@ -76,6 +76,7 @@ namespace EarthRecovery
             name = (name ?? "").Trim();
             if (name.Length < 1 || name.Length > 20 || name.Any(char.IsControl) || capacity < 4 || capacity > 6 || (password?.Length ?? 0) > 6)
             { SetStatus("방 설정을 확인해 주세요."); return false; }
+            if (Session.FillDeveloperSlots) capacity = 6;
             StopHosting();
             for (int port = FirstPort; port < FirstPort + PortCount; port++)
             {
@@ -138,7 +139,8 @@ namespace EarthRecovery
             if (Hosted != null && !Session.IsHost && !Session.IsConnecting) StopHosting();
             if (host != null && Hosted != null && Session.IsHost)
             {
-                Hosted.players = Session.View.players.Count(p => p.connected); Hosted.playing = Session.View.phase != Phase.Lobby;
+                // A real LAN participant can replace an idle developer stand-in.
+                Hosted.players = Session.View.players.Count(p => p.connected && !p.developerDummy); Hosted.playing = Session.View.phase != Phase.Lobby;
                 Poll(host, (bytes, sender) =>
                 {
                     if (bytes.Length > 64) return;

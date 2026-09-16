@@ -1,0 +1,38 @@
+{
+  "source_sha256": "c127e83706a9deeb0215730e6c455fc957513d41f93502fad6dc8832916bf683",
+  "source_unchanged": true,
+  "geometry_uv_rig_animations_identical": true,
+  "preserved_sections": [
+    "meshes",
+    "nodes",
+    "skins",
+    "animations",
+    "accessors",
+    "scenes",
+    "scene",
+    "samplers"
+  ],
+  "original_binary_preserved_byte_for_byte": true,
+  "animations": [
+    "Running",
+    "Walking",
+    "restpose"
+  ],
+  "new_glb": "D:\\HumanThings\\Assets\\Character\\NeonOutriderClean\\NeonOutrider_Clean_All_Animations.glb",
+  "new_glb_sha256": "ba386b9b3ec3d3082af253081cd5c304e3b502c6e4b2aea30588fbaaba0a0665",
+  "texture": "D:\\HumanThings\\Assets\\Character\\NeonOutriderClean\\NeonOutrider_BaseColor_4K.png",
+  "material": {
+    "name": "NeonOutrider_Clean_Matte",
+    "normalTexture": {
+      "index": 0,
+      "scale": 0.0
+    },
+    "pbrMetallicRoughness": {
+      "baseColorTexture": {
+        "index": 1
+      },
+      "metallicFactor": 0.0,
+      "roughnessFactor": 0.82
+    }
+  }
+}

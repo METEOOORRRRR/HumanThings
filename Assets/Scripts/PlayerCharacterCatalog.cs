@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -9,6 +10,12 @@ namespace EarthRecovery
     {
         public const string DefaultId = "neon-vanguard";
         public const string ToxicBunnyId = "toxic-bunny-r31";
+        public const string NeonOutriderId = "neon-outrider";
+        public const string TomorrowSentinelId = "tomorrows-sentinel";
+        public const string AshenSentinelId = "ashen-sentinel";
+        public const string NovaGhostScoutId = "nova-ghost-scout";
+        public const string CrimsonReclaimerId = "crimson-reclaimer";
+        public const string WastelandSentinelId = "wasteland-sentinel";
 
         [Serializable]
         public sealed class Entry
@@ -26,10 +33,12 @@ namespace EarthRecovery
             ?? characters.FirstOrDefault(c => Usable(c) && c.id == DefaultId)
             ?? characters.FirstOrDefault(Usable);
 
-        public string PickId(System.Random random)
+        public string PickId(System.Random random, IEnumerable<string> occupiedIds = null)
         {
-            var available = characters.Where(Usable).ToArray();
-            return available.Length == 0 ? DefaultId : available[random.Next(available.Length)].id;
+            var occupied = new HashSet<string>(occupiedIds ?? Array.Empty<string>());
+            var available = characters.Where(c => Usable(c) && !occupied.Contains(c.id)).Select(c => c.id).Distinct().ToArray();
+            if (available.Length == 0) throw new InvalidOperationException("No unassigned player character is available.");
+            return available[random.Next(available.Length)];
         }
 
         static bool Usable(Entry entry) => entry != null && !string.IsNullOrWhiteSpace(entry.id) && entry.Prefab != null;
