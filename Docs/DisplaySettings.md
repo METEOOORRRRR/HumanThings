@@ -31,4 +31,4 @@ Dropdowns include a scrollable masked list, scrollbar, standard Unity selection/
 - Facility screenshot fixtures originally failed to move the actual character controller; now warp the fixture body and assert the requested facility/station panel remains open.
 - Captures now use synchronous pixel readback and reject blank images; facility fixtures send the actual view command, and synthetic Maze data includes its required 36 cells. These are QA corrections, not changes to production puzzle rules.
 
-Builds continue to use `Builds/Latest/EarthRecovery.exe` and retain only Latest plus two previous builds.
+Builds use `Builds/Latest/EarthRecovery.exe` and retain only Latest plus at most three previous builds. Developer mode uses `Play-DeveloperSolo.cmd` against that same Latest player.

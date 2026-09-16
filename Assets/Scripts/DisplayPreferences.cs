@@ -20,13 +20,16 @@ namespace EarthRecovery
         Font font;
         GameObject ownedEvents;
         RectTransform popupLayout;
+        Vector2Int windowSize;
+        Rect previousViewport;
+        bool wasFullscreen;
         public static Rect Viewport => FitViewport(Screen.width, Screen.height, Ratios[Selected]);
         public static Rect FitViewport(float width, float height, float ratio)
         {
             width = Mathf.Max(1, width); height = Mathf.Max(1, height);
             if (!float.IsFinite(ratio) || ratio <= 0) return new Rect(0, 0, width, height);
-            float w = Mathf.Min(width, height * ratio), h = Mathf.Min(height, width / ratio);
-            return new Rect((width-w)/2, (height-h)/2, w, h);
+            float w = Mathf.Floor(Mathf.Min(width, height * ratio)), h = Mathf.Floor(Mathf.Min(height, width / ratio));
+            return new Rect(Mathf.Floor((width-w)/2), Mathf.Floor((height-h)/2), w, h);
         }
         public static Matrix4x4 GuiMatrix(float width, float height)
         {
@@ -36,7 +39,27 @@ namespace EarthRecovery
         public static void FitCanvas(RectTransform layout, RectTransform canvas, float width=1672, float height=941)
         {
             var r = Viewport;
-            layout.localScale = Vector3.one * Mathf.Min(canvas.rect.width * r.width / Mathf.Max(1,Screen.width) / width, canvas.rect.height * r.height / Mathf.Max(1,Screen.height) / height);
+            // Text rasterization reads Canvas.scaleFactor, not a nested layout's localScale.
+            float scale = Mathf.Max(.01f, Mathf.Min(r.width / width, r.height / height));
+            var scaler = canvas.GetComponent<CanvasScaler>();
+            scaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
+            scaler.scaleFactor = scale;
+            var surface = canvas.GetComponent<Canvas>(); surface.scaleFactor = scale; surface.pixelPerfect = true;
+            layout.localScale = Vector3.one;
+        }
+        public static void SetFullscreen(bool enabled)
+        {
+            if (enabled)
+            {
+                if (instance != null && !Screen.fullScreen) instance.windowSize = new Vector2Int(Screen.width, Screen.height);
+                var display = Screen.mainWindowDisplayInfo;
+                Screen.SetResolution(display.width, display.height, FullScreenMode.FullScreenWindow);
+            }
+            else
+            {
+                var size = instance != null && instance.windowSize.x > 0 ? instance.windowSize : new Vector2Int(1280, 720);
+                Screen.SetResolution(size.x, size.y, FullScreenMode.Windowed);
+            }
         }
         public static void Select(int index, bool persist = true)
         {
@@ -44,14 +67,29 @@ namespace EarthRecovery
             if (persist) { PlayerPrefs.SetInt(Preference, Selected); PlayerPrefs.Save(); }
             Changed?.Invoke();
         }
-        void Awake() { instance = this; Select(PlayerPrefs.GetInt(Preference, 0), false); }
-        void LateUpdate()
+        void Awake()
         {
+            instance = this; Select(PlayerPrefs.GetInt(Preference, 0), false);
+            wasFullscreen = Screen.fullScreen;
+            if (wasFullscreen) SetFullscreen(true);
+            else windowSize = new Vector2Int(Screen.width, Screen.height);
+        }
+        void Update()
+        {
+            // Cover OS/Alt+Enter transitions as well as the settings toggle.
+            if (Screen.fullScreen && !wasFullscreen) SetFullscreen(true);
+            wasFullscreen = Screen.fullScreen;
+            if (!wasFullscreen) windowSize = new Vector2Int(Screen.width, Screen.height);
             var world = GetComponent<WorldView>();
             if (world != null && world.eye != null)
             {
                 var r = Viewport;
                 world.eye.rect = new Rect(r.x / Screen.width, r.y / Screen.height, r.width / Screen.width, r.height / Screen.height);
+                if (r != previousViewport)
+                {
+                    world.eye.GetComponent<UnityEngine.Rendering.Universal.UniversalAdditionalCameraData>().resetHistory = true;
+                    previousViewport = r;
+                }
             }
             if (popupLayout != null) FitCanvas(popupLayout, (RectTransform)popup.transform);
             if (PopupOpen && Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame) Close();

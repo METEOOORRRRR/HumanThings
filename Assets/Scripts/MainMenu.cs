@@ -172,7 +172,7 @@ namespace EarthRecovery
             var check = Node("Check", box, new Rect(6, 6, 18, 18)); check.gameObject.AddComponent<Image>().color = ink;
             toggle.targetGraphic = box.GetComponent<Image>(); toggle.graphic = check.GetComponent<Image>(); toggle.isOn = Screen.fullScreen;
             Text("Label", toggleNode, "전체 화면", new Rect(50, 0, 400, 40), 24);
-            toggle.onValueChanged.AddListener(value => Screen.fullScreen = value);
+            toggle.onValueChanged.AddListener(DisplayPreferences.SetFullscreen);
             Text("AspectLabel", settings.transform, "화면 비율", new Rect(30, 240, 190, 45), 24);
             DisplayPreferences.AddDropdown(settings.transform, serif, new Rect(230, 240, 320, 45));
             var close = Node("Close", settings.transform, new Rect(200, 383, 200, 50));

@@ -252,6 +252,22 @@ namespace EarthRecovery
             var item = GameObject.CreatePrimitive(type); item.name = name; item.layer = 30; item.transform.SetParent(portraitStage.transform, false); item.transform.localPosition = position; item.transform.localScale = scale;
             Destroy(item.GetComponent<Collider>()); var material = new Material(Shader.Find("Universal Render Pipeline/Lit")); material.color = color; item.GetComponent<Renderer>().sharedMaterial = material; portraitMaterials.Add(material);
         }
+        public static Vector2Int PortraitResolution(float uiScale)
+        {
+            int height = Mathf.Clamp(Mathf.CeilToInt(220 * uiScale / 40) * 40, 320, 1280);
+            return new Vector2Int(height * 4 / 5, height);
+        }
+        void ResizePortrait()
+        {
+            var size = PortraitResolution(canvasObject.GetComponent<Canvas>().scaleFactor);
+            if (portrait.width == size.x && portrait.height == size.y) return;
+            var previous = portrait;
+            portrait = new RenderTexture(size.x, size.y, 24) { name = "Default agent portrait" };
+            if (SystemInfo.graphicsDeviceType != UnityEngine.Rendering.GraphicsDeviceType.Null) portrait.Create();
+            portraitCamera.targetTexture = portrait;
+            foreach (var card in Cards) card.transform.Find("PortraitMask/Portrait").GetComponent<RawImage>().texture = portrait;
+            previous.Release(); Destroy(previous); portraitFrames = 3;
+        }
         void Update()
         {
             Visible = session != null && session.Online && session.View.phase == Phase.Lobby;
@@ -263,8 +279,9 @@ namespace EarthRecovery
             }
             if (!previousVisible) { portraitFrames = 3; nextVoice = 0; } previousVisible = true;
             optionsBackdrop.SetActive(options.activeSelf);
-            portraitCamera.enabled = portraitFrames-- > 0 && SystemInfo.graphicsDeviceType != UnityEngine.Rendering.GraphicsDeviceType.Null;
             var canvas = (RectTransform)canvasObject.transform; DisplayPreferences.FitCanvas(Layout, canvas);
+            ResizePortrait();
+            portraitCamera.enabled = portraitFrames-- > 0 && SystemInfo.graphicsDeviceType != UnityEngine.Rendering.GraphicsDeviceType.Null;
             var players = session.View.players.Where(p => p.connected).OrderBy(p => p.id).ToArray();
             for (int i = 0; i < Cards.Count; i++)
             {

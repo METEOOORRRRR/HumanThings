@@ -53,11 +53,11 @@ namespace EarthRecovery
             GUI.skin.toggle.fontSize = 18;
         }
         void Fill(Rect rect, Color color) { var old = GUI.color; GUI.color = color; GUI.DrawTexture(rect, pixel); GUI.color = old; }
-        void Label(float x, float y, float w, float h, string value, GUIStyle style = null) => GUI.Label(new Rect(x, y, w, h), value, style ?? text);
+        void Label(float x, float y, float w, float h, string value, GUIStyle style = null) => PixelGui.Label(new Rect(x, y, w, h), value, style ?? text);
         bool Button(float x, float y, float w, float h, string label, bool enabled = true)
         {
             bool previous = GUI.enabled; GUI.enabled = enabled;
-            bool clicked = GUI.Button(new Rect(x, y, w, h), label, button); GUI.enabled = previous; return clicked;
+            bool clicked = PixelGui.Button(new Rect(x, y, w, h), label, button); GUI.enabled = previous; return clicked;
         }
         void Panel(float x, float y, float w, float h, string title)
         {
@@ -82,7 +82,13 @@ namespace EarthRecovery
             if (ExpeditionMenu != null && ExpeditionMenu.Visible && !archiveOpen) return;
             if (TitleMenu != null && TitleMenu.Visible && !archiveOpen) return;
             Styles();
+            var previousMatrix = GUI.matrix;
             GUI.matrix = DisplayPreferences.GuiMatrix(1280, 720);
+            try { DrawHud(); }
+            finally { GUI.matrix = previousMatrix; }
+        }
+        void DrawHud()
+        {
             if (DisplayPreferences.PopupOpen) return;
             if(archiveOpen && session.View.phase!=Phase.Expedition) {ArchivePanel();return;}
             if (!session.Online || session.View.phase == Phase.Lobby) { Lobby(); return; }
@@ -124,9 +130,9 @@ namespace EarthRecovery
             }
             else if (!session.Online)
             {
-                Label(88, 185, 100, 32, "요원명"); session.UserName = GUI.TextField(new Rect(195, 180, 355, 38), session.UserName, 16);
-                Label(88, 242, 100, 32, "주소"); address = GUI.TextField(new Rect(195, 237, 355, 38), address, 64);
-                Label(88, 299, 100, 32, "포트"); port = GUI.TextField(new Rect(195, 294, 140, 38), port, 5);
+                Label(88, 185, 100, 32, "요원명"); session.UserName = PixelGui.TextField(new Rect(195, 180, 355, 38), session.UserName, 16);
+                Label(88, 242, 100, 32, "주소"); address = PixelGui.TextField(new Rect(195, 237, 355, 38), address, 64);
+                Label(88, 299, 100, 32, "포트"); port = PixelGui.TextField(new Rect(195, 294, 140, 38), port, 5);
                 bool valid = ushort.TryParse(port, out var number) && number > 0 && session.CanConnect;
                 if (Button(88, 370, 220, 50, "방 만들기", valid)) session.Connect(true, "127.0.0.1", number);
                 if (Button(325, 370, 225, 50, "참가", valid)) session.Connect(false, address, number);
@@ -213,7 +219,7 @@ namespace EarthRecovery
                 bool owned=session.LocalPlayer.modules.Contains(s.id);
                 Label(240,260,750,80,definition.displayNameKnown+" · "+definition.moduleName+"\n"+(owned?"설치 가능 · 모듈 보유":"설치 불가 · 해당 모듈 미보유"));
                 GUI.enabled=owned;
-                bool held=GUI.RepeatButton(new Rect(240,380,360,50),session.LocalPlayer.installing==s.id?"설치 중":"모듈 설치",button);GUI.enabled=true;
+                bool held=PixelGui.RepeatButton(new Rect(240,380,360,50),session.LocalPlayer.installing==s.id?"설치 중":"모듈 설치",button);GUI.enabled=true;
                 if(held && Time.unscaledTime>=nextInstall) {session.Send(new Command {action="install",target=s.id,flag=true});nextInstall=Time.unscaledTime+.08f;}
                 if(session.LocalPlayer.installing==s.id) Fill(new Rect(240,450,360*Mathf.Clamp01((session.View.elapsed-session.LocalPlayer.installStarted)/definition.recipe.installDuration),7),accent);
             }
@@ -257,10 +263,10 @@ namespace EarthRecovery
             if (s.puzzleKind == PuzzleKind.Alignment)
             {
                 var arrows = new[] { "↑", "→", "↓", "←" };
-                GUI.Label(target, arrows[s.targetAngle], heading); GUI.Label(current, arrows[s.angle], text);
+                PixelGui.Label(target, arrows[s.targetAngle], heading); PixelGui.Label(current, arrows[s.angle], text);
             }
             else if (s.puzzleKind == PuzzleKind.Crane)
-            { GUI.Label(target, "●", heading); GUI.Label(current, "+", text); }
+            { PixelGui.Label(target, "●", heading); PixelGui.Label(current, "+", text); }
         }
         void Puzzle(SiteState s, int x, int y, bool flag = false) => session.Send(new Command { action = "puzzle", target = s.id, x = x, y = y, flag = flag });
         void DrawMap(Rect rect)
@@ -379,39 +385,37 @@ namespace EarthRecovery
             Panel(80,55,1120,610,"HumanThings Archive");
             if(Button(1115,72,60,40,"×")) CloseArchive();
             var rows = session.View.archive.OrderBy(e => e.artifactId).Select(Catalog.ArchiveLines).ToArray();
-            float total = rows.Sum(lines => lines.Select((line, i) => (i == 0 ? heading : text).CalcHeight(new GUIContent(line), 1000) + 6).Sum() + 20);
-            archiveScroll=GUI.BeginScrollView(new Rect(105,125,1070,510),archiveScroll,new Rect(0,0,1040,Mathf.Max(500,total)));
+            float total = rows.Sum(lines => lines.Select((line, i) => PixelGui.CalcHeight(line, 1000, i == 0 ? heading : text) + 6).Sum() + 20);
+            using var view = new PixelGui.ScrollView(new Rect(105,125,1070,510), ref archiveScroll, new Rect(0,0,1040,Mathf.Max(500,total)));
             float y = 0;
             foreach(var lines in rows)
             {
                 for (int i = 0; i < lines.Length; i++)
                 {
                     var style = i == 0 ? heading : text;
-                    float height = style.CalcHeight(new GUIContent(lines[i]), 1000);
-                    Label(10, y, 1000, height, lines[i], style); y += height + 6;
+                    float height = view.CalcHeight(lines[i], 1000, style);
+                    view.Label(new Rect(10, y, 1000, height), lines[i], style); y += height + 6;
                 }
                 y += 20;
             }
-            if(rows.Length==0) Label(10,20,1000,50,"등록된 표본 없음");
-            GUI.EndScrollView();
+            if(rows.Length==0) view.Label(new Rect(10,20,1000,50),"등록된 표본 없음",text);
         }
         static void ScrollText(Rect area, ref Vector2 scroll, string[] lines, GUIStyle style)
         {
             float width = area.width - 20;
-            var heights = lines.Select(line => style.CalcHeight(new GUIContent(line), width) + 5).ToArray();
-            scroll = GUI.BeginScrollView(area, scroll, new Rect(0, 0, width, Mathf.Max(area.height, heights.Sum())));
+            var heights = lines.Select(line => PixelGui.CalcHeight(line, width, style) + 5).ToArray();
+            using var view = new PixelGui.ScrollView(area, ref scroll, new Rect(0, 0, width, Mathf.Max(area.height, heights.Sum())));
             float y = 0;
             for (int i = 0; i < lines.Length; i++)
             {
-                GUI.Label(new Rect(0, y, width, heights[i] - 5), lines[i], style);
+                view.Label(new Rect(0, y, width, heights[i] - 5), lines[i], style);
                 y += heights[i];
             }
-            GUI.EndScrollView();
         }
         public static GUIStyle FitText(GUIStyle original, string value, float width, float height)
         {
             var style = new GUIStyle(original);
-            while (style.fontSize > 10 && style.CalcHeight(new GUIContent(value), width) > height) style.fontSize--;
+            while (style.fontSize > 10 && PixelGui.CalcHeight(value, width, style) > height) style.fontSize--;
             return style;
         }
         void OnDestroy() { if(session!=null) session.Presented-=Present; if (pixel != null) Destroy(pixel); if (terminalFont != null) Destroy(terminalFont); }

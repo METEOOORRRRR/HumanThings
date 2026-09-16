@@ -20,6 +20,7 @@ namespace EarthRecovery
         AmbientMode ambientMode; FogMode fogMode; Material skybox;
         Quaternion rotation; LightShadows shadows; CameraClearFlags clearFlags;
         AntialiasingMode aa;
+        TemporalAA.Settings taa;
         SphericalHarmonicsL2 ambientProbe;
 
         public void Apply(HumanThingsVisualProfile settings, Camera camera, Light directional)
@@ -34,6 +35,7 @@ namespace EarthRecovery
             rotation=sun.transform.rotation; lightColor=sun.color; intensity=sun.intensity; shadows=sun.shadows;
             shadowStrength=sun.shadowStrength; shadowBias=sun.shadowBias; normalBias=sun.shadowNormalBias;
             var data=eye.GetUniversalAdditionalCameraData(); post=data.renderPostProcessing; aa=data.antialiasing;
+            taa=data.taaSettings;
             hdr=eye.allowHDR; background=eye.backgroundColor; clearFlags=eye.clearFlags;
             applied=true;
             foreach (var renderer in GetComponentsInChildren<MeshRenderer>())
@@ -54,7 +56,11 @@ namespace EarthRecovery
             RenderSettings.fog=true; RenderSettings.fogMode=FogMode.ExponentialSquared;
             RenderSettings.fogColor=profile.fogColor; RenderSettings.fogDensity=profile.fogDensity;
             eye.clearFlags=CameraClearFlags.SolidColor; eye.backgroundColor=profile.fogColor; eye.allowHDR=true;
-            data.renderPostProcessing=true; data.antialiasing=AntialiasingMode.FastApproximateAntialiasing;
+            data.renderPostProcessing=true; data.antialiasing=AntialiasingMode.TemporalAntiAliasing;
+            data.taaSettings=TemporalAA.Settings.Create();
+            data.taaSettings.baseBlendFactor=.85f;
+            data.taaSettings.contrastAdaptiveSharpening=.1f;
+            data.resetHistory=true;
             CreateVolume(); AddFocalLights();
         }
         static string Category(Renderer r)
@@ -138,7 +144,7 @@ namespace EarthRecovery
             RenderSettings.reflectionIntensity=reflectionIntensity; RenderSettings.skybox=skybox;
             RenderSettings.ambientProbe=ambientProbe;
             if(sun!=null) {sun.transform.rotation=rotation; sun.color=lightColor; sun.intensity=intensity; sun.shadows=shadows; sun.shadowStrength=shadowStrength; sun.shadowBias=shadowBias; sun.shadowNormalBias=normalBias;}
-            if(eye!=null) {var data=eye.GetUniversalAdditionalCameraData(); data.renderPostProcessing=post; data.antialiasing=aa; eye.allowHDR=hdr; eye.backgroundColor=background; eye.clearFlags=clearFlags;}
+            if(eye!=null) {var data=eye.GetUniversalAdditionalCameraData(); data.renderPostProcessing=post; data.antialiasing=aa; data.taaSettings=taa; data.resetHistory=true; eye.allowHDR=hdr; eye.backgroundColor=background; eye.clearFlags=clearFlags;}
         }
         static void Release(Object obj) {if(obj==null)return; if(Application.isPlaying) Destroy(obj); else DestroyImmediate(obj);}
         void OnDisable()=>Restore();
