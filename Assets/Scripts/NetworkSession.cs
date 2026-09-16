@@ -51,7 +51,7 @@ namespace EarthRecovery
             var transport = gameObject.AddComponent<UnityTransport>();
             transport.MaxPayloadSize = 32768;
             manager.NetworkConfig = new NetworkConfig { NetworkTransport = transport, EnableSceneManagement = false, ConnectionApproval = true, TickRate = 30 };
-            manager.NetworkConfig.ProtocolVersion = 9;
+            manager.NetworkConfig.ProtocolVersion = 10;
             PersistArchive = !Environment.GetCommandLineArgs().Any(a => a == "--qa-role" || a == "-runTests");
             archiveStore = new ArchiveStore(System.IO.Path.Combine(Application.persistentDataPath,"human-things-archive-v1.json"));
             if(PersistArchive) View.archive=archiveStore.Load();

@@ -104,6 +104,7 @@ namespace EarthRecovery
     {
         public ulong id;
         public string name;
+        public string characterId = PlayerCharacterCatalog.DefaultId;
         public Vector3 position;
         public float yaw;
         public bool alive = true, connected = true, ready, flashlight, voiceEnabled;

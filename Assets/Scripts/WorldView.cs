@@ -24,6 +24,7 @@ namespace EarthRecovery
         readonly Dictionary<int, LocationController> locations = new();
         readonly List<WorldBehaviorAnchor> behaviorAnchors = new();
         readonly Dictionary<ulong, CharacterController> controllers = new();
+        readonly Dictionary<ulong, PlayerAvatar> avatars = new();
         readonly Dictionary<ulong, Light> torches = new();
         readonly List<Material> materials = new();
         Material textMaterial;
@@ -32,11 +33,17 @@ namespace EarthRecovery
         int seed = int.MinValue;
         bool lobbyWorld, hostWorld;
         GameObject sun;
+        GameObject playerPrefab;
+        PlayerCharacterCatalog characters;
         float yaw, pitch = 18, inputTimer;
         int nearbyLoot = -1, nearbyObject = -1, nearbySite = -1;
 
         void Awake()
         {
+            characters = PlayerCharacterCatalog.Load();
+            var characterVisual = Resources.Load<HumanThingsCharacterVisualProfile>("HumanThingsCharacterVisualProfile");
+            playerPrefab = characterVisual != null && characterVisual.visualPrefab != null
+                ? characterVisual.visualPrefab : Resources.Load<GameObject>("PlayerCharacter");
             font = Font.CreateDynamicFontFromOSFont(new[] { "Malgun Gothic", "Arial" }, 18);
             textMaterial = new Material(Shader.Find("EarthRecovery/WorldText"));
             Font.textureRebuilt += RefreshFont;
@@ -133,7 +140,7 @@ namespace EarthRecovery
             if (surface != null) surface.RemoveData();
             if (root != null) { root.gameObject.SetActive(false); Destroy(root.gameObject); }
             foreach (var m in materials) Destroy(m); materials.Clear();
-            bodies.Clear(); controllers.Clear(); torches.Clear(); loot.Clear(); objects.Clear(); monsters.Clear(); agents.Clear();
+            bodies.Clear(); controllers.Clear(); avatars.Clear(); torches.Clear(); loot.Clear(); objects.Clear(); monsters.Clear(); agents.Clear();
             moduleVisuals.Clear(); locations.Clear(); behaviorAnchors.Clear();
             City = null;
             root = new GameObject(state.cityWorld ? "Expedition city world" : "Lobby world").transform;
@@ -188,10 +195,25 @@ namespace EarthRecovery
         }
         GameObject Body(PlayerState p)
         {
-            if (bodies.TryGetValue(p.id, out var body)) return body;
-            body = new GameObject("Agent " + p.id); body.transform.SetParent(root); body.transform.position = p.position;
-            var shell = Shape("Suit", PrimitiveType.Capsule, new Vector3(0, .85f, 0), new Vector3(.65f, .85f, .65f), Color.HSVToRGB((p.id * .21f) % 1, .2f, .7f), body.transform, false);
-            Shape("Mask", PrimitiveType.Sphere, new Vector3(0, 1.5f, .28f), new Vector3(.4f, .28f, .2f), new Color(.08f, .12f, .12f), body.transform, false);
+            var character = characters != null ? characters.Resolve(p.characterId) : null;
+            string characterId = character != null ? character.id : PlayerCharacterCatalog.DefaultId;
+            if (bodies.TryGetValue(p.id, out var body))
+            {
+                if (!avatars.TryGetValue(p.id, out var avatar) || avatar.CharacterId == characterId) return body;
+                RemoveBody(p.id);
+            }
+            body = new GameObject("Agent " + p.id); body.transform.SetParent(root); body.transform.SetPositionAndRotation(p.position, Quaternion.Euler(0, p.yaw, 0));
+            var prefab = character != null ? character.Prefab : playerPrefab;
+            if (prefab != null)
+            {
+                var avatar = Instantiate(prefab, body.transform, false).GetComponent<PlayerAvatar>();
+                avatar.CharacterId = characterId; avatars[p.id] = avatar;
+            }
+            else
+            {
+                Shape("Suit", PrimitiveType.Capsule, new Vector3(0, .85f, 0), new Vector3(.65f, .85f, .65f), Color.HSVToRGB((p.id * .21f) % 1, .2f, .7f), body.transform, false);
+                Shape("Mask", PrimitiveType.Sphere, new Vector3(0, 1.5f, .28f), new Vector3(.4f, .28f, .2f), new Color(.08f, .12f, .12f), body.transform, false);
+            }
             var torch = new GameObject("Flashlight").AddComponent<Light>(); torch.transform.SetParent(body.transform); torch.transform.localPosition = new Vector3(0, 1.5f, .4f);
             torch.type = LightType.Spot; torch.range = 22; torch.spotAngle = 50; torch.intensity = 3; torches[p.id] = torch;
             if (session.IsHost)
@@ -199,7 +221,15 @@ namespace EarthRecovery
                 var cc = body.AddComponent<CharacterController>(); cc.height = 1.8f; cc.radius = .3f; cc.center = Vector3.up * .9f; cc.stepOffset = .45f;
                 controllers[p.id] = cc;
             }
+            body.AddComponent<PlayerCameraVisibility>();
             bodies[p.id] = body; return body;
+        }
+        void RemoveBody(ulong id)
+        {
+            var body = bodies[id]; body.SetActive(false);
+            foreach (var renderer in body.GetComponentsInChildren<Renderer>(true))
+            { var material = renderer.sharedMaterial; if (materials.Remove(material)) Destroy(material); }
+            Destroy(body); bodies.Remove(id); controllers.Remove(id); avatars.Remove(id); torches.Remove(id);
         }
         public void HostStep(Expedition game, float dt)
         {
@@ -262,16 +292,11 @@ namespace EarthRecovery
             {
                 var body = Body(p);
                 if (!session.IsHost) body.transform.position = Vector3.Lerp(body.transform.position, p.position, 15 * Time.deltaTime);
-                body.transform.rotation = Quaternion.Euler(0, p.yaw, 0);
                 foreach (var renderer in body.GetComponentsInChildren<Renderer>()) renderer.enabled = p.connected && p.alive;
                 torches[p.id].enabled = p.alive && p.flashlight;
             }
             foreach (var stale in bodies.Keys.Where(id => state.players.All(p => p.id != id)).ToArray())
-            {
-                foreach (var renderer in bodies[stale].GetComponentsInChildren<Renderer>())
-                { var material = renderer.sharedMaterial; if (materials.Remove(material)) Destroy(material); }
-                Destroy(bodies[stale]); bodies.Remove(stale); controllers.Remove(stale); torches.Remove(stale);
-            }
+                RemoveBody(stale);
             foreach (var l in state.loot)
             {
                 if (!loot.TryGetValue(l.id, out var item))
@@ -360,13 +385,25 @@ namespace EarthRecovery
         }
         void LateUpdate()
         {
+            // Present after movement and input, without quantizing local rotation to network ticks.
+            var state = session.IsHost ? session.HostGame.State : session.View;
+            foreach (var p in state.players)
+            {
+                if (!bodies.TryGetValue(p.id, out var agent)) continue;
+                bool localInput = p.id == session.LocalId && !Automated && state.phase == Phase.Expedition;
+                var target = Quaternion.Euler(0, localInput ? yaw : p.yaw, 0);
+                agent.transform.rotation = localInput ? target : Quaternion.Slerp(agent.transform.rotation, target, 1 - Mathf.Exp(-18 * Time.deltaTime));
+                if (avatars.TryGetValue(p.id, out var avatar)) avatar.Present(p, session.rules, state.phase == Phase.Expedition, Time.deltaTime);
+            }
             var local = session.LocalPlayer;
+            GameObject followed = null;
             if (local != null && local.alive && session.View.phase == Phase.Expedition)
             {
                 Vector3 at = bodies.TryGetValue(local.id, out var body) ? body.transform.position : local.position;
+                followed = body;
                 var rotation = Quaternion.Euler(pitch, Automated ? local.yaw : yaw, 0);
                 var focus = at + Vector3.up * 1.45f;
-                eye.transform.SetPositionAndRotation(ResolveCameraPosition(focus, rotation), rotation);
+                FollowCamera(focus, rotation, body);
             }
             else if (local != null && !local.alive)
             {
@@ -376,16 +413,19 @@ namespace EarthRecovery
                     SpectatorIndex = (SpectatorIndex % alive.Length + alive.Length) % alive.Length;
                     var target = alive[SpectatorIndex];
                     Vector3 at = bodies.TryGetValue(target.id, out var body) ? body.transform.position : target.position;
+                    followed = body;
                     Vector3 focus = at + Vector3.up * 1.45f;
-                    var rotation = Quaternion.Euler(18, target.yaw, 0);
-                    eye.transform.SetPositionAndRotation(ResolveCameraPosition(focus, rotation), rotation);
+                    var rotation = Quaternion.Euler(18, body != null ? body.transform.eulerAngles.y : target.yaw, 0);
+                    FollowCamera(focus, rotation, body);
                 }
             }
-            else { eye.transform.position = new Vector3(0, 12, -19); eye.transform.LookAt(new Vector3(0, 0, 2)); }
+            else { cameraTarget = null; eye.transform.position = new Vector3(0, 12, -19); eye.transform.LookAt(new Vector3(0, 0, 2)); }
+            foreach (var body in bodies.Values)
+                if (body.GetComponent<PlayerCameraVisibility>().Present(eye, body == followed)) ResetCameraHistory();
         }
-        public static Vector3 ResolveCameraPosition(Vector3 focus, Quaternion rotation)
+        public static Vector3 ResolveCameraPosition(Vector3 focus, Quaternion rotation, float radius = .2f)
         {
-            const float radius = .2f, padding = .05f, distance = 3.6f;
+            const float padding = .05f, distance = 3.6f;
             Vector3 direction = rotation * Vector3.back;
             // Never enforce a minimum boom length: that would push the camera through close walls.
             float length = distance;

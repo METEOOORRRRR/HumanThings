@@ -23,8 +23,16 @@ namespace EarthRecovery
         int eventSequence;
         int chatSequence;
         readonly Dictionary<ulong, float> nextChat = new();
-        public Expedition(GameRules rules, HumanContent content = null)
-        { Rules = rules != null ? rules : throw new ArgumentNullException(nameof(rules)); Rules.Sanitize(); Content = content != null ? content : HumanContent.Load(); }
+        readonly PlayerCharacterCatalog characters;
+        readonly System.Random characterRandom;
+        public Expedition(GameRules rules, HumanContent content = null, System.Random characterRandom = null)
+        {
+            Rules = rules != null ? rules : throw new ArgumentNullException(nameof(rules)); Rules.Sanitize();
+            Content = content != null ? content : HumanContent.Load();
+            characters = PlayerCharacterCatalog.Load();
+            // Cosmetic rolls must not change the seeded mission generation sequence.
+            this.characterRandom = characterRandom ?? new System.Random();
+        }
         public PlayerState Player(ulong id) => State.players.Find(p => p.id == id && p.connected);
         public static string CleanName(string s)
         {
@@ -36,7 +44,8 @@ namespace EarthRecovery
         {
             if (State.phase != Phase.Lobby || State.players.Count >= Rules.maxPlayers || Player(id) != null) return false;
             int slot = Enumerable.Range(0, 6).First(n => State.players.All(p => Vector3.Distance(p.position, Spawn(n)) > .5f));
-            State.players.Add(new PlayerState { id = id, name = CleanName(name), position = Spawn(slot) }); return true;
+            State.players.Add(new PlayerState { id = id, name = CleanName(name), position = Spawn(slot),
+                characterId = characters != null ? characters.PickId(characterRandom) : PlayerCharacterCatalog.DefaultId }); return true;
         }
         public void Emit(string kind, int target = -1, string text = "", Vector3 position = default)
         {

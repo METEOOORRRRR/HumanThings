@@ -49,6 +49,10 @@ namespace EarthRecovery.Tests
             yield return null;
             var body = GameObject.Find("Agent " + session.LocalId);
             Assert.That(body, Is.Not.Null);
+            Assert.That(body.GetComponentInChildren<PlayerAvatar>(), Is.Not.Null);
+            Assert.That(body.GetComponentInChildren<HumanThingsCharacterVisual>(), Is.Not.Null);
+            Assert.That(body.GetComponentInChildren<SkinnedMeshRenderer>(), Is.Not.Null);
+            Assert.That(body.GetComponent<CharacterController>().height, Is.EqualTo(1.8f));
             Assert.That(body.GetComponentsInChildren<Renderer>().All(r => r.enabled));
             var focus = body.transform.position + Vector3.up * 1.45f;
             Assert.That(Vector3.Distance(session.world.eye.transform.position, focus), Is.GreaterThan(1));
@@ -92,6 +96,71 @@ namespace EarthRecovery.Tests
             var target = session.HostGame.Player(41);
             Assert.That(Vector3.Distance(session.world.eye.transform.position, target.position), Is.LessThan(6));
             LogAssert.NoUnexpectedReceived();
+        }
+        [UnityTest] public IEnumerator HostAssignmentsReachClientsAndSelectTheSameVisualPrefabs()
+        {
+            session.HostGame.ResetLobby();
+            client = new GameObject("Character roster client").AddComponent<NetworkSession>();
+            Assert.That(client.Connect(false, "127.0.0.1", 17991));
+            float deadline = Time.realtimeSinceStartup + 8;
+            while (client.LocalPlayer == null && Time.realtimeSinceStartup < deadline) yield return null;
+            Assert.That(client.LocalPlayer, Is.Not.Null);
+            CollectionAssert.AreEqual(session.HostGame.State.players.Select(p => p.characterId), client.View.players.Select(p => p.characterId));
+            // Exercise both prefabs independent of the random result, including an existing body's replacement.
+            session.HostGame.Player(session.LocalId).characterId = PlayerCharacterCatalog.ToxicBunnyId;
+            session.HostGame.Player(client.LocalId).characterId = PlayerCharacterCatalog.DefaultId;
+            yield return new WaitForSeconds(.4f);
+            var catalog = PlayerCharacterCatalog.Load();
+            foreach (var player in client.View.players)
+            {
+                Assert.That(player.characterId, Is.EqualTo(session.HostGame.Player(player.id).characterId));
+                var avatar = GameObject.Find("Agent " + player.id).GetComponentInChildren<PlayerAvatar>();
+                Assert.That(avatar.CharacterId, Is.EqualTo(player.characterId));
+                Assert.That(avatar.GetComponentInChildren<SkinnedMeshRenderer>().sharedMesh,
+                    Is.SameAs(catalog.Resolve(player.characterId).Prefab.GetComponentInChildren<SkinnedMeshRenderer>().sharedMesh));
+                Assert.That(avatar.GetComponentInParent<CharacterController>().radius, Is.EqualTo(.3f));
+            }
+            var assignments = client.View.players.Select(p => p.characterId).ToArray();
+            foreach (var player in session.HostGame.State.players) player.ready = true;
+            Assert.That(session.StartMission(99), Is.True);
+            yield return new WaitForSeconds(.4f);
+            CollectionAssert.AreEqual(assignments, client.View.players.Select(p => p.characterId));
+            LogAssert.NoUnexpectedReceived();
+        }
+        [UnityTest] public IEnumerator LocalRotationDoesNotWaitForNetworkYaw()
+        {
+            var world = session.world;
+            var body = GameObject.Find("Agent " + session.LocalId);
+            world.Automated = false;
+            typeof(WorldView).GetField("yaw", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(world, 73f);
+            session.HostGame.Player(session.LocalId).yaw = 0;
+            world.SendMessage("LateUpdate");
+            Assert.That(Mathf.DeltaAngle(body.transform.eulerAngles.y, 73), Is.EqualTo(0).Within(.01f));
+            Assert.That(Mathf.DeltaAngle(world.eye.transform.eulerAngles.y, 73), Is.EqualTo(0).Within(.01f));
+            Assert.That(session.HostGame.Player(session.LocalId).yaw, Is.Zero);
+            world.Automated = true;
+            yield return null;
+        }
+        [UnityTest] public IEnumerator CloseCameraHidesOnlyFollowedBodyAndRestoresIt()
+        {
+            var body = GameObject.Find("Agent " + session.LocalId);
+            var other = GameObject.Find("Agent 41");
+            var visibility = body.GetComponent<PlayerCameraVisibility>();
+            var skin = body.GetComponentInChildren<SkinnedMeshRenderer>();
+            var camera = session.world.eye;
+            camera.transform.position = skin.bounds.center;
+            Assert.That(visibility.Present(camera, true), Is.True);
+            Assert.That(skin.shadowCastingMode, Is.EqualTo(UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly));
+            Assert.That(other.GetComponentInChildren<SkinnedMeshRenderer>().shadowCastingMode, Is.EqualTo(UnityEngine.Rendering.ShadowCastingMode.On));
+            Assert.That(visibility.Present(camera, false), Is.True);
+            Assert.That(skin.shadowCastingMode, Is.EqualTo(UnityEngine.Rendering.ShadowCastingMode.On));
+            visibility.Present(camera, true);
+            camera.transform.position = body.transform.position + Vector3.back * 4;
+            Assert.That(visibility.Present(camera, true), Is.True);
+            Assert.That(skin.shadowCastingMode, Is.EqualTo(UnityEngine.Rendering.ShadowCastingMode.On));
+            camera.aspect = 32f/9;
+            Assert.That(WorldView.CameraCollisionRadius(camera), Is.GreaterThan(.2f));
+            yield return null;
         }
         [UnityTest] public IEnumerator AllFifteenConsolePopupsOpenWithoutModules()
         {

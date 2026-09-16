@@ -25,7 +25,7 @@ namespace EarthRecovery
             if(s.archive.Any(e=>e==null||!Text(e.artifactId,64)||e.observations==null||e.observations.Count>64||e.recoverCount<0)) return false;
             if(s.events.Any(e=>e==null||!Text(e.kind,64)||!Text(e.text,12000)||!Position(e.position)||!float.IsFinite(e.at))) return false;
             if (s.lobbyChat == null || s.lobbyChat.Count > 24 || s.lobbyChat.Any(c => c == null || c.sequence < 1 || !Text(c.name, 32) || !Text(c.text, 120))) return false;
-            if (s.players.Any(p => p == null || !Text(p.name, 32) || !Text(p.deathReason, 256) || !Position(p.position)
+            if (s.players.Any(p => p == null || !Text(p.name, 32) || !Text(p.characterId, 64) || !Text(p.deathReason, 256) || !Position(p.position)
                 || !float.IsFinite(p.yaw) || !float.IsFinite(p.stationary) || !float.IsFinite(p.lastInputAt)
                 || p.inventory == null || p.inventory.Length != (p.id == localId ? 1 : 0)
                 || p.modules==null||p.modules.Count>128||p.modules.Any(i=>i<0||i>=s.sites.Count)||p.knownLocations==null||p.knownLocations.Any(i=>i<0||i>=s.sites.Count)

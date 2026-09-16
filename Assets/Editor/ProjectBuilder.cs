@@ -37,6 +37,9 @@ namespace EarthRecovery.Editor
         [MenuItem("Earth Recovery/Build Windows Prototype")]
         public static void Build()
         {
+            var characters = PlayerCharacterCatalog.Load();
+            if (characters == null) throw new System.InvalidOperationException("Build the player character catalog first.");
+            characters.Validate();
             WaitingRoomSetup.Prepare();
             Setup();
             Directory.CreateDirectory("Builds/.staging");
