@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.Build.Reporting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -54,10 +53,8 @@ namespace EarthRecovery.Editor
             CityTemplateEditor.Clear(scene);
             const string scenePath = "Assets/Scenes/ProceduralCityPreview.unity";
             EditorSceneManager.SaveScene(scene, scenePath); AssetDatabase.SaveAssets();
-            var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions { scenes = new[] { scenePath }, target = BuildTarget.StandaloneWindows64,
-                locationPathName = "../.city-verification/HumanThingsCitySmoke.exe", options = BuildOptions.Development });
-            if (report == null || report.summary.result != BuildResult.Succeeded) throw new Exception("Player build failed: " + (report == null ? "no report" : report.summary.result.ToString()));
-            Debug.Log("LOCAL_CITY_VERIFICATION_PASS playerBuild=true database=335 missingScripts=0 screenshots=2");
+            // Standalone runtime verification uses the normal Latest player with --city-smoke.
+            Debug.Log("LOCAL_CITY_VERIFICATION_PASS playerBuild=false database=335 missingScripts=0 screenshots=2");
         }
         static void Capture(Camera camera, string path)
         {

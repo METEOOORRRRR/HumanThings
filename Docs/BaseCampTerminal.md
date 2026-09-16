@@ -8,4 +8,4 @@ The map preserves all 15 positions, unknown labels, discovered names, five zones
 
 Verification: Windows development build succeeded. EditMode suite: 94 passed, 0 failed. Development-only --terminal-qa rendered actual game snapshots at 1280x720, 1672x941 and 1920x1080 with 15 sites and 3 missions and no runtime exceptions. This render fixture uses synthetic peers, not an end-to-end multiplayer puzzle test. Production minimum-player rules are unchanged.
 
-Latest executable: Builds/Latest/EarthRecovery.exe. Build retention keeps Latest and two previous versions. Image-generation prompts and the complete design pack remain in the workspace sibling HumanThings_BaseCampTerminal_UnityAssets. Lucide license is included with resources.
+Latest executable: Builds/Latest/EarthRecovery.exe. Build retention keeps Latest and at most three previous versions. Image-generation prompts and the complete design pack remain in the workspace sibling HumanThings_BaseCampTerminal_UnityAssets. Lucide license is included with resources.

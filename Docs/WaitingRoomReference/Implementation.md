@@ -53,6 +53,6 @@
 - Windows 실행: 실제 로컬 NGO/UDP 연결로 6명 입장, 준비/취소, 채팅, 마이크 상태, 탐사 시작, 클라이언트 시작 버튼 숨김, 호스트 이탈을 검증한다.
 - 화면 검증: 1672x941, 1280x720, 1920x1080, 1024x768. 초상화 픽셀 비어 있지 않음 검사 포함.
 - 같은 PC의 실제 네트워크 세션으로 검증하며 서로 다른 물리 PC 사이의 방화벽/공유기 조건은 검증하지 않았다.
-- 최종 실행 경로는 `Builds/Latest/EarthRecovery.exe`. 이전 빌드는 두 개만 보관한다.
+- 최종 실행 경로는 `Builds/Latest/EarthRecovery.exe`. 이전 빌드는 최대 세 개만 보관한다.
 
 최신 검증 결과: EditMode 80개, PlayMode 34개 통과. 기본 지역이 아닌 테스트 지역의 광고·참가·복귀 동기화 포함. 실행 화면 검사 대기실 118개, 로비 23개 통과. 자료는 `QA/Waiting-region-EditMode.xml`, `QA/Waiting-region-PlayMode.xml`, `QA/Waiting-region-Waiting`, `QA/Waiting-region-Lobby`에 보관한다. 기존 타이틀 검사 자료는 `QA/Waiting-final-Title`에 남겨두었다.

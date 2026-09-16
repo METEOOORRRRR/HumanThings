@@ -114,3 +114,7 @@ __pycache__/
 .env
 .env.*
 !.env.example
+
+# Locally imported map assets; install separately with their original metadata.
+/Assets/Synty/
+/Assets/Synty.meta

@@ -4,6 +4,12 @@ Run `Play-DeveloperSolo.cmd` in the project folder. It launches the latest build
 with `--dev-solo`. Create a room, mark yourself ready, then start the expedition.
 The waiting room displays a developer-mode indicator.
 
+The executable is always `Builds/Latest/EarthRecovery.exe`, with Latest as the
+working directory. There is no separate developer-build folder and no fallback
+to an archived executable. If Latest is missing, build through `Earth Recovery >
+Build Windows Prototype` first. Keep Latest plus at most three previous builds;
+see `Builds.md`.
+
 Only Unity Editor and Development builds honor the override. In the Editor,
 enable `developerSolo` on the session's runtime rules before creating a room.
 Normal launches retain the configured four-player minimum. Release builds ignore

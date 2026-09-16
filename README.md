@@ -6,14 +6,16 @@ A co-op horror game about exploring a ruined Earth, recovering relics of human c
 
 Unity 6000.3.21f1로 저장소 루트 폴더를 열고 `Assets/Scenes/Expedition.unity`를 실행한다. 필요한 패키지는 `Packages/manifest.json`과 `packages-lock.json`에 고정되어 있다. 기본 에셋, 테스트 코드 및 `.meta` 파일을 포함한다.
 
-실행 파일, Unity 캐시, 로컬 QA 로그/스크린샷은 Git에 포함하지 않는다. 아래 빌드 폴더와 QA 경로는 기존 개발 환경의 산출물 경로이며, 새로 복제한 환경에서는 직접 빌드/테스트해야 한다. Windows 실행 파일은 Unity 메뉴 `Earth Recovery > Build Windows Prototype`으로 `Builds/Windows`에 생성한다.
+실행 파일, Unity 캐시, 로컬 QA 로그/스크린샷은 Git에 포함하지 않는다. 새로 복제한 환경에서는 직접 빌드/테스트해야 한다. Unity 메뉴 `Earth Recovery > Build Windows Prototype`은 `Builds/.staging`에서 빌드한 뒤 `Builds/Latest`에 배포한다. 최신 빌드 1개와 이전 빌드 최대 3개만 보관한다. 별도 개발자/QA 빌드 폴더는 만들지 않는다.
 
 Unity 6000.3.21f1 / URP / Netcode for GameObjects. 기존 `EarthRecovery` 프로젝트를 유지한 기능 검증 버전이다. 시각 자산은 교체 가능한 기본 도형이다.
 
 ## 실행
 
+맵 원본인 `Assets/Synty/`와 `Assets/Synty.meta`는 저장소에 포함하지 않는다. 다른 PC에서는 사용 권한이 있는 동일한 맵 패키지(`PolygonCity`, `PolygonGeneric` 및 해당 의존성)를 원본 `.meta` 파일과 함께 같은 경로에 별도로 설치해야 한다. 저장소의 도시 생성 코드와 에셋 참조만으로는 맵 원본이 복원되지 않는다.
+
 1. Unity Hub에서 기존 EarthRecovery 프로젝트를 열고 `Assets/Scenes/Expedition.unity`를 실행한다.
-2. 또는 `Builds/Windows-HumanThings-v03-ThirdPerson/EarthRecovery.exe`를 실행한다. 사용자 기존 실행 경로를 Revision2로 직접 갱신한다. 상위 폴더의 `HumanThings-Latest.cmd`도 같은 경로를 연다.
+2. 개발자 모드는 프로젝트 루트의 `Play-DeveloperSolo.cmd`를 실행한다. 항상 최신 `Builds/Latest/EarthRecovery.exe`에 `--dev-solo` 옵션을 적용한다. 일반 모드는 같은 실행 파일을 옵션 없이 실행한다.
 3. 한 명이 방을 만들고 나머지가 호스트의 IPv4 주소와 포트로 접속한다. 같은 PC에서는 `127.0.0.1`을 사용한다.
 4. 기본 4명 이상 준비 완료 후 호스트가 시작한다. 최대 6명. 2인 디버그는 GameRules의 minPlayers를 명시적으로 변경해야 한다.
 

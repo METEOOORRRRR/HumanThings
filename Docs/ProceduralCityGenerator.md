@@ -165,7 +165,7 @@ CityLayoutAssets, HumanThingsPlacementSolver는 `Assets/Editor/CityLayout`에서
 - 고정 개수/고정 맵에서도 서로 다른 Seed 15개의 도로 공간 구조가 서로 다름을 확인.
 - 실제 DB 335개 로드 및 prefab 참조 보존, 결과 쿼리, 실제 Renderer Bounds, Undo/Clear, 부분 생성 실패 복구 확인.
 - 실제 에셋 렌더 두 장을 생성하고 비어 있지 않은 픽셀 검사 및 화면 확인. 보도 코너 반복 선택 문제를 수정했다.
-- 검증 Player는 프로젝트 상위 `.city-verification`에 덮어쓴다. 기존 최신 게임 빌드/배포 폴더는 변경하지 않는다.
+- 별도 검증 Player 폴더는 생성하지 않는다. 에디터에서 도시 검증/캡처를 수행하고, 실행 파일 검증은 정상 배포된 `Builds/Latest/EarthRecovery.exe`를 사용한다.
 - Windows Player 실행 종료 코드 0: `LOCAL_CITY_PLAYER_PASS database=335 deterministic=true regenerate=true clear=true`. 마지막 재생성에서 건물 6개, 도로 5개가 생성되었다. 외부 API 설정 없이 실제 프리팹으로 실행했다.
 - 최종 Player 빌드 성공, 생성 씬 missing script 0, 컴파일 오류/컴파일러 경고 0. 로그의 Unity 라이선스 초기화 메시지는 도시 생성 코드와 별개다.
 - 창 객체 생성과 동작 메서드는 자동 검사했다. 직접 마우스 조작으로 모든 GUI 상태를 검사한 것은 아니다.
@@ -177,8 +177,8 @@ CityLayoutAssets, HumanThingsPlacementSolver는 `Assets/Editor/CityLayout`에서
 테스트 재실행:
 
 - Test Runner > EditMode > ProceduralCityTests 또는 전체 테스트.
-- batchmode `-executeMethod EarthRecovery.Editor.ProceduralCityVerification.Run`으로 프리셋/렌더/Player 검증 빌드 생성.
-- 생성된 HumanThingsCitySmoke.exe에 `-batchmode -nographics --city-smoke -logFile <로그경로>`를 전달하면 자동 테스트 후 종료한다.
+- batchmode `-executeMethod EarthRecovery.Editor.ProceduralCityVerification.Run`으로 프리셋/렌더 검증을 수행한다. 별도 실행 파일은 빌드하지 않는다.
+- 최신 게임 실행 파일에 `--city-smoke -logFile <로그경로>`를 전달하면 런타임 도시 검증을 수행한다. 최신 빌드 생성/보관 규칙은 `Builds.md`를 따른다.
 - 상위 로그: EarthRecovery-local-city-tests.xml, EarthRecovery-local-city-player-build.log, EarthRecovery-local-city-player.log.
 - 화면과 샘플 값/경고: Docs/ProceduralCity/Seed1234.png, Seed4321.png 및 같은 이름의 JSON/validation.txt.
 

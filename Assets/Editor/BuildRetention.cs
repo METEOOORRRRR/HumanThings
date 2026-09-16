@@ -8,6 +8,7 @@ namespace EarthRecovery.Editor
     public static class BuildRetention
     {
         public const string LatestName = "Latest";
+        public const int PreviousBuildCount = 3;
 
         public static void Publish(string buildsRoot, string staging)
         {
@@ -45,9 +46,9 @@ namespace EarthRecovery.Editor
                 .Concat(Directory.Exists(archive) ? Directory.GetDirectories(archive) : Array.Empty<string>())
                 .Where(p => File.Exists(Path.Combine(p, "EarthRecovery.exe")))
                 .OrderByDescending(BuildTime).ThenBy(p => p, StringComparer.Ordinal).ToArray();
-            foreach (var old in candidates.Skip(2)) VerifyTree(buildsRoot, old);
-            foreach (var old in candidates.Skip(2)) Directory.Delete(old, true);
-            Debug.Log("BUILD_RETENTION_PASS: latest + " + Math.Min(2, candidates.Length) + " previous builds");
+            foreach (var old in candidates.Skip(PreviousBuildCount)) VerifyTree(buildsRoot, old);
+            foreach (var old in candidates.Skip(PreviousBuildCount)) Directory.Delete(old, true);
+            Debug.Log("BUILD_RETENTION_PASS: latest + " + Math.Min(PreviousBuildCount, candidates.Length) + " previous builds");
         }
 
         static DateTime BuildTime(string path)
@@ -86,11 +87,11 @@ namespace EarthRecovery.Editor
                     File.SetLastWriteTimeUtc(Path.Combine(staging, "EarthRecovery.exe"), DateTime.UtcNow.AddMinutes(i));
                     Publish(root, staging);
                     int count = Directory.GetFiles(root, "EarthRecovery.exe", SearchOption.AllDirectories).Length;
-                    if (count != Math.Min(i + 1, 3)) throw new Exception("Incorrect retained build count");
+                    if (count != Math.Min(i + 1, 4)) throw new Exception("Incorrect retained build count");
                     if (File.ReadAllText(Path.Combine(root, LatestName, "EarthRecovery.exe")) != i.ToString()) throw new Exception("Latest build replaced incorrectly");
                 }
                 var versions = Directory.GetFiles(root, "EarthRecovery.exe", SearchOption.AllDirectories).Select(File.ReadAllText).OrderBy(x => x).ToArray();
-                if (string.Join(",", versions) != "2,3,4") throw new Exception("Older versions retained");
+                if (string.Join(",", versions) != "1,2,3,4") throw new Exception("Older versions retained");
                 var incomplete = Path.Combine(root, ".staging"); Directory.CreateDirectory(incomplete);
                 bool rejected = false;
                 try { Publish(root, incomplete); } catch (IOException) { rejected = true; }
