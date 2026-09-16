@@ -14,23 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: EarthRecovery::EarthRecovery.HumanThingsCharacterVisualProfile
   visualPrefab: {fileID: 5811628281267109510, guid: be6e6aa7f2e096c4e808768eac50bd73, type: 3}
   environmentLighting: {fileID: 11400000, guid: a4a36ab650758b541b9c6c4f489994e2, type: 2}
-  saturation: 0.65
-  brightness: 0.82
-  tint: {r: 0.93, g: 0.95, b: 0.96, a: 1}
-  whiteCompression: 0.45
-  charcoalFloor: 0.032
-  skinSaturation: 0.88
-  skinBrightness: 1.06
-  skinSmoothness: 0.16
-  hairSmoothness: 0.12
-  clothSmoothness: 0.1
-  equipmentSmoothness: 0.3
-  metallicMultiplier: 0.28
-  normalStrength: 0.8
-  detailStrength: 0.08
+  saturation: 1
+  brightness: 1
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  whiteCompression: 0
+  charcoalFloor: 0
+  skinSaturation: 1
+  skinBrightness: 1
+  skinSmoothness: 0.18
+  hairSmoothness: 0.18
+  clothSmoothness: 0.18
+  equipmentSmoothness: 0.18
+  metallicMultiplier: 0
+  normalStrength: 0
+  detailStrength: 0
   dustColor: {r: 0.27, g: 0.285, b: 0.28, a: 1}
-  dirtStrength: 0.3
-  dustStrength: 0.22
-  wearStrength: 0.1
-  cavityStrength: 0.12
+  dirtStrength: 0
+  dustStrength: 0
+  wearStrength: 0
+  cavityStrength: 0
   wetness: 0
