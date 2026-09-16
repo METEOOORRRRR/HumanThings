@@ -21,7 +21,8 @@ namespace EarthRecovery
         float deadline;
         IEnumerator Start()
         {
-            output = Path.Combine(Application.dataPath, "..", "WaitingQA"); Directory.CreateDirectory(output);
+            var project = Application.isEditor ? Path.Combine(Application.dataPath, "..") : Path.Combine(Application.dataPath, "..", "..", "..");
+            output = Path.GetFullPath(Path.Combine(project, "QA", "WaitingPortrait", "Runtime")); Directory.CreateDirectory(output);
             deadline = Time.realtimeSinceStartup + 100;
             Screen.SetResolution(1672, 941, false); yield return new WaitForSecondsRealtime(2);
             physicalMouse = Mouse.current; if (physicalMouse != null) InputSystem.DisableDevice(physicalMouse);
@@ -33,6 +34,8 @@ namespace EarthRecovery
             GetComponent<MainMenu>().Activate(0);
             Check(lobby.Rooms.Create("대기실 검증", 6, false, ""), "Real host created");
             yield return new WaitForSecondsRealtime(.7f);
+            session.HostGame.Player(session.LocalId).characterId = PlayerCharacterCatalog.ToxicBunnyId;
+            yield return new WaitForSecondsRealtime(.3f);
             CheckButtonLayout();
             Check(room.Layout.Find("Options") == null, "Old settings text button removed");
             yield return Click((RectTransform)room.SettingsButton.transform);
@@ -78,6 +81,9 @@ namespace EarthRecovery
                     client.UserName = count == 6 ? "긴이름가나다라마바사아자차카타파하" : "요원 " + count;
                     client.Send(new Command { action = "name", text = client.UserName });
                 }
+                var assigned = session.HostGame.State.players.Where(p => p.connected).OrderBy(p => p.id).ToArray();
+                for (int i = 0; i < assigned.Length; i++)
+                    assigned[i].characterId = i % 2 == 0 ? PlayerCharacterCatalog.ToxicBunnyId : PlayerCharacterCatalog.DefaultId;
                 yield return new WaitForSecondsRealtime(.3f);
                 Check(room.Visible && !lobby.Visible && !GetComponent<MainMenu>().Visible, "Independent screen " + count);
                 Check(room.Cards.Count(c => c.gameObject.activeSelf) == count, "Actual card count " + count);
@@ -88,6 +94,8 @@ namespace EarthRecovery
                     Check(rect.xMin >= 200 && rect.xMax <= 1160 && rect.yMin >= 292 && rect.yMax <= 724, "Card bounds " + count + "/" + i);
                     Check(room.Cards[i].transform.Find("HostBadge").gameObject.activeSelf == (i == 0), "Host badge " + count + "/" + i);
                     Check(!room.Cards[i].transform.Find("ReadyHighlight").gameObject.activeSelf, "Unready highlight off " + count + "/" + i);
+                    var portrait = room.Cards[i].GetComponentInChildren<UnityEngine.UI.RawImage>();
+                    Check(portrait.texture == room.PortraitFor(assigned[i].characterId), "Portrait matches assigned character " + count + "/" + i);
                 }
                 yield return Capture("01-players-" + count);
             }
@@ -108,16 +116,19 @@ namespace EarthRecovery
             yield return new WaitForSecondsRealtime(.4f);
             Check(session.View.lobbyChat.Count == 2 && room.ChatInput.text == "", "Chat send button works");
             yield return Capture("02-ready-chat");
-            var raw = room.Cards[0].GetComponentInChildren<UnityEngine.UI.RawImage>();
-            var previous = RenderTexture.active; RenderTexture.active = (RenderTexture)raw.texture;
-            var pixels = new Texture2D(256, 320, TextureFormat.RGB24, false); pixels.ReadPixels(new Rect(0, 0, 256, 320), 0, 0); pixels.Apply(); RenderTexture.active = previous;
-            var colors = pixels.GetPixels(); Check(colors.Max(c => c.grayscale) - colors.Min(c => c.grayscale) > .08f, "Default model portrait is nonblank"); Destroy(pixels);
-            foreach (var size in new[] { new Vector2Int(1280, 720), new Vector2Int(1920, 1080), new Vector2Int(1024, 768) })
+            Check(room.PortraitFor(PlayerCharacterCatalog.ToxicBunnyId) != room.PortraitFor(PlayerCharacterCatalog.DefaultId), "Characters have distinct portraits");
+            var portraits = room.GetComponentInChildren<WaitingCharacterPortraits>();
+            var bunny = portraits.GetComponentsInChildren<HumanThingsCharacterVisual>().Single(v => v.name == PlayerCharacterCatalog.ToxicBunnyId);
+            Check(!bunny.ShowingOriginal && bunny.skin.sharedMaterial.GetTexture("_BaseMap").name == "ToxicBunny_R31_BaseColor_4K", "Bunny portrait uses corrected gameplay texture");
+            Check(portraits.GetComponentsInChildren<Camera>().All(c => !c.enabled), "Cached portraits stop rendering");
+            foreach (var character in PlayerCharacterCatalog.Load().characters) CapturePortrait(character.id);
+            foreach (var size in new[] { new Vector2Int(1280, 720), new Vector2Int(1920, 1080), new Vector2Int(2560, 1440), new Vector2Int(1024, 768) })
             {
                 Screen.SetResolution(size.x, size.y, false); yield return new WaitForSecondsRealtime(.6f);
                 var corners = new Vector3[4]; room.Layout.GetWorldCorners(corners);
                 Check(corners.All(p => p.x >= -1 && p.y >= -1 && p.x <= Screen.width + 1 && p.y <= Screen.height + 1), "Canvas fits " + size);
                 CheckButtonLayout();
+                CheckPortraitResolution();
                 yield return Capture("03-size-" + size.x + "x" + size.y);
             }
             clients[0].Send(new Command { action = "ready", flag = false }); yield return new WaitForSecondsRealtime(.4f);
@@ -125,6 +136,7 @@ namespace EarthRecovery
             clients[0].Send(new Command { action = "ready", flag = true }); yield return new WaitForSecondsRealtime(.4f);
             yield return Click((RectTransform)room.StartButton.transform); yield return new WaitForSecondsRealtime(.8f);
             Check(session.View.phase != Phase.Lobby && !room.Visible, "Host start enters expedition and hides room");
+            Check(portraits.GetComponentsInChildren<Camera>().All(c => !c.enabled) && portraits.GetComponentsInChildren<Light>().All(l => !l.enabled), "Portrait cameras and lights disabled in expedition");
             foreach (var client in clients) client.Leave(); session.Leave(); yield return new WaitForSecondsRealtime(.8f);
             Check(!room.Visible && lobby.Visible, "Disconnect returns to browser");
             foreach (var client in clients) Destroy(client.gameObject); clients.Clear();
@@ -139,6 +151,25 @@ namespace EarthRecovery
         void Update() { if (deadline > 0 && Time.realtimeSinceStartup > deadline) { Check(false, "QA timeout"); Finish(); } }
         void Finish() { deadline = 0; File.WriteAllText(Path.Combine(output, "verification.txt"), report.ToString()); Debug.Log(report.ToString()); Application.Quit(report.ToString().Contains("FAIL") ? 1 : 0); }
         void Check(bool value, string message) { report.AppendLine((value ? "PASS " : "FAIL ") + message); }
+        void CapturePortrait(string id)
+        {
+            var texture = room.PortraitFor(id);
+            var previous = RenderTexture.active; RenderTexture.active = texture;
+            var pixels = new Texture2D(texture.width, texture.height, TextureFormat.RGB24, false);
+            pixels.ReadPixels(new Rect(0, 0, texture.width, texture.height), 0, 0); pixels.Apply(); RenderTexture.active = previous;
+            var colors = pixels.GetPixels();
+            Check(colors.Max(c => c.grayscale) - colors.Min(c => c.grayscale) > .08f, "Character portrait is nonblank " + id);
+            File.WriteAllBytes(Path.Combine(output, "portrait-" + id + ".png"), pixels.EncodeToPNG()); Destroy(pixels);
+        }
+        void CheckPortraitResolution()
+        {
+            var expected = WaitingRoom.PortraitResolution(room.Layout.GetComponentInParent<Canvas>().scaleFactor);
+            foreach (var card in room.Cards.Where(c => c.gameObject.activeSelf))
+            {
+                var texture = card.GetComponentInChildren<UnityEngine.UI.RawImage>().texture;
+                Check(texture.width == expected.x && texture.height == expected.y, "Portrait resolution " + Screen.width + "/" + card.PlayerId);
+            }
+        }
         IEnumerator Capture(string name) { yield return new WaitForEndOfFrame(); ScreenCapture.CaptureScreenshot(Path.Combine(output, name + ".png")); yield return new WaitForSecondsRealtime(.2f); }
         IEnumerator Escape()
         { InputSystem.QueueStateEvent(testKeyboard, new KeyboardState(Key.Escape)); yield return new WaitForSecondsRealtime(.15f); InputSystem.QueueStateEvent(testKeyboard, new KeyboardState()); yield return new WaitForSecondsRealtime(.15f); }

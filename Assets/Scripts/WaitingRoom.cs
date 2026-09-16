@@ -31,11 +31,9 @@ namespace EarthRecovery
         TMP_Text readyText, message, chatHistory, roomCode, oxygenText, micText, muteText;
         ScrollRect chatScroll;
         RectTransform chatContent;
-        Camera portraitCamera;
-        RenderTexture portrait;
-        readonly List<Material> portraitMaterials = new();
+        WaitingCharacterPortraits portraits;
         float nextVoice, nextChat;
-        int portraitFrames, lastChat = -1;
+        int lastChat = -1;
         bool previousVisible;
         WaitingButtonSkin readySkin;
         readonly Color ink = new(.86f, .84f, .78f), muted = new(.52f, .54f, .5f), green = new(.61f, .81f, .58f);
@@ -118,7 +116,7 @@ namespace EarthRecovery
             var root = Node("PlayerCard_" + index, Layout, new Rect(0, 0, 188, 378));
             Picture("Background", root, "03_PlayerCard/PlayerCard_Card_BG_9Slice", new Rect(0, 0, 188, 378));
             var mask = Picture("PortraitMask", root, "03_PlayerCard/PlayerCard_Portrait_Mask", new Rect(9, 15, 170, 220)); mask.gameObject.AddComponent<Mask>().showMaskGraphic = false;
-            var photo = Node("Portrait", mask.transform, new Rect(0, 0, 170, 220)).gameObject.AddComponent<RawImage>(); photo.texture = portrait; photo.raycastTarget = false;
+            var photo = Node("Portrait", mask.transform, new Rect(0, 0, 170, 220)).gameObject.AddComponent<RawImage>(); photo.raycastTarget = false;
             var overrideImage = Node("PortraitOverride", mask.transform, new Rect(0, 0, 170, 220)).gameObject.AddComponent<Image>(); overrideImage.raycastTarget = false; overrideImage.preserveAspect = true; overrideImage.gameObject.SetActive(false);
             Picture("Frame", root, "03_PlayerCard/PlayerCard_Card_Frame", new Rect(0, 0, 188, 378));
             var highlight = Picture("ReadyHighlight", root, "03_PlayerCard/PlayerCard_Card_ReadyHighlight", new Rect(0, 0, 188, 378));
@@ -238,50 +236,28 @@ namespace EarthRecovery
         public void ToggleOptions() { if (Visible && !hud.ArchiveOpen) { options.SetActive(!options.activeSelf); optionsBackdrop.SetActive(options.activeSelf); } }
         void BuildPortrait()
         {
-            portraitStage = new GameObject("Waiting portrait stage"); portraitStage.transform.SetParent(transform); portraitStage.transform.position = new Vector3(10000, -1000, 0);
-            Primitive("Suit", PrimitiveType.Capsule, new Vector3(0, .85f, 0), new Vector3(.65f, .85f, .65f), new Color(.5f, .58f, .56f));
-            Primitive("Mask", PrimitiveType.Sphere, new Vector3(0, 1.5f, .28f), new Vector3(.4f, .28f, .2f), new Color(.06f, .12f, .13f));
-            portrait = new RenderTexture(256, 320, 24) { name = "Default agent portrait" };
-            if (SystemInfo.graphicsDeviceType != UnityEngine.Rendering.GraphicsDeviceType.Null) portrait.Create();
-            portraitCamera = new GameObject("Portrait camera").AddComponent<Camera>(); portraitCamera.transform.SetParent(portraitStage.transform, false); portraitCamera.transform.localPosition = new Vector3(0, 1.1f, 3); portraitCamera.transform.LookAt(portraitStage.transform.position + Vector3.up);
-            portraitCamera.orthographic = true; portraitCamera.orthographicSize = .98f; portraitCamera.nearClipPlane = .1f; portraitCamera.farClipPlane = 10; portraitCamera.cullingMask = 1 << 30;
-            portraitCamera.clearFlags = CameraClearFlags.SolidColor; portraitCamera.backgroundColor = new Color(.04f, .06f, .06f); portraitCamera.targetTexture = portrait; portraitCamera.enabled = false;
+            portraitStage = new GameObject("Waiting portrait stage"); portraitStage.transform.SetParent(transform);
+            portraits = portraitStage.AddComponent<WaitingCharacterPortraits>(); portraits.Initialize();
         }
-        void Primitive(string name, PrimitiveType type, Vector3 position, Vector3 scale, Color color)
-        {
-            var item = GameObject.CreatePrimitive(type); item.name = name; item.layer = 30; item.transform.SetParent(portraitStage.transform, false); item.transform.localPosition = position; item.transform.localScale = scale;
-            Destroy(item.GetComponent<Collider>()); var material = new Material(Shader.Find("Universal Render Pipeline/Lit")); material.color = color; item.GetComponent<Renderer>().sharedMaterial = material; portraitMaterials.Add(material);
-        }
+        public RenderTexture PortraitFor(string characterId) => portraits.TextureFor(characterId);
         public static Vector2Int PortraitResolution(float uiScale)
         {
             int height = Mathf.Clamp(Mathf.CeilToInt(220 * uiScale / 40) * 40, 320, 1280);
             return new Vector2Int(height * 4 / 5, height);
         }
-        void ResizePortrait()
-        {
-            var size = PortraitResolution(canvasObject.GetComponent<Canvas>().scaleFactor);
-            if (portrait.width == size.x && portrait.height == size.y) return;
-            var previous = portrait;
-            portrait = new RenderTexture(size.x, size.y, 24) { name = "Default agent portrait" };
-            if (SystemInfo.graphicsDeviceType != UnityEngine.Rendering.GraphicsDeviceType.Null) portrait.Create();
-            portraitCamera.targetTexture = portrait;
-            foreach (var card in Cards) card.transform.Find("PortraitMask/Portrait").GetComponent<RawImage>().texture = portrait;
-            previous.Release(); Destroy(previous); portraitFrames = 3;
-        }
         void Update()
         {
             Visible = session != null && session.Online && session.View.phase == Phase.Lobby;
             canvasObject.SetActive(Visible && !hud.ArchiveOpen);
+            portraits.Prepare(canvasObject.GetComponent<Canvas>().scaleFactor, Visible && !hud.ArchiveOpen);
             if (!Visible)
             {
                 if (previousVisible) { ChatInput.text = ""; lastChat = -1; options.SetActive(false); }
-                previousVisible = false; portraitCamera.enabled = false; return;
+                previousVisible = false; return;
             }
-            if (!previousVisible) { portraitFrames = 3; nextVoice = 0; } previousVisible = true;
+            if (!previousVisible) nextVoice = 0; previousVisible = true;
             optionsBackdrop.SetActive(options.activeSelf);
             var canvas = (RectTransform)canvasObject.transform; DisplayPreferences.FitCanvas(Layout, canvas);
-            ResizePortrait();
-            portraitCamera.enabled = portraitFrames-- > 0 && SystemInfo.graphicsDeviceType != UnityEngine.Rendering.GraphicsDeviceType.Null;
             var players = session.View.players.Where(p => p.connected).OrderBy(p => p.id).ToArray();
             for (int i = 0; i < Cards.Count; i++)
             {
@@ -342,9 +318,7 @@ namespace EarthRecovery
         void OnDestroy()
         {
             if (canvasObject != null) Destroy(canvasObject); if (portraitStage != null) Destroy(portraitStage);
-            if (portrait != null) { portrait.Release(); Destroy(portrait); }
             foreach (var sprite in sprites.Values) if (sprite != null) Destroy(sprite);
-            foreach (var material in portraitMaterials) if (material != null) Destroy(material);
             if (font != null) { foreach (var texture in font.atlasTextures) if (texture != null) Destroy(texture); if (font.material != null) Destroy(font.material); Destroy(font); }
             if (symbolFont != null) { foreach (var texture in symbolFont.atlasTextures) if (texture != null) Destroy(texture); if (symbolFont.material != null) Destroy(symbolFont.material); Destroy(symbolFont); }
         }
@@ -363,6 +337,7 @@ namespace EarthRecovery
         { owner = room; portrait = photo; replacement = custom; nameText = name; badge = host; highlight = ready; voice = mic; stateBG = background; stateIcon = icon; stateText = state; }
         public void Present(PlayerState player, Rect rect, bool compact)
         {
+            portrait.texture = owner.PortraitFor(player.characterId);
             PlayerId = player.id; var root = (RectTransform)transform; root.anchoredPosition = new Vector2(rect.x, -rect.y);
             root.sizeDelta = new Vector2(188, compact ? 230 : 378); root.localScale = new Vector3(rect.width / 188, rect.height / root.sizeDelta.y, 1);
             foreach (var layer in new[] { "Background", "Frame", "ReadyHighlight", "Noise" }) ((RectTransform)transform.Find(layer)).sizeDelta = root.sizeDelta;
