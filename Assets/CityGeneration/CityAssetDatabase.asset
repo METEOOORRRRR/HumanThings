@@ -8820,3 +8820,523 @@ MonoBehaviour:
     localForward: {x: 0, y: 0, z: 1}
     placementEnabled: 1
     companionPrefabs: []
+  - assetGuid: 03fae43278e72c940b11957946b6851d
+    displayName: HT_Building_Apartment_1_10m_3F
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_Apartment_1_10m_3F.prefab
+    prefab: {fileID: 727158503247161198, guid: 03fae43278e72c940b11957946b6851d, type: 3}
+    category: 0
+    subCategory: Apartment
+    tags:
+    - building
+    - reviewed-building-assembly
+    - apartment
+    - "\uC544\uD30C\uD2B8"
+    placementVersion: 2
+    boundsSize: {x: 11.498627, y: 9.4998665, z: 11.498627}
+    boundsCenter: {x: 0, y: 4.7499332, z: 0}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 11.498627
+    footprintDepth: 11.498627
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: b0ca93888fb39e64a857ab17beb3d22e
+    displayName: HT_Building_Apartment_1_15m_3F
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_Apartment_1_15m_3F.prefab
+    prefab: {fileID: 5760374843755696879, guid: b0ca93888fb39e64a857ab17beb3d22e, type: 3}
+    category: 0
+    subCategory: Apartment
+    tags:
+    - building
+    - reviewed-building-assembly
+    - apartment
+    - "\uC544\uD30C\uD2B8"
+    placementVersion: 2
+    boundsSize: {x: 16.498627, y: 9.499867, z: 11.498627}
+    boundsCenter: {x: 0, y: 4.7499337, z: -0.00000047683716}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 16.498627
+    footprintDepth: 11.498627
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: 15739de3e4e1a41479667fd913960e10
+    displayName: HT_Building_Apartment_2_10m_4F
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_Apartment_2_10m_4F.prefab
+    prefab: {fileID: 8959709695743455588, guid: 15739de3e4e1a41479667fd913960e10, type: 3}
+    category: 0
+    subCategory: Apartment
+    tags:
+    - building
+    - reviewed-building-assembly
+    - apartment
+    - "\uC544\uD30C\uD2B8"
+    placementVersion: 2
+    boundsSize: {x: 10.865192, y: 12.74354, z: 10.865198}
+    boundsCenter: {x: 0.0965662, y: 6.37177, z: 0.096568584}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 10.865192
+    footprintDepth: 10.865198
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: ff07f4bce74768b4cae7d589eed67804
+    displayName: HT_Building_Apartment_2_15m_4F
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_Apartment_2_15m_4F.prefab
+    prefab: {fileID: 168103711268073496, guid: ff07f4bce74768b4cae7d589eed67804, type: 3}
+    category: 0
+    subCategory: Apartment
+    tags:
+    - building
+    - reviewed-building-assembly
+    - apartment
+    - "\uC544\uD30C\uD2B8"
+    placementVersion: 2
+    boundsSize: {x: 15.865193, y: 12.743541, z: 10.865198}
+    boundsCenter: {x: 0.09656668, y: 6.3717704, z: 0.096568584}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 15.865193
+    footprintDepth: 10.865198
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: 8cc7c15d4b14f1141b7d81cf021eabe8
+    displayName: HT_Building_Apartment_3_10m_5F
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_Apartment_3_10m_5F.prefab
+    prefab: {fileID: 6854143562788164536, guid: 8cc7c15d4b14f1141b7d81cf021eabe8, type: 3}
+    category: 0
+    subCategory: Apartment
+    tags:
+    - building
+    - reviewed-building-assembly
+    - apartment
+    - "\uC544\uD30C\uD2B8"
+    placementVersion: 2
+    boundsSize: {x: 10.984966, y: 15.74354, z: 10.98497}
+    boundsCenter: {x: 0.03668022, y: 7.87177, z: 0.03668213}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 10.984966
+    footprintDepth: 10.98497
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: 51e5c0f3dc6f6954d906fdf8c8e582a3
+    displayName: HT_Building_Apartment_3_15m_5F
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_Apartment_3_15m_5F.prefab
+    prefab: {fileID: 2096998097954250378, guid: 51e5c0f3dc6f6954d906fdf8c8e582a3, type: 3}
+    category: 0
+    subCategory: Apartment
+    tags:
+    - building
+    - reviewed-building-assembly
+    - apartment
+    - "\uC544\uD30C\uD2B8"
+    placementVersion: 2
+    boundsSize: {x: 15.984966, y: 15.743541, z: 10.98497}
+    boundsCenter: {x: 0.03668022, y: 7.8717704, z: 0.03668213}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 15.984966
+    footprintDepth: 10.98497
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: 74e1d0b523d2c7e4e99321ffbdbe5e85
+    displayName: HT_Building_OfficeOctagon_2F
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeOctagon_2F.prefab
+    prefab: {fileID: 6630643516933369371, guid: 74e1d0b523d2c7e4e99321ffbdbe5e85, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officeoctagon
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 20.78099, y: 15.131512, z: 20.780998}
+    boundsCenter: {x: 0, y: 7.565756, z: 0}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 20.78099
+    footprintDepth: 20.780998
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: 54070d2e1e96c2545a4135ff781d0ac1
+    displayName: HT_Building_OfficeOctagon_4F
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeOctagon_4F.prefab
+    prefab: {fileID: 2761769755571945502, guid: 54070d2e1e96c2545a4135ff781d0ac1, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officeoctagon
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 20.78099, y: 21.131512, z: 20.780998}
+    boundsCenter: {x: 0, y: 10.565756, z: 0}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 20.78099
+    footprintDepth: 20.780998
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: a2ea98bd6e75ce246b3014b01e7db400
+    displayName: HT_Building_OfficeOctagon_6F
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeOctagon_6F.prefab
+    prefab: {fileID: 8147978734159077394, guid: a2ea98bd6e75ce246b3014b01e7db400, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officeoctagon
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 20.78099, y: 27.131512, z: 20.780998}
+    boundsCenter: {x: 0, y: 13.565756, z: 0}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 20.78099
+    footprintDepth: 20.780998
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: 2ac9b9e395458da459bee4103313a5de
+    displayName: HT_Building_OfficeOld_Large_2F
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeOld_Large_2F.prefab
+    prefab: {fileID: 7623486391977340919, guid: 2ac9b9e395458da459bee4103313a5de, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officeold
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 16.086617, y: 16.227032, z: 16.123451}
+    boundsCenter: {x: -7.529438, y: 8.113516, z: -7.499996}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 16.086617
+    footprintDepth: 16.123451
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: cc9482df9764ef94fa781fd5c5a2d0b6
+    displayName: HT_Building_OfficeOld_Large_4F
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeOld_Large_4F.prefab
+    prefab: {fileID: 8456124761432828603, guid: cc9482df9764ef94fa781fd5c5a2d0b6, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officeold
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 16.086617, y: 22.227032, z: 16.123451}
+    boundsCenter: {x: -7.529438, y: 11.113516, z: -7.499996}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 16.086617
+    footprintDepth: 16.123451
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: 2703917a4637a084ca99481851af1678
+    displayName: HT_Building_OfficeOld_Small_2F
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeOld_Small_2F.prefab
+    prefab: {fileID: 3505338838866189196, guid: 2703917a4637a084ca99481851af1678, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officeold
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 11.120308, y: 16.215044, z: 11.199718}
+    boundsCenter: {x: -5.0462837, y: 8.107522, z: -5.03813}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 11.120308
+    footprintDepth: 11.199718
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: 9b84dca4e6613e6418bc225bbcc938fb
+    displayName: HT_Building_OfficeOld_Small_4F
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeOld_Small_4F.prefab
+    prefab: {fileID: 5443378691555422901, guid: 9b84dca4e6613e6418bc225bbcc938fb, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officeold
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 11.120308, y: 22.215044, z: 11.199718}
+    boundsCenter: {x: -5.0462837, y: 11.107522, z: -5.03813}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 11.120308
+    footprintDepth: 11.199718
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: dd905ad2699086f408b67213f8156dac
+    displayName: HT_Building_OfficeRound_01
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeRound_01.prefab
+    prefab: {fileID: 4646236478495084338, guid: dd905ad2699086f408b67213f8156dac, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officeround
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 22.966366, y: 45.236904, z: 23.051332}
+    boundsCenter: {x: 0, y: 22.618452, z: 0.0000009536743}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 22.966366
+    footprintDepth: 23.051332
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: ab2b354f4740268429120519b257a51c
+    displayName: HT_Building_OfficeRound_02
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeRound_02.prefab
+    prefab: {fileID: 8950654272499638584, guid: ab2b354f4740268429120519b257a51c, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officeround
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 22.966366, y: 15.889949, z: 23.051332}
+    boundsCenter: {x: 0, y: 7.9449744, z: 0.0000009536743}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 22.966366
+    footprintDepth: 23.051332
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: 7a073609e4b9cd448ba5f669cce87e65
+    displayName: HT_Building_OfficeRound_04
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeRound_04.prefab
+    prefab: {fileID: 6105890287660148792, guid: 7a073609e4b9cd448ba5f669cce87e65, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officeround
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 22.966366, y: 15.842158, z: 23.051332}
+    boundsCenter: {x: 0, y: 7.921079, z: 0.0000009536743}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 22.966366
+    footprintDepth: 23.051332
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: ffa4c88f50734fe4eb755ef6fca802ec
+    displayName: HT_Building_OfficeSquare_01
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeSquare_01.prefab
+    prefab: {fileID: 2595020506944242349, guid: ffa4c88f50734fe4eb755ef6fca802ec, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officesquare
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 15.550177, y: 34.136166, z: 15.550177}
+    boundsCenter: {x: -7.500003, y: 17.068083, z: -7.499997}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 15.550177
+    footprintDepth: 15.550177
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: ef20c16f1f3ca8a49859b6508c7cde40
+    displayName: HT_Building_OfficeSquare_02
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeSquare_02.prefab
+    prefab: {fileID: 5412742088287633820, guid: ef20c16f1f3ca8a49859b6508c7cde40, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officesquare
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 15.550177, y: 13.145579, z: 15.550177}
+    boundsCenter: {x: -7.500003, y: 6.5727897, z: -7.499997}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 15.550177
+    footprintDepth: 15.550177
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: 560de4850e5e19840ab6c33dce8387e3
+    displayName: HT_Building_OfficeSquare_03
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeSquare_03.prefab
+    prefab: {fileID: 6492180977583601796, guid: 560de4850e5e19840ab6c33dce8387e3, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officesquare
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 15.550177, y: 34.136166, z: 15.550177}
+    boundsCenter: {x: -7.500003, y: 17.068083, z: -7.499997}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 15.550177
+    footprintDepth: 15.550177
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []
+  - assetGuid: ac37897491460ca40a5010675f7f75cf
+    displayName: HT_Building_OfficeSquare_04
+    assetPath: Assets/CityGeneration/Buildings/HT_Building_OfficeSquare_04.prefab
+    prefab: {fileID: 3708032384894146779, guid: ac37897491460ca40a5010675f7f75cf, type: 3}
+    category: 0
+    subCategory: Office
+    tags:
+    - building
+    - reviewed-building-assembly
+    - officesquare
+    - "\uBE4C\uB529"
+    placementVersion: 2
+    boundsSize: {x: 15.550177, y: 11.641027, z: 15.550177}
+    boundsCenter: {x: -7.500003, y: 5.8205137, z: -7.499997}
+    placementSurface: 1
+    frontFacesRoad: 1
+    cornerCompatible: 0
+    againstWall: 0
+    canRotate90: 1
+    allowRandomRotation: 0
+    footprintWidth: 15.550177
+    footprintDepth: 15.550177
+    groundOffset: 0
+    localForward: {x: 0, y: 0, z: 1}
+    placementEnabled: 1
+    companionPrefabs: []

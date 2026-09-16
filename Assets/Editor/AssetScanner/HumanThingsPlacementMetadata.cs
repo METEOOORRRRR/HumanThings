@@ -32,6 +32,8 @@ namespace EarthRecovery.Editor
 
         public static void Initialize(HumanThingsAssetEntry e)
         {
+            var assembly=e.prefab!=null?e.prefab.GetComponent<CityBuildingAssembly>():null;
+            if(assembly!=null){e.category=AssetCategory.Building;e.subCategory=assembly.family=="Apartment"?"Apartment":"Office";}
             e.companionPrefabs = new();
             // City lamps share an authored assembly origin. Keep their parts as prefab references.
             if (e.displayName == "SM_Prop_LightPole_Base_01")
@@ -56,6 +58,7 @@ namespace EarthRecovery.Editor
             bool fragment = Has("roof", "floor", "base", "stack", "cover", "door", "interior", "spire", "lid", "attachment", "patch", "arrow", "lines", "median");
             e.placementEnabled = b.size.x > .01f && b.size.z > .01f && !fragment && !e.againstWall;
             if (e.category == AssetCategory.Building && (Has("square", "round", "octagon") || Has("apartment"))) e.placementEnabled = false;
+            if(assembly!=null)e.placementEnabled=assembly.reviewed && b.size.x>.01f && b.size.z>.01f;
             if (e.subCategory == "Lamp") e.placementEnabled = e.companionPrefabs.Count == 2;
             if (e.subCategory == "Sign" && !Has("stop", "give", "parking", "street", "warning")) { e.againstWall = true; e.placementEnabled = false; }
             e.placementVersion = 2;

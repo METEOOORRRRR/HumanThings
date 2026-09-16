@@ -1,0 +1,3 @@
+Seed=200; identical geometry/placements/cameras in before-after pairs.
+Sun elevation=-4; direct intensity=0; no sun disc; fixed post exposure=-0.2
+Clouds=procedural sky layer (not volumetric); fog=URP exponential squared.

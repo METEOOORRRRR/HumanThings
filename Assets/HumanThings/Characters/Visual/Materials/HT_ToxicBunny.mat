@@ -59,9 +59,9 @@ Material:
     - _ValueFloor: 0.032
     - _WhiteCompression: 0.45
     m_Colors:
-    - _AmbientEquator: {r: 0.28, g: 0.3, b: 0.31, a: 1}
-    - _AmbientGround: {r: 0.13, g: 0.14, b: 0.15, a: 1}
-    - _AmbientSky: {r: 0.42, g: 0.46, b: 0.48, a: 1}
+    - _AmbientEquator: {r: 0.38, g: 0.4, b: 0.46, a: 1}
+    - _AmbientGround: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+    - _AmbientSky: {r: 0.4, g: 0.44, b: 0.53, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _DustColor: {r: 0.27, g: 0.285, b: 0.28, a: 1}
     - _PaletteTint: {r: 0.93, g: 0.95, b: 0.96, a: 1}

@@ -82,7 +82,7 @@ namespace EarthRecovery.Tests
 
         [Test] public void DatabaseMigrationPreservesReferencesAndMissingAssetsWarn()
         {
-            var db = Database(); Assert.That(db, Is.Not.Null); Assert.That(db.entries.Count, Is.EqualTo(335));
+            var db = Database(); Assert.That(db, Is.Not.Null); Assert.That(db.entries.Count, Is.EqualTo(355));
             Assert.That(db.entries.All(e => e.prefab != null && !string.IsNullOrEmpty(e.assetGuid)), Is.True);
             Assert.That(typeof(HumanThingsAssetDatabase).Assembly.GetName().Name, Is.EqualTo("EarthRecovery"));
             var t = ScriptableObject.CreateInstance<CityLayoutTemplate>();
@@ -91,7 +91,9 @@ namespace EarthRecovery.Tests
             {
                 Assert.Throws<InvalidOperationException>(() => ProceduralCityGenerator.Generate(t, 1, empty));
                 t.ApplyPreset(CityTemplatePreset.ResidentialAlleys);
-                var p = ProceduralCityGenerator.Generate(t, 1, db);
+                Assert.That(ProceduralCityGenerator.Generate(t,1,db).placement.placements.Any(v=>v.group=="Buildings" && v.asset.subCategory=="Apartment"),Is.True);
+                empty.entries=db.entries.Where(e=>e.subCategory!="Apartment").ToList();
+                var p = ProceduralCityGenerator.Generate(t, 1, empty);
                 Assert.That(p.placement.warnings.Any(w => w.Contains("missing assets")), Is.True);
                 Assert.That(p.placement.placements.Where(v => v.group == "Buildings").All(v =>
                     p.lots.Single(l => l.id == v.zoneId).usage != BuildingUsage.Residential), Is.True);
