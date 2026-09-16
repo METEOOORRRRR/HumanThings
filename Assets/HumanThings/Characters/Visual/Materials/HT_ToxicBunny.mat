@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 3a46205647f345745b5846df8d56624e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 62b641634fcc118448428d7dfb3dbdba, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -49,24 +49,24 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: 0.82
-    - _CavityStrength: 0.12
+    - _Brightness: 1
+    - _CavityStrength: 0
     - _Cull: 2
     - _Cutoff: 0
-    - _DetailStrength: 0.08
-    - _Saturation: 0.65
+    - _DetailStrength: 0
+    - _Saturation: 1
     - _Surface: 0
-    - _ValueFloor: 0.032
-    - _WhiteCompression: 0.45
+    - _ValueFloor: 0
+    - _WhiteCompression: 0
     m_Colors:
     - _AmbientEquator: {r: 0.28, g: 0.3, b: 0.31, a: 1}
     - _AmbientGround: {r: 0.13, g: 0.14, b: 0.15, a: 1}
     - _AmbientSky: {r: 0.42, g: 0.46, b: 0.48, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _DustColor: {r: 0.27, g: 0.285, b: 0.28, a: 1}
-    - _PaletteTint: {r: 0.93, g: 0.95, b: 0.96, a: 1}
-    - _SkinHair: {r: 0.88, g: 1.06, b: 0.16, a: 0.12}
-    - _Surfaces: {r: 0.1, g: 0.3, b: 0.28, a: 0.8}
-    - _Weather: {r: 0.3, g: 0.22, b: 0.1, a: 0}
+    - _PaletteTint: {r: 1, g: 1, b: 1, a: 1}
+    - _SkinHair: {r: 1, g: 1, b: 0.18, a: 0.18}
+    - _Surfaces: {r: 0.18, g: 0.18, b: 0, a: 0}
+    - _Weather: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

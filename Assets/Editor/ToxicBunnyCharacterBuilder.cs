@@ -11,6 +11,8 @@ namespace EarthRecovery.Editor
         public const string VisualPrefab = HumanThingsCharacterVisualBuilder.Folder + "/Prefabs/HumanThings_ToxicBunny_Visual.prefab";
         public const string VisualProfile = HumanThingsCharacterVisualBuilder.Folder + "/Profiles/ToxicBunny.asset";
         public const string CatalogPath = "Assets/Resources/PlayerCharacterCatalog.asset";
+        public const string CleanAlbedo = "Assets/Character/ToxicBunnyClean/ToxicBunny_R31_BaseColor_4K.png";
+        public const string VisualMaterial = HumanThingsCharacterVisualBuilder.Folder + "/Materials/HT_ToxicBunny.mat";
 
         [MenuItem("Tools/HumanThings/Character/Import Toxic Bunny")]
         public static void Import()
@@ -50,9 +52,59 @@ namespace EarthRecovery.Editor
             }
             catalog.characters = entries.ToArray(); catalog.Validate();
             EditorUtility.SetDirty(catalog); AssetDatabase.SaveAssets();
+            ApplyCleanTextures();
             PlayerCharacterBuilder.PreviewCharacter(VisualPrefab, Output, "QA/CharacterRoster/ToxicBunnyVisual");
             HumanThingsCharacterVisualBuilder.CaptureCity(VisualPrefab, VisualProfile, "QA/CharacterRoster/City");
             Debug.Log("CHARACTER_ROSTER_BUILD_PASS count=" + catalog.characters.Length);
+        }
+
+        [MenuItem("Tools/HumanThings/Character/Apply Clean Toxic Bunny Textures")]
+        public static void ApplyCleanTextures()
+        {
+            AssetDatabase.ImportAsset(CleanAlbedo, ImportAssetOptions.ForceSynchronousImport);
+            var importer = AssetImporter.GetAtPath(CleanAlbedo) as TextureImporter;
+            if (importer == null) throw new System.InvalidOperationException("Missing cleaned Toxic Bunny albedo: " + CleanAlbedo);
+            importer.textureType = TextureImporterType.Default;
+            importer.sRGBTexture = true;
+            importer.mipmapEnabled = true;
+            importer.filterMode = FilterMode.Trilinear;
+            importer.anisoLevel = 4;
+            importer.maxTextureSize = 4096;
+            importer.textureCompression = TextureImporterCompression.CompressedHQ;
+            var platform = importer.GetPlatformTextureSettings("Standalone");
+            platform.overridden = true; platform.maxTextureSize = 4096;
+            platform.format = TextureImporterFormat.BC7; platform.compressionQuality = 100;
+            importer.SetPlatformTextureSettings(platform);
+            importer.SaveAndReimport();
+
+            var texture = AssetDatabase.LoadAssetAtPath<Texture2D>(CleanAlbedo);
+            var material = AssetDatabase.LoadAssetAtPath<Material>(VisualMaterial);
+            var profile = AssetDatabase.LoadAssetAtPath<HumanThingsCharacterVisualProfile>(VisualProfile);
+            if (texture == null || material == null || profile == null)
+                throw new System.InvalidOperationException("Build the Toxic Bunny visual prefab and profile before applying clean textures.");
+            // Preserve the original model/material for comparison. Only the in-game
+            // variant uses this painting; all regions receive its matte finish.
+            material.SetTexture("_BaseMap", texture);
+            material.SetColor("_BaseColor", Color.white);
+            material.SetTextureScale("_BaseMap", Vector2.one);
+            material.SetTextureOffset("_BaseMap", Vector2.zero);
+            profile.saturation = profile.brightness = profile.skinSaturation = profile.skinBrightness = 1;
+            profile.tint = Color.white;
+            profile.whiteCompression = profile.charcoalFloor = 0;
+            profile.skinSmoothness = profile.hairSmoothness = profile.clothSmoothness = profile.equipmentSmoothness = .18f;
+            profile.metallicMultiplier = profile.normalStrength = profile.detailStrength = 0;
+            profile.dirtStrength = profile.dustStrength = profile.wearStrength = profile.cavityStrength = profile.wetness = 0;
+            profile.Apply(material);
+            EditorUtility.SetDirty(material); EditorUtility.SetDirty(profile);
+            AssetDatabase.SaveAssets();
+
+            var visual = PlayerCharacterCatalog.Load().Resolve(PlayerCharacterCatalog.ToxicBunnyId).Prefab.GetComponent<HumanThingsCharacterVisual>();
+            if (visual.humanThingsMaterial != material || texture.width != 4096 || texture.height != 4096)
+                throw new System.InvalidOperationException("Clean texture is not connected to the registered in-game Toxic Bunny.");
+            if (AssetDatabase.GetAssetPath(visual.originalMaterial) != Source)
+                throw new System.InvalidOperationException("Original Toxic Bunny comparison material must remain unchanged.");
+            Debug.Log("TOXIC_BUNNY_CLEAN_TEXTURE_PASS texture=" + AssetDatabase.GetAssetPath(texture)
+                + " size=" + texture.width + "x" + texture.height + " material=" + VisualMaterial + " originalPreserved=true");
         }
 
         public static Color Classify(Vector3 position, Color albedo, float metallic)

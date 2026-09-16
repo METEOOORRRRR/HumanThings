@@ -1,0 +1,38 @@
+{
+  "source_sha256": "409793c1130c66551ee68bd9050ded77fe2cc9b1c7ff8d081baf67649c92643e",
+  "source_unchanged": true,
+  "geometry_uv_rig_animations_identical": true,
+  "preserved_sections": [
+    "meshes",
+    "nodes",
+    "skins",
+    "animations",
+    "accessors",
+    "scenes",
+    "scene",
+    "samplers"
+  ],
+  "original_binary_preserved_byte_for_byte": true,
+  "animations": [
+    "Running",
+    "Walking",
+    "restpose"
+  ],
+  "new_glb": "D:\\HumanThings\\Assets\\Character\\ToxicBunnyClean\\ToxicBunny_R31_Clean_All_Animations.glb",
+  "new_glb_sha256": "e361bff1afd3bb19e60e1d930f3c41caea8b42d0b8bee30cbaafbdc93631c880",
+  "texture": "D:\\HumanThings\\Assets\\Character\\ToxicBunnyClean\\ToxicBunny_R31_BaseColor_4K.png",
+  "material": {
+    "name": "ToxicBunny_Clean_Matte",
+    "normalTexture": {
+      "index": 0,
+      "scale": 0.0
+    },
+    "pbrMetallicRoughness": {
+      "baseColorTexture": {
+        "index": 1
+      },
+      "metallicFactor": 0.0,
+      "roughnessFactor": 0.82
+    }
+  }
+}

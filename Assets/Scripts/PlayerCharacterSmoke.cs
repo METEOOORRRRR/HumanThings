@@ -49,6 +49,15 @@ namespace EarthRecovery
                 if (!skin.enabled || skin.sharedMaterial.shader.name != "HumanThings/Weathered Character"
                     || skin.sharedMesh != character.Prefab.GetComponentInChildren<SkinnedMeshRenderer>().sharedMesh)
                 { Fail("skin/material missing"); yield break; }
+                if (character.id == PlayerCharacterCatalog.ToxicBunnyId)
+                {
+                    var albedo = skin.sharedMaterial.GetTexture("_BaseMap");
+                    var surfaces = skin.sharedMaterial.GetVector("_Surfaces");
+                    if (albedo == null || albedo.name != "ToxicBunny_R31_BaseColor_4K" || albedo.width != 4096
+                        || surfaces.z != 0 || surfaces.w != 0 || skin.sharedMaterial.GetVector("_Weather") != Vector4.zero)
+                    { Fail("clean Toxic Bunny texture/material not active"); yield break; }
+                    Debug.Log("TOXIC_BUNNY_CLEAN_RUNTIME_PASS texture=" + albedo.name + " size=" + albedo.width + "x" + albedo.height);
+                }
                 yield return Capture(character.id + "-idle"); if (finished) yield break;
                 yield return Move(false, .65f);
                 if (avatar.Speed < 2) { Fail("walking does not drive animation"); yield break; }
